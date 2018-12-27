@@ -19,6 +19,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/admin', 'HomeController@adminHome')->name('admin-home');
 Route::post('/save-form', 'LiquorLicenseController@store');
 Route::get('/get_application', 'LiquorLicenseController@index');
+Route::get('/admin', 'DashboardController@main')->name('admin-home');
