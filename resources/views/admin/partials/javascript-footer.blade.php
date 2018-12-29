@@ -30,6 +30,7 @@
             <script src="{{ asset('assets/layouts/layout2/scripts/demo.min.js') }}" type="text/javascript"></script>
             <script src="{{ asset('assets/layouts/global/scripts/quick-sidebar.min.js') }}" type="text/javascript"></script>
             <script src="{{ asset('assets/layouts/global/scripts/quick-nav.min.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('js/app.js') }}" defer></script>
             <!-- END THEME LAYOUT SCRIPTS -->
             <script>
                 $(document).ready(function()

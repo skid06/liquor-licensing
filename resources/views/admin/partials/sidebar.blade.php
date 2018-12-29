@@ -42,6 +42,27 @@
                         </li>
                         <li class="nav-item  ">
                             <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="icon-docs"></i>
+                                <span class="title">Applications</span>
+                                <span class="arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                            <li class="nav-item  ">
+                                    <a href="completed" class="nav-link ">
+                                        <i class="icon-check"></i>
+                                        <span class="title">Completed</span>
+                                    </a>
+                                </li>                            
+                                <li class="nav-item  ">
+                                    <a href="app_todo.html" class="nav-link ">
+                                        <i class="icon-clock"></i>
+                                        <span class="title">Incomplete</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>                        
+                        <!--<li class="nav-item  ">
+                            <a href="javascript:;" class="nav-link nav-toggle">
                                 <i class="icon-diamond"></i>
                                 <span class="title">UI Features</span>
                                 <span class="arrow"></span>
@@ -1072,7 +1093,7 @@
                                         <i class="icon-bar-chart"></i> Item 3 </a>
                                 </li>
                             </ul>
-                        </li>
+                        </li>-->
                     </ul>
                     <!-- END SIDEBAR MENU -->
                 </div>

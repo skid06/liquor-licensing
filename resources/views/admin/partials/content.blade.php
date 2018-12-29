@@ -1,8 +1,8 @@
                 <div class="page-content">
                     <!-- BEGIN PAGE HEADER-->
-                    <h1 class="page-title"> Blank Page Layout
+                    <!-- <h1 class="page-title"> Blank Page Layout
                         <small>blank page layout</small>
-                    </h1>
+                    </h1> -->
                     <div class="page-bar">
                         <ul class="page-breadcrumb">
                             <li>

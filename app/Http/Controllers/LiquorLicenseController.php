@@ -26,6 +26,12 @@ class LiquorLicenseController extends Controller
         
     }
 
+    public function completed()
+    {
+        $applications = Application::where('completed', 1)->get();
+        return response()->json(['applications' => $applications]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -170,7 +176,8 @@ class LiquorLicenseController extends Controller
      */
     public function show($id)
     {
-        //
+        $application = Application::where('id', $id)->first();
+        return response()->json(['application' => $application]);
     }
 
     /**

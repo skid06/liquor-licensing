@@ -21,4 +21,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('/save-form', 'LiquorLicenseController@store');
 Route::get('/get_application', 'LiquorLicenseController@index');
-Route::get('/admin', 'DashboardController@main')->name('admin-home');
+
+Route::prefix('admin')->group(function() {
+    Route::get('/completed', 'DashboardController@completed')->name('admin-completed');
+    Route::get('/{id}', 'DashboardController@show')->name('admin-app-id');
+    Route::get('/', 'DashboardController@main')->name('admin-home');
+});

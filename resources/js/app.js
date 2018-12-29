@@ -17,8 +17,10 @@ window.Vue = require('vue');
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('example-component', require('./components/ExampleComponent.vue'))
 Vue.component('liquor-license-form', require('./components/LiquorLicenseForm.vue'))
+Vue.component('completed-applications', require('./components/admin/CompletedApplications.vue'))
+Vue.component('show-application', require('./components/admin/ShowApplication.vue'))
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key)))
