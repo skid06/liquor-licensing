@@ -25,4 +25,9 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function my_applications()
+    {
+        return view('my-applications');
+    }
 }

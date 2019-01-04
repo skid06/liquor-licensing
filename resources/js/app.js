@@ -19,6 +19,7 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'))
 Vue.component('liquor-license-form', require('./components/LiquorLicenseForm.vue'))
+Vue.component('my-applications', require('./components/MyApplications.vue'))
 Vue.component('completed-applications', require('./components/admin/CompletedApplications.vue'))
 Vue.component('show-application', require('./components/admin/ShowApplication.vue'))
 

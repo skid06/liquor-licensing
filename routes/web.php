@@ -18,12 +18,15 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/my-applications', 'HomeController@my_applications')->name('my.applications');
 
 Route::post('/save-form', 'LiquorLicenseController@store');
 Route::get('/get_application', 'LiquorLicenseController@index');
 
 Route::prefix('admin')->group(function() {
-    Route::get('/completed', 'DashboardController@completed')->name('admin-completed');
-    Route::get('/{id}', 'DashboardController@show')->name('admin-app-id');
-    Route::get('/', 'DashboardController@main')->name('admin-home');
+    Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
+    Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
+    Route::get('/completed', 'DashboardController@completed')->name('admin.completed');
+    Route::get('/{id}', 'DashboardController@show')->name('admin.show');
+    Route::get('/', 'DashboardController@main')->name('admin.dashboard');
 });

@@ -14344,7 +14344,7 @@ function applyToTag (styleElement, obj) {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(16);
-module.exports = __webpack_require__(59);
+module.exports = __webpack_require__(62);
 
 
 /***/ }),
@@ -14372,8 +14372,9 @@ window.Vue = __webpack_require__(39);
 
 Vue.component('example-component', __webpack_require__(42));
 Vue.component('liquor-license-form', __webpack_require__(45));
-Vue.component('completed-applications', __webpack_require__(51));
-Vue.component('show-application', __webpack_require__(54));
+Vue.component('my-applications', __webpack_require__(51));
+Vue.component('completed-applications', __webpack_require__(54));
+Vue.component('show-application', __webpack_require__(57));
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key)))
@@ -53738,6 +53739,138 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
+Component.options.__file = "resources/js/components/MyApplications.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-70397ecc", Component.options)
+  } else {
+    hotAPI.reload("data-v-70397ecc", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 52 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/***/ }),
+/* 53 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "col-md-8 col-md-offset-2" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-header" }, [
+            _vm._v("My Applications")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("ul", [
+              _c("li", { staticClass: "mb-10" }, [
+                _c("h3", [
+                  _c("a", { attrs: { href: "/applications/processed" } }, [
+                    _vm._v("Processed Applications (" + _vm._s(_vm.$bat) + ")")
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("li", { staticClass: "mb-10" }, [
+                _c("h3", [
+                  _c("a", { attrs: { href: "/applications/pending" } }, [
+                    _vm._v("Pending Applications (" + _vm._s(_vm.$bat) + ")")
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("li", { staticClass: "mb-10" }, [
+                _c("h3", [
+                  _c("a", { attrs: { href: "/application/current" } }, [
+                    _vm._v("Current Application (" + _vm._s(_vm.$bat) + ")")
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-70397ecc", module.exports)
+  }
+}
+
+/***/ }),
+/* 54 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(55)
+/* template */
+var __vue_template__ = __webpack_require__(56)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
 Component.options.__file = "resources/js/components/admin/CompletedApplications.vue"
 
 /* hot reload */
@@ -53760,7 +53893,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 52 */
+/* 55 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -54000,7 +54133,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 53 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -54509,19 +54642,19 @@ if (false) {
 }
 
 /***/ }),
-/* 54 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(55)
+  __webpack_require__(58)
 }
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(57)
+var __vue_script__ = __webpack_require__(60)
 /* template */
-var __vue_template__ = __webpack_require__(58)
+var __vue_template__ = __webpack_require__(61)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -54560,13 +54693,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 55 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(56);
+var content = __webpack_require__(59);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -54586,7 +54719,7 @@ if(false) {
 }
 
 /***/ }),
-/* 56 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(13)(false);
@@ -54600,7 +54733,7 @@ exports.push([module.i, "\n.switch[data-v-38378878] {\n  position: relative;\n  
 
 
 /***/ }),
-/* 57 */
+/* 60 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -55324,6 +55457,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     };
   },
 
+  props: ['application'],
+  mounted: function mounted() {
+    console.log(JSON.parse(this.application));
+    this.application = JSON.parse(this.application);
+    // console.log('this route 2: '.this.$router.query.page)
+  },
+
   methods: {
     getApplication: function getApplication() {
       axios.get('/api/' + this.$route.params.id).then(function (response) {
@@ -55334,7 +55474,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 58 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -55353,51 +55493,19 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.address,
-                  expression: "address"
-                }
-              ],
               staticClass: "form-control",
               attrs: {
                 type: "text",
                 id: "inputAddress",
                 placeholder: "1234 Main St"
               },
-              domProps: { value: _vm.address },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.address = $event.target.value
-                }
-              }
+              domProps: { value: _vm.application.address }
             }),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.app_id,
-                  expression: "app_id"
-                }
-              ],
               staticClass: "form-control",
               attrs: { type: "hidden", id: "app_id" },
-              domProps: { value: _vm.app_id },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.app_id = $event.target.value
-                }
-              }
+              domProps: { value: _vm.application.app_id }
             })
           ]),
           _vm._v(" "),
@@ -55406,25 +55514,9 @@ var render = function() {
               _c("label", { attrs: { for: "inputCity" } }, [_vm._v("City")]),
               _vm._v(" "),
               _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.city,
-                    expression: "city"
-                  }
-                ],
                 staticClass: "form-control",
                 attrs: { type: "text", id: "inputCity" },
-                domProps: { value: _vm.city },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.city = $event.target.value
-                  }
-                }
+                domProps: { value: _vm.application.city }
               })
             ]),
             _vm._v(" "),
@@ -55434,31 +55526,9 @@ var render = function() {
               _c(
                 "select",
                 {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.state,
-                      expression: "state"
-                    }
-                  ],
                   staticClass: "form-control",
                   attrs: { id: "inputState" },
-                  on: {
-                    change: function($event) {
-                      var $$selectedVal = Array.prototype.filter
-                        .call($event.target.options, function(o) {
-                          return o.selected
-                        })
-                        .map(function(o) {
-                          var val = "_value" in o ? o._value : o.value
-                          return val
-                        })
-                      _vm.state = $event.target.multiple
-                        ? $$selectedVal
-                        : $$selectedVal[0]
-                    }
-                  }
+                  domProps: { value: _vm.application.state }
                 },
                 [
                   _c("option", { attrs: { selected: "" } }, [
@@ -55638,25 +55708,9 @@ var render = function() {
               _c("label", { attrs: { for: "inputZip" } }, [_vm._v("Zip")]),
               _vm._v(" "),
               _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.zip,
-                    expression: "zip"
-                  }
-                ],
                 staticClass: "form-control",
                 attrs: { type: "text", id: "inputZip" },
-                domProps: { value: _vm.zip },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.zip = $event.target.value
-                  }
-                }
+                domProps: { value: _vm.application.zip }
               })
             ])
           ]),
@@ -55666,25 +55720,9 @@ var render = function() {
               _c("label", { attrs: { for: "inputClass" } }, [_vm._v("Class")]),
               _vm._v(" "),
               _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.license_class,
-                    expression: "license_class"
-                  }
-                ],
                 staticClass: "form-control",
                 attrs: { type: "text", id: "inputClass" },
-                domProps: { value: _vm.license_class },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.license_class = $event.target.value
-                  }
-                }
+                domProps: { value: _vm.application.license_class }
               })
             ]),
             _vm._v(" "),
@@ -55692,25 +55730,9 @@ var render = function() {
               _c("label", { attrs: { for: "license" } }, [_vm._v("License")]),
               _vm._v(" "),
               _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.license,
-                    expression: "license"
-                  }
-                ],
                 staticClass: "form-control",
                 attrs: { type: "text", id: "license" },
-                domProps: { value: _vm.license },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.license = $event.target.value
-                  }
-                }
+                domProps: { value: _vm.application.license }
               })
             ]),
             _vm._v(" "),
@@ -55718,25 +55740,9 @@ var render = function() {
               _c("label", { attrs: { for: "fee" } }, [_vm._v("Fee")]),
               _vm._v(" "),
               _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.fee,
-                    expression: "fee"
-                  }
-                ],
                 staticClass: "form-control",
                 attrs: { type: "text", id: "fee" },
-                domProps: { value: _vm.fee },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.fee = $event.target.value
-                  }
-                }
+                domProps: { value: _vm.application.fee }
               })
             ])
           ]),
@@ -55749,25 +55755,9 @@ var render = function() {
             _c("label", { attrs: { for: "name" } }, [_vm._v("Corporate Name")]),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.corporate_name,
-                  expression: "corporate_name"
-                }
-              ],
               staticClass: "form-control",
               attrs: { type: "text", id: "corporate-name" },
-              domProps: { value: _vm.corporate_name },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.corporate_name = $event.target.value
-                }
-              }
+              domProps: { value: _vm.application.corporate_name }
             })
           ]),
           _vm._v(" "),
@@ -55777,29 +55767,13 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.corporate_address,
-                  expression: "corporate_address"
-                }
-              ],
               staticClass: "form-control",
               attrs: {
                 type: "text",
                 id: "corporate-address",
                 placeholder: "1234 Main St"
               },
-              domProps: { value: _vm.corporate_address },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.corporate_address = $event.target.value
-                }
-              }
+              domProps: { value: _vm.application.corporate_address }
             })
           ]),
           _vm._v(" "),
@@ -55809,25 +55783,9 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.name_business_to_be_conducted,
-                  expression: "name_business_to_be_conducted"
-                }
-              ],
               staticClass: "form-control",
               attrs: { type: "text", id: "conducted-name" },
-              domProps: { value: _vm.name_business_to_be_conducted },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.name_business_to_be_conducted = $event.target.value
-                }
-              }
+              domProps: { value: _vm.application.name_business_to_be_conducted }
             })
           ]),
           _vm._v(" "),
@@ -55838,25 +55796,9 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.business_phone,
-                    expression: "business_phone"
-                  }
-                ],
                 staticClass: "form-control",
                 attrs: { type: "text", id: "business-phone-number" },
-                domProps: { value: _vm.business_phone },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.business_phone = $event.target.value
-                  }
-                }
+                domProps: { value: _vm.application.business_phone }
               })
             ]),
             _vm._v(" "),
@@ -55866,25 +55808,9 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.business_mobile,
-                    expression: "business_mobile"
-                  }
-                ],
                 staticClass: "form-control",
                 attrs: { type: "text", id: "mobile-no" },
-                domProps: { value: _vm.business_mobile },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.business_mobile = $event.target.value
-                  }
-                }
+                domProps: { value: _vm.application.business_mobile }
               })
             ]),
             _vm._v(" "),
@@ -55894,25 +55820,9 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.business_email,
-                    expression: "business_email"
-                  }
-                ],
                 staticClass: "form-control",
                 attrs: { type: "text", id: "business-email" },
-                domProps: { value: _vm.business_email },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.business_email = $event.target.value
-                  }
-                }
+                domProps: { value: _vm.application.business_email }
               })
             ])
           ]),
@@ -55925,25 +55835,9 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.president_name,
-                  expression: "president_name"
-                }
-              ],
               staticClass: "form-control",
               attrs: { type: "text", id: "president-name" },
-              domProps: { value: _vm.president_name },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.president_name = $event.target.value
-                }
-              }
+              domProps: { value: _vm.application.president_name }
             })
           ]),
           _vm._v(" "),
@@ -55953,29 +55847,13 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.president_address,
-                  expression: "president_address"
-                }
-              ],
               staticClass: "form-control",
               attrs: {
                 type: "text",
                 id: "president-address",
                 placeholder: "1234 Main St"
               },
-              domProps: { value: _vm.president_address },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.president_address = $event.target.value
-                }
-              }
+              domProps: { value: _vm.application.president_address }
             })
           ]),
           _vm._v(" "),
@@ -55986,25 +55864,9 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.president_phone,
-                    expression: "president_phone"
-                  }
-                ],
                 staticClass: "form-control",
                 attrs: { type: "text", id: "president-phone-number" },
-                domProps: { value: _vm.president_phone },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.president_phone = $event.target.value
-                  }
-                }
+                domProps: { value: _vm.application.president_phone }
               })
             ]),
             _vm._v(" "),
@@ -56014,25 +55876,9 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.president_mobile,
-                    expression: "president_mobile"
-                  }
-                ],
                 staticClass: "form-control",
                 attrs: { type: "text", id: "president-mobile-no" },
-                domProps: { value: _vm.president_mobile },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.president_mobile = $event.target.value
-                  }
-                }
+                domProps: { value: _vm.application.president_mobile }
               })
             ]),
             _vm._v(" "),
@@ -56042,25 +55888,9 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.president_email,
-                    expression: "president_email"
-                  }
-                ],
                 staticClass: "form-control",
                 attrs: { type: "text", id: "president-email" },
-                domProps: { value: _vm.president_email },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.president_email = $event.target.value
-                  }
-                }
+                domProps: { value: _vm.application.president_email }
               })
             ])
           ]),
@@ -56073,25 +55903,9 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.vice_president_name,
-                  expression: "vice_president_name"
-                }
-              ],
               staticClass: "form-control",
               attrs: { type: "text", id: "vice-president-name" },
-              domProps: { value: _vm.vice_president_name },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.vice_president_name = $event.target.value
-                }
-              }
+              domProps: { value: _vm.application.vice_president_name }
             })
           ]),
           _vm._v(" "),
@@ -56101,29 +55915,13 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.vice_president_address,
-                  expression: "vice_president_address"
-                }
-              ],
               staticClass: "form-control",
               attrs: {
                 type: "text",
                 id: "vice-president-address",
                 placeholder: "1234 Main St"
               },
-              domProps: { value: _vm.vice_president_address },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.vice_president_address = $event.target.value
-                }
-              }
+              domProps: { value: _vm.application.vice_president_address }
             })
           ]),
           _vm._v(" "),
@@ -56134,25 +55932,9 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.vice_president_phone,
-                    expression: "vice_president_phone"
-                  }
-                ],
                 staticClass: "form-control",
                 attrs: { type: "text", id: "vice-president-phone-number" },
-                domProps: { value: _vm.vice_president_phone },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.vice_president_phone = $event.target.value
-                  }
-                }
+                domProps: { value: _vm.application.vice_president_phone }
               })
             ]),
             _vm._v(" "),
@@ -56162,25 +55944,9 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.vice_president_mobile,
-                    expression: "vice_president_mobile"
-                  }
-                ],
                 staticClass: "form-control",
                 attrs: { type: "text", id: "vice-president-mobile-no" },
-                domProps: { value: _vm.vice_president_mobile },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.vice_president_mobile = $event.target.value
-                  }
-                }
+                domProps: { value: _vm.application.vice_president_mobile }
               })
             ]),
             _vm._v(" "),
@@ -56190,25 +55956,9 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.vice_president_email,
-                    expression: "vice_president_email"
-                  }
-                ],
                 staticClass: "form-control",
                 attrs: { type: "text", id: "vice-president-email" },
-                domProps: { value: _vm.vice_president_email },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.vice_president_email = $event.target.value
-                  }
-                }
+                domProps: { value: _vm.application.vice_president_email }
               })
             ])
           ]),
@@ -56221,25 +55971,9 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.secretary_name,
-                  expression: "secretary_name"
-                }
-              ],
               staticClass: "form-control",
               attrs: { type: "text", id: "secretary-name" },
-              domProps: { value: _vm.secretary_name },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.secretary_name = $event.target.value
-                }
-              }
+              domProps: { value: _vm.application.secretary_name }
             })
           ]),
           _vm._v(" "),
@@ -56249,29 +55983,13 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.secretary_address,
-                  expression: "secretary_address"
-                }
-              ],
               staticClass: "form-control",
               attrs: {
                 type: "text",
                 id: "secretary-address",
                 placeholder: "1234 Main St"
               },
-              domProps: { value: _vm.secretary_address },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.secretary_address = $event.target.value
-                }
-              }
+              domProps: { value: _vm.application.secretary_address }
             })
           ]),
           _vm._v(" "),
@@ -56282,25 +56000,9 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.secretary_phone,
-                    expression: "secretary_phone"
-                  }
-                ],
                 staticClass: "form-control",
                 attrs: { type: "text", id: "secretary-phone-number" },
-                domProps: { value: _vm.secretary_phone },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.secretary_phone = $event.target.value
-                  }
-                }
+                domProps: { value: _vm.application.secretary_phone }
               })
             ]),
             _vm._v(" "),
@@ -56310,25 +56012,9 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.secretary_mobile,
-                    expression: "secretary_mobile"
-                  }
-                ],
                 staticClass: "form-control",
                 attrs: { type: "text", id: "secretary-mobile-no" },
-                domProps: { value: _vm.secretary_mobile },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.secretary_mobile = $event.target.value
-                  }
-                }
+                domProps: { value: _vm.application.secretary_mobile }
               })
             ]),
             _vm._v(" "),
@@ -56338,25 +56024,9 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.secretary_email,
-                    expression: "secretary_email"
-                  }
-                ],
                 staticClass: "form-control",
                 attrs: { type: "text", id: "secretary-email" },
-                domProps: { value: _vm.secretary_email },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.secretary_email = $event.target.value
-                  }
-                }
+                domProps: { value: _vm.application.secretary_email }
               })
             ])
           ]),
@@ -56369,25 +56039,9 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.treasurer_name,
-                  expression: "treasurer_name"
-                }
-              ],
               staticClass: "form-control",
               attrs: { type: "text", id: "treasurer-name" },
-              domProps: { value: _vm.treasurer_name },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.treasurer_name = $event.target.value
-                }
-              }
+              domProps: { value: _vm.application.treasurer_name }
             })
           ]),
           _vm._v(" "),
@@ -56397,29 +56051,13 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.treasurer_address,
-                  expression: "treasurer_address"
-                }
-              ],
               staticClass: "form-control",
               attrs: {
                 type: "text",
                 id: "treasurer-address",
                 placeholder: "1234 Main St"
               },
-              domProps: { value: _vm.treasurer_address },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.treasurer_address = $event.target.value
-                }
-              }
+              domProps: { value: _vm.application.treasurer_address }
             })
           ]),
           _vm._v(" "),
@@ -56430,25 +56068,9 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.treasurer_phone,
-                    expression: "treasurer_phone"
-                  }
-                ],
                 staticClass: "form-control",
                 attrs: { type: "text", id: "treasurer-phone-number" },
-                domProps: { value: _vm.treasurer_phone },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.treasurer_phone = $event.target.value
-                  }
-                }
+                domProps: { value: _vm.application.treasurer_phone }
               })
             ]),
             _vm._v(" "),
@@ -56458,25 +56080,9 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.treasurer_mobile,
-                    expression: "treasurer_mobile"
-                  }
-                ],
                 staticClass: "form-control",
                 attrs: { type: "text", id: "treasurer-mobile-no" },
-                domProps: { value: _vm.treasurer_mobile },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.treasurer_mobile = $event.target.value
-                  }
-                }
+                domProps: { value: _vm.application.treasurer_mobile }
               })
             ]),
             _vm._v(" "),
@@ -56486,25 +56092,9 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.treasurer_email,
-                    expression: "treasurer_email"
-                  }
-                ],
                 staticClass: "form-control",
                 attrs: { type: "text", id: "treasurer-email" },
-                domProps: { value: _vm.treasurer_email },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.treasurer_email = $event.target.value
-                  }
-                }
+                domProps: { value: _vm.application.treasurer_email }
               })
             ])
           ]),
@@ -56517,25 +56107,9 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.director_name,
-                  expression: "director_name"
-                }
-              ],
               staticClass: "form-control",
               attrs: { type: "text", id: "director-name" },
-              domProps: { value: _vm.director_name },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.director_name = $event.target.value
-                }
-              }
+              domProps: { value: _vm.application.director_name }
             })
           ]),
           _vm._v(" "),
@@ -56545,29 +56119,13 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.director_address,
-                  expression: "director_address"
-                }
-              ],
               staticClass: "form-control",
               attrs: {
                 type: "text",
                 id: "director-address",
                 placeholder: "1234 Main St"
               },
-              domProps: { value: _vm.director_address },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.director_address = $event.target.value
-                }
-              }
+              domProps: { value: _vm.application.director_address }
             })
           ]),
           _vm._v(" "),
@@ -56578,25 +56136,9 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.director_phone,
-                    expression: "director_phone"
-                  }
-                ],
                 staticClass: "form-control",
                 attrs: { type: "text", id: "director-phone-number" },
-                domProps: { value: _vm.director_phone },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.director_phone = $event.target.value
-                  }
-                }
+                domProps: { value: _vm.application.director_phone }
               })
             ]),
             _vm._v(" "),
@@ -56606,25 +56148,9 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.director_mobile,
-                    expression: "director_mobile"
-                  }
-                ],
                 staticClass: "form-control",
                 attrs: { type: "text", id: "director-mobile-no" },
-                domProps: { value: _vm.director_mobile },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.director_mobile = $event.target.value
-                  }
-                }
+                domProps: { value: _vm.application.director_mobile }
               })
             ]),
             _vm._v(" "),
@@ -56634,25 +56160,9 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.director_email,
-                    expression: "director_email"
-                  }
-                ],
                 staticClass: "form-control",
                 attrs: { type: "text", id: "director-email" },
-                domProps: { value: _vm.director_email },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.director_email = $event.target.value
-                  }
-                }
+                domProps: { value: _vm.application.director_email }
               })
             ])
           ]),
@@ -56665,25 +56175,9 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.vice_director_name,
-                  expression: "vice_director_name"
-                }
-              ],
               staticClass: "form-control",
               attrs: { type: "text", id: "vice-director-name" },
-              domProps: { value: _vm.vice_director_name },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.vice_director_name = $event.target.value
-                }
-              }
+              domProps: { value: _vm.application.vice_director_name }
             })
           ]),
           _vm._v(" "),
@@ -56693,29 +56187,13 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.vice_director_address,
-                  expression: "vice_director_address"
-                }
-              ],
               staticClass: "form-control",
               attrs: {
                 type: "text",
                 id: "vice-director-address",
                 placeholder: "1234 Main St"
               },
-              domProps: { value: _vm.vice_director_address },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.vice_director_address = $event.target.value
-                }
-              }
+              domProps: { value: _vm.application.vice_director_address }
             })
           ]),
           _vm._v(" "),
@@ -56726,25 +56204,9 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.vice_director_phone,
-                    expression: "vice_director_phone"
-                  }
-                ],
                 staticClass: "form-control",
                 attrs: { type: "text", id: "vice-director-phone-number" },
-                domProps: { value: _vm.vice_director_phone },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.vice_director_phone = $event.target.value
-                  }
-                }
+                domProps: { value: _vm.application.vice_director_phone }
               })
             ]),
             _vm._v(" "),
@@ -56754,25 +56216,9 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.vice_director_mobile,
-                    expression: "vice_director_mobile"
-                  }
-                ],
                 staticClass: "form-control",
                 attrs: { type: "text", id: "vice-director-mobile-no" },
-                domProps: { value: _vm.vice_director_mobile },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.vice_director_mobile = $event.target.value
-                  }
-                }
+                domProps: { value: _vm.application.vice_director_mobile }
               })
             ]),
             _vm._v(" "),
@@ -56782,25 +56228,9 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.vice_director_email,
-                    expression: "vice_director_email"
-                  }
-                ],
                 staticClass: "form-control",
                 attrs: { type: "text", id: "vice-director-email" },
-                domProps: { value: _vm.vice_director_email },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.vice_director_email = $event.target.value
-                  }
-                }
+                domProps: { value: _vm.application.vice_director_email }
               })
             ])
           ]),
@@ -56811,25 +56241,9 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.date_incorporation,
-                  expression: "date_incorporation"
-                }
-              ],
               staticClass: "form-control",
               attrs: { type: "date", id: "date_incorporation" },
-              domProps: { value: _vm.date_incorporation },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.date_incorporation = $event.target.value
-                }
-              }
+              domProps: { value: _vm.application.date_incorporation }
             })
           ]),
           _vm._v(" "),
@@ -56837,25 +56251,9 @@ var render = function() {
             _c("label", { attrs: { for: "state_of" } }, [_vm._v("State of:")]),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.state_incorporation,
-                  expression: "state_incorporation"
-                }
-              ],
               staticClass: "form-control",
               attrs: { type: "date", id: "state_of" },
-              domProps: { value: _vm.state_incorporation },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.state_incorporation = $event.target.value
-                }
-              }
+              domProps: { value: _vm.application.state_incorporation }
             })
           ]),
           _vm._v(" "),
@@ -56867,25 +56265,10 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.other_state_incorporation_not_illinois,
-                  expression: "other_state_incorporation_not_illinois"
-                }
-              ],
               staticClass: "form-control",
               attrs: { type: "date", id: "other_than_illinois" },
-              domProps: { value: _vm.other_state_incorporation_not_illinois },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.other_state_incorporation_not_illinois =
-                    $event.target.value
-                }
+              domProps: {
+                value: _vm.application.other_state_incorporation_not_illinois
               }
             })
           ]),
@@ -56896,25 +56279,9 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.corporation_forth_chapter,
-                  expression: "corporation_forth_chapter"
-                }
-              ],
               staticClass: "form-control",
               attrs: { type: "text", id: "object-corporation" },
-              domProps: { value: _vm.corporation_forth_chapter },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.corporation_forth_chapter = $event.target.value
-                }
-              }
+              domProps: { value: _vm.application.corporation_forth_chapter }
             })
           ]),
           _vm._v(" "),
@@ -56926,25 +56293,9 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.corporation_agent_name,
-                  expression: "corporation_agent_name"
-                }
-              ],
               staticClass: "form-control",
               attrs: { type: "text", id: "agent-name" },
-              domProps: { value: _vm.corporation_agent_name },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.corporation_agent_name = $event.target.value
-                }
-              }
+              domProps: { value: _vm.application.corporation_agent_name }
             })
           ]),
           _vm._v(" "),
@@ -56954,29 +56305,13 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.corporation_agent_address,
-                  expression: "corporation_agent_address"
-                }
-              ],
               staticClass: "form-control",
               attrs: {
                 type: "text",
                 id: "agent-address",
                 placeholder: "1234 Main St"
               },
-              domProps: { value: _vm.corporation_agent_address },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.corporation_agent_address = $event.target.value
-                }
-              }
+              domProps: { value: _vm.application.corporation_agent_address }
             })
           ]),
           _vm._v(" "),
@@ -56987,25 +56322,9 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.corporation_agent_phone,
-                    expression: "corporation_agent_phone"
-                  }
-                ],
                 staticClass: "form-control",
                 attrs: { type: "text", id: "agent-phone-number" },
-                domProps: { value: _vm.corporation_agent_phone },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.corporation_agent_phone = $event.target.value
-                  }
-                }
+                domProps: { value: _vm.application.corporation_agent_phone }
               })
             ]),
             _vm._v(" "),
@@ -57015,25 +56334,9 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.corporation_agent_mobile,
-                    expression: "corporation_agent_mobile"
-                  }
-                ],
                 staticClass: "form-control",
                 attrs: { type: "text", id: "agent-mobile-no" },
-                domProps: { value: _vm.corporation_agent_mobile },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.corporation_agent_mobile = $event.target.value
-                  }
-                }
+                domProps: { value: _vm.application.corporation_agent_mobile }
               })
             ]),
             _vm._v(" "),
@@ -57043,25 +56346,9 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.corporation_agent_email,
-                    expression: "corporation_agent_email"
-                  }
-                ],
                 staticClass: "form-control",
                 attrs: { type: "text", id: "agent-email" },
-                domProps: { value: _vm.corporation_agent_email },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.corporation_agent_email = $event.target.value
-                  }
-                }
+                domProps: { value: _vm.application.corporation_agent_email }
               })
             ])
           ]),
@@ -57072,25 +56359,9 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.principal_kind_business,
-                  expression: "principal_kind_business"
-                }
-              ],
               staticClass: "form-control",
               attrs: { type: "text", id: "principal-kind-of-business" },
-              domProps: { value: _vm.principal_kind_business },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.principal_kind_business = $event.target.value
-                }
-              }
+              domProps: { value: _vm.application.principal_kind_business }
             })
           ]),
           _vm._v(" "),
@@ -57104,14 +56375,6 @@ var render = function() {
             _c("div", { staticClass: "radio" }, [
               _c("label", [
                 _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.applicant_seek_license_alcoholic_restaurant,
-                      expression: "applicant_seek_license_alcoholic_restaurant"
-                    }
-                  ],
                   attrs: {
                     type: "radio",
                     id: "principal-kind-of-business1",
@@ -57119,15 +56382,9 @@ var render = function() {
                     value: "Yes"
                   },
                   domProps: {
-                    checked: _vm._q(
-                      _vm.applicant_seek_license_alcoholic_restaurant,
-                      "Yes"
-                    )
-                  },
-                  on: {
-                    change: function($event) {
-                      _vm.applicant_seek_license_alcoholic_restaurant = "Yes"
-                    }
+                    value:
+                      _vm.application
+                        .applicant_seek_license_alcoholic_restaurant
                   }
                 }),
                 _vm._v(" Yes ")
@@ -57137,14 +56394,6 @@ var render = function() {
             _c("div", { staticClass: "radio" }, [
               _c("label", [
                 _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.applicant_seek_license_alcoholic_restaurant,
-                      expression: "applicant_seek_license_alcoholic_restaurant"
-                    }
-                  ],
                   attrs: {
                     type: "radio",
                     id: "principal-kind-of-business2",
@@ -57152,15 +56401,9 @@ var render = function() {
                     value: "No"
                   },
                   domProps: {
-                    checked: _vm._q(
-                      _vm.applicant_seek_license_alcoholic_restaurant,
-                      "No"
-                    )
-                  },
-                  on: {
-                    change: function($event) {
-                      _vm.applicant_seek_license_alcoholic_restaurant = "No"
-                    }
+                    value:
+                      _vm.application
+                        .applicant_seek_license_alcoholic_restaurant
                   }
                 }),
                 _vm._v(" No ")
@@ -57180,14 +56423,6 @@ var render = function() {
             _c("div", { staticClass: "radio" }, [
               _c("label", [
                 _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.maitained_to_public_meals_served,
-                      expression: "maitained_to_public_meals_served"
-                    }
-                  ],
                   attrs: {
                     type: "radio",
                     id: "maintained_held1",
@@ -57195,12 +56430,7 @@ var render = function() {
                     value: "Yes"
                   },
                   domProps: {
-                    checked: _vm._q(_vm.maitained_to_public_meals_served, "Yes")
-                  },
-                  on: {
-                    change: function($event) {
-                      _vm.maitained_to_public_meals_served = "Yes"
-                    }
+                    value: _vm.application.maitained_to_public_meals_served
                   }
                 }),
                 _vm._v(" Yes ")
@@ -57210,14 +56440,6 @@ var render = function() {
             _c("div", { staticClass: "radio" }, [
               _c("label", [
                 _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.maitained_to_public_meals_served,
-                      expression: "maitained_to_public_meals_served"
-                    }
-                  ],
                   attrs: {
                     type: "radio",
                     id: "maintained_held2",
@@ -57225,12 +56447,7 @@ var render = function() {
                     value: "No"
                   },
                   domProps: {
-                    checked: _vm._q(_vm.maitained_to_public_meals_served, "No")
-                  },
-                  on: {
-                    change: function($event) {
-                      _vm.maitained_to_public_meals_served = "No"
-                    }
+                    value: _vm.application.maitained_to_public_meals_served
                   }
                 }),
                 _vm._v(" No ")
@@ -57244,25 +56461,9 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.yes_food_services_are,
-                  expression: "yes_food_services_are"
-                }
-              ],
               staticClass: "form-control",
               attrs: { type: "text", id: "food_services_are" },
-              domProps: { value: _vm.yes_food_services_are },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.yes_food_services_are = $event.target.value
-                }
-              }
+              domProps: { value: _vm.application.yes_food_services_are }
             })
           ]),
           _vm._v(" "),
@@ -57276,26 +56477,13 @@ var render = function() {
             _c("div", { staticClass: "radio" }, [
               _c("label", [
                 _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.serve_suitable_food,
-                      expression: "serve_suitable_food"
-                    }
-                  ],
                   attrs: {
                     type: "radio",
                     id: "provided_with_adequate1",
                     name: "provided_with_adequate",
                     value: "Yes"
                   },
-                  domProps: { checked: _vm._q(_vm.serve_suitable_food, "Yes") },
-                  on: {
-                    change: function($event) {
-                      _vm.serve_suitable_food = "Yes"
-                    }
-                  }
+                  domProps: { value: _vm.application.serve_suitable_food }
                 }),
                 _vm._v(" Yes ")
               ])
@@ -57304,26 +56492,13 @@ var render = function() {
             _c("div", { staticClass: "radio" }, [
               _c("label", [
                 _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.serve_suitable_food,
-                      expression: "serve_suitable_food"
-                    }
-                  ],
                   attrs: {
                     type: "radio",
                     id: "provided_with_adequate2",
                     name: "provided_with_adequate",
                     value: "No"
                   },
-                  domProps: { checked: _vm._q(_vm.serve_suitable_food, "No") },
-                  on: {
-                    change: function($event) {
-                      _vm.serve_suitable_food = "No"
-                    }
-                  }
+                  domProps: { value: _vm.application.serve_suitable_food }
                 }),
                 _vm._v(" No ")
               ])
@@ -57340,14 +56515,6 @@ var render = function() {
             _c("div", { staticClass: "radio" }, [
               _c("label", [
                 _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.qualifications_described_illinois_act,
-                      expression: "qualifications_described_illinois_act"
-                    }
-                  ],
                   attrs: {
                     type: "radio",
                     id: "applicant_is_club1",
@@ -57355,15 +56522,7 @@ var render = function() {
                     value: "Yes"
                   },
                   domProps: {
-                    checked: _vm._q(
-                      _vm.qualifications_described_illinois_act,
-                      "Yes"
-                    )
-                  },
-                  on: {
-                    change: function($event) {
-                      _vm.qualifications_described_illinois_act = "Yes"
-                    }
+                    value: _vm.application.qualifications_described_illinois_act
                   }
                 }),
                 _vm._v(" Yes ")
@@ -57373,14 +56532,6 @@ var render = function() {
             _c("div", { staticClass: "radio" }, [
               _c("label", [
                 _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.qualifications_described_illinois_act,
-                      expression: "qualifications_described_illinois_act"
-                    }
-                  ],
                   attrs: {
                     type: "radio",
                     id: "applicant_is_club2",
@@ -57388,15 +56539,7 @@ var render = function() {
                     value: "No"
                   },
                   domProps: {
-                    checked: _vm._q(
-                      _vm.qualifications_described_illinois_act,
-                      "No"
-                    )
-                  },
-                  on: {
-                    change: function($event) {
-                      _vm.qualifications_described_illinois_act = "No"
-                    }
+                    value: _vm.application.qualifications_described_illinois_act
                   }
                 }),
                 _vm._v(" No ")
@@ -57414,14 +56557,6 @@ var render = function() {
             _c("div", { staticClass: "radio" }, [
               _c("label", [
                 _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.applicant_own_premises_license_sought,
-                      expression: "applicant_own_premises_license_sought"
-                    }
-                  ],
                   attrs: {
                     type: "radio",
                     id: "applicant_own_premises1",
@@ -57429,15 +56564,7 @@ var render = function() {
                     value: "Yes"
                   },
                   domProps: {
-                    checked: _vm._q(
-                      _vm.applicant_own_premises_license_sought,
-                      "Yes"
-                    )
-                  },
-                  on: {
-                    change: function($event) {
-                      _vm.applicant_own_premises_license_sought = "Yes"
-                    }
+                    value: _vm.application.applicant_own_premises_license_sought
                   }
                 }),
                 _vm._v(" Yes ")
@@ -57447,14 +56574,6 @@ var render = function() {
             _c("div", { staticClass: "radio" }, [
               _c("label", [
                 _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.applicant_own_premises_license_sought,
-                      expression: "applicant_own_premises_license_sought"
-                    }
-                  ],
                   attrs: {
                     type: "radio",
                     id: "applicant_own_premises2",
@@ -57462,15 +56581,7 @@ var render = function() {
                     value: "No"
                   },
                   domProps: {
-                    checked: _vm._q(
-                      _vm.applicant_own_premises_license_sought,
-                      "No"
-                    )
-                  },
-                  on: {
-                    change: function($event) {
-                      _vm.applicant_own_premises_license_sought = "No"
-                    }
+                    value: _vm.application.applicant_own_premises_license_sought
                   }
                 }),
                 _vm._v(" No ")
@@ -57488,14 +56599,6 @@ var render = function() {
             _c("div", { staticClass: "radio" }, [
               _c("label", [
                 _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.applicant_lease_premises_license_sought,
-                      expression: "applicant_lease_premises_license_sought"
-                    }
-                  ],
                   attrs: {
                     type: "radio",
                     id: "applicant_a_lease1",
@@ -57503,15 +56606,8 @@ var render = function() {
                     value: "Yes"
                   },
                   domProps: {
-                    checked: _vm._q(
-                      _vm.applicant_lease_premises_license_sought,
-                      "Yes"
-                    )
-                  },
-                  on: {
-                    change: function($event) {
-                      _vm.applicant_lease_premises_license_sought = "Yes"
-                    }
+                    value:
+                      _vm.application.applicant_lease_premises_license_sought
                   }
                 }),
                 _vm._v(" Yes ")
@@ -57521,14 +56617,6 @@ var render = function() {
             _c("div", { staticClass: "radio" }, [
               _c("label", [
                 _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.applicant_lease_premises_license_sought,
-                      expression: "applicant_lease_premises_license_sought"
-                    }
-                  ],
                   attrs: {
                     type: "radio",
                     id: "applicant_a_lease2",
@@ -57536,15 +56624,8 @@ var render = function() {
                     value: "No"
                   },
                   domProps: {
-                    checked: _vm._q(
-                      _vm.applicant_lease_premises_license_sought,
-                      "No"
-                    )
-                  },
-                  on: {
-                    change: function($event) {
-                      _vm.applicant_lease_premises_license_sought = "No"
-                    }
+                    value:
+                      _vm.application.applicant_lease_premises_license_sought
                   }
                 }),
                 _vm._v(" No ")
@@ -57558,25 +56639,9 @@ var render = function() {
             _c("label", { attrs: { for: "lessor-name" } }, [_vm._v("Name")]),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.lessor_name,
-                  expression: "lessor_name"
-                }
-              ],
               staticClass: "form-control",
               attrs: { type: "text", id: "lessor" },
-              domProps: { value: _vm.lessor_name },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.lessor_name = $event.target.value
-                }
-              }
+              domProps: { value: _vm.application.lessor_name }
             })
           ]),
           _vm._v(" "),
@@ -57586,29 +56651,13 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.lessor_address,
-                  expression: "lessor_address"
-                }
-              ],
               staticClass: "form-control",
               attrs: {
                 type: "text",
                 id: "lesson-address",
                 placeholder: "1234 Main St"
               },
-              domProps: { value: _vm.lessor_address },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.lessor_address = $event.target.value
-                }
-              }
+              domProps: { value: _vm.application.lessor_address }
             })
           ]),
           _vm._v(" "),
@@ -57618,49 +56667,17 @@ var render = function() {
             ]),
             _vm._v("\n          From: "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.period_covered_lease_from,
-                  expression: "period_covered_lease_from"
-                }
-              ],
               staticClass: "form-control",
               staticStyle: { width: "50%" },
               attrs: { type: "date", id: "period-covered-lease-from" },
-              domProps: { value: _vm.period_covered_lease_from },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.period_covered_lease_from = $event.target.value
-                }
-              }
+              domProps: { value: _vm.application.period_covered_lease_from }
             }),
             _vm._v(" - To: "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.period_covered_lease_to,
-                  expression: "period_covered_lease_to"
-                }
-              ],
               staticClass: "form-control",
               staticStyle: { width: "50%" },
               attrs: { type: "date", id: "period-covered-lease-to" },
-              domProps: { value: _vm.period_covered_lease_to },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.period_covered_lease_to = $event.target.value
-                }
-              }
+              domProps: { value: _vm.application.period_covered_lease_to }
             })
           ]),
           _vm._v(" "),
@@ -57674,14 +56691,6 @@ var render = function() {
             _c("div", { staticClass: "radio" }, [
               _c("label", [
                 _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.applicant_own_premise_license_sought,
-                      expression: "applicant_own_premise_license_sought"
-                    }
-                  ],
                   attrs: {
                     type: "radio",
                     id: "applicant_own_premises1",
@@ -57689,15 +56698,7 @@ var render = function() {
                     value: "Yes"
                   },
                   domProps: {
-                    checked: _vm._q(
-                      _vm.applicant_own_premise_license_sought,
-                      "Yes"
-                    )
-                  },
-                  on: {
-                    change: function($event) {
-                      _vm.applicant_own_premise_license_sought = "Yes"
-                    }
+                    value: _vm.application.applicant_own_premise_license_sought
                   }
                 }),
                 _vm._v(" Yes ")
@@ -57707,14 +56708,6 @@ var render = function() {
             _c("div", { staticClass: "radio" }, [
               _c("label", [
                 _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.applicant_own_premise_license_sought,
-                      expression: "applicant_own_premise_license_sought"
-                    }
-                  ],
                   attrs: {
                     type: "radio",
                     id: "applicant_own_premises2",
@@ -57722,15 +56715,7 @@ var render = function() {
                     value: "No"
                   },
                   domProps: {
-                    checked: _vm._q(
-                      _vm.applicant_own_premise_license_sought,
-                      "No"
-                    )
-                  },
-                  on: {
-                    change: function($event) {
-                      _vm.applicant_own_premise_license_sought = "No"
-                    }
+                    value: _vm.application.applicant_own_premise_license_sought
                   }
                 }),
                 _vm._v(" No ")
@@ -57746,28 +56731,13 @@ var render = function() {
             _c("div", { staticClass: "radio" }, [
               _c("label", [
                 _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.applicant_food_dispenser,
-                      expression: "applicant_food_dispenser"
-                    }
-                  ],
                   attrs: {
                     type: "radio",
                     id: "applicant_a_food_dispenser1",
                     name: "applicant_a_food_dispenser",
                     value: "Yes"
                   },
-                  domProps: {
-                    checked: _vm._q(_vm.applicant_food_dispenser, "Yes")
-                  },
-                  on: {
-                    change: function($event) {
-                      _vm.applicant_food_dispenser = "Yes"
-                    }
-                  }
+                  domProps: { value: _vm.application.applicant_food_dispenser }
                 }),
                 _vm._v(" Yes ")
               ])
@@ -57776,28 +56746,13 @@ var render = function() {
             _c("div", { staticClass: "radio" }, [
               _c("label", [
                 _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.applicant_food_dispenser,
-                      expression: "applicant_food_dispenser"
-                    }
-                  ],
                   attrs: {
                     type: "radio",
                     id: "applicant_a_food_dispenser2",
                     name: "applicant_a_food_dispenser",
                     value: "No"
                   },
-                  domProps: {
-                    checked: _vm._q(_vm.applicant_food_dispenser, "No")
-                  },
-                  on: {
-                    change: function($event) {
-                      _vm.applicant_food_dispenser = "No"
-                    }
-                  }
+                  domProps: { value: _vm.application.applicant_food_dispenser }
                 }),
                 _vm._v(" No ")
               ])
@@ -57810,25 +56765,10 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.applicant_food_dispenser_number_license,
-                  expression: "applicant_food_dispenser_number_license"
-                }
-              ],
               staticClass: "form-control",
               attrs: { type: "text", id: "give_no_license" },
-              domProps: { value: _vm.applicant_food_dispenser_number_license },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.applicant_food_dispenser_number_license =
-                    $event.target.value
-                }
+              domProps: {
+                value: _vm.application.applicant_food_dispenser_number_license
               }
             })
           ]),
@@ -57843,14 +56783,6 @@ var render = function() {
             _c("div", { staticClass: "radio" }, [
               _c("label", [
                 _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.applicant_actively_involved_day_operation,
-                      expression: "applicant_actively_involved_day_operation"
-                    }
-                  ],
                   attrs: {
                     type: "radio",
                     id: "applicant_personally_actively1",
@@ -57858,15 +56790,8 @@ var render = function() {
                     value: "Yes"
                   },
                   domProps: {
-                    checked: _vm._q(
-                      _vm.applicant_actively_involved_day_operation,
-                      "Yes"
-                    )
-                  },
-                  on: {
-                    change: function($event) {
-                      _vm.applicant_actively_involved_day_operation = "Yes"
-                    }
+                    value:
+                      _vm.application.applicant_actively_involved_day_operation
                   }
                 }),
                 _vm._v(" Yes ")
@@ -57876,14 +56801,6 @@ var render = function() {
             _c("div", { staticClass: "radio" }, [
               _c("label", [
                 _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.applicant_actively_involved_day_operation,
-                      expression: "applicant_actively_involved_day_operation"
-                    }
-                  ],
                   attrs: {
                     type: "radio",
                     id: "applicant_personally_actively2",
@@ -57891,15 +56808,8 @@ var render = function() {
                     value: "No"
                   },
                   domProps: {
-                    checked: _vm._q(
-                      _vm.applicant_actively_involved_day_operation,
-                      "No"
-                    )
-                  },
-                  on: {
-                    change: function($event) {
-                      _vm.applicant_actively_involved_day_operation = "No"
-                    }
+                    value:
+                      _vm.application.applicant_actively_involved_day_operation
                   }
                 }),
                 _vm._v(" No ")
@@ -57917,14 +56827,6 @@ var render = function() {
             _c("div", { staticClass: "radio" }, [
               _c("label", [
                 _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.business_liquor_license_sought_manager,
-                      expression: "business_liquor_license_sought_manager"
-                    }
-                  ],
                   attrs: {
                     type: "radio",
                     id: "business_managed_by1",
@@ -57932,15 +56834,8 @@ var render = function() {
                     value: "Yes"
                   },
                   domProps: {
-                    checked: _vm._q(
-                      _vm.business_liquor_license_sought_manager,
-                      "Yes"
-                    )
-                  },
-                  on: {
-                    change: function($event) {
-                      _vm.business_liquor_license_sought_manager = "Yes"
-                    }
+                    value:
+                      _vm.application.business_liquor_license_sought_manager
                   }
                 }),
                 _vm._v(" Yes ")
@@ -57950,14 +56845,6 @@ var render = function() {
             _c("div", { staticClass: "radio" }, [
               _c("label", [
                 _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.business_liquor_license_sought_manager,
-                      expression: "business_liquor_license_sought_manager"
-                    }
-                  ],
                   attrs: {
                     type: "radio",
                     id: "business_managed_by2",
@@ -57965,15 +56852,8 @@ var render = function() {
                     value: "No"
                   },
                   domProps: {
-                    checked: _vm._q(
-                      _vm.business_liquor_license_sought_manager,
-                      "No"
-                    )
-                  },
-                  on: {
-                    change: function($event) {
-                      _vm.business_liquor_license_sought_manager = "No"
-                    }
+                    value:
+                      _vm.application.business_liquor_license_sought_manager
                   }
                 }),
                 _vm._v(" No ")
@@ -57987,25 +56867,9 @@ var render = function() {
             _c("label", { attrs: { for: "manager_name" } }, [_vm._v("Name")]),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.manager_name,
-                  expression: "manager_name"
-                }
-              ],
               staticClass: "form-control",
               attrs: { type: "text", id: "manager_name" },
-              domProps: { value: _vm.manager_name },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.manager_name = $event.target.value
-                }
-              }
+              domProps: { value: _vm.application.manager_name }
             })
           ]),
           _vm._v(" "),
@@ -58015,29 +56879,13 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.manager_address,
-                  expression: "manager_address"
-                }
-              ],
               staticClass: "form-control",
               attrs: {
                 type: "text",
                 id: "manager_address",
                 placeholder: "1234 Main St"
               },
-              domProps: { value: _vm.manager_address },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.manager_address = $event.target.value
-                }
-              }
+              domProps: { value: _vm.application.manager_address }
             })
           ]),
           _vm._v(" "),
@@ -58045,25 +56893,9 @@ var render = function() {
             _c("label", { attrs: { for: "manager_phone" } }, [_vm._v("Phone")]),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.manager_phone,
-                  expression: "manager_phone"
-                }
-              ],
               staticClass: "form-control",
               attrs: { type: "text", id: "manager_phone" },
-              domProps: { value: _vm.manager_phone },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.manager_phone = $event.target.value
-                }
-              }
+              domProps: { value: _vm.application.manager_phone }
             })
           ]),
           _vm._v(" "),
@@ -58075,24 +56907,10 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.amount_anticipated_liquor_sales,
-                  expression: "amount_anticipated_liquor_sales"
-                }
-              ],
               staticClass: "form-control",
               attrs: { type: "text", id: "amount_anticipated_alcohol" },
-              domProps: { value: _vm.amount_anticipated_liquor_sales },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.amount_anticipated_liquor_sales = $event.target.value
-                }
+              domProps: {
+                value: _vm.application.amount_anticipated_liquor_sales
               }
             })
           ]),
@@ -58107,14 +56925,6 @@ var render = function() {
             _c("div", { staticClass: "radio" }, [
               _c("label", [
                 _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.applicant_seeking_approval_beer_garden,
-                      expression: "applicant_seeking_approval_beer_garden"
-                    }
-                  ],
                   attrs: {
                     type: "radio",
                     id: "beer_garden1",
@@ -58122,15 +56932,8 @@ var render = function() {
                     value: "Yes"
                   },
                   domProps: {
-                    checked: _vm._q(
-                      _vm.applicant_seeking_approval_beer_garden,
-                      "Yes"
-                    )
-                  },
-                  on: {
-                    change: function($event) {
-                      _vm.applicant_seeking_approval_beer_garden = "Yes"
-                    }
+                    value:
+                      _vm.application.applicant_seeking_approval_beer_garden
                   }
                 }),
                 _vm._v(" Yes ")
@@ -58140,14 +56943,6 @@ var render = function() {
             _c("div", { staticClass: "radio" }, [
               _c("label", [
                 _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.applicant_seeking_approval_beer_garden,
-                      expression: "applicant_seeking_approval_beer_garden"
-                    }
-                  ],
                   attrs: {
                     type: "radio",
                     id: "beer_garden2",
@@ -58155,15 +56950,8 @@ var render = function() {
                     value: "No"
                   },
                   domProps: {
-                    checked: _vm._q(
-                      _vm.applicant_seeking_approval_beer_garden,
-                      "No"
-                    )
-                  },
-                  on: {
-                    change: function($event) {
-                      _vm.applicant_seeking_approval_beer_garden = "No"
-                    }
+                    value:
+                      _vm.application.applicant_seeking_approval_beer_garden
                   }
                 }),
                 _vm._v(" No ")
@@ -58179,16 +56967,6 @@ var render = function() {
             _c("div", { staticClass: "radio" }, [
               _c("label", [
                 _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value:
-                        _vm.applicant_seeking_approval_outdoor_seating_area,
-                      expression:
-                        "applicant_seeking_approval_outdoor_seating_area"
-                    }
-                  ],
                   attrs: {
                     type: "radio",
                     id: "outdoor_seating_area1",
@@ -58196,16 +56974,9 @@ var render = function() {
                     value: "Yes"
                   },
                   domProps: {
-                    checked: _vm._q(
-                      _vm.applicant_seeking_approval_outdoor_seating_area,
-                      "Yes"
-                    )
-                  },
-                  on: {
-                    change: function($event) {
-                      _vm.applicant_seeking_approval_outdoor_seating_area =
-                        "Yes"
-                    }
+                    value:
+                      _vm.application
+                        .applicant_seeking_approval_outdoor_seating_area
                   }
                 }),
                 _vm._v(" Yes ")
@@ -58215,16 +56986,6 @@ var render = function() {
             _c("div", { staticClass: "radio" }, [
               _c("label", [
                 _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value:
-                        _vm.applicant_seeking_approval_outdoor_seating_area,
-                      expression:
-                        "applicant_seeking_approval_outdoor_seating_area"
-                    }
-                  ],
                   attrs: {
                     type: "radio",
                     id: "outdoor_seating_area2",
@@ -58232,15 +56993,9 @@ var render = function() {
                     value: "No"
                   },
                   domProps: {
-                    checked: _vm._q(
-                      _vm.applicant_seeking_approval_outdoor_seating_area,
-                      "No"
-                    )
-                  },
-                  on: {
-                    change: function($event) {
-                      _vm.applicant_seeking_approval_outdoor_seating_area = "No"
-                    }
+                    value:
+                      _vm.application
+                        .applicant_seeking_approval_outdoor_seating_area
                   }
                 }),
                 _vm._v(" No ")
@@ -58262,16 +57017,6 @@ var render = function() {
             _c("div", { staticClass: "radio" }, [
               _c("label", [
                 _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value:
-                        _vm.location_applicants_business_within_100ft_property_of_church,
-                      expression:
-                        "location_applicants_business_within_100ft_property_of_church"
-                    }
-                  ],
                   attrs: {
                     type: "radio",
                     id: "location_applicant_within_onehundred1",
@@ -58279,16 +57024,9 @@ var render = function() {
                     value: "Yes"
                   },
                   domProps: {
-                    checked: _vm._q(
-                      _vm.location_applicants_business_within_100ft_property_of_church,
-                      "Yes"
-                    )
-                  },
-                  on: {
-                    change: function($event) {
-                      _vm.location_applicants_business_within_100ft_property_of_church =
-                        "Yes"
-                    }
+                    value:
+                      _vm.application
+                        .location_applicants_business_within_100ft_property_of_church
                   }
                 }),
                 _vm._v(" Yes ")
@@ -58298,16 +57036,6 @@ var render = function() {
             _c("div", { staticClass: "radio" }, [
               _c("label", [
                 _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value:
-                        _vm.location_applicants_business_within_100ft_property_of_church,
-                      expression:
-                        "location_applicants_business_within_100ft_property_of_church"
-                    }
-                  ],
                   attrs: {
                     type: "radio",
                     id: "location_applicant_within_onehundred2",
@@ -58315,16 +57043,9 @@ var render = function() {
                     value: "No"
                   },
                   domProps: {
-                    checked: _vm._q(
-                      _vm.location_applicants_business_within_100ft_property_of_church,
-                      "No"
-                    )
-                  },
-                  on: {
-                    change: function($event) {
-                      _vm.location_applicants_business_within_100ft_property_of_church =
-                        "No"
-                    }
+                    value:
+                      _vm.application
+                        .location_applicants_business_within_100ft_property_of_church
                   }
                 }),
                 _vm._v(" No ")
@@ -58342,14 +57063,6 @@ var render = function() {
             _c("div", { staticClass: "radio" }, [
               _c("label", [
                 _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.manufacturer_agreed_to_pay_license,
-                      expression: "manufacturer_agreed_to_pay_license"
-                    }
-                  ],
                   attrs: {
                     type: "radio",
                     id: "importing_or_distributor1",
@@ -58357,15 +57070,7 @@ var render = function() {
                     value: "Yes"
                   },
                   domProps: {
-                    checked: _vm._q(
-                      _vm.manufacturer_agreed_to_pay_license,
-                      "Yes"
-                    )
-                  },
-                  on: {
-                    change: function($event) {
-                      _vm.manufacturer_agreed_to_pay_license = "Yes"
-                    }
+                    value: _vm.application.manufacturer_agreed_to_pay_license
                   }
                 }),
                 _vm._v(" Yes ")
@@ -58375,14 +57080,6 @@ var render = function() {
             _c("div", { staticClass: "radio" }, [
               _c("label", [
                 _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.manufacturer_agreed_to_pay_license,
-                      expression: "manufacturer_agreed_to_pay_license"
-                    }
-                  ],
                   attrs: {
                     type: "radio",
                     id: "importing_or_distributor2",
@@ -58390,15 +57087,7 @@ var render = function() {
                     value: "No"
                   },
                   domProps: {
-                    checked: _vm._q(
-                      _vm.manufacturer_agreed_to_pay_license,
-                      "No"
-                    )
-                  },
-                  on: {
-                    change: function($event) {
-                      _vm.manufacturer_agreed_to_pay_license = "No"
-                    }
+                    value: _vm.application.manufacturer_agreed_to_pay_license
                   }
                 }),
                 _vm._v(" No ")
@@ -58416,16 +57105,6 @@ var render = function() {
             _c("div", { staticClass: "radio" }, [
               _c("label", [
                 _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value:
-                        _vm.applicant_engaged_manufacturer_alcoholic_liquors,
-                      expression:
-                        "applicant_engaged_manufacturer_alcoholic_liquors"
-                    }
-                  ],
                   attrs: {
                     type: "radio",
                     id: "applicant_engaged_manufacturer1",
@@ -58433,16 +57112,9 @@ var render = function() {
                     value: "Yes"
                   },
                   domProps: {
-                    checked: _vm._q(
-                      _vm.applicant_engaged_manufacturer_alcoholic_liquors,
-                      "Yes"
-                    )
-                  },
-                  on: {
-                    change: function($event) {
-                      _vm.applicant_engaged_manufacturer_alcoholic_liquors =
-                        "Yes"
-                    }
+                    value:
+                      _vm.application
+                        .applicant_engaged_manufacturer_alcoholic_liquors
                   }
                 }),
                 _vm._v(" Yes ")
@@ -58452,16 +57124,6 @@ var render = function() {
             _c("div", { staticClass: "radio" }, [
               _c("label", [
                 _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value:
-                        _vm.applicant_engaged_manufacturer_alcoholic_liquors,
-                      expression:
-                        "applicant_engaged_manufacturer_alcoholic_liquors"
-                    }
-                  ],
                   attrs: {
                     type: "radio",
                     id: "applicant_engaged_manufacturer2",
@@ -58469,16 +57131,9 @@ var render = function() {
                     value: "No"
                   },
                   domProps: {
-                    checked: _vm._q(
-                      _vm.applicant_engaged_manufacturer_alcoholic_liquors,
-                      "No"
-                    )
-                  },
-                  on: {
-                    change: function($event) {
-                      _vm.applicant_engaged_manufacturer_alcoholic_liquors =
-                        "No"
-                    }
+                    value:
+                      _vm.application
+                        .applicant_engaged_manufacturer_alcoholic_liquors
                   }
                 }),
                 _vm._v(" No ")
@@ -58494,30 +57149,12 @@ var render = function() {
             ),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value:
-                    _vm.applicant_engaged_manufacturer_alcoholic_liquors_location,
-                  expression:
-                    "applicant_engaged_manufacturer_alcoholic_liquors_location"
-                }
-              ],
               staticClass: "form-control",
               attrs: { type: "text", id: "yes_applicant_engaged_manufacturer" },
               domProps: {
                 value:
-                  _vm.applicant_engaged_manufacturer_alcoholic_liquors_location
-              },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.applicant_engaged_manufacturer_alcoholic_liquors_location =
-                    $event.target.value
-                }
+                  _vm.application
+                    .applicant_engaged_manufacturer_alcoholic_liquors_location
               }
             })
           ]),
@@ -58536,16 +57173,6 @@ var render = function() {
             _c("div", { staticClass: "radio" }, [
               _c("label", [
                 _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value:
-                        _vm.applicant_conducting_business_importing_distributor,
-                      expression:
-                        "applicant_conducting_business_importing_distributor"
-                    }
-                  ],
                   attrs: {
                     type: "radio",
                     id: "applicant_conducting_business_importing1",
@@ -58553,16 +57180,9 @@ var render = function() {
                     value: "Yes"
                   },
                   domProps: {
-                    checked: _vm._q(
-                      _vm.applicant_conducting_business_importing_distributor,
-                      "Yes"
-                    )
-                  },
-                  on: {
-                    change: function($event) {
-                      _vm.applicant_conducting_business_importing_distributor =
-                        "Yes"
-                    }
+                    value:
+                      _vm.application
+                        .applicant_conducting_business_importing_distributor
                   }
                 }),
                 _vm._v(" Yes ")
@@ -58572,16 +57192,6 @@ var render = function() {
             _c("div", { staticClass: "radio" }, [
               _c("label", [
                 _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value:
-                        _vm.applicant_conducting_business_importing_distributor,
-                      expression:
-                        "applicant_conducting_business_importing_distributor"
-                    }
-                  ],
                   attrs: {
                     type: "radio",
                     id: "applicant_conducting_business_importing2",
@@ -58589,16 +57199,9 @@ var render = function() {
                     value: "No"
                   },
                   domProps: {
-                    checked: _vm._q(
-                      _vm.applicant_conducting_business_importing_distributor,
-                      "No"
-                    )
-                  },
-                  on: {
-                    change: function($event) {
-                      _vm.applicant_conducting_business_importing_distributor =
-                        "No"
-                    }
+                    value:
+                      _vm.application
+                        .applicant_conducting_business_importing_distributor
                   }
                 }),
                 _vm._v(" No ")
@@ -58614,16 +57217,6 @@ var render = function() {
             ),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value:
-                    _vm.applicant_conducting_business_importing_distributor_location,
-                  expression:
-                    "applicant_conducting_business_importing_distributor_location"
-                }
-              ],
               staticClass: "form-control",
               attrs: {
                 type: "text",
@@ -58631,16 +57224,8 @@ var render = function() {
               },
               domProps: {
                 value:
-                  _vm.applicant_conducting_business_importing_distributor_location
-              },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.applicant_conducting_business_importing_distributor_location =
-                    $event.target.value
-                }
+                  _vm.application
+                    .applicant_conducting_business_importing_distributor_location
               }
             })
           ]),
@@ -58655,14 +57240,6 @@ var render = function() {
             _c("div", { staticClass: "radio" }, [
               _c("label", [
                 _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.officer_own_five_percent_convicted_felony,
-                      expression: "officer_own_five_percent_convicted_felony"
-                    }
-                  ],
                   attrs: {
                     type: "radio",
                     id: "stockholders_owning_aggregate1",
@@ -58670,15 +57247,8 @@ var render = function() {
                     value: "Yes"
                   },
                   domProps: {
-                    checked: _vm._q(
-                      _vm.officer_own_five_percent_convicted_felony,
-                      "Yes"
-                    )
-                  },
-                  on: {
-                    change: function($event) {
-                      _vm.officer_own_five_percent_convicted_felony = "Yes"
-                    }
+                    value:
+                      _vm.application.officer_own_five_percent_convicted_felony
                   }
                 }),
                 _vm._v(" Yes ")
@@ -58688,14 +57258,6 @@ var render = function() {
             _c("div", { staticClass: "radio" }, [
               _c("label", [
                 _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.officer_own_five_percent_convicted_felony,
-                      expression: "officer_own_five_percent_convicted_felony"
-                    }
-                  ],
                   attrs: {
                     type: "radio",
                     id: "stockholders_owning_aggregate2",
@@ -58703,15 +57265,8 @@ var render = function() {
                     value: "No"
                   },
                   domProps: {
-                    checked: _vm._q(
-                      _vm.officer_own_five_percent_convicted_felony,
-                      "No"
-                    )
-                  },
-                  on: {
-                    change: function($event) {
-                      _vm.officer_own_five_percent_convicted_felony = "No"
-                    }
+                    value:
+                      _vm.application.officer_own_five_percent_convicted_felony
                   }
                 }),
                 _vm._v(" No ")
@@ -58727,27 +57282,12 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.officer_own_five_percent_convicted__felony_name,
-                  expression: "officer_own_five_percent_convicted__felony_name"
-                }
-              ],
               staticClass: "form-control",
               attrs: { type: "text", id: "name_person_convicted" },
               domProps: {
-                value: _vm.officer_own_five_percent_convicted__felony_name
-              },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.officer_own_five_percent_convicted__felony_name =
-                    $event.target.value
-                }
+                value:
+                  _vm.application
+                    .officer_own_five_percent_convicted__felony_name
               }
             })
           ]),
@@ -58756,27 +57296,11 @@ var render = function() {
             _c("label", { attrs: { for: "date_convicted" } }, [_vm._v("Date")]),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.officer_own_five_percent_convicted_felony_date,
-                  expression: "officer_own_five_percent_convicted_felony_date"
-                }
-              ],
               staticClass: "form-control",
               attrs: { type: "date", id: "date_convicted" },
               domProps: {
-                value: _vm.officer_own_five_percent_convicted_felony_date
-              },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.officer_own_five_percent_convicted_felony_date =
-                    $event.target.value
-                }
+                value:
+                  _vm.application.officer_own_five_percent_convicted_felony_date
               }
             })
           ]),
@@ -58787,28 +57311,12 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.officer_own_five_percent_convicted_felony_offence,
-                  expression:
-                    "officer_own_five_percent_convicted_felony_offence"
-                }
-              ],
               staticClass: "form-control",
               attrs: { type: "text", id: "offence_convicted" },
               domProps: {
-                value: _vm.officer_own_five_percent_convicted_felony_offence
-              },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.officer_own_five_percent_convicted_felony_offence =
-                    $event.target.value
-                }
+                value:
+                  _vm.application
+                    .officer_own_five_percent_convicted_felony_offence
               }
             })
           ]),
@@ -58829,14 +57337,6 @@ var render = function() {
             _c("div", { staticClass: "radio" }, [
               _c("label", [
                 _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.officer_own_five_percent_convicted_violation,
-                      expression: "officer_own_five_percent_convicted_violation"
-                    }
-                  ],
                   attrs: {
                     type: "radio",
                     id: "stockholders_convicted_violation_federal_law1",
@@ -58844,15 +57344,9 @@ var render = function() {
                     value: "Yes"
                   },
                   domProps: {
-                    checked: _vm._q(
-                      _vm.officer_own_five_percent_convicted_violation,
-                      "Yes"
-                    )
-                  },
-                  on: {
-                    change: function($event) {
-                      _vm.officer_own_five_percent_convicted_violation = "Yes"
-                    }
+                    value:
+                      _vm.application
+                        .officer_own_five_percent_convicted_violation
                   }
                 }),
                 _vm._v(" Yes ")
@@ -58862,14 +57356,6 @@ var render = function() {
             _c("div", { staticClass: "radio" }, [
               _c("label", [
                 _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.officer_own_five_percent_convicted_violation,
-                      expression: "officer_own_five_percent_convicted_violation"
-                    }
-                  ],
                   attrs: {
                     type: "radio",
                     id: "stockholders_convicted_violation_federal_law2",
@@ -58877,15 +57363,9 @@ var render = function() {
                     value: "No"
                   },
                   domProps: {
-                    checked: _vm._q(
-                      _vm.officer_own_five_percent_convicted_violation,
-                      "No"
-                    )
-                  },
-                  on: {
-                    change: function($event) {
-                      _vm.officer_own_five_percent_convicted_violation = "No"
-                    }
+                    value:
+                      _vm.application
+                        .officer_own_five_percent_convicted_violation
                   }
                 }),
                 _vm._v(" No ")
@@ -58907,31 +57387,15 @@ var render = function() {
             ),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.officer_own_five_percent_convicted__violation_name,
-                  expression:
-                    "officer_own_five_percent_convicted__violation_name"
-                }
-              ],
               staticClass: "form-control",
               attrs: {
                 type: "text",
                 id: "name_stockholders_convicted_violation_federal_law"
               },
               domProps: {
-                value: _vm.officer_own_five_percent_convicted__violation_name
-              },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.officer_own_five_percent_convicted__violation_name =
-                    $event.target.value
-                }
+                value:
+                  _vm.application
+                    .officer_own_five_percent_convicted__violation_name
               }
             })
           ]),
@@ -58948,31 +57412,15 @@ var render = function() {
             ),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.officer_own_five_percent_convicted_violation_date,
-                  expression:
-                    "officer_own_five_percent_convicted_violation_date"
-                }
-              ],
               staticClass: "form-control",
               attrs: {
                 type: "date",
                 id: "date_stockholders_convicted_violation_federal_law"
               },
               domProps: {
-                value: _vm.officer_own_five_percent_convicted_violation_date
-              },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.officer_own_five_percent_convicted_violation_date =
-                    $event.target.value
-                }
+                value:
+                  _vm.application
+                    .officer_own_five_percent_convicted_violation_date
               }
             })
           ]),
@@ -58989,32 +57437,15 @@ var render = function() {
             ),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value:
-                    _vm.officer_own_five_percent_convicted_violation_offence,
-                  expression:
-                    "officer_own_five_percent_convicted_violation_offence"
-                }
-              ],
               staticClass: "form-control",
               attrs: {
                 type: "text",
                 id: "offence_stockholders_convicted_violation_federal_law"
               },
               domProps: {
-                value: _vm.officer_own_five_percent_convicted_violation_offence
-              },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.officer_own_five_percent_convicted_violation_offence =
-                    $event.target.value
-                }
+                value:
+                  _vm.application
+                    .officer_own_five_percent_convicted_violation_offence
               }
             })
           ]),
@@ -59029,14 +57460,6 @@ var render = function() {
             _c("div", { staticClass: "radio" }, [
               _c("label", [
                 _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.made_application_similar_license,
-                      expression: "made_application_similar_license"
-                    }
-                  ],
                   attrs: {
                     type: "radio",
                     id: "stockholders_convicted_gambling1",
@@ -59044,12 +57467,7 @@ var render = function() {
                     value: "Yes"
                   },
                   domProps: {
-                    checked: _vm._q(_vm.made_application_similar_license, "Yes")
-                  },
-                  on: {
-                    change: function($event) {
-                      _vm.made_application_similar_license = "Yes"
-                    }
+                    value: _vm.application.made_application_similar_license
                   }
                 }),
                 _vm._v(" Yes ")
@@ -59059,14 +57477,6 @@ var render = function() {
             _c("div", { staticClass: "radio" }, [
               _c("label", [
                 _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.made_application_similar_license,
-                      expression: "made_application_similar_license"
-                    }
-                  ],
                   attrs: {
                     type: "radio",
                     id: "stockholders_convicted_gambling2",
@@ -59074,12 +57484,7 @@ var render = function() {
                     value: "No"
                   },
                   domProps: {
-                    checked: _vm._q(_vm.made_application_similar_license, "No")
-                  },
-                  on: {
-                    change: function($event) {
-                      _vm.made_application_similar_license = "No"
-                    }
+                    value: _vm.application.made_application_similar_license
                   }
                 }),
                 _vm._v(" No ")
@@ -59097,31 +57502,15 @@ var render = function() {
             ),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.officer_own_five_percent_convicted__gambling_name,
-                  expression:
-                    "officer_own_five_percent_convicted__gambling_name"
-                }
-              ],
               staticClass: "form-control",
               attrs: {
                 type: "text",
                 id: "name_stockholders_convicted_gambling"
               },
               domProps: {
-                value: _vm.officer_own_five_percent_convicted__gambling_name
-              },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.officer_own_five_percent_convicted__gambling_name =
-                    $event.target.value
-                }
+                value:
+                  _vm.application
+                    .officer_own_five_percent_convicted__gambling_name
               }
             })
           ]),
@@ -59134,30 +57523,15 @@ var render = function() {
             ),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.officer_own_five_percent_convicted_gambling_date,
-                  expression: "officer_own_five_percent_convicted_gambling_date"
-                }
-              ],
               staticClass: "form-control",
               attrs: {
                 type: "date",
                 id: "date_stockholders_convicted_gambling"
               },
               domProps: {
-                value: _vm.officer_own_five_percent_convicted_gambling_date
-              },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.officer_own_five_percent_convicted_gambling_date =
-                    $event.target.value
-                }
+                value:
+                  _vm.application
+                    .officer_own_five_percent_convicted_gambling_date
               }
             })
           ]),
@@ -59170,32 +57544,15 @@ var render = function() {
             ),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value:
-                    _vm.officer_own_five_percent_convicted_gambling_offence,
-                  expression:
-                    "officer_own_five_percent_convicted_gambling_offence"
-                }
-              ],
               staticClass: "form-control",
               attrs: {
                 type: "text",
                 id: "offence_stockholders_convicted_gambling"
               },
               domProps: {
-                value: _vm.officer_own_five_percent_convicted_gambling_offence
-              },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.officer_own_five_percent_convicted_gambling_offence =
-                    $event.target.value
-                }
+                value:
+                  _vm.application
+                    .officer_own_five_percent_convicted_gambling_offence
               }
             })
           ]),
@@ -59214,14 +57571,6 @@ var render = function() {
             _c("div", { staticClass: "radio" }, [
               _c("label", [
                 _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.made_application_similar_license,
-                      expression: "made_application_similar_license"
-                    }
-                  ],
                   attrs: {
                     type: "radio",
                     id: "made_application_for_similar_license1",
@@ -59229,12 +57578,7 @@ var render = function() {
                     value: "Yes"
                   },
                   domProps: {
-                    checked: _vm._q(_vm.made_application_similar_license, "Yes")
-                  },
-                  on: {
-                    change: function($event) {
-                      _vm.made_application_similar_license = "Yes"
-                    }
+                    value: _vm.application.made_application_similar_license
                   }
                 }),
                 _vm._v(" Yes ")
@@ -59244,14 +57588,6 @@ var render = function() {
             _c("div", { staticClass: "radio" }, [
               _c("label", [
                 _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.made_application_similar_license,
-                      expression: "made_application_similar_license"
-                    }
-                  ],
                   attrs: {
                     type: "radio",
                     id: "made_application_for_similar_license2",
@@ -59259,12 +57595,7 @@ var render = function() {
                     value: "No"
                   },
                   domProps: {
-                    checked: _vm._q(_vm.made_application_similar_license, "No")
-                  },
-                  on: {
-                    change: function($event) {
-                      _vm.made_application_similar_license = "No"
-                    }
+                    value: _vm.application.made_application_similar_license
                   }
                 }),
                 _vm._v(" No ")
@@ -59282,28 +57613,13 @@ var render = function() {
             ),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.made_application_similar_license_name,
-                  expression: "made_application_similar_license_name"
-                }
-              ],
               staticClass: "form-control",
               attrs: {
                 type: "text",
                 id: "name_made_application_for_similar_license"
               },
-              domProps: { value: _vm.made_application_similar_license_name },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.made_application_similar_license_name =
-                    $event.target.value
-                }
+              domProps: {
+                value: _vm.application.made_application_similar_license_name
               }
             })
           ]),
@@ -59316,28 +57632,13 @@ var render = function() {
             ),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.made_application_similar_license_date,
-                  expression: "made_application_similar_license_date"
-                }
-              ],
               staticClass: "form-control",
               attrs: {
                 type: "date",
                 id: "date_made_application_for_similar_license"
               },
-              domProps: { value: _vm.made_application_similar_license_date },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.made_application_similar_license_date =
-                    $event.target.value
-                }
+              domProps: {
+                value: _vm.application.made_application_similar_license_date
               }
             })
           ]),
@@ -59352,28 +57653,13 @@ var render = function() {
             ),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.made_application_similar_license_offence,
-                  expression: "made_application_similar_license_offence"
-                }
-              ],
               staticClass: "form-control",
               attrs: {
                 type: "text",
                 id: "offence_made_application_for_similar_license"
               },
-              domProps: { value: _vm.made_application_similar_license_offence },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.made_application_similar_license_offence =
-                    $event.target.value
-                }
+              domProps: {
+                value: _vm.application.made_application_similar_license_offence
               }
             })
           ]),
@@ -59390,32 +57676,15 @@ var render = function() {
             ),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value:
-                    _vm.corporation_own_twenty_percent_federal_wagering_stamp,
-                  expression:
-                    "corporation_own_twenty_percent_federal_wagering_stamp"
-                }
-              ],
               staticClass: "form-control",
               attrs: {
                 type: "text",
                 id: "corporation_hold_federal_wagering_stamp"
               },
               domProps: {
-                value: _vm.corporation_own_twenty_percent_federal_wagering_stamp
-              },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.corporation_own_twenty_percent_federal_wagering_stamp =
-                    $event.target.value
-                }
+                value:
+                  _vm.application
+                    .corporation_own_twenty_percent_federal_wagering_stamp
               }
             })
           ]),
@@ -59438,16 +57707,6 @@ var render = function() {
             _c("div", { staticClass: "radio" }, [
               _c("label", [
                 _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value:
-                        _vm.law_enforcing_official_interested_business_license_sought,
-                      expression:
-                        "law_enforcing_official_interested_business_license_sought"
-                    }
-                  ],
                   attrs: {
                     type: "radio",
                     id:
@@ -59457,16 +57716,9 @@ var render = function() {
                     value: "Yes"
                   },
                   domProps: {
-                    checked: _vm._q(
-                      _vm.law_enforcing_official_interested_business_license_sought,
-                      "Yes"
-                    )
-                  },
-                  on: {
-                    change: function($event) {
-                      _vm.law_enforcing_official_interested_business_license_sought =
-                        "Yes"
-                    }
+                    value:
+                      _vm.application
+                        .law_enforcing_official_interested_business_license_sought
                   }
                 }),
                 _vm._v(" Yes ")
@@ -59476,16 +57728,6 @@ var render = function() {
             _c("div", { staticClass: "radio" }, [
               _c("label", [
                 _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value:
-                        _vm.law_enforcing_official_interested_business_license_sought,
-                      expression:
-                        "law_enforcing_official_interested_business_license_sought"
-                    }
-                  ],
                   attrs: {
                     type: "radio",
                     id:
@@ -59495,16 +57737,9 @@ var render = function() {
                     value: "No"
                   },
                   domProps: {
-                    checked: _vm._q(
-                      _vm.law_enforcing_official_interested_business_license_sought,
-                      "No"
-                    )
-                  },
-                  on: {
-                    change: function($event) {
-                      _vm.law_enforcing_official_interested_business_license_sought =
-                        "No"
-                    }
+                    value:
+                      _vm.application
+                        .law_enforcing_official_interested_business_license_sought
                   }
                 }),
                 _vm._v(" No ")
@@ -59518,25 +57753,9 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.name_of_party,
-                  expression: "name_of_party"
-                }
-              ],
               staticClass: "form-control",
               attrs: { type: "text", id: "name_party" },
-              domProps: { value: _vm.name_of_party },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.name_of_party = $event.target.value
-                }
-              }
+              domProps: { value: _vm.application.name_of_party }
             })
           ]),
           _vm._v(" "),
@@ -59554,14 +57773,6 @@ var render = function() {
             _c("div", { staticClass: "radio" }, [
               _c("label", [
                 _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.five_percent_such_corporation_been_revoked,
-                      expression: "five_percent_such_corporation_been_revoked"
-                    }
-                  ],
                   attrs: {
                     type: "radio",
                     id: "license_previously_issued_been_revoked1",
@@ -59569,15 +57780,8 @@ var render = function() {
                     value: "Yes"
                   },
                   domProps: {
-                    checked: _vm._q(
-                      _vm.five_percent_such_corporation_been_revoked,
-                      "Yes"
-                    )
-                  },
-                  on: {
-                    change: function($event) {
-                      _vm.five_percent_such_corporation_been_revoked = "Yes"
-                    }
+                    value:
+                      _vm.application.five_percent_such_corporation_been_revoked
                   }
                 }),
                 _vm._v(" Yes ")
@@ -59587,14 +57791,6 @@ var render = function() {
             _c("div", { staticClass: "radio" }, [
               _c("label", [
                 _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.five_percent_such_corporation_been_revoked,
-                      expression: "five_percent_such_corporation_been_revoked"
-                    }
-                  ],
                   attrs: {
                     type: "radio",
                     id: "license_previously_issued_been_revoked2",
@@ -59602,15 +57798,8 @@ var render = function() {
                     value: "No"
                   },
                   domProps: {
-                    checked: _vm._q(
-                      _vm.five_percent_such_corporation_been_revoked,
-                      "No"
-                    )
-                  },
-                  on: {
-                    change: function($event) {
-                      _vm.five_percent_such_corporation_been_revoked = "No"
-                    }
+                    value:
+                      _vm.application.five_percent_such_corporation_been_revoked
                   }
                 }),
                 _vm._v(" No ")
@@ -59626,30 +57815,12 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value:
-                    _vm.five_percent_such_corporation_been_revoked_name_license,
-                  expression:
-                    "five_percent_such_corporation_been_revoked_name_license"
-                }
-              ],
               staticClass: "form-control",
               attrs: { type: "text", id: "name_license" },
               domProps: {
                 value:
-                  _vm.five_percent_such_corporation_been_revoked_name_license
-              },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.five_percent_such_corporation_been_revoked_name_license =
-                    $event.target.value
-                }
+                  _vm.application
+                    .five_percent_such_corporation_been_revoked_name_license
               }
             })
           ]),
@@ -59658,28 +57829,12 @@ var render = function() {
             _c("label", { attrs: { for: "reason" } }, [_vm._v("Reason:")]),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.five_percent_such_corporation_been_revoked_reason,
-                  expression:
-                    "five_percent_such_corporation_been_revoked_reason"
-                }
-              ],
               staticClass: "form-control",
               attrs: { type: "text", id: "reason" },
               domProps: {
-                value: _vm.five_percent_such_corporation_been_revoked_reason
-              },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.five_percent_such_corporation_been_revoked_reason =
-                    $event.target.value
-                }
+                value:
+                  _vm.application
+                    .five_percent_such_corporation_been_revoked_reason
               }
             })
           ]),
@@ -59690,30 +57845,12 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value:
-                    _vm.five_percent_such_corporation_been_revoked_date_revocation,
-                  expression:
-                    "five_percent_such_corporation_been_revoked_date_revocation"
-                }
-              ],
               staticClass: "form-control",
               attrs: { type: "date", id: "date_revocation" },
               domProps: {
                 value:
-                  _vm.five_percent_such_corporation_been_revoked_date_revocation
-              },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.five_percent_such_corporation_been_revoked_date_revocation =
-                    $event.target.value
-                }
+                  _vm.application
+                    .five_percent_such_corporation_been_revoked_date_revocation
               }
             })
           ]),
@@ -59951,7 +58088,7 @@ if (false) {
 }
 
 /***/ }),
-/* 59 */
+/* 62 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

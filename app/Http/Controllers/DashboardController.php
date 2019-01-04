@@ -7,6 +7,10 @@ use App\Application;
 
 class DashboardController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
     public function main()
     {
         return view('admin.index');
@@ -17,8 +21,10 @@ class DashboardController extends Controller
         return view('admin.completed');
     }
 
-    public function show()
+    public function show($id)
     {
-        return view('admin.show-application');
+        $application = Application::where('id', $id)->first();
+        $data['application'] = $application;
+        return view('admin.show-application', $data);
     }
 }

@@ -48,7 +48,7 @@
                             </a>
                             <ul class="sub-menu">
                             <li class="nav-item  ">
-                                    <a href="completed" class="nav-link ">
+                                    <a href="/admin/completed" class="nav-link ">
                                         <i class="icon-check"></i>
                                         <span class="title">Completed</span>
                                     </a>
@@ -60,7 +60,14 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>                        
+                        </li>  
+                        <li class="nav-item  ">
+                            <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="icon-docs"></i>
+                                <span class="title">Processed</span>
+                                <span class="arrow"></span>
+                            </a>
+                        </li>                                                  
                         <!--<li class="nav-item  ">
                             <a href="javascript:;" class="nav-link nav-toggle">
                                 <i class="icon-diamond"></i>
