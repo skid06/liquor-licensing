@@ -48,7 +48,7 @@
                             </a>
                             <ul class="sub-menu">
                             <li class="nav-item  ">
-                                    <a href="/admin/completed" class="nav-link ">
+                                    <a href="{{ route('admin.completed') }}" class="nav-link ">
                                         <i class="icon-check"></i>
                                         <span class="title">Completed</span>
                                     </a>

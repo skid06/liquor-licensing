@@ -40,7 +40,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="/my-applications" style="font-weight:800">My Applications</a>
+                            <a class="nav-link" href="{{ route('my.applications') }}" style="font-weight:800">My Applications</a>
                         </li>                       
                     </ul>
 
