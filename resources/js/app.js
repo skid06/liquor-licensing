@@ -19,8 +19,13 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'))
 Vue.component('liquor-license-form', require('./components/LiquorLicenseForm.vue'))
+Vue.component('edit-liquor-license-form', require('./components/EditLiquorLicenseForm.vue'))
 Vue.component('my-applications', require('./components/MyApplications.vue'))
-Vue.component('completed-applications', require('./components/admin/CompletedApplications.vue'))
+Vue.component('processed-applications', require('./components/ProcessedApplications.vue'))
+Vue.component('completed-applications', require('./components/CompletedApplications.vue'))
+Vue.component('incomplete-applications', require('./components/IncompleteApplications.vue'))
+Vue.component('paid-applications', require('./components/PaidApplications.vue'))
+Vue.component('admin-completed-applications', require('./components/admin/CompletedApplications.vue'))
 Vue.component('show-application', require('./components/admin/ShowApplication.vue'))
 
 // const files = require.context('./', true, /\.vue$/i)

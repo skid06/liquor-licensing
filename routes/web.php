@@ -19,9 +19,23 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/my-applications', 'HomeController@my_applications')->name('my.applications');
+Route::get('/applications/processed', 'HomeController@processed')->name('my.applications.processed');
+Route::get('/applications/completed', 'HomeController@completed')->name('my.applications.completed');
+Route::get('/applications/incomplete', 'HomeController@incomplete')->name('my.applications.incomplete');
+Route::get('/applications/incomplete/{id}', 'HomeController@showIncompleteApplication')->name('my.applications.incomplete.id');
+Route::get('/applications/paid', 'HomeController@paid')->name('my.applications.paid');
 
-Route::post('/save-form', 'LiquorLicenseController@store');
-Route::get('/get_application', 'LiquorLicenseController@index');
+// Route::post('/save-form', 'UserLiquorLicenseController@store');
+// Route::get('/get_application', 'UserLiquorLicenseController@index');
+
+Route::prefix('user/applications')->group(function() {
+    Route::get('/', 'UserLiquorLicenseController@index'); 
+    
+    Route::get('/all', 'UserLiquorLicenseController@all');       
+    Route::post('/', 'UserLiquorLicenseController@store');
+    Route::get('/processed', 'UserLiquorLicenseController@index');
+    Route::get('/{id}', 'UserLiquorLicenseController@edit');    
+});  
 
 Route::prefix('admin')->group(function() {
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');

@@ -18,3 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::get('/applications', 'LiquorLicenseController@completed');
 Route::get('/{id}', 'LiquorLicenseController@show')->name('admin-app-id');
+  

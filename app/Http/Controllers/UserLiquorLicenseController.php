@@ -2,37 +2,68 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ApplicationCollection;
 use Illuminate\Http\Request;
 use App\Application;
 use App\User;
 
-class LiquorLicenseController extends Controller
+class UserLiquorLicenseController extends Controller
 {
     /**
      * Display a listing of the resource.
-     * This Controller serves the admin for getting all applications of ALL users
-     * 
+     * This Controller serves the API for getting all applications of the authenticated users
+     *
      * @return \Illuminate\Http\Response
      */
+
+    //  public function __construct()
+    //  {
+    //      return $this->middleware('auth');
+    //  }
+    
     public function index(Request $request)
     {
-        return \Auth::user()->id;
-        $application = Application::where('user_id', \Auth::user()->id)->first();
+        $incomplete = Application::where('user_id', \Auth::user()->id)
+            ->where('status', 'incomplete')
+            ->paginate(5);
 
-        if(!empty($application)){
-            return $application;
-        }
-        else{
-            return 'No data';
-        }
+        $completed = Application::where('user_id', \Auth::user()->id)
+        ->where('status', 'completed')
+        ->paginate(5); 
+     
+        $paid = Application::where('user_id', \Auth::user()->id)
+            ->where('status', 'paid')
+            ->paginate(5);
+
+        $processed = Application::where('user_id', \Auth::user()->id)
+        ->where('status', 'processed')
+        ->paginate(5);         
+
         
+        return response()->json(['processed' => $processed, 'incomplete' => $incomplete, 'completed' => $completed, 'paid' => $paid]);
     }
 
-    public function completed()
+    public function all(Request $request)
     {
-        $applications = Application::where('status', 'completed')->get();
-        return response()->json(['applications' => $applications]);
-    }
+        $incomplete = Application::where('user_id', \Auth::user()->id)
+            ->where('status', 'incomplete')
+            ->get();
+
+        $completed = Application::where('user_id', \Auth::user()->id)
+        ->where('status', 'completed')
+        ->get(); 
+     
+        $paid = Application::where('user_id', \Auth::user()->id)
+            ->where('status', 'paid')
+            ->get();
+
+        $processed = Application::where('user_id', \Auth::user()->id)
+        ->where('status', 'processed')
+        ->get();         
+
+        
+        return response()->json(['processed' => $processed, 'incomplete' => $incomplete, 'completed' => $completed, 'paid' => $paid]);
+    }    
 
     /**
      * Show the form for creating a new resource.
@@ -164,7 +195,8 @@ class LiquorLicenseController extends Controller
         $application->five_percent_such_corporation_been_revoked = $request->five_percent_such_corporation_been_revoked; 
         $application->five_percent_such_corporation_been_revoked_name_license = $request->five_percent_such_corporation_been_revoked_name_license; 
         $application->five_percent_such_corporation_been_revoked_reason = $request->five_percent_such_corporation_been_revoked_reason; 
-        $application->five_percent_such_corporation_been_revoked_date_revocation = $request->five_percent_such_corporation_been_revoked_date_revocation;    
+        $application->five_percent_such_corporation_been_revoked_date_revocation = $request->five_percent_such_corporation_been_revoked_date_revocation;  
+        $application->status = 'incomplete';  
         $application->save();
         
         return $application;
@@ -178,8 +210,7 @@ class LiquorLicenseController extends Controller
      */
     public function show($id)
     {
-        $application = Application::where('id', $id)->first();
-        return response()->json(['application' => $application]);
+        //
     }
 
     /**
@@ -191,6 +222,8 @@ class LiquorLicenseController extends Controller
     public function edit($id)
     {
         //
+        $app = Application::where('id', $id)->first();
+        return $app;
     }
 
     /**

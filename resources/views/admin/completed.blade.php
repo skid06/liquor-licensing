@@ -1,6 +1,6 @@
 @extends('admin.layouts.app-admin')
 
 @section('content')
-<completed-applications></completed-applications>
+<admin-completed-applications></admin-completed-applications>
 
 @endsection
