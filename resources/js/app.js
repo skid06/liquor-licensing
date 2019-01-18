@@ -26,6 +26,8 @@ Vue.component('completed-applications', require('./components/CompletedApplicati
 Vue.component('incomplete-applications', require('./components/IncompleteApplications.vue'))
 Vue.component('paid-applications', require('./components/PaidApplications.vue'))
 Vue.component('admin-completed-applications', require('./components/admin/CompletedApplications.vue'))
+Vue.component('admin-processed-applications', require('./components/admin/ProcessedApplications.vue'))
+Vue.component('admin-paid-applications', require('./components/admin/PaidApplications.vue'))
 Vue.component('show-application', require('./components/admin/ShowApplication.vue'))
 
 // const files = require.context('./', true, /\.vue$/i)

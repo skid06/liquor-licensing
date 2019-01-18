@@ -41,6 +41,8 @@ Route::prefix('admin')->group(function() {
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
     Route::get('/completed', 'DashboardController@completed')->name('admin.completed');
+    Route::get('/processed', 'DashboardController@processed')->name('admin.processed');
+    Route::get('/paid', 'DashboardController@paid')->name('admin.paid');
     Route::get('/{id}', 'DashboardController@show')->name('admin.show');
     Route::get('/', 'DashboardController@main')->name('admin.dashboard');
 });

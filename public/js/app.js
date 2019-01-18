@@ -14344,7 +14344,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(16);
-module.exports = __webpack_require__(82);
+module.exports = __webpack_require__(93);
 
 
 /***/ }),
@@ -14372,14 +14372,16 @@ window.Vue = __webpack_require__(39);
 
 Vue.component('example-component', __webpack_require__(42));
 Vue.component('liquor-license-form', __webpack_require__(45));
-Vue.component('edit-liquor-license-form', __webpack_require__(86));
-Vue.component('my-applications', __webpack_require__(51));
-Vue.component('processed-applications', __webpack_require__(54));
-Vue.component('completed-applications', __webpack_require__(59));
-Vue.component('incomplete-applications', __webpack_require__(64));
-Vue.component('paid-applications', __webpack_require__(69));
-Vue.component('admin-completed-applications', __webpack_require__(74));
-Vue.component('show-application', __webpack_require__(77));
+Vue.component('edit-liquor-license-form', __webpack_require__(51));
+Vue.component('my-applications', __webpack_require__(56));
+Vue.component('processed-applications', __webpack_require__(59));
+Vue.component('completed-applications', __webpack_require__(64));
+Vue.component('incomplete-applications', __webpack_require__(69));
+Vue.component('paid-applications', __webpack_require__(74));
+Vue.component('admin-completed-applications', __webpack_require__(79));
+Vue.component('admin-processed-applications', __webpack_require__(82));
+Vue.component('admin-paid-applications', __webpack_require__(85));
+Vue.component('show-application', __webpack_require__(88));
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key)))
@@ -53832,11 +53834,6034 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(52)
+}
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(52)
+var __vue_script__ = __webpack_require__(54)
 /* template */
-var __vue_template__ = __webpack_require__(53)
+var __vue_template__ = __webpack_require__(55)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-50c2923c"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/EditLiquorLicenseForm.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-50c2923c", Component.options)
+  } else {
+    hotAPI.reload("data-v-50c2923c", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 52 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(53);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(4)("b52c8a30", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-50c2923c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./EditLiquorLicenseForm.vue", function() {
+     var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-50c2923c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./EditLiquorLicenseForm.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 53 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.switch[data-v-50c2923c] {\n  position: relative;\n  display: inline-block;\n  width: 60px;\n  height: 34px;\n}\n.switch input[data-v-50c2923c] { \n  opacity: 0;\n  width: 0;\n  height: 0;\n}\n.slider[data-v-50c2923c] {\n  position: absolute;\n  cursor: pointer;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #ccc;\n  -webkit-transition: .4s;\n  transition: .4s;\n}\n.slider[data-v-50c2923c]:before {\n  position: absolute;\n  content: \"\";\n  height: 26px;\n  width: 26px;\n  left: 4px;\n  bottom: 4px;\n  background-color: white;\n  -webkit-transition: .4s;\n  transition: .4s;\n}\ninput:checked + .slider[data-v-50c2923c] {\n  background-color: #2196F3;\n}\ninput:focus + .slider[data-v-50c2923c] {\n  -webkit-box-shadow: 0 0 1px #2196F3;\n          box-shadow: 0 0 1px #2196F3;\n}\ninput:checked + .slider[data-v-50c2923c]:before {\n  -webkit-transform: translateX(26px);\n  transform: translateX(26px);\n}\n\n/* Rounded sliders */\n.slider.round[data-v-50c2923c] {\n  border-radius: 34px;\n}\n.slider.round[data-v-50c2923c]:before {\n  border-radius: 50%;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 54 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      app_id: '',
+      license_class: '',
+      license: '',
+      fee: '',
+      address: '',
+      city: '',
+      state: '',
+      zip: '',
+      corporate_name: '',
+      corporate_address: '',
+      name_business_to_be_conducted: '',
+      business_phone: '',
+      business_mobile: '',
+      business_email: '',
+      president_name: '',
+      president_address: '',
+      president_phone: '',
+      president_mobile: '',
+      president_email: '',
+      vice_president_name: '',
+      vice_president_address: '',
+      vice_president_phone: '',
+      vice_president_mobile: '',
+      vice_president_email: '',
+      secretary_name: '',
+      secretary_address: '',
+      secretary_phone: '',
+      secretary_mobile: '',
+      secretary_email: '',
+      treasurer_name: '',
+      treasurer_address: '',
+      treasurer_phone: '',
+      treasurer_mobile: '',
+      treasurer_email: '',
+      director_name: '',
+      director_address: '',
+      director_phone: '',
+      director_mobile: '',
+      director_email: '',
+      vice_director_name: '',
+      vice_director_address: '',
+      vice_director_phone: '',
+      vice_director_mobile: '',
+      vice_director_email: '',
+      date_incorporation: '',
+      state_incorporation: '',
+      other_state_incorporation_not_illinois: '',
+      corporation_forth_chapter: '',
+      corporation_agent_name: '',
+      corporation_agent_address: '',
+      corporation_agent_phone: '',
+      corporation_agent_mobile: '',
+      corporation_agent_email: '',
+      principal_kind_business: '',
+      applicant_seek_license_alcoholic_restaurant: '',
+      maitained_to_public_meals_served: '',
+      yes_food_services_are: '',
+      serve_suitable_food: '',
+      qualifications_described_illinois_act: '',
+      applicant_own_premises_license_sought: '',
+      applicant_lease_premises_license_sought: '',
+      lessor_name: '',
+      lessor_address: '',
+      period_covered_lease_from: '',
+      period_covered_lease_to: '',
+      applicant_own_premise_license_sought: '',
+      applicant_food_dispenser: '',
+      applicant_food_dispenser_number_license: '',
+      applicant_actively_involved_day_operation: '',
+      business_liquor_license_sought_manager: '',
+      manager_name: '',
+      manager_address: '',
+      manager_phone: '',
+      amount_anticipated_liquor_sales: '',
+      applicant_seeking_approval_beer_garden: '',
+      applicant_seeking_approval_outdoor_seating_area: '',
+      location_applicants_business_within_100ft_property_of_church: '',
+      manufacturer_agreed_to_pay_license: '',
+      applicant_engaged_manufacturer_alcoholic_liquors: '',
+      applicant_engaged_manufacturer_alcoholic_liquors_location: '',
+      applicant_conducting_business_importing_distributor: '',
+      applicant_conducting_business_importing_distributor_location: '',
+      officer_own_five_percent_convicted_felony: '',
+      officer_own_five_percent_convicted__felony_name: '',
+      officer_own_five_percent_convicted_felony_date: '',
+      officer_own_five_percent_convicted_felony_offence: '',
+      officer_own_five_percent_convicted_violation: '',
+      officer_own_five_percent_convicted__violation_name: '',
+      officer_own_five_percent_convicted_violation_date: '',
+      officer_own_five_percent_convicted_violation_offence: '',
+      officer_own_five_percent_convicted_gambling: '',
+      officer_own_five_percent_convicted__gambling_name: '',
+      officer_own_five_percent_convicted_gambling_date: '',
+      officer_own_five_percent_convicted_gambling_offence: '',
+      made_application_similar_license: '',
+      made_application_similar_license_name: '',
+      made_application_similar_license_date: '',
+      made_application_similar_license_offence: '',
+      corporation_own_twenty_percent_federal_wagering_stamp: '',
+      law_enforcing_official_interested_business_license_sought: '',
+      name_of_party: '',
+      five_percent_such_corporation_been_revoked: '',
+      five_percent_such_corporation_been_revoked_name_license: '',
+      five_percent_such_corporation_been_revoked_reason: '',
+      five_percent_such_corporation_been_revoked_date_revocation: '',
+      status: '',
+      edited: false
+    };
+  },
+
+  computed: {
+    getAppData: function getAppData() {
+      this.app_id = this.application.id;
+      this.license_class = this.application.license_class;
+      this.license = this.application.license;
+      this.fee = this.application.fee;
+      this.address = this.application.address;
+      this.city = this.application.city;
+      this.state = this.application.state;
+      this.zip = this.application.zip;
+      this.corporate_name = this.application.corporate_name;
+      this.corporate_address = this.application.corporate_address;
+      this.name_business_to_be_conducted = this.application.name_business_to_be_conducted;
+      this.business_phone = this.application.business_phone;
+      this.business_mobile = this.application.business_mobile;
+      this.business_email = this.application.business_email;
+      this.president_name = this.application.president_name;
+      this.president_address = this.application.president_address;
+      this.president_phone = this.application.president_phone;
+      this.president_mobile = this.application.president_mobile;
+      this.president_email = this.application.president_email;
+      this.vice_president_name = this.application.vice_president_name;
+      this.vice_president_address = this.application.vice_president_address;
+      this.vice_president_phone = this.application.vice_president_phone;
+      this.vice_president_mobile = this.application.vice_president_mobile;
+      this.vice_president_email = this.application.vice_president_email;
+      this.secretary_name = this.application.secretary_name;
+      this.secretary_address = this.application.secretary_address;
+      this.secretary_phone = this.application.secretary_phone;
+      this.secretary_mobile = this.application.secretary_mobile;
+      this.secretary_email = this.application.secretary_email;
+      this.treasurer_name = this.application.treasurer_name;
+      this.treasurer_address = this.application.treasurer_address;
+      this.treasurer_phone = this.application.treasurer_phone;
+      this.treasurer_mobile = this.application.treasurer_mobile;
+      this.treasurer_email = this.application.treasurer_email;
+      this.director_name = this.application.director_name;
+      this.director_address = this.application.director_address;
+      this.director_phone = this.application.director_phone;
+      this.director_mobile = this.application.director_mobile;
+      this.director_email = this.application.director_email;
+      this.vice_director_name = this.application.vice_director_name;
+      this.vice_director_address = this.application.vice_director_address;
+      this.vice_director_phone = this.application.vice_director_phone;
+      this.vice_director_mobile = this.application.vice_director_mobile;
+      this.vice_director_email = this.application.vice_director_email;
+      this.date_incorporation = this.application.date_incorporation;
+      this.state_incorporation = this.application.state_incorporation;
+      this.other_state_incorporation_not_illinois = this.application.other_state_incorporation_not_illinois;
+      this.corporation_forth_chapter = this.application.corporation_forth_chapter;
+      this.corporation_agent_name = this.application.corporation_agent_name;
+      this.corporation_agent_address = this.application.corporation_agent_address;
+      this.corporation_agent_phone = this.application.corporation_agent_phone;
+      this.corporation_agent_mobile = this.application.corporation_agent_mobile;
+      this.corporation_agent_email = this.application.corporation_agent_email;
+      this.principal_kind_business = this.application.principal_kind_business;
+      this.applicant_seek_license_alcoholic_restaurant = this.application.applicant_seek_license_alcoholic_restaurant;
+      this.maitained_to_public_meals_served = this.application.maitained_to_public_meals_served;
+      this.yes_food_services_are = this.application.yes_food_services_are;
+      this.serve_suitable_food = this.application.serve_suitable_food;
+      this.qualifications_described_illinois_act = this.application.qualifications_described_illinois_act;
+      this.applicant_own_premises_license_sought = this.application.applicant_own_premises_license_sought;
+      this.applicant_lease_premises_license_sought = this.application.applicant_lease_premises_license_sought;
+      this.lessor_name = this.application.lessor_name;
+      this.lessor_address = this.application.lessor_address;
+      this.period_covered_lease_from = this.application.period_covered_lease_from;
+      this.period_covered_lease_to = this.application.period_covered_lease_to;
+      this.applicant_own_premise_license_sought = this.application.applicant_own_premise_license_sought;
+      this.applicant_food_dispenser = this.application.applicant_food_dispenser;
+      this.applicant_food_dispenser_number_license = this.application.applicant_food_dispenser_number_license;
+      this.applicant_actively_involved_day_operation = this.application.applicant_actively_involved_day_operation;
+      this.business_liquor_license_sought_manager = this.application.business_liquor_license_sought_manager;
+      this.manager_name = this.application.manager_name;
+      this.manager_address = this.application.manager_address;
+      this.manager_phone = this.application.manager_phone;
+      this.amount_anticipated_liquor_sales = this.application.amount_anticipated_liquor_sales;
+      this.applicant_seeking_approval_beer_garden = this.application.applicant_seeking_approval_beer_garden;
+      this.applicant_seeking_approval_outdoor_seating_area = this.application.applicant_seeking_approval_outdoor_seating_area;
+      this.location_applicants_business_within_100ft_property_of_church = this.application.location_applicants_business_within_100ft_property_of_church;
+      this.manufacturer_agreed_to_pay_license = this.application.manufacturer_agreed_to_pay_license;
+      this.applicant_engaged_manufacturer_alcoholic_liquors = this.application.applicant_engaged_manufacturer_alcoholic_liquors;
+      this.applicant_engaged_manufacturer_alcoholic_liquors_location = this.application.applicant_engaged_manufacturer_alcoholic_liquors_location;
+      this.applicant_conducting_business_importing_distributor = this.application.applicant_conducting_business_importing_distributor;
+      this.applicant_conducting_business_importing_distributor_location = this.application.applicant_conducting_business_importing_distributor_location;
+      this.officer_own_five_percent_convicted_felony = this.application.officer_own_five_percent_convicted_felony;
+      this.officer_own_five_percent_convicted__felony_name = this.application.officer_own_five_percent_convicted__felony_name;
+      this.officer_own_five_percent_convicted_felony_date = this.application.officer_own_five_percent_convicted_felony_date;
+      this.officer_own_five_percent_convicted_felony_offence = this.application.officer_own_five_percent_convicted_felony_offence;
+      this.officer_own_five_percent_convicted_violation = this.application.officer_own_five_percent_convicted_violation;
+      this.officer_own_five_percent_convicted__violation_name = this.application.officer_own_five_percent_convicted__violation_name;
+      this.officer_own_five_percent_convicted_violation_date = this.application.officer_own_five_percent_convicted_violation_date;
+      this.officer_own_five_percent_convicted_violation_offence = this.application.officer_own_five_percent_convicted_violation_offence;
+      this.officer_own_five_percent_convicted_gambling = this.application.officer_own_five_percent_convicted_gambling;
+      this.officer_own_five_percent_convicted__gambling_name = this.application.officer_own_five_percent_convicted__gambling_name;
+      this.officer_own_five_percent_convicted_gambling_date = this.application.officer_own_five_percent_convicted_gambling_date;
+      this.officer_own_five_percent_convicted_gambling_offence = this.application.officer_own_five_percent_convicted_gambling_offence;
+      this.made_application_similar_license = this.application.made_application_similar_license;
+      this.made_application_similar_license_name = this.application.made_application_similar_license_name;
+      this.made_application_similar_license_date = this.application.made_application_similar_license_date;
+      this.made_application_similar_license_offence = this.application.made_application_similar_license_offence;
+      this.corporation_own_twenty_percent_federal_wagering_stamp = this.application.corporation_own_twenty_percent_federal_wagering_stamp;
+      this.law_enforcing_official_interested_business_license_sought = this.application.law_enforcing_official_interested_business_license_sought;
+      this.name_of_party = this.application.name_of_party;
+      this.five_percent_such_corporation_been_revoked = this.application.five_percent_such_corporation_been_revoked;
+      this.five_percent_such_corporation_been_revoked_name_license = this.application.five_percent_such_corporation_been_revoked_name_license;
+      this.five_percent_such_corporation_been_revoked_reason = this.application.five_percent_such_corporation_been_revoked_reason;
+      this.five_percent_such_corporation_been_revoked_date_revocation = this.application.five_percent_such_corporation_been_revoked_date_revocation;
+    }
+  },
+  methods: {
+    saveForm: function saveForm() {
+      var _this = this;
+
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/user/applications', {
+        app_id: this.app_id,
+        class: this.license_class,
+        license: this.license,
+        fee: this.fee,
+        address: this.address,
+        city: this.city,
+        state: this.state,
+        zip: this.zip,
+        corporate_name: this.corporate_name,
+        corporate_address: this.corporate_address,
+        name_business_to_be_conducted: this.name_business_to_be_conducted,
+        business_phone: this.business_phone,
+        business_mobile: this.business_mobile,
+        business_email: this.business_email,
+        president_name: this.president_name,
+        president_address: this.president_address,
+        president_phone: this.president_phone,
+        president_mobile: this.president_mobile,
+        president_email: this.president_email,
+        vice_president_name: this.vice_president_name,
+        vice_president_address: this.vice_president_address,
+        vice_president_phone: this.vice_president_phone,
+        vice_president_mobile: this.vice_president_mobile,
+        vice_president_email: this.vice_president_email,
+        secretary_name: this.secretary_name,
+        secretary_address: this.secretary_address,
+        secretary_phone: this.secretary_phone,
+        secretary_mobile: this.secretary_mobile,
+        secretary_email: this.secretary_email,
+        treasurer_name: this.treasurer_name,
+        treasurer_address: this.treasurer_address,
+        treasurer_phone: this.treasurer_phone,
+        treasurer_mobile: this.treasurer_mobile,
+        treasurer_email: this.treasurer_email,
+        director_name: this.director_name,
+        director_address: this.director_address,
+        director_phone: this.director_phone,
+        director_mobile: this.director_mobile,
+        director_email: this.director_email,
+        vice_director_name: this.vice_president_name,
+        vice_director_address: this.vice_president_address,
+        vice_director_phone: this.vice_president_phone,
+        vice_director_mobile: this.vice_president_mobile,
+        vice_director_email: this.vice_president_email,
+        date_incorporation: this.date_incorporation,
+        state_incorporation: this.state_incorporation,
+        other_state_incorporation_not_illinois: this.other_state_incorporation_not_illinois,
+        corporation_forth_chapter: this.corporation_forth_chapter,
+        corporation_agent_name: this.corporation_agent_name,
+        corporation_agent_address: this.corporation_agent_address,
+        corporation_agent_phone: this.corporation_agent_phone,
+        corporation_agent_mobile: this.corporation_agent_mobile,
+        corporation_agent_email: this.corporation_agent_email,
+        principal_kind_business: this.principal_kind_business,
+        applicant_seek_license_alcoholic_restaurant: this.applicant_seek_license_alcoholic_restaurant,
+        maintained_to_public_meals_served: this.maintained_to_public_meals_served,
+        yes_food_services_are: this.yes_food_services_are,
+        serve_suitable_food: this.serve_suitable_food,
+        qualifications_described_illinois_act: this.qualifications_described_illinois_act,
+        applicant_own_premises_license_sought: this.applicant_own_premises_license_sought,
+        applicant_lease_premises_license_sought: this.applicant_lease_premises_license_sought,
+        lessor_name: this.lessor_name,
+        lessor_address: this.lessor_address,
+        period_covered_lease_from: this.period_covered_lease_from,
+        period_covered_lease_to: this.period_covered_lease_to,
+        applicant_own_premise_license_sought: this.applicant_own_premise_license_sought,
+        applicant_food_dispenser: this.applicant_food_dispenser,
+        applicant_food_dispenser_number_license: this.applicant_food_dispenser_number_license,
+        applicant_actively_involved_day_operation: this.applicant_actively_involved_day_operation,
+        business_liquor_license_sought_manager: this.business_liquor_license_sought_manager,
+        manager_name: this.manager_name,
+        manager_address: this.manager_address,
+        manager_phone: this.manager_phone,
+        amount_anticipated_liquor_sales: this.amount_anticipated_liquor_sales,
+        applicant_seeking_approval_beer_garden: this.applicant_seeking_approval_beer_garden,
+        applicant_seeking_approval_outdoor_seating_area: this.applicant_seeking_approval_outdoor_seating_area,
+        location_applicants_business_within_100ft_property_of_church: this.location_applicants_business_within_100ft_property_of_church,
+        manufacturer_agreed_to_pay_license: this.manufacturer_agreed_to_pay_license,
+        applicant_engaged_manufacturer_alcoholic_liquors: this.applicant_engaged_manufacturer_alcoholic_liquors,
+        applicant_engaged_manufacturer_alcoholic_liquors_location: this.applicant_engaged_manufacturer_alcoholic_liquors_location,
+        applicant_conducting_business_importing_distributor: this.applicant_conducting_business_importing_distributor,
+        applicant_conducting_business_importing_distributor_location: this.applicant_conducting_business_importing_distributor_location,
+        officer_own_five_percent_convicted_felony: this.officer_own_five_percent_convicted_felony,
+        officer_own_five_percent_convicted__felony_name: this.officer_own_five_percent_convicted__felony_name,
+        officer_own_five_percent_convicted_felony_date: this.officer_own_five_percent_convicted_felony_date,
+        officer_own_five_percent_convicted_felony_offence: this.officer_own_five_percent_convicted_felony_offence,
+        officer_own_five_percent_convicted_violation: this.officer_own_five_percent_convicted_violation,
+        officer_own_five_percent_convicted__violation_name: this.officer_own_five_percent_convicted_violation_name,
+        officer_own_five_percent_convicted_violation_date: this.officer_own_five_percent_convicted_violation_date,
+        officer_own_five_percent_convicted_violation_offence: this.officer_own_five_percent_convicted_violation_offence,
+        officer_own_five_percent_convicted_gambling: this.officer_own_five_percent_convicted_gambling,
+        officer_own_five_percent_convicted__gambling_name: this.officer_own_five_percent_convicted__gambling_name,
+        officer_own_five_percent_convicted_gambling_date: this.officer_own_five_percent_convicted_gambling_date,
+        officer_own_five_percent_convicted_gambling_offence: this.officer_own_five_percent_convicted_gambling_offence,
+        made_application_similar_license: this.made_application_similar_license,
+        made_application_similar_license_name: this.made_application_similar_license_name,
+        made_application_similar_license_date: this.made_application_similar_license_date,
+        made_application_similar_license_offence: this.made_application_similar_license_offence,
+        corporation_own_twenty_percent_federal_wagering_stamp: this.corporation_own_twenty_percent_federal_wagering_stamp,
+        law_enforcing_official_interested_business_license_sought: this.law_enforcing_official_interested_business_license_sought,
+        name_of_party: this.name_of_party,
+        five_percent_such_corporation_been_revoked: this.five_percent_such_corporation_been_revoked,
+        five_percent_such_corporation_been_revoked_name_license: this.five_percent_such_corporation_been_revoked_name_license,
+        five_percent_such_corporation_been_revoked_reason: this.five_percent_such_corporation_been_revoked_reason,
+        five_percent_such_corporation_been_revoked_date_revocation: this.five_percent_such_corporation_been_revoked_date_revocation,
+        status: 'incomplete'
+      }).then(function (response) {
+        console.log(response.data);
+        _this.getApplication();
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    getApplication: function getApplication() {
+      var _this2 = this;
+
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/user/applications/' + this.params.id).then(function (response) {
+        console.log(response.data);
+        _this2.app_id = response.data.id;
+        _this2.license_class = response.data.license_class;
+        _this2.license = response.data.license;
+        _this2.fee = response.data.fee;
+        _this2.address = response.data.address;
+        _this2.city = response.data.city;
+        _this2.state = response.data.state;
+        _this2.zip = response.data.zip;
+        _this2.corporate_name = response.data.corporate_name;
+        _this2.corporate_address = response.data.corporate_address;
+        _this2.name_business_to_be_conducted = response.data.name_business_to_be_conducted;
+        _this2.business_phone = response.data.business_phone;
+        _this2.business_mobile = response.data.business_mobile;
+        _this2.business_email = response.data.business_email;
+        _this2.president_name = response.data.president_name;
+        _this2.president_address = response.data.president_address;
+        _this2.president_phone = response.data.president_phone;
+        _this2.president_mobile = response.data.president_mobile;
+        _this2.president_email = response.data.president_email;
+        _this2.vice_president_name = response.data.vice_president_name;
+        _this2.vice_president_address = response.data.vice_president_address;
+        _this2.vice_president_phone = response.data.vice_president_phone;
+        _this2.vice_president_mobile = response.data.vice_president_mobile;
+        _this2.vice_president_email = response.data.vice_president_email;
+        _this2.secretary_name = response.data.secretary_name;
+        _this2.secretary_address = response.data.secretary_address;
+        _this2.secretary_phone = response.data.secretary_phone;
+        _this2.secretary_mobile = response.data.secretary_mobile;
+        _this2.secretary_email = response.data.secretary_email;
+        _this2.treasurer_name = response.data.treasurer_name;
+        _this2.treasurer_address = response.data.treasurer_address;
+        _this2.treasurer_phone = response.data.treasurer_phone;
+        _this2.treasurer_mobile = response.data.treasurer_mobile;
+        _this2.treasurer_email = response.data.treasurer_email;
+        _this2.director_name = response.data.director_name;
+        _this2.director_address = response.data.director_address;
+        _this2.director_phone = response.data.director_phone;
+        _this2.director_mobile = response.data.director_mobile;
+        _this2.director_email = response.data.director_email;
+        _this2.vice_director_name = response.data.vice_director_name;
+        _this2.vice_director_address = response.data.vice_director_address;
+        _this2.vice_director_phone = response.data.vice_director_phone;
+        _this2.vice_director_mobile = response.data.vice_director_mobile;
+        _this2.vice_director_email = response.data.vice_director_email;
+        _this2.date_incorporation = response.data.date_incorporation;
+        _this2.state_incorporation = response.data.state_incorporation;
+        _this2.other_state_incorporation_not_illinois = response.data.other_state_incorporation_not_illinois;
+        _this2.corporation_forth_chapter = response.data.corporation_forth_chapter;
+        _this2.corporation_agent_name = response.data.corporation_agent_name;
+        _this2.corporation_agent_address = response.data.corporation_agent_address;
+        _this2.corporation_agent_phone = response.data.corporation_agent_phone;
+        _this2.corporation_agent_mobile = response.data.corporation_agent_mobile;
+        _this2.corporation_agent_email = response.data.corporation_agent_email;
+        _this2.principal_kind_business = response.data.principal_kind_business;
+        _this2.applicant_seek_license_alcoholic_restaurant = response.data.applicant_seek_license_alcoholic_restaurant;
+        _this2.maitained_to_public_meals_served = response.data.maitained_to_public_meals_served;
+        _this2.yes_food_services_are = response.data.yes_food_services_are;
+        _this2.serve_suitable_food = response.data.serve_suitable_food;
+        _this2.qualifications_described_illinois_act = response.data.qualifications_described_illinois_act;
+        _this2.applicant_own_premises_license_sought = response.data.applicant_own_premises_license_sought;
+        _this2.applicant_lease_premises_license_sought = response.data.applicant_lease_premises_license_sought;
+        _this2.lessor_name = response.data.lessor_name;
+        _this2.lessor_address = response.data.lessor_address;
+        _this2.period_covered_lease_from = response.data.period_covered_lease_from;
+        _this2.period_covered_lease_to = response.data.period_covered_lease_to;
+        _this2.applicant_own_premise_license_sought = response.data.applicant_own_premise_license_sought;
+        _this2.applicant_food_dispenser = response.data.applicant_food_dispenser;
+        _this2.applicant_food_dispenser_number_license = response.data.applicant_food_dispenser_number_license;
+        _this2.applicant_actively_involved_day_operation = response.data.applicant_actively_involved_day_operation;
+        _this2.business_liquor_license_sought_manager = response.data.business_liquor_license_sought_manager;
+        _this2.manager_name = response.data.manager_name;
+        _this2.manager_address = response.data.manager_address;
+        _this2.manager_phone = response.data.manager_phone;
+        _this2.amount_anticipated_liquor_sales = response.data.amount_anticipated_liquor_sales;
+        _this2.applicant_seeking_approval_beer_garden = response.data.applicant_seeking_approval_beer_garden;
+        _this2.applicant_seeking_approval_outdoor_seating_area = response.data.applicant_seeking_approval_outdoor_seating_area;
+        _this2.location_applicants_business_within_100ft_property_of_church = response.data.location_applicants_business_within_100ft_property_of_church;
+        _this2.manufacturer_agreed_to_pay_license = response.data.manufacturer_agreed_to_pay_license;
+        _this2.applicant_engaged_manufacturer_alcoholic_liquors = response.data.applicant_engaged_manufacturer_alcoholic_liquors;
+        _this2.applicant_engaged_manufacturer_alcoholic_liquors_location = response.data.applicant_engaged_manufacturer_alcoholic_liquors_location;
+        _this2.applicant_conducting_business_importing_distributor = response.data.applicant_conducting_business_importing_distributor;
+        _this2.applicant_conducting_business_importing_distributor_location = response.data.applicant_conducting_business_importing_distributor_location;
+        _this2.officer_own_five_percent_convicted_felony = response.data.officer_own_five_percent_convicted_felony;
+        _this2.officer_own_five_percent_convicted__felony_name = response.data.officer_own_five_percent_convicted__felony_name;
+        _this2.officer_own_five_percent_convicted_felony_date = response.data.officer_own_five_percent_convicted_felony_date;
+        _this2.officer_own_five_percent_convicted_felony_offence = response.data.officer_own_five_percent_convicted_felony_offence;
+        _this2.officer_own_five_percent_convicted_violation = response.data.officer_own_five_percent_convicted_violation;
+        _this2.officer_own_five_percent_convicted__violation_name = response.data.officer_own_five_percent_convicted__violation_name;
+        _this2.officer_own_five_percent_convicted_violation_date = response.data.officer_own_five_percent_convicted_violation_date;
+        _this2.officer_own_five_percent_convicted_violation_offence = response.data.officer_own_five_percent_convicted_violation_offence;
+        _this2.officer_own_five_percent_convicted_gambling = response.data.officer_own_five_percent_convicted_gambling;
+        _this2.officer_own_five_percent_convicted__gambling_name = response.data.officer_own_five_percent_convicted__gambling_name;
+        _this2.officer_own_five_percent_convicted_gambling_date = response.data.officer_own_five_percent_convicted_gambling_date;
+        _this2.officer_own_five_percent_convicted_gambling_offence = response.data.officer_own_five_percent_convicted_gambling_offence;
+        _this2.made_application_similar_license = response.data.made_application_similar_license;
+        _this2.made_application_similar_license_name = response.data.made_application_similar_license_name;
+        _this2.made_application_similar_license_date = response.data.made_application_similar_license_date;
+        _this2.made_application_similar_license_offence = response.data.made_application_similar_license_offence;
+        _this2.corporation_own_twenty_percent_federal_wagering_stamp = response.data.corporation_own_twenty_percent_federal_wagering_stamp;
+        _this2.law_enforcing_official_interested_business_license_sought = response.data.law_enforcing_official_interested_business_license_sought;
+        _this2.name_of_party = response.data.name_of_party;
+        _this2.five_percent_such_corporation_been_revoked = response.data.five_percent_such_corporation_been_revoked;
+        _this2.five_percent_such_corporation_been_revoked_name_license = response.data.five_percent_such_corporation_been_revoked_name_license;
+        _this2.five_percent_such_corporation_been_revoked_reason = response.data.five_percent_such_corporation_been_revoked_reason;
+        _this2.five_percent_such_corporation_been_revoked_date_revocation = response.data.five_percent_such_corporation_been_revoked_date_revocation;
+
+        if (response.data != 'No data') {}
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    completeApplication: function completeApplication() {
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post().then().catch();
+    }
+  },
+  props: ['application'],
+  mounted: function mounted() {
+    console.log(JSON.parse(this.application));
+    this.application = JSON.parse(this.application);
+    this.getAppData;
+    // console.log('this route 2: '.this.$router.query.page)
+  }
+});
+
+/***/ }),
+/* 55 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-12" }, [
+        _c("div", { staticClass: "invoice p-3 mb-3" }, [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-1" }),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-10" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("form", [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "inputAddress" } }, [
+                    _vm._v("Address")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.address,
+                        expression: "address"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      id: "inputAddress",
+                      placeholder: "1234 Main St"
+                    },
+                    domProps: { value: _vm.address },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.address = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.app_id,
+                        expression: "app_id"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "hidden", id: "app_id" },
+                    domProps: { value: _vm.app_id },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.app_id = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-row" }, [
+                  _c("div", { staticClass: "form-group col-md-6" }, [
+                    _c("label", { attrs: { for: "inputCity" } }, [
+                      _vm._v("City")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.city,
+                          expression: "city"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "inputCity" },
+                      domProps: { value: _vm.city },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.city = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group col-md-4" }, [
+                    _c("label", { attrs: { for: "inputState" } }, [
+                      _vm._v("State")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.state,
+                            expression: "state"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { id: "inputState" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.state = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          }
+                        }
+                      },
+                      [
+                        _c("option", { attrs: { selected: "" } }, [
+                          _vm._v("Choose...")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "AL" } }, [
+                          _vm._v("Alabama")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "AK" } }, [
+                          _vm._v("Alaska")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "AZ" } }, [
+                          _vm._v("Arizona")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "AR" } }, [
+                          _vm._v("Arkansas")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "CA" } }, [
+                          _vm._v("California")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "CO" } }, [
+                          _vm._v("Colorado")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "CT" } }, [
+                          _vm._v("Connecticut")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "DE" } }, [
+                          _vm._v("Delaware")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "DC" } }, [
+                          _vm._v("District Of Columbia")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "FL" } }, [
+                          _vm._v("Florida")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "GA" } }, [
+                          _vm._v("Georgia")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "HI" } }, [
+                          _vm._v("Hawaii")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ID" } }, [
+                          _vm._v("Idaho")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "IL" } }, [
+                          _vm._v("Illinois")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "IN" } }, [
+                          _vm._v("Indiana")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "IA" } }, [
+                          _vm._v("Iowa")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "KS" } }, [
+                          _vm._v("Kansas")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "KY" } }, [
+                          _vm._v("Kentucky")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "LA" } }, [
+                          _vm._v("Louisiana")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ME" } }, [
+                          _vm._v("Maine")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "MD" } }, [
+                          _vm._v("Maryland")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "MA" } }, [
+                          _vm._v("Massachusetts")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "MI" } }, [
+                          _vm._v("Michigan")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "MN" } }, [
+                          _vm._v("Minnesota")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "MS" } }, [
+                          _vm._v("Mississippi")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "MO" } }, [
+                          _vm._v("Missouri")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "MT" } }, [
+                          _vm._v("Montana")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "NE" } }, [
+                          _vm._v("Nebraska")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "NV" } }, [
+                          _vm._v("Nevada")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "NH" } }, [
+                          _vm._v("New Hampshire")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "NJ" } }, [
+                          _vm._v("New Jersey")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "NM" } }, [
+                          _vm._v("New Mexico")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "NY" } }, [
+                          _vm._v("New York")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "NC" } }, [
+                          _vm._v("North Carolina")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ND" } }, [
+                          _vm._v("North Dakota")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "OH" } }, [
+                          _vm._v("Ohio")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "OK" } }, [
+                          _vm._v("Oklahoma")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "OR" } }, [
+                          _vm._v("Oregon")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "PA" } }, [
+                          _vm._v("Pennsylvania")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "RI" } }, [
+                          _vm._v("Rhode Island")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "SC" } }, [
+                          _vm._v("South Carolina")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "SD" } }, [
+                          _vm._v("South Dakota")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "TN" } }, [
+                          _vm._v("Tennessee")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "TX" } }, [
+                          _vm._v("Texas")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "UT" } }, [
+                          _vm._v("Utah")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "VT" } }, [
+                          _vm._v("Vermont")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "VA" } }, [
+                          _vm._v("Virginia")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "WA" } }, [
+                          _vm._v("Washington")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "WV" } }, [
+                          _vm._v("West Virginia")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "WI" } }, [
+                          _vm._v("Wisconsin")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "WY" } }, [
+                          _vm._v("Wyoming")
+                        ])
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group col-md-2" }, [
+                    _c("label", { attrs: { for: "inputZip" } }, [
+                      _vm._v("Zip")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.zip,
+                          expression: "zip"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "inputZip" },
+                      domProps: { value: _vm.zip },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.zip = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-row" }, [
+                  _c("div", { staticClass: "form-group col-md-4" }, [
+                    _c("label", { attrs: { for: "inputClass" } }, [
+                      _vm._v("Class")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.license_class,
+                          expression: "license_class"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "inputClass" },
+                      domProps: { value: _vm.license_class },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.license_class = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group col-md-4" }, [
+                    _c("label", { attrs: { for: "license" } }, [
+                      _vm._v("License")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.license,
+                          expression: "license"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "license" },
+                      domProps: { value: _vm.license },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.license = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group col-md-4" }, [
+                    _c("label", { attrs: { for: "fee" } }, [_vm._v("Fee")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.fee,
+                          expression: "fee"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "fee" },
+                      domProps: { value: _vm.fee },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.fee = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(1),
+                _vm._v(" "),
+                _vm._m(2),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "name" } }, [
+                    _vm._v("Corporate Name")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.corporate_name,
+                        expression: "corporate_name"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", id: "corporate-name" },
+                    domProps: { value: _vm.corporate_name },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.corporate_name = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "corporate-address" } }, [
+                    _vm._v("Corporate Address")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.corporate_address,
+                        expression: "corporate_address"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      id: "corporate-address",
+                      placeholder: "1234 Main St"
+                    },
+                    domProps: { value: _vm.corporate_address },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.corporate_address = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "conductedname" } }, [
+                    _vm._v("Name under which business is to be conducted:")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.name_business_to_be_conducted,
+                        expression: "name_business_to_be_conducted"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", id: "conducted-name" },
+                    domProps: { value: _vm.name_business_to_be_conducted },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.name_business_to_be_conducted = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-row" }, [
+                  _c("div", { staticClass: "form-group col-md-4" }, [
+                    _c("label", { attrs: { for: "business-phone-number" } }, [
+                      _vm._v("Business Phone No.:")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.business_phone,
+                          expression: "business_phone"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "business-phone-number" },
+                      domProps: { value: _vm.business_phone },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.business_phone = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group col-md-4" }, [
+                    _c("label", { attrs: { for: "business-mobile-no" } }, [
+                      _vm._v("Business Mobile No.")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.business_mobile,
+                          expression: "business_mobile"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "mobile-no" },
+                      domProps: { value: _vm.business_mobile },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.business_mobile = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group col-md-4" }, [
+                    _c("label", { attrs: { for: "business-email" } }, [
+                      _vm._v("Business Email")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.business_email,
+                          expression: "business_email"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "business-email" },
+                      domProps: { value: _vm.business_email },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.business_email = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(3),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "president-name" } }, [
+                    _vm._v("President Name")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.president_name,
+                        expression: "president_name"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", id: "president-name" },
+                    domProps: { value: _vm.president_name },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.president_name = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "president-address" } }, [
+                    _vm._v("President Address")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.president_address,
+                        expression: "president_address"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      id: "president-address",
+                      placeholder: "1234 Main St"
+                    },
+                    domProps: { value: _vm.president_address },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.president_address = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-row" }, [
+                  _c("div", { staticClass: "form-group col-md-4" }, [
+                    _c("label", { attrs: { for: "president-phone-number" } }, [
+                      _vm._v("President Phone No.:")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.president_phone,
+                          expression: "president_phone"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "president-phone-number" },
+                      domProps: { value: _vm.president_phone },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.president_phone = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group col-md-4" }, [
+                    _c("label", { attrs: { for: "president-mobile-no" } }, [
+                      _vm._v("President Mobile No.")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.president_mobile,
+                          expression: "president_mobile"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "president-mobile-no" },
+                      domProps: { value: _vm.president_mobile },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.president_mobile = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group col-md-4" }, [
+                    _c("label", { attrs: { for: "president-email" } }, [
+                      _vm._v("President Email")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.president_email,
+                          expression: "president_email"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "president-email" },
+                      domProps: { value: _vm.president_email },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.president_email = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(4),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "vice-president-name" } }, [
+                    _vm._v("Vice President Name")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.vice_president_name,
+                        expression: "vice_president_name"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", id: "vice-president-name" },
+                    domProps: { value: _vm.vice_president_name },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.vice_president_name = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "vice-president-address" } }, [
+                    _vm._v("Vice President Address")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.vice_president_address,
+                        expression: "vice_president_address"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      id: "vice-president-address",
+                      placeholder: "1234 Main St"
+                    },
+                    domProps: { value: _vm.vice_president_address },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.vice_president_address = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-row" }, [
+                  _c("div", { staticClass: "form-group col-md-4" }, [
+                    _c(
+                      "label",
+                      { attrs: { for: "vice-president-phone-number" } },
+                      [_vm._v("Vice President Phone No.:")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.vice_president_phone,
+                          expression: "vice_president_phone"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        id: "vice-president-phone-number"
+                      },
+                      domProps: { value: _vm.vice_president_phone },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.vice_president_phone = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group col-md-4" }, [
+                    _c(
+                      "label",
+                      { attrs: { for: "vice-president-mobile-no" } },
+                      [_vm._v("Vice President Mobile No.")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.vice_president_mobile,
+                          expression: "vice_president_mobile"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "vice-president-mobile-no" },
+                      domProps: { value: _vm.vice_president_mobile },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.vice_president_mobile = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group col-md-4" }, [
+                    _c("label", { attrs: { for: "vice-president-email" } }, [
+                      _vm._v("Vice President Email")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.vice_president_email,
+                          expression: "vice_president_email"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "vice-president-email" },
+                      domProps: { value: _vm.vice_president_email },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.vice_president_email = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(5),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "secretary-name" } }, [
+                    _vm._v("Secretary Name")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.secretary_name,
+                        expression: "secretary_name"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", id: "secretary-name" },
+                    domProps: { value: _vm.secretary_name },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.secretary_name = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "secretary-address" } }, [
+                    _vm._v("Secretary Address")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.secretary_address,
+                        expression: "secretary_address"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      id: "secretary-address",
+                      placeholder: "1234 Main St"
+                    },
+                    domProps: { value: _vm.secretary_address },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.secretary_address = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-row" }, [
+                  _c("div", { staticClass: "form-group col-md-4" }, [
+                    _c("label", { attrs: { for: "secretary-phone-number" } }, [
+                      _vm._v("Secretary Phone No.:")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.secretary_phone,
+                          expression: "secretary_phone"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "secretary-phone-number" },
+                      domProps: { value: _vm.secretary_phone },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.secretary_phone = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group col-md-4" }, [
+                    _c("label", { attrs: { for: "secretary-mobile-no" } }, [
+                      _vm._v("Secretary Mobile No.")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.secretary_mobile,
+                          expression: "secretary_mobile"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "secretary-mobile-no" },
+                      domProps: { value: _vm.secretary_mobile },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.secretary_mobile = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group col-md-4" }, [
+                    _c("label", { attrs: { for: "secretary-email" } }, [
+                      _vm._v("Secretary Email")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.secretary_email,
+                          expression: "secretary_email"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "secretary-email" },
+                      domProps: { value: _vm.secretary_email },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.secretary_email = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(6),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "treasurer-name" } }, [
+                    _vm._v("Treasurer Name")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.treasurer_name,
+                        expression: "treasurer_name"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", id: "treasurer-name" },
+                    domProps: { value: _vm.treasurer_name },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.treasurer_name = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "treasurer-address" } }, [
+                    _vm._v("Treasurer Address")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.treasurer_address,
+                        expression: "treasurer_address"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      id: "treasurer-address",
+                      placeholder: "1234 Main St"
+                    },
+                    domProps: { value: _vm.treasurer_address },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.treasurer_address = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-row" }, [
+                  _c("div", { staticClass: "form-group col-md-4" }, [
+                    _c("label", { attrs: { for: "treasurer-phone-number" } }, [
+                      _vm._v("Treasurer Phone No.:")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.treasurer_phone,
+                          expression: "treasurer_phone"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "treasurer-phone-number" },
+                      domProps: { value: _vm.treasurer_phone },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.treasurer_phone = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group col-md-4" }, [
+                    _c("label", { attrs: { for: "treasurer-mobile-no" } }, [
+                      _vm._v("Treasurer Mobile No.")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.treasurer_mobile,
+                          expression: "treasurer_mobile"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "treasurer-mobile-no" },
+                      domProps: { value: _vm.treasurer_mobile },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.treasurer_mobile = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group col-md-4" }, [
+                    _c("label", { attrs: { for: "treasurer-email" } }, [
+                      _vm._v("Treasurer Email")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.treasurer_email,
+                          expression: "treasurer_email"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "treasurer-email" },
+                      domProps: { value: _vm.treasurer_email },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.treasurer_email = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(7),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "director-name" } }, [
+                    _vm._v("Director Name")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.director_name,
+                        expression: "director_name"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", id: "director-name" },
+                    domProps: { value: _vm.director_name },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.director_name = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "director-address" } }, [
+                    _vm._v("Director Address")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.director_address,
+                        expression: "director_address"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      id: "director-address",
+                      placeholder: "1234 Main St"
+                    },
+                    domProps: { value: _vm.director_address },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.director_address = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-row" }, [
+                  _c("div", { staticClass: "form-group col-md-4" }, [
+                    _c("label", { attrs: { for: "director-phone-number" } }, [
+                      _vm._v("Director Phone No.:")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.director_phone,
+                          expression: "director_phone"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "director-phone-number" },
+                      domProps: { value: _vm.director_phone },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.director_phone = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group col-md-4" }, [
+                    _c("label", { attrs: { for: "director-mobile-no" } }, [
+                      _vm._v("Director Mobile No.")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.director_mobile,
+                          expression: "director_mobile"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "director-mobile-no" },
+                      domProps: { value: _vm.director_mobile },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.director_mobile = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group col-md-4" }, [
+                    _c("label", { attrs: { for: "director-email" } }, [
+                      _vm._v("Director Email")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.director_email,
+                          expression: "director_email"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "director-email" },
+                      domProps: { value: _vm.director_email },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.director_email = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(8),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "vice-director-name" } }, [
+                    _vm._v("Vice Director Name")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.vice_director_name,
+                        expression: "vice_director_name"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", id: "vice-director-name" },
+                    domProps: { value: _vm.vice_director_name },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.vice_director_name = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "vice-director-address" } }, [
+                    _vm._v("Vice Director Address")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.vice_director_address,
+                        expression: "vice_director_address"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      id: "vice-director-address",
+                      placeholder: "1234 Main St"
+                    },
+                    domProps: { value: _vm.vice_director_address },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.vice_director_address = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-row" }, [
+                  _c("div", { staticClass: "form-group col-md-4" }, [
+                    _c(
+                      "label",
+                      { attrs: { for: "vice-director-phone-number" } },
+                      [_vm._v("Vice Director Phone No.:")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.vice_director_phone,
+                          expression: "vice_director_phone"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "vice-director-phone-number" },
+                      domProps: { value: _vm.vice_director_phone },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.vice_director_phone = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group col-md-4" }, [
+                    _c("label", { attrs: { for: "vice-director-mobile-no" } }, [
+                      _vm._v("Vice Director Mobile No.")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.vice_director_mobile,
+                          expression: "vice_director_mobile"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "vice-director-mobile-no" },
+                      domProps: { value: _vm.vice_director_mobile },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.vice_director_mobile = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group col-md-4" }, [
+                    _c("label", { attrs: { for: "vice-director-email" } }, [
+                      _vm._v("Vice Director Email")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.vice_director_email,
+                          expression: "vice_director_email"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "vice-director-email" },
+                      domProps: { value: _vm.vice_director_email },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.vice_director_email = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "date_incorporation" } }, [
+                    _vm._v("2. Date of Incorporation:")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.date_incorporation,
+                        expression: "date_incorporation"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "date", id: "date_incorporation" },
+                    domProps: { value: _vm.date_incorporation },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.date_incorporation = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "state_of" } }, [
+                    _vm._v("State of:")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.state_incorporation,
+                        expression: "state_incorporation"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "date", id: "state_of" },
+                    domProps: { value: _vm.state_incorporation },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.state_incorporation = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "other_than_illinois" } }, [
+                    _vm._v(
+                      "If the state is a state other than Illinois, the date upon which the corporation was certified as a foreign corporation entitiled to conduct business in Illinois::"
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.other_state_incorporation_not_illinois,
+                        expression: "other_state_incorporation_not_illinois"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "date", id: "other_than_illinois" },
+                    domProps: {
+                      value: _vm.other_state_incorporation_not_illinois
+                    },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.other_state_incorporation_not_illinois =
+                          $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "object-corporation" } }, [
+                    _vm._v(
+                      "3. Object of the corporation as forth in the chapter:"
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.corporation_forth_chapter,
+                        expression: "corporation_forth_chapter"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", id: "object-corporation" },
+                    domProps: { value: _vm.corporation_forth_chapter },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.corporation_forth_chapter = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _vm._m(9),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "agent-name" } }, [
+                    _vm._v("Agent Name")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.corporation_agent_name,
+                        expression: "corporation_agent_name"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", id: "agent-name" },
+                    domProps: { value: _vm.corporation_agent_name },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.corporation_agent_name = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "agent-address" } }, [
+                    _vm._v("Agent Address")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.corporation_agent_address,
+                        expression: "corporation_agent_address"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      id: "agent-address",
+                      placeholder: "1234 Main St"
+                    },
+                    domProps: { value: _vm.corporation_agent_address },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.corporation_agent_address = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-row" }, [
+                  _c("div", { staticClass: "form-group col-md-4" }, [
+                    _c("label", { attrs: { for: "agent-phone-number" } }, [
+                      _vm._v("Agent Phone No.:")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.corporation_agent_phone,
+                          expression: "corporation_agent_phone"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "agent-phone-number" },
+                      domProps: { value: _vm.corporation_agent_phone },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.corporation_agent_phone = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group col-md-4" }, [
+                    _c("label", { attrs: { for: "agent-mobile-no" } }, [
+                      _vm._v("Agent Mobile No.")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.corporation_agent_mobile,
+                          expression: "corporation_agent_mobile"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "agent-mobile-no" },
+                      domProps: { value: _vm.corporation_agent_mobile },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.corporation_agent_mobile = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group col-md-4" }, [
+                    _c("label", { attrs: { for: "agent-email" } }, [
+                      _vm._v("Agent Email")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.corporation_agent_email,
+                          expression: "corporation_agent_email"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "agent-email" },
+                      domProps: { value: _vm.corporation_agent_email },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.corporation_agent_email = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "label",
+                    { attrs: { for: "principal-kind-of-business" } },
+                    [_vm._v("5. Principal Kind of Business")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.principal_kind_business,
+                        expression: "principal_kind_business"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", id: "principal-kind-of-business" },
+                    domProps: { value: _vm.principal_kind_business },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.principal_kind_business = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "label",
+                    { attrs: { for: "principal-kind-of-business" } },
+                    [
+                      _vm._v(
+                        "6. Does applicant seek a license to sell alcoholic liquor upon the premises as a restaurant? "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "radio" }, [
+                    _c("label", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value:
+                              _vm.applicant_seek_license_alcoholic_restaurant,
+                            expression:
+                              "applicant_seek_license_alcoholic_restaurant"
+                          }
+                        ],
+                        attrs: {
+                          type: "radio",
+                          id: "principal-kind-of-business1",
+                          name: "seek_license_sell_liquor",
+                          value: "Yes"
+                        },
+                        domProps: {
+                          checked: _vm._q(
+                            _vm.applicant_seek_license_alcoholic_restaurant,
+                            "Yes"
+                          )
+                        },
+                        on: {
+                          change: function($event) {
+                            _vm.applicant_seek_license_alcoholic_restaurant =
+                              "Yes"
+                          }
+                        }
+                      }),
+                      _vm._v(" Yes ")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "radio" }, [
+                    _c("label", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value:
+                              _vm.applicant_seek_license_alcoholic_restaurant,
+                            expression:
+                              "applicant_seek_license_alcoholic_restaurant"
+                          }
+                        ],
+                        attrs: {
+                          type: "radio",
+                          id: "principal-kind-of-business2",
+                          name: "seek_license_sell_liquor",
+                          value: "No"
+                        },
+                        domProps: {
+                          checked: _vm._q(
+                            _vm.applicant_seek_license_alcoholic_restaurant,
+                            "No"
+                          )
+                        },
+                        on: {
+                          change: function($event) {
+                            _vm.applicant_seek_license_alcoholic_restaurant =
+                              "No"
+                          }
+                        }
+                      }),
+                      _vm._v(" No ")
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(10),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "maintained_held" } }, [
+                    _vm._v(
+                      "a) Maintained and held out to the public as a place where meals are actually and regularly served?"
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "radio" }, [
+                    _c("label", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.maitained_to_public_meals_served,
+                            expression: "maitained_to_public_meals_served"
+                          }
+                        ],
+                        attrs: {
+                          type: "radio",
+                          id: "maintained_held1",
+                          name: "maintained_held",
+                          value: "Yes"
+                        },
+                        domProps: {
+                          checked: _vm._q(
+                            _vm.maitained_to_public_meals_served,
+                            "Yes"
+                          )
+                        },
+                        on: {
+                          change: function($event) {
+                            _vm.maitained_to_public_meals_served = "Yes"
+                          }
+                        }
+                      }),
+                      _vm._v(" Yes ")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "radio" }, [
+                    _c("label", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.maitained_to_public_meals_served,
+                            expression: "maitained_to_public_meals_served"
+                          }
+                        ],
+                        attrs: {
+                          type: "radio",
+                          id: "maintained_held2",
+                          name: "maintained_held",
+                          value: "No"
+                        },
+                        domProps: {
+                          checked: _vm._q(
+                            _vm.maitained_to_public_meals_served,
+                            "No"
+                          )
+                        },
+                        on: {
+                          change: function($event) {
+                            _vm.maitained_to_public_meals_served = "No"
+                          }
+                        }
+                      }),
+                      _vm._v(" No ")
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "food_services_are" } }, [
+                    _vm._v("If so, food services are:")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.yes_food_services_are,
+                        expression: "yes_food_services_are"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", id: "food_services_are" },
+                    domProps: { value: _vm.yes_food_services_are },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.yes_food_services_are = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "provided_with_adequate" } }, [
+                    _vm._v(
+                      "b) Provided with adequate and sanitary kitchen and dining room equipment and capacity with sufficient employees to prepare, cook and serve suitable food?"
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "radio" }, [
+                    _c("label", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.serve_suitable_food,
+                            expression: "serve_suitable_food"
+                          }
+                        ],
+                        attrs: {
+                          type: "radio",
+                          id: "provided_with_adequate1",
+                          name: "provided_with_adequate",
+                          value: "Yes"
+                        },
+                        domProps: {
+                          checked: _vm._q(_vm.serve_suitable_food, "Yes")
+                        },
+                        on: {
+                          change: function($event) {
+                            _vm.serve_suitable_food = "Yes"
+                          }
+                        }
+                      }),
+                      _vm._v(" Yes ")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "radio" }, [
+                    _c("label", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.serve_suitable_food,
+                            expression: "serve_suitable_food"
+                          }
+                        ],
+                        attrs: {
+                          type: "radio",
+                          id: "provided_with_adequate2",
+                          name: "provided_with_adequate",
+                          value: "No"
+                        },
+                        domProps: {
+                          checked: _vm._q(_vm.serve_suitable_food, "No")
+                        },
+                        on: {
+                          change: function($event) {
+                            _vm.serve_suitable_food = "No"
+                          }
+                        }
+                      }),
+                      _vm._v(" No ")
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "applicant_is_club" } }, [
+                    _vm._v(
+                      "7. If applicant is a club, has it the qualifications described in the illinois act relating to alcoholic liquors?"
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "radio" }, [
+                    _c("label", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.qualifications_described_illinois_act,
+                            expression: "qualifications_described_illinois_act"
+                          }
+                        ],
+                        attrs: {
+                          type: "radio",
+                          id: "applicant_is_club1",
+                          name: "applicant_is_club",
+                          value: "Yes"
+                        },
+                        domProps: {
+                          checked: _vm._q(
+                            _vm.qualifications_described_illinois_act,
+                            "Yes"
+                          )
+                        },
+                        on: {
+                          change: function($event) {
+                            _vm.qualifications_described_illinois_act = "Yes"
+                          }
+                        }
+                      }),
+                      _vm._v(" Yes ")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "radio" }, [
+                    _c("label", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.qualifications_described_illinois_act,
+                            expression: "qualifications_described_illinois_act"
+                          }
+                        ],
+                        attrs: {
+                          type: "radio",
+                          id: "applicant_is_club2",
+                          name: "applicant_is_club",
+                          value: "No"
+                        },
+                        domProps: {
+                          checked: _vm._q(
+                            _vm.qualifications_described_illinois_act,
+                            "No"
+                          )
+                        },
+                        on: {
+                          change: function($event) {
+                            _vm.qualifications_described_illinois_act = "No"
+                          }
+                        }
+                      }),
+                      _vm._v(" No ")
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "applicant_own_premises" } }, [
+                    _vm._v(
+                      "8. Does applicant own premises for which this license is sought?"
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "radio" }, [
+                    _c("label", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.applicant_own_premises_license_sought,
+                            expression: "applicant_own_premises_license_sought"
+                          }
+                        ],
+                        attrs: {
+                          type: "radio",
+                          id: "applicant_own_premises1",
+                          name: "applicant_own_premises",
+                          value: "Yes"
+                        },
+                        domProps: {
+                          checked: _vm._q(
+                            _vm.applicant_own_premises_license_sought,
+                            "Yes"
+                          )
+                        },
+                        on: {
+                          change: function($event) {
+                            _vm.applicant_own_premises_license_sought = "Yes"
+                          }
+                        }
+                      }),
+                      _vm._v(" Yes ")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "radio" }, [
+                    _c("label", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.applicant_own_premises_license_sought,
+                            expression: "applicant_own_premises_license_sought"
+                          }
+                        ],
+                        attrs: {
+                          type: "radio",
+                          id: "applicant_own_premises2",
+                          name: "applicant_own_premises",
+                          value: "No"
+                        },
+                        domProps: {
+                          checked: _vm._q(
+                            _vm.applicant_own_premises_license_sought,
+                            "No"
+                          )
+                        },
+                        on: {
+                          change: function($event) {
+                            _vm.applicant_own_premises_license_sought = "No"
+                          }
+                        }
+                      }),
+                      _vm._v(" No ")
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "applicant_a_lease" } }, [
+                    _vm._v(
+                      "If not, has applicant a lease on such premises covering the full period for which license is sought?"
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "radio" }, [
+                    _c("label", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.applicant_lease_premises_license_sought,
+                            expression:
+                              "applicant_lease_premises_license_sought"
+                          }
+                        ],
+                        attrs: {
+                          type: "radio",
+                          id: "applicant_a_lease1",
+                          name: "applicant_a_lease",
+                          value: "Yes"
+                        },
+                        domProps: {
+                          checked: _vm._q(
+                            _vm.applicant_lease_premises_license_sought,
+                            "Yes"
+                          )
+                        },
+                        on: {
+                          change: function($event) {
+                            _vm.applicant_lease_premises_license_sought = "Yes"
+                          }
+                        }
+                      }),
+                      _vm._v(" Yes ")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "radio" }, [
+                    _c("label", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.applicant_lease_premises_license_sought,
+                            expression:
+                              "applicant_lease_premises_license_sought"
+                          }
+                        ],
+                        attrs: {
+                          type: "radio",
+                          id: "applicant_a_lease2",
+                          name: "applicant_a_lease",
+                          value: "No"
+                        },
+                        domProps: {
+                          checked: _vm._q(
+                            _vm.applicant_lease_premises_license_sought,
+                            "No"
+                          )
+                        },
+                        on: {
+                          change: function($event) {
+                            _vm.applicant_lease_premises_license_sought = "No"
+                          }
+                        }
+                      }),
+                      _vm._v(" No ")
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(11),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "lessor-name" } }, [
+                    _vm._v("Name")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.lessor_name,
+                        expression: "lessor_name"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", id: "lessor" },
+                    domProps: { value: _vm.lessor_name },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.lessor_name = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "lessor-address" } }, [
+                    _vm._v("Address")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.lessor_address,
+                        expression: "lessor_address"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      id: "lesson-address",
+                      placeholder: "1234 Main St"
+                    },
+                    domProps: { value: _vm.lessor_address },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.lessor_address = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "period-covered-lease-from" } }, [
+                    _vm._v("Period Covered Lease")
+                  ]),
+                  _vm._v("\n                From: "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.period_covered_lease_from,
+                        expression: "period_covered_lease_from"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    staticStyle: { width: "50%" },
+                    attrs: { type: "date", id: "period-covered-lease-from" },
+                    domProps: { value: _vm.period_covered_lease_from },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.period_covered_lease_from = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" - To: "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.period_covered_lease_to,
+                        expression: "period_covered_lease_to"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    staticStyle: { width: "50%" },
+                    attrs: { type: "date", id: "period-covered-lease-to" },
+                    domProps: { value: _vm.period_covered_lease_to },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.period_covered_lease_to = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "applicant_own_premises" } }, [
+                    _vm._v(
+                      "8. Does applicant own premises for which this license is sought?"
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "radio" }, [
+                    _c("label", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.applicant_own_premise_license_sought,
+                            expression: "applicant_own_premise_license_sought"
+                          }
+                        ],
+                        attrs: {
+                          type: "radio",
+                          id: "applicant_own_premises1",
+                          name: "applicant_own_premises",
+                          value: "Yes"
+                        },
+                        domProps: {
+                          checked: _vm._q(
+                            _vm.applicant_own_premise_license_sought,
+                            "Yes"
+                          )
+                        },
+                        on: {
+                          change: function($event) {
+                            _vm.applicant_own_premise_license_sought = "Yes"
+                          }
+                        }
+                      }),
+                      _vm._v(" Yes ")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "radio" }, [
+                    _c("label", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.applicant_own_premise_license_sought,
+                            expression: "applicant_own_premise_license_sought"
+                          }
+                        ],
+                        attrs: {
+                          type: "radio",
+                          id: "applicant_own_premises2",
+                          name: "applicant_own_premises",
+                          value: "No"
+                        },
+                        domProps: {
+                          checked: _vm._q(
+                            _vm.applicant_own_premise_license_sought,
+                            "No"
+                          )
+                        },
+                        on: {
+                          change: function($event) {
+                            _vm.applicant_own_premise_license_sought = "No"
+                          }
+                        }
+                      }),
+                      _vm._v(" No ")
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "label",
+                    { attrs: { for: "applicant_a_food_dispenser" } },
+                    [_vm._v("9. Is applicant a food dispenser?")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "radio" }, [
+                    _c("label", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.applicant_food_dispenser,
+                            expression: "applicant_food_dispenser"
+                          }
+                        ],
+                        attrs: {
+                          type: "radio",
+                          id: "applicant_a_food_dispenser1",
+                          name: "applicant_a_food_dispenser",
+                          value: "Yes"
+                        },
+                        domProps: {
+                          checked: _vm._q(_vm.applicant_food_dispenser, "Yes")
+                        },
+                        on: {
+                          change: function($event) {
+                            _vm.applicant_food_dispenser = "Yes"
+                          }
+                        }
+                      }),
+                      _vm._v(" Yes ")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "radio" }, [
+                    _c("label", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.applicant_food_dispenser,
+                            expression: "applicant_food_dispenser"
+                          }
+                        ],
+                        attrs: {
+                          type: "radio",
+                          id: "applicant_a_food_dispenser2",
+                          name: "applicant_a_food_dispenser",
+                          value: "No"
+                        },
+                        domProps: {
+                          checked: _vm._q(_vm.applicant_food_dispenser, "No")
+                        },
+                        on: {
+                          change: function($event) {
+                            _vm.applicant_food_dispenser = "No"
+                          }
+                        }
+                      }),
+                      _vm._v(" No ")
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "give_no_license" } }, [
+                    _vm._v("If so, give number of license:")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.applicant_food_dispenser_number_license,
+                        expression: "applicant_food_dispenser_number_license"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", id: "give_no_license" },
+                    domProps: {
+                      value: _vm.applicant_food_dispenser_number_license
+                    },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.applicant_food_dispenser_number_license =
+                          $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "label",
+                    { attrs: { for: "applicant_personally_actively" } },
+                    [
+                      _vm._v(
+                        "10. Will applicant be personally, actively involved in the on premise day-to-day operation of the business to be licensed?"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "radio" }, [
+                    _c("label", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value:
+                              _vm.applicant_actively_involved_day_operation,
+                            expression:
+                              "applicant_actively_involved_day_operation"
+                          }
+                        ],
+                        attrs: {
+                          type: "radio",
+                          id: "applicant_personally_actively1",
+                          name: "applicant_personally_actively",
+                          value: "Yes"
+                        },
+                        domProps: {
+                          checked: _vm._q(
+                            _vm.applicant_actively_involved_day_operation,
+                            "Yes"
+                          )
+                        },
+                        on: {
+                          change: function($event) {
+                            _vm.applicant_actively_involved_day_operation =
+                              "Yes"
+                          }
+                        }
+                      }),
+                      _vm._v(" Yes ")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "radio" }, [
+                    _c("label", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value:
+                              _vm.applicant_actively_involved_day_operation,
+                            expression:
+                              "applicant_actively_involved_day_operation"
+                          }
+                        ],
+                        attrs: {
+                          type: "radio",
+                          id: "applicant_personally_actively2",
+                          name: "applicant_personally_actively",
+                          value: "No"
+                        },
+                        domProps: {
+                          checked: _vm._q(
+                            _vm.applicant_actively_involved_day_operation,
+                            "No"
+                          )
+                        },
+                        on: {
+                          change: function($event) {
+                            _vm.applicant_actively_involved_day_operation = "No"
+                          }
+                        }
+                      }),
+                      _vm._v(" No ")
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "business_managed_by" } }, [
+                    _vm._v(
+                      "11. Is the business or will the business for which a liquor license is sought be managed by a manager or agent?"
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "radio" }, [
+                    _c("label", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.business_liquor_license_sought_manager,
+                            expression: "business_liquor_license_sought_manager"
+                          }
+                        ],
+                        attrs: {
+                          type: "radio",
+                          id: "business_managed_by1",
+                          name: "business_managed_by",
+                          value: "Yes"
+                        },
+                        domProps: {
+                          checked: _vm._q(
+                            _vm.business_liquor_license_sought_manager,
+                            "Yes"
+                          )
+                        },
+                        on: {
+                          change: function($event) {
+                            _vm.business_liquor_license_sought_manager = "Yes"
+                          }
+                        }
+                      }),
+                      _vm._v(" Yes ")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "radio" }, [
+                    _c("label", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.business_liquor_license_sought_manager,
+                            expression: "business_liquor_license_sought_manager"
+                          }
+                        ],
+                        attrs: {
+                          type: "radio",
+                          id: "business_managed_by2",
+                          name: "business_managed_by",
+                          value: "No"
+                        },
+                        domProps: {
+                          checked: _vm._q(
+                            _vm.business_liquor_license_sought_manager,
+                            "No"
+                          )
+                        },
+                        on: {
+                          change: function($event) {
+                            _vm.business_liquor_license_sought_manager = "No"
+                          }
+                        }
+                      }),
+                      _vm._v(" No ")
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(12),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "manager_name" } }, [
+                    _vm._v("Name")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.manager_name,
+                        expression: "manager_name"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", id: "manager_name" },
+                    domProps: { value: _vm.manager_name },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.manager_name = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "manager_address" } }, [
+                    _vm._v("Address")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.manager_address,
+                        expression: "manager_address"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      id: "manager_address",
+                      placeholder: "1234 Main St"
+                    },
+                    domProps: { value: _vm.manager_address },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.manager_address = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "manager_phone" } }, [
+                    _vm._v("Phone")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.manager_phone,
+                        expression: "manager_phone"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", id: "manager_phone" },
+                    domProps: { value: _vm.manager_phone },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.manager_phone = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "label",
+                    { attrs: { for: "amount_anticipated_alcohol" } },
+                    [
+                      _vm._v(
+                        "12. What is the amount of anticipated alcoholic liquor sales a a percentage of gross annual sales of the business?"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.amount_anticipated_liquor_sales,
+                        expression: "amount_anticipated_liquor_sales"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", id: "amount_anticipated_alcohol" },
+                    domProps: { value: _vm.amount_anticipated_liquor_sales },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.amount_anticipated_liquor_sales =
+                          $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _vm._m(13),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "beer_garden" } }, [
+                    _vm._v("Beer Garden?")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "radio" }, [
+                    _c("label", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.applicant_seeking_approval_beer_garden,
+                            expression: "applicant_seeking_approval_beer_garden"
+                          }
+                        ],
+                        attrs: {
+                          type: "radio",
+                          id: "beer_garden1",
+                          name: "beer_garden",
+                          value: "Yes"
+                        },
+                        domProps: {
+                          checked: _vm._q(
+                            _vm.applicant_seeking_approval_beer_garden,
+                            "Yes"
+                          )
+                        },
+                        on: {
+                          change: function($event) {
+                            _vm.applicant_seeking_approval_beer_garden = "Yes"
+                          }
+                        }
+                      }),
+                      _vm._v(" Yes ")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "radio" }, [
+                    _c("label", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.applicant_seeking_approval_beer_garden,
+                            expression: "applicant_seeking_approval_beer_garden"
+                          }
+                        ],
+                        attrs: {
+                          type: "radio",
+                          id: "beer_garden2",
+                          name: "beer_garden",
+                          value: "No"
+                        },
+                        domProps: {
+                          checked: _vm._q(
+                            _vm.applicant_seeking_approval_beer_garden,
+                            "No"
+                          )
+                        },
+                        on: {
+                          change: function($event) {
+                            _vm.applicant_seeking_approval_beer_garden = "No"
+                          }
+                        }
+                      }),
+                      _vm._v(" No ")
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "outdoor_seating_area" } }, [
+                    _vm._v("Outdoor seating area?")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "radio" }, [
+                    _c("label", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value:
+                              _vm.applicant_seeking_approval_outdoor_seating_area,
+                            expression:
+                              "applicant_seeking_approval_outdoor_seating_area"
+                          }
+                        ],
+                        attrs: {
+                          type: "radio",
+                          id: "outdoor_seating_area1",
+                          name: "outdoor_seating_area",
+                          value: "Yes"
+                        },
+                        domProps: {
+                          checked: _vm._q(
+                            _vm.applicant_seeking_approval_outdoor_seating_area,
+                            "Yes"
+                          )
+                        },
+                        on: {
+                          change: function($event) {
+                            _vm.applicant_seeking_approval_outdoor_seating_area =
+                              "Yes"
+                          }
+                        }
+                      }),
+                      _vm._v(" Yes ")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "radio" }, [
+                    _c("label", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value:
+                              _vm.applicant_seeking_approval_outdoor_seating_area,
+                            expression:
+                              "applicant_seeking_approval_outdoor_seating_area"
+                          }
+                        ],
+                        attrs: {
+                          type: "radio",
+                          id: "outdoor_seating_area2",
+                          name: "outdoor_seating_area",
+                          value: "No"
+                        },
+                        domProps: {
+                          checked: _vm._q(
+                            _vm.applicant_seeking_approval_outdoor_seating_area,
+                            "No"
+                          )
+                        },
+                        on: {
+                          change: function($event) {
+                            _vm.applicant_seeking_approval_outdoor_seating_area =
+                              "No"
+                          }
+                        }
+                      }),
+                      _vm._v(" No ")
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "label",
+                    { attrs: { for: "location_applicant_within_onehundred" } },
+                    [
+                      _vm._v(
+                        "14. Is the location of applicant's business for which license is sought within 100 feet of the property of a church, school, hospital, home for the aged or indigent persons or for veterans, their wives or childer or any military or naval station?"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "radio" }, [
+                    _c("label", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value:
+                              _vm.location_applicants_business_within_100ft_property_of_church,
+                            expression:
+                              "location_applicants_business_within_100ft_property_of_church"
+                          }
+                        ],
+                        attrs: {
+                          type: "radio",
+                          id: "location_applicant_within_onehundred1",
+                          name: "location_applicant_within_onehundred",
+                          value: "Yes"
+                        },
+                        domProps: {
+                          checked: _vm._q(
+                            _vm.location_applicants_business_within_100ft_property_of_church,
+                            "Yes"
+                          )
+                        },
+                        on: {
+                          change: function($event) {
+                            _vm.location_applicants_business_within_100ft_property_of_church =
+                              "Yes"
+                          }
+                        }
+                      }),
+                      _vm._v(" Yes ")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "radio" }, [
+                    _c("label", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value:
+                              _vm.location_applicants_business_within_100ft_property_of_church,
+                            expression:
+                              "location_applicants_business_within_100ft_property_of_church"
+                          }
+                        ],
+                        attrs: {
+                          type: "radio",
+                          id: "location_applicant_within_onehundred2",
+                          name: "location_applicant_within_onehundred",
+                          value: "No"
+                        },
+                        domProps: {
+                          checked: _vm._q(
+                            _vm.location_applicants_business_within_100ft_property_of_church,
+                            "No"
+                          )
+                        },
+                        on: {
+                          change: function($event) {
+                            _vm.location_applicants_business_within_100ft_property_of_church =
+                              "No"
+                          }
+                        }
+                      }),
+                      _vm._v(" No ")
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "importing_or_distributor" } }, [
+                    _vm._v(
+                      "15. Has any manufacturer, importing distributor or distributor directly or indirectly paid or agreed to pay for this license, advanced money or anything else of value, or any credit(other than merchandising credit in the ordinary course of business for aperiod not to exceed 90days) or is such person directly or indirectly interested in the ownership, conduct or operation of the place of business?"
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "radio" }, [
+                    _c("label", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.manufacturer_agreed_to_pay_license,
+                            expression: "manufacturer_agreed_to_pay_license"
+                          }
+                        ],
+                        attrs: {
+                          type: "radio",
+                          id: "importing_or_distributor1",
+                          name: "importing_or_distributor",
+                          value: "Yes"
+                        },
+                        domProps: {
+                          checked: _vm._q(
+                            _vm.manufacturer_agreed_to_pay_license,
+                            "Yes"
+                          )
+                        },
+                        on: {
+                          change: function($event) {
+                            _vm.manufacturer_agreed_to_pay_license = "Yes"
+                          }
+                        }
+                      }),
+                      _vm._v(" Yes ")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "radio" }, [
+                    _c("label", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.manufacturer_agreed_to_pay_license,
+                            expression: "manufacturer_agreed_to_pay_license"
+                          }
+                        ],
+                        attrs: {
+                          type: "radio",
+                          id: "importing_or_distributor2",
+                          name: "importing_or_distributor",
+                          value: "No"
+                        },
+                        domProps: {
+                          checked: _vm._q(
+                            _vm.manufacturer_agreed_to_pay_license,
+                            "No"
+                          )
+                        },
+                        on: {
+                          change: function($event) {
+                            _vm.manufacturer_agreed_to_pay_license = "No"
+                          }
+                        }
+                      }),
+                      _vm._v(" No ")
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "label",
+                    { attrs: { for: "applicant_engaged_manufacturer" } },
+                    [
+                      _vm._v(
+                        "16. Is the applicant engaged in the manufacturer of alcoholic liquors?"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "radio" }, [
+                    _c("label", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value:
+                              _vm.applicant_engaged_manufacturer_alcoholic_liquors,
+                            expression:
+                              "applicant_engaged_manufacturer_alcoholic_liquors"
+                          }
+                        ],
+                        attrs: {
+                          type: "radio",
+                          id: "applicant_engaged_manufacturer1",
+                          name: "applicant_engaged_manufacturer",
+                          value: "Yes"
+                        },
+                        domProps: {
+                          checked: _vm._q(
+                            _vm.applicant_engaged_manufacturer_alcoholic_liquors,
+                            "Yes"
+                          )
+                        },
+                        on: {
+                          change: function($event) {
+                            _vm.applicant_engaged_manufacturer_alcoholic_liquors =
+                              "Yes"
+                          }
+                        }
+                      }),
+                      _vm._v(" Yes ")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "radio" }, [
+                    _c("label", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value:
+                              _vm.applicant_engaged_manufacturer_alcoholic_liquors,
+                            expression:
+                              "applicant_engaged_manufacturer_alcoholic_liquors"
+                          }
+                        ],
+                        attrs: {
+                          type: "radio",
+                          id: "applicant_engaged_manufacturer2",
+                          name: "applicant_engaged_manufacturer",
+                          value: "No"
+                        },
+                        domProps: {
+                          checked: _vm._q(
+                            _vm.applicant_engaged_manufacturer_alcoholic_liquors,
+                            "No"
+                          )
+                        },
+                        on: {
+                          change: function($event) {
+                            _vm.applicant_engaged_manufacturer_alcoholic_liquors =
+                              "No"
+                          }
+                        }
+                      }),
+                      _vm._v(" No ")
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "label",
+                    { attrs: { for: "yes_applicant_engaged_manufacturer" } },
+                    [_vm._v("If so, at what locations?")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value:
+                          _vm.applicant_engaged_manufacturer_alcoholic_liquors_location,
+                        expression:
+                          "applicant_engaged_manufacturer_alcoholic_liquors_location"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      id: "yes_applicant_engaged_manufacturer"
+                    },
+                    domProps: {
+                      value:
+                        _vm.applicant_engaged_manufacturer_alcoholic_liquors_location
+                    },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.applicant_engaged_manufacturer_alcoholic_liquors_location =
+                          $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "label",
+                    {
+                      attrs: { for: "applicant_conducting_business_importing" }
+                    },
+                    [
+                      _vm._v(
+                        "17. Is the applicant conducting business of an importing distributor or distributor of alcoholic liquors?"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "radio" }, [
+                    _c("label", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value:
+                              _vm.applicant_conducting_business_importing_distributor,
+                            expression:
+                              "applicant_conducting_business_importing_distributor"
+                          }
+                        ],
+                        attrs: {
+                          type: "radio",
+                          id: "applicant_conducting_business_importing1",
+                          name: "applicant_conducting_business_importing",
+                          value: "Yes"
+                        },
+                        domProps: {
+                          checked: _vm._q(
+                            _vm.applicant_conducting_business_importing_distributor,
+                            "Yes"
+                          )
+                        },
+                        on: {
+                          change: function($event) {
+                            _vm.applicant_conducting_business_importing_distributor =
+                              "Yes"
+                          }
+                        }
+                      }),
+                      _vm._v(" Yes ")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "radio" }, [
+                    _c("label", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value:
+                              _vm.applicant_conducting_business_importing_distributor,
+                            expression:
+                              "applicant_conducting_business_importing_distributor"
+                          }
+                        ],
+                        attrs: {
+                          type: "radio",
+                          id: "applicant_conducting_business_importing2",
+                          name: "applicant_conducting_business_importing",
+                          value: "No"
+                        },
+                        domProps: {
+                          checked: _vm._q(
+                            _vm.applicant_conducting_business_importing_distributor,
+                            "No"
+                          )
+                        },
+                        on: {
+                          change: function($event) {
+                            _vm.applicant_conducting_business_importing_distributor =
+                              "No"
+                          }
+                        }
+                      }),
+                      _vm._v(" No ")
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "label",
+                    {
+                      attrs: {
+                        for: "yes_applicant_conducting_business_importing"
+                      }
+                    },
+                    [_vm._v("If so, at what locations?")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value:
+                          _vm.applicant_conducting_business_importing_distributor_location,
+                        expression:
+                          "applicant_conducting_business_importing_distributor_location"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      id: "yes_applicant_conducting_business_importing"
+                    },
+                    domProps: {
+                      value:
+                        _vm.applicant_conducting_business_importing_distributor_location
+                    },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.applicant_conducting_business_importing_distributor_location =
+                          $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "label",
+                    { attrs: { for: "stockholders_owning_aggregate" } },
+                    [
+                      _vm._v(
+                        "18. Has any officer, manager, or corporation director, or any stockholder or stockholders owning in the aggregate more than 5% of the stock of such corporation, ever been convicted of any felony under any federal or state law?"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "radio" }, [
+                    _c("label", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value:
+                              _vm.officer_own_five_percent_convicted_felony,
+                            expression:
+                              "officer_own_five_percent_convicted_felony"
+                          }
+                        ],
+                        attrs: {
+                          type: "radio",
+                          id: "stockholders_owning_aggregate1",
+                          name: "stockholders_owning_aggregate",
+                          value: "Yes"
+                        },
+                        domProps: {
+                          checked: _vm._q(
+                            _vm.officer_own_five_percent_convicted_felony,
+                            "Yes"
+                          )
+                        },
+                        on: {
+                          change: function($event) {
+                            _vm.officer_own_five_percent_convicted_felony =
+                              "Yes"
+                          }
+                        }
+                      }),
+                      _vm._v(" Yes ")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "radio" }, [
+                    _c("label", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value:
+                              _vm.officer_own_five_percent_convicted_felony,
+                            expression:
+                              "officer_own_five_percent_convicted_felony"
+                          }
+                        ],
+                        attrs: {
+                          type: "radio",
+                          id: "stockholders_owning_aggregate2",
+                          name: "stockholders_owning_aggregate",
+                          value: "No"
+                        },
+                        domProps: {
+                          checked: _vm._q(
+                            _vm.officer_own_five_percent_convicted_felony,
+                            "No"
+                          )
+                        },
+                        on: {
+                          change: function($event) {
+                            _vm.officer_own_five_percent_convicted_felony = "No"
+                          }
+                        }
+                      }),
+                      _vm._v(" No ")
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(14),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "name_person_convicted" } }, [
+                    _vm._v("Name")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value:
+                          _vm.officer_own_five_percent_convicted__felony_name,
+                        expression:
+                          "officer_own_five_percent_convicted__felony_name"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", id: "name_person_convicted" },
+                    domProps: {
+                      value: _vm.officer_own_five_percent_convicted__felony_name
+                    },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.officer_own_five_percent_convicted__felony_name =
+                          $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "date_convicted" } }, [
+                    _vm._v("Date")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value:
+                          _vm.officer_own_five_percent_convicted_felony_date,
+                        expression:
+                          "officer_own_five_percent_convicted_felony_date"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "date", id: "date_convicted" },
+                    domProps: {
+                      value: _vm.officer_own_five_percent_convicted_felony_date
+                    },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.officer_own_five_percent_convicted_felony_date =
+                          $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "offence_convicted" } }, [
+                    _vm._v("Offence")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value:
+                          _vm.officer_own_five_percent_convicted_felony_offence,
+                        expression:
+                          "officer_own_five_percent_convicted_felony_offence"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", id: "offence_convicted" },
+                    domProps: {
+                      value:
+                        _vm.officer_own_five_percent_convicted_felony_offence
+                    },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.officer_own_five_percent_convicted_felony_offence =
+                          $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "label",
+                    {
+                      attrs: {
+                        for: "stockholders_convicted_violation_federal_law"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "19. Has any officer, manager or diretor of said corporation, or any stockholders owning in the aggregate more than 5% of the stock of such corporation, ever been convicted of a violation of any federal or state liquor law(s)?"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "radio" }, [
+                    _c("label", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value:
+                              _vm.officer_own_five_percent_convicted_violation,
+                            expression:
+                              "officer_own_five_percent_convicted_violation"
+                          }
+                        ],
+                        attrs: {
+                          type: "radio",
+                          id: "stockholders_convicted_violation_federal_law1",
+                          name: "stockholders_convicted_violation_federal_law",
+                          value: "Yes"
+                        },
+                        domProps: {
+                          checked: _vm._q(
+                            _vm.officer_own_five_percent_convicted_violation,
+                            "Yes"
+                          )
+                        },
+                        on: {
+                          change: function($event) {
+                            _vm.officer_own_five_percent_convicted_violation =
+                              "Yes"
+                          }
+                        }
+                      }),
+                      _vm._v(" Yes ")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "radio" }, [
+                    _c("label", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value:
+                              _vm.officer_own_five_percent_convicted_violation,
+                            expression:
+                              "officer_own_five_percent_convicted_violation"
+                          }
+                        ],
+                        attrs: {
+                          type: "radio",
+                          id: "stockholders_convicted_violation_federal_law2",
+                          name: "stockholders_convicted_violation_federal_law",
+                          value: "No"
+                        },
+                        domProps: {
+                          checked: _vm._q(
+                            _vm.officer_own_five_percent_convicted_violation,
+                            "No"
+                          )
+                        },
+                        on: {
+                          change: function($event) {
+                            _vm.officer_own_five_percent_convicted_violation =
+                              "No"
+                          }
+                        }
+                      }),
+                      _vm._v(" No ")
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(15),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "label",
+                    {
+                      attrs: {
+                        for: "name_stockholders_convicted_violation_federal_law"
+                      }
+                    },
+                    [_vm._v("Name")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value:
+                          _vm.officer_own_five_percent_convicted__violation_name,
+                        expression:
+                          "officer_own_five_percent_convicted__violation_name"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      id: "name_stockholders_convicted_violation_federal_law"
+                    },
+                    domProps: {
+                      value:
+                        _vm.officer_own_five_percent_convicted__violation_name
+                    },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.officer_own_five_percent_convicted__violation_name =
+                          $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "label",
+                    {
+                      attrs: {
+                        for: "date_stockholders_convicted_violation_federal_law"
+                      }
+                    },
+                    [_vm._v("Date")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value:
+                          _vm.officer_own_five_percent_convicted_violation_date,
+                        expression:
+                          "officer_own_five_percent_convicted_violation_date"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "date",
+                      id: "date_stockholders_convicted_violation_federal_law"
+                    },
+                    domProps: {
+                      value:
+                        _vm.officer_own_five_percent_convicted_violation_date
+                    },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.officer_own_five_percent_convicted_violation_date =
+                          $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "label",
+                    {
+                      attrs: {
+                        for:
+                          "offence_stockholders_convicted_violation_federal_law"
+                      }
+                    },
+                    [_vm._v("Offence")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value:
+                          _vm.officer_own_five_percent_convicted_violation_offence,
+                        expression:
+                          "officer_own_five_percent_convicted_violation_offence"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      id: "offence_stockholders_convicted_violation_federal_law"
+                    },
+                    domProps: {
+                      value:
+                        _vm.officer_own_five_percent_convicted_violation_offence
+                    },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.officer_own_five_percent_convicted_violation_offence =
+                          $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "label",
+                    { attrs: { for: "stockholders_convicted_gambling" } },
+                    [
+                      _vm._v(
+                        "20. Has any officer, manager or director of said corporation, or any stockholders owning in the aggregate more than 5% of the stock of such corporation, ever been convicted of gambling, keeping an illegal gambling place, of being the keeper of a house of ill fame; or of pandering or other crime or misdemeanor opposed to decency and morality?"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "radio" }, [
+                    _c("label", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.made_application_similar_license,
+                            expression: "made_application_similar_license"
+                          }
+                        ],
+                        attrs: {
+                          type: "radio",
+                          id: "stockholders_convicted_gambling1",
+                          name: "stockholders_convicted_gambling",
+                          value: "Yes"
+                        },
+                        domProps: {
+                          checked: _vm._q(
+                            _vm.made_application_similar_license,
+                            "Yes"
+                          )
+                        },
+                        on: {
+                          change: function($event) {
+                            _vm.made_application_similar_license = "Yes"
+                          }
+                        }
+                      }),
+                      _vm._v(" Yes ")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "radio" }, [
+                    _c("label", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.made_application_similar_license,
+                            expression: "made_application_similar_license"
+                          }
+                        ],
+                        attrs: {
+                          type: "radio",
+                          id: "stockholders_convicted_gambling2",
+                          name: "stockholders_convicted_gambling",
+                          value: "No"
+                        },
+                        domProps: {
+                          checked: _vm._q(
+                            _vm.made_application_similar_license,
+                            "No"
+                          )
+                        },
+                        on: {
+                          change: function($event) {
+                            _vm.made_application_similar_license = "No"
+                          }
+                        }
+                      }),
+                      _vm._v(" No ")
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(16),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "label",
+                    { attrs: { for: "name_stockholders_convicted_gambling" } },
+                    [_vm._v("Name")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value:
+                          _vm.officer_own_five_percent_convicted__gambling_name,
+                        expression:
+                          "officer_own_five_percent_convicted__gambling_name"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      id: "name_stockholders_convicted_gambling"
+                    },
+                    domProps: {
+                      value:
+                        _vm.officer_own_five_percent_convicted__gambling_name
+                    },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.officer_own_five_percent_convicted__gambling_name =
+                          $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "label",
+                    { attrs: { for: "date_stockholders_convicted_gambling" } },
+                    [_vm._v("Date")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value:
+                          _vm.officer_own_five_percent_convicted_gambling_date,
+                        expression:
+                          "officer_own_five_percent_convicted_gambling_date"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "date",
+                      id: "date_stockholders_convicted_gambling"
+                    },
+                    domProps: {
+                      value:
+                        _vm.officer_own_five_percent_convicted_gambling_date
+                    },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.officer_own_five_percent_convicted_gambling_date =
+                          $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "label",
+                    {
+                      attrs: { for: "offence_stockholders_convicted_gambling" }
+                    },
+                    [_vm._v("Offence")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value:
+                          _vm.officer_own_five_percent_convicted_gambling_offence,
+                        expression:
+                          "officer_own_five_percent_convicted_gambling_offence"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      id: "offence_stockholders_convicted_gambling"
+                    },
+                    domProps: {
+                      value:
+                        _vm.officer_own_five_percent_convicted_gambling_offence
+                    },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.officer_own_five_percent_convicted_gambling_offence =
+                          $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "label",
+                    { attrs: { for: "made_application_for_similar_license" } },
+                    [
+                      _vm._v(
+                        "21. Has the corporation (applicant) or any officer, manager, or director of said corporation, or any stockholders owning in the aggregate more than 5% of the stock of such corporation, made application for a similar license for this period for any premises other than that described above?"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "radio" }, [
+                    _c("label", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.made_application_similar_license,
+                            expression: "made_application_similar_license"
+                          }
+                        ],
+                        attrs: {
+                          type: "radio",
+                          id: "made_application_for_similar_license1",
+                          name: "made_application_for_similar_license",
+                          value: "Yes"
+                        },
+                        domProps: {
+                          checked: _vm._q(
+                            _vm.made_application_similar_license,
+                            "Yes"
+                          )
+                        },
+                        on: {
+                          change: function($event) {
+                            _vm.made_application_similar_license = "Yes"
+                          }
+                        }
+                      }),
+                      _vm._v(" Yes ")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "radio" }, [
+                    _c("label", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.made_application_similar_license,
+                            expression: "made_application_similar_license"
+                          }
+                        ],
+                        attrs: {
+                          type: "radio",
+                          id: "made_application_for_similar_license2",
+                          name: "made_application_for_similar_license",
+                          value: "No"
+                        },
+                        domProps: {
+                          checked: _vm._q(
+                            _vm.made_application_similar_license,
+                            "No"
+                          )
+                        },
+                        on: {
+                          change: function($event) {
+                            _vm.made_application_similar_license = "No"
+                          }
+                        }
+                      }),
+                      _vm._v(" No ")
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(17),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "label",
+                    {
+                      attrs: {
+                        for: "name_made_application_for_similar_license"
+                      }
+                    },
+                    [_vm._v("Name")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.made_application_similar_license_name,
+                        expression: "made_application_similar_license_name"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      id: "name_made_application_for_similar_license"
+                    },
+                    domProps: {
+                      value: _vm.made_application_similar_license_name
+                    },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.made_application_similar_license_name =
+                          $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "label",
+                    {
+                      attrs: {
+                        for: "date_made_application_for_similar_license"
+                      }
+                    },
+                    [_vm._v("Date")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.made_application_similar_license_date,
+                        expression: "made_application_similar_license_date"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "date",
+                      id: "date_made_application_for_similar_license"
+                    },
+                    domProps: {
+                      value: _vm.made_application_similar_license_date
+                    },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.made_application_similar_license_date =
+                          $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "label",
+                    {
+                      attrs: {
+                        for: "offence_made_application_for_similar_license"
+                      }
+                    },
+                    [_vm._v("Offence")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.made_application_similar_license_offence,
+                        expression: "made_application_similar_license_offence"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      id: "offence_made_application_for_similar_license"
+                    },
+                    domProps: {
+                      value: _vm.made_application_similar_license_offence
+                    },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.made_application_similar_license_offence =
+                          $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "label",
+                    {
+                      attrs: { for: "corporation_hold_federal_wagering_stamp" }
+                    },
+                    [
+                      _vm._v(
+                        "22. Does the corporation (applicant) or any officer, manager or director of said corporation or any stockholder(s) owning in the aggregate more than 20% of the stock of such corporation currently hold a federal wagering stamp?"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value:
+                          _vm.corporation_own_twenty_percent_federal_wagering_stamp,
+                        expression:
+                          "corporation_own_twenty_percent_federal_wagering_stamp"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      id: "corporation_hold_federal_wagering_stamp"
+                    },
+                    domProps: {
+                      value:
+                        _vm.corporation_own_twenty_percent_federal_wagering_stamp
+                    },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.corporation_own_twenty_percent_federal_wagering_stamp =
+                          $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "label",
+                    {
+                      attrs: {
+                        for:
+                          "enforcing_official_interested_business_license_sought"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "23. Is any law enforcing official, mayor, alderman or member of the city council directly or indirectly interested in the business for which license is sought?"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "radio" }, [
+                    _c("label", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value:
+                              _vm.law_enforcing_official_interested_business_license_sought,
+                            expression:
+                              "law_enforcing_official_interested_business_license_sought"
+                          }
+                        ],
+                        attrs: {
+                          type: "radio",
+                          id:
+                            "enforcing_official_interested_business_license_sought1",
+                          name:
+                            "enforcing_official_interested_business_license_sought",
+                          value: "Yes"
+                        },
+                        domProps: {
+                          checked: _vm._q(
+                            _vm.law_enforcing_official_interested_business_license_sought,
+                            "Yes"
+                          )
+                        },
+                        on: {
+                          change: function($event) {
+                            _vm.law_enforcing_official_interested_business_license_sought =
+                              "Yes"
+                          }
+                        }
+                      }),
+                      _vm._v(" Yes ")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "radio" }, [
+                    _c("label", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value:
+                              _vm.law_enforcing_official_interested_business_license_sought,
+                            expression:
+                              "law_enforcing_official_interested_business_license_sought"
+                          }
+                        ],
+                        attrs: {
+                          type: "radio",
+                          id:
+                            "enforcing_official_interested_business_license_sought2",
+                          name:
+                            "enforcing_official_interested_business_license_sought",
+                          value: "No"
+                        },
+                        domProps: {
+                          checked: _vm._q(
+                            _vm.law_enforcing_official_interested_business_license_sought,
+                            "No"
+                          )
+                        },
+                        on: {
+                          change: function($event) {
+                            _vm.law_enforcing_official_interested_business_license_sought =
+                              "No"
+                          }
+                        }
+                      }),
+                      _vm._v(" No ")
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "name_party" } }, [
+                    _vm._v("Name of Party")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.name_of_party,
+                        expression: "name_of_party"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", id: "name_party" },
+                    domProps: { value: _vm.name_of_party },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.name_of_party = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "label",
+                    {
+                      attrs: { for: "license_previously_issued_been_revoked" }
+                    },
+                    [
+                      _vm._v(
+                        "24. Has any license previously issued by the state, federal or local authorities to the corporation (applicant) or to any officer, manager, or director of said corporation, or any stockholder(s) owning in the aggregate more than 5% of such corporation, been revoked?"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "radio" }, [
+                    _c("label", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value:
+                              _vm.five_percent_such_corporation_been_revoked,
+                            expression:
+                              "five_percent_such_corporation_been_revoked"
+                          }
+                        ],
+                        attrs: {
+                          type: "radio",
+                          id: "license_previously_issued_been_revoked1",
+                          name: "license_previously_issued_been_revoked",
+                          value: "Yes"
+                        },
+                        domProps: {
+                          checked: _vm._q(
+                            _vm.five_percent_such_corporation_been_revoked,
+                            "Yes"
+                          )
+                        },
+                        on: {
+                          change: function($event) {
+                            _vm.five_percent_such_corporation_been_revoked =
+                              "Yes"
+                          }
+                        }
+                      }),
+                      _vm._v(" Yes ")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "radio" }, [
+                    _c("label", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value:
+                              _vm.five_percent_such_corporation_been_revoked,
+                            expression:
+                              "five_percent_such_corporation_been_revoked"
+                          }
+                        ],
+                        attrs: {
+                          type: "radio",
+                          id: "license_previously_issued_been_revoked2",
+                          name: "license_previously_issued_been_revoked",
+                          value: "No"
+                        },
+                        domProps: {
+                          checked: _vm._q(
+                            _vm.five_percent_such_corporation_been_revoked,
+                            "No"
+                          )
+                        },
+                        on: {
+                          change: function($event) {
+                            _vm.five_percent_such_corporation_been_revoked =
+                              "No"
+                          }
+                        }
+                      }),
+                      _vm._v(" No ")
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(18),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "name_license" } }, [
+                    _vm._v("Name of License")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value:
+                          _vm.five_percent_such_corporation_been_revoked_name_license,
+                        expression:
+                          "five_percent_such_corporation_been_revoked_name_license"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", id: "name_license" },
+                    domProps: {
+                      value:
+                        _vm.five_percent_such_corporation_been_revoked_name_license
+                    },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.five_percent_such_corporation_been_revoked_name_license =
+                          $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "reason" } }, [
+                    _vm._v("Reason:")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value:
+                          _vm.five_percent_such_corporation_been_revoked_reason,
+                        expression:
+                          "five_percent_such_corporation_been_revoked_reason"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", id: "reason" },
+                    domProps: {
+                      value:
+                        _vm.five_percent_such_corporation_been_revoked_reason
+                    },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.five_percent_such_corporation_been_revoked_reason =
+                          $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "date_revocation" } }, [
+                    _vm._v("Date of Revocation:")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value:
+                          _vm.five_percent_such_corporation_been_revoked_date_revocation,
+                        expression:
+                          "five_percent_such_corporation_been_revoked_date_revocation"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "date", id: "date_revocation" },
+                    domProps: {
+                      value:
+                        _vm.five_percent_such_corporation_been_revoked_date_revocation
+                    },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.five_percent_such_corporation_been_revoked_date_revocation =
+                          $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _vm._m(19),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "btn btn-primary",
+                  attrs: { type: "button", value: "Save" },
+                  on: {
+                    click: function($event) {
+                      _vm.saveForm()
+                    }
+                  }
+                })
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticStyle: { "margin-left": "100px" } }, [
+      _c("h4", [
+        _c("i", { staticClass: "fa fa-globe" }),
+        _vm._v(" CORPORATE FORM "),
+        _c("br"),
+        _vm._v(
+          "\n                APPLICATION FOR CITY RETAILER’S LICENSE TO SELL ALCOHOLIC LIQUORS\n              "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("p", [
+        _vm._v(
+          "\n                The undersigned hereby files an application for the issuance of a city retailer’s license for the\n                sale of alcoholic liquor for the term ending April 30, 20______, and hereby certifies to the\n                following facts:                                  \n                "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("strong", [_vm._v("1. Applicant Corporate Information")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("div", [_c("strong", [_vm._v("President")])])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("div", [_c("strong", [_vm._v("Vice President")])])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("div", [_c("strong", [_vm._v("Secretary")])])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("div", [_c("strong", [_vm._v("Treasurer")])])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("div", [_c("strong", [_vm._v("Director")])])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("div", [_c("strong", [_vm._v("Vice Director")])])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("div", [
+        _c("strong", [_vm._v("4. Registered Agent of the Corporation ")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", [_vm._v("If so, are premises:")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", [_vm._v("If so, give Name and Address of lessor:")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", [_vm._v("If so, give Name, Address and Phone")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "amount_anticipated_alcohol" } }, [
+        _vm._v(
+          "13. Is applicant seeking approval for any of the following uses:"
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", [
+        _vm._v(
+          "If so, give name or persons convicted, stating date and offence"
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", [
+        _vm._v(
+          "If so, give name or persons convicted, stating date and offence"
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", [
+        _vm._v(
+          "If so, give name or persons convicted, stating date and offence"
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", [
+        _vm._v(
+          "If so, give name or persons convicted, stating date and offence"
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", [
+        _vm._v(
+          "If so, give name of licensee, and state reasons for and date of revocation:"
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", [_vm._v("Completed?")]),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("label", { staticClass: "switch" }, [
+        _c("input", { attrs: { type: "checkbox" } }),
+        _vm._v(" "),
+        _c("span", { staticClass: "slider round" })
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-50c2923c", module.exports)
+  }
+}
+
+/***/ }),
+/* 56 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(57)
+/* template */
+var __vue_template__ = __webpack_require__(58)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -53875,7 +59900,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 52 */
+/* 57 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -53934,7 +59959,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 53 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -54029,19 +60054,19 @@ if (false) {
 }
 
 /***/ }),
-/* 54 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(55)
+  __webpack_require__(60)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(57)
+var __vue_script__ = __webpack_require__(62)
 /* template */
-var __vue_template__ = __webpack_require__(58)
+var __vue_template__ = __webpack_require__(63)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -54080,13 +60105,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 55 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(56);
+var content = __webpack_require__(61);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -54106,7 +60131,7 @@ if(false) {
 }
 
 /***/ }),
-/* 56 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -54120,7 +60145,7 @@ exports.push([module.i, "\n.table[data-v-26114db6]{\n  background-color: white;\
 
 
 /***/ }),
-/* 57 */
+/* 62 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -54219,7 +60244,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 58 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -54342,19 +60367,19 @@ if (false) {
 }
 
 /***/ }),
-/* 59 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(60)
+  __webpack_require__(65)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(62)
+var __vue_script__ = __webpack_require__(67)
 /* template */
-var __vue_template__ = __webpack_require__(63)
+var __vue_template__ = __webpack_require__(68)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -54393,13 +60418,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 60 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(61);
+var content = __webpack_require__(66);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -54419,7 +60444,7 @@ if(false) {
 }
 
 /***/ }),
-/* 61 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -54433,7 +60458,7 @@ exports.push([module.i, "\n.table[data-v-36ff5eb3]{\n  background-color: white;\
 
 
 /***/ }),
-/* 62 */
+/* 67 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -54532,7 +60557,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 63 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -54655,19 +60680,19 @@ if (false) {
 }
 
 /***/ }),
-/* 64 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(65)
+  __webpack_require__(70)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(67)
+var __vue_script__ = __webpack_require__(72)
 /* template */
-var __vue_template__ = __webpack_require__(68)
+var __vue_template__ = __webpack_require__(73)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -54706,13 +60731,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 65 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(66);
+var content = __webpack_require__(71);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -54732,7 +60757,7 @@ if(false) {
 }
 
 /***/ }),
-/* 66 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -54746,7 +60771,7 @@ exports.push([module.i, "\n.table[data-v-7becd568]{\n  background-color: white;\
 
 
 /***/ }),
-/* 67 */
+/* 72 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -54845,7 +60870,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 68 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -54976,19 +61001,19 @@ if (false) {
 }
 
 /***/ }),
-/* 69 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(70)
+  __webpack_require__(75)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(72)
+var __vue_script__ = __webpack_require__(77)
 /* template */
-var __vue_template__ = __webpack_require__(73)
+var __vue_template__ = __webpack_require__(78)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -55027,13 +61052,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 70 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(71);
+var content = __webpack_require__(76);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -55053,7 +61078,7 @@ if(false) {
 }
 
 /***/ }),
-/* 71 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -55067,7 +61092,7 @@ exports.push([module.i, "\n.table[data-v-767d7cfa]{\n  background-color: white;\
 
 
 /***/ }),
-/* 72 */
+/* 77 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -55166,7 +61191,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 73 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -55289,15 +61314,15 @@ if (false) {
 }
 
 /***/ }),
-/* 74 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(75)
+var __vue_script__ = __webpack_require__(80)
 /* template */
-var __vue_template__ = __webpack_require__(76)
+var __vue_template__ = __webpack_require__(81)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -55336,13 +61361,22 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 75 */
+/* 80 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -55564,10 +61598,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     getCompletedApplications: function getCompletedApplications() {
       var _this = this;
 
-      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/applications').then(function (response) {
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/applications/completed').then(function (response) {
         console.log(response.data);
         _this.applications = response.data.applications;
       }).catch();
+    },
+    getApplications: function getApplications(page) {
+      var _this2 = this;
+
+      var url = void 0;
+      if (page == null) {
+        url = '/api/applications/completed';
+      } else {
+        // url = `/user/applications?page=${page}`
+        url = page;
+      }
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(url).then(function (response) {
+        console.log(response.data);
+        _this2.applications = response.data.applications;
+      }).catch(function (err) {
+        return console.log(err);
+      });
     }
   },
   mounted: function mounted() {
@@ -55576,7 +61627,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 76 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -55618,21 +61669,19 @@ var render = function() {
                       _vm._v(" "),
                       _c(
                         "tbody",
-                        _vm._l(_vm.applications, function(application) {
+                        _vm._l(_vm.applications.data, function(completed) {
                           return _c(
                             "tr",
                             {
-                              key: application.id,
+                              key: completed.id,
                               staticClass: "gradeX odd",
                               attrs: { role: "row" }
                             },
                             [
                               _c("td", { staticClass: "sorting_1" }, [
-                                _c("a", { attrs: { href: application.id } }, [
+                                _c("a", { attrs: { href: completed.id } }, [
                                   _vm._v(
-                                    " " +
-                                      _vm._s(application.corporate_name) +
-                                      " "
+                                    " " + _vm._s(completed.corporate_name) + " "
                                   )
                                 ])
                               ]),
@@ -55646,7 +61695,7 @@ var render = function() {
                                   [
                                     _vm._v(
                                       " " +
-                                        _vm._s(application.business_email) +
+                                        _vm._s(completed.business_email) +
                                         " "
                                     )
                                   ]
@@ -55656,9 +61705,7 @@ var render = function() {
                               _vm._m(4, true),
                               _vm._v(" "),
                               _c("td", { staticClass: "center" }, [
-                                _vm._v(
-                                  " " + _vm._s(application.created_at) + " "
-                                )
+                                _vm._v(" " + _vm._s(completed.created_at) + " ")
                               ]),
                               _vm._v(" "),
                               _vm._m(5, true)
@@ -55670,7 +61717,91 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _vm._m(6)
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-md-5 col-sm-5" }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-7 col-sm-7" }, [
+                    _c(
+                      "nav",
+                      { attrs: { "aria-label": "Page navigation example" } },
+                      [
+                        _c("ul", { staticClass: "pagination" }, [
+                          _c(
+                            "li",
+                            {
+                              staticClass: "page-item",
+                              class: [
+                                { disabled: !_vm.applications.prev_page_url }
+                              ]
+                            },
+                            [
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "page-link",
+                                  attrs: { href: "#" },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.getApplications(
+                                        _vm.applications.prev_page_url
+                                      )
+                                    }
+                                  }
+                                },
+                                [_vm._v("Previous")]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("li", { staticClass: "page-item disabled" }, [
+                            _c(
+                              "a",
+                              {
+                                staticClass: "page-link text-dark",
+                                attrs: { href: "#" }
+                              },
+                              [
+                                _vm._v(
+                                  "Page " +
+                                    _vm._s(_vm.applications.current_page) +
+                                    " of " +
+                                    _vm._s(_vm.applications.last_page)
+                                )
+                              ]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            {
+                              staticClass: "page-item",
+                              class: [
+                                { disabled: !_vm.applications.next_page_url }
+                              ]
+                            },
+                            [
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "page-link",
+                                  attrs: { href: "#" },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.getApplications(
+                                        _vm.applications.next_page_url
+                                      )
+                                    }
+                                  }
+                                },
+                                [_vm._v("Next")]
+                              )
+                            ]
+                          )
+                        ])
+                      ]
+                    )
+                  ])
+                ])
               ]
             )
           ])
@@ -55996,83 +62127,6 @@ var staticRenderFns = [
         ])
       ])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-5 col-sm-5" }, [
-        _c(
-          "div",
-          {
-            staticClass: "dataTables_info",
-            attrs: {
-              id: "sample_1_info",
-              role: "status",
-              "aria-live": "polite"
-            }
-          },
-          [_vm._v("Showing 1 to 5 of 25 records")]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-7 col-sm-7" }, [
-        _c(
-          "div",
-          {
-            staticClass: "dataTables_paginate paging_bootstrap_full_number",
-            attrs: { id: "sample_1_paginate" }
-          },
-          [
-            _c(
-              "ul",
-              {
-                staticClass: "pagination",
-                staticStyle: { visibility: "visible" }
-              },
-              [
-                _c("li", { staticClass: "prev disabled" }, [
-                  _c("a", { attrs: { href: "#", title: "First" } }, [
-                    _c("i", { staticClass: "fa fa-angle-double-left" })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("li", { staticClass: "prev disabled" }, [
-                  _c("a", { attrs: { href: "#", title: "Prev" } }, [
-                    _c("i", { staticClass: "fa fa-angle-left" })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("li", { staticClass: "active" }, [
-                  _c("a", { attrs: { href: "#" } }, [_vm._v("1")])
-                ]),
-                _vm._v(" "),
-                _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("2")])]),
-                _vm._v(" "),
-                _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("3")])]),
-                _vm._v(" "),
-                _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("4")])]),
-                _vm._v(" "),
-                _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("5")])]),
-                _vm._v(" "),
-                _c("li", { staticClass: "next" }, [
-                  _c("a", { attrs: { href: "#", title: "Next" } }, [
-                    _c("i", { staticClass: "fa fa-angle-right" })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("li", { staticClass: "next" }, [
-                  _c("a", { attrs: { href: "#", title: "Last" } }, [
-                    _c("i", { staticClass: "fa fa-angle-double-right" })
-                  ])
-                ])
-              ]
-            )
-          ]
-        )
-      ])
-    ])
   }
 ]
 render._withStripped = true
@@ -56085,19 +62139,1667 @@ if (false) {
 }
 
 /***/ }),
-/* 77 */
+/* 82 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(83)
+/* template */
+var __vue_template__ = __webpack_require__(84)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/admin/ProcessedApplications.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3ebb6936", Component.options)
+  } else {
+    hotAPI.reload("data-v-3ebb6936", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 83 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      applications: []
+    };
+  },
+
+  methods: {
+    getProcessedApplications: function getProcessedApplications() {
+      var _this = this;
+
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/applications/processed').then(function (response) {
+        console.log(response.data);
+        _this.applications = response.data.applications;
+      }).catch();
+    },
+    getApplications: function getApplications(page) {
+      var _this2 = this;
+
+      var url = void 0;
+      if (page == null) {
+        url = '/api/applications/processed';
+      } else {
+        // url = `/user/applications?page=${page}`
+        url = page;
+      }
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(url).then(function (response) {
+        console.log(response.data);
+        _this2.applications = response.data.applications;
+      }).catch(function (err) {
+        return console.log(err);
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.getProcessedApplications();
+  }
+});
+
+/***/ }),
+/* 84 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("div", { staticClass: "portlet light " }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "portlet-body" }, [
+            _vm._m(1),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "dataTables_wrapper no-footer",
+                attrs: { id: "sample_1_wrapper" }
+              },
+              [
+                _vm._m(2),
+                _vm._v(" "),
+                _c("div", { staticClass: "table-scrollable" }, [
+                  _c(
+                    "table",
+                    {
+                      staticClass:
+                        "table table-striped table-bordered table-hover table-checkable order-column dataTable no-footer",
+                      attrs: {
+                        id: "sample_1",
+                        role: "grid",
+                        "aria-describedby": "sample_1_info"
+                      }
+                    },
+                    [
+                      _vm._m(3),
+                      _vm._v(" "),
+                      _c(
+                        "tbody",
+                        _vm._l(_vm.applications.data, function(processed) {
+                          return _c(
+                            "tr",
+                            {
+                              key: processed.id,
+                              staticClass: "gradeX odd",
+                              attrs: { role: "row" }
+                            },
+                            [
+                              _c("td", { staticClass: "sorting_1" }, [
+                                _c("a", { attrs: { href: processed.id } }, [
+                                  _vm._v(
+                                    " " + _vm._s(processed.corporate_name) + " "
+                                  )
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c(
+                                  "a",
+                                  {
+                                    attrs: { href: "mailto:userwow@gmail.com" }
+                                  },
+                                  [
+                                    _vm._v(
+                                      " " +
+                                        _vm._s(processed.business_email) +
+                                        " "
+                                    )
+                                  ]
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _vm._m(4, true),
+                              _vm._v(" "),
+                              _c("td", { staticClass: "center" }, [
+                                _vm._v(" " + _vm._s(processed.created_at) + " ")
+                              ]),
+                              _vm._v(" "),
+                              _vm._m(5, true)
+                            ]
+                          )
+                        })
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-md-5 col-sm-5" }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-7 col-sm-7" }, [
+                    _c(
+                      "nav",
+                      { attrs: { "aria-label": "Page navigation example" } },
+                      [
+                        _c("ul", { staticClass: "pagination" }, [
+                          _c(
+                            "li",
+                            {
+                              staticClass: "page-item",
+                              class: [
+                                { disabled: !_vm.applications.prev_page_url }
+                              ]
+                            },
+                            [
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "page-link",
+                                  attrs: { href: "#" },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.getApplications(
+                                        _vm.applications.prev_page_url
+                                      )
+                                    }
+                                  }
+                                },
+                                [_vm._v("Previous")]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("li", { staticClass: "page-item disabled" }, [
+                            _c(
+                              "a",
+                              {
+                                staticClass: "page-link text-dark",
+                                attrs: { href: "#" }
+                              },
+                              [
+                                _vm._v(
+                                  "Page " +
+                                    _vm._s(_vm.applications.current_page) +
+                                    " of " +
+                                    _vm._s(_vm.applications.last_page)
+                                )
+                              ]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            {
+                              staticClass: "page-item",
+                              class: [
+                                { disabled: !_vm.applications.next_page_url }
+                              ]
+                            },
+                            [
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "page-link",
+                                  attrs: { href: "#" },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.getApplications(
+                                        _vm.applications.next_page_url
+                                      )
+                                    }
+                                  }
+                                },
+                                [_vm._v("Next")]
+                              )
+                            ]
+                          )
+                        ])
+                      ]
+                    )
+                  ])
+                ])
+              ]
+            )
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "portlet-title" }, [
+      _c("div", { staticClass: "caption font-dark" }, [
+        _c("i", { staticClass: "icon-settings font-dark" }),
+        _vm._v(" "),
+        _c("span", { staticClass: "caption-subject bold uppercase" }, [
+          _vm._v(" Processed Applications ")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "actions" }, [
+        _c(
+          "div",
+          {
+            staticClass: "btn-group btn-group-devided",
+            attrs: { "data-toggle": "buttons" }
+          },
+          [
+            _c(
+              "label",
+              {
+                staticClass:
+                  "btn btn-transparent dark btn-outline btn-circle btn-sm active"
+              },
+              [
+                _c("input", {
+                  staticClass: "toggle",
+                  attrs: { type: "radio", name: "options", id: "option1" }
+                }),
+                _vm._v("Actions\n              ")
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "label",
+              {
+                staticClass:
+                  "btn btn-transparent dark btn-outline btn-circle btn-sm"
+              },
+              [
+                _c("input", {
+                  staticClass: "toggle",
+                  attrs: { type: "radio", name: "options", id: "option2" }
+                }),
+                _vm._v("Settings\n              ")
+              ]
+            )
+          ]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "table-toolbar" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-md-6" }, [
+          _c("div", { staticClass: "btn-group" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn sbold green",
+                attrs: { id: "sample_editable_1_new" }
+              },
+              [
+                _vm._v(" Add New\n                    "),
+                _c("i", { staticClass: "fa fa-plus" })
+              ]
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-6" }, [
+          _c("div", { staticClass: "btn-group pull-right" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn green  btn-outline dropdown-toggle",
+                attrs: { "data-toggle": "dropdown" }
+              },
+              [
+                _vm._v("Tools\n                    "),
+                _c("i", { staticClass: "fa fa-angle-down" })
+              ]
+            )
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-6 col-sm-6" }, [
+        _c(
+          "div",
+          {
+            staticClass: "dataTables_length",
+            attrs: { id: "sample_1_length" }
+          },
+          [
+            _c("label", [
+              _vm._v("Show "),
+              _c(
+                "select",
+                {
+                  staticClass:
+                    "form-control input-sm input-xsmall input-inline",
+                  attrs: {
+                    name: "sample_1_length",
+                    "aria-controls": "sample_1"
+                  }
+                },
+                [
+                  _c("option", { attrs: { value: "5" } }, [_vm._v("5")]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "15" } }, [_vm._v("15")]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "20" } }, [_vm._v("20")]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "-1" } }, [_vm._v("All")])
+                ]
+              )
+            ])
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-6 col-sm-6" }, [
+        _c(
+          "div",
+          {
+            staticClass: "dataTables_filter",
+            attrs: { id: "sample_1_filter" }
+          },
+          [
+            _c("label", [
+              _vm._v("Search:"),
+              _c("input", {
+                staticClass: "form-control input-sm input-small input-inline",
+                attrs: {
+                  type: "search",
+                  placeholder: "",
+                  "aria-controls": "sample_1"
+                }
+              })
+            ])
+          ]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", { attrs: { role: "row" } }, [
+        _c(
+          "th",
+          {
+            staticClass: "sorting_asc",
+            staticStyle: { width: "174px" },
+            attrs: {
+              tabindex: "0",
+              "aria-controls": "sample_1",
+              rowspan: "1",
+              colspan: "1",
+              "aria-sort": "ascending",
+              "aria-label": " Username : activate to sort column descending"
+            }
+          },
+          [_vm._v(" Corporate Name ")]
+        ),
+        _vm._v(" "),
+        _c(
+          "th",
+          {
+            staticClass: "sorting",
+            staticStyle: { width: "260px" },
+            attrs: {
+              tabindex: "0",
+              "aria-controls": "sample_1",
+              rowspan: "1",
+              colspan: "1",
+              "aria-label": " Email : activate to sort column ascending"
+            }
+          },
+          [_vm._v(" Email ")]
+        ),
+        _vm._v(" "),
+        _c(
+          "th",
+          {
+            staticClass: "sorting",
+            staticStyle: { width: "140px" },
+            attrs: {
+              tabindex: "0",
+              "aria-controls": "sample_1",
+              rowspan: "1",
+              colspan: "1",
+              "aria-label": " Status : activate to sort column ascending"
+            }
+          },
+          [_vm._v(" Status ")]
+        ),
+        _vm._v(" "),
+        _c(
+          "th",
+          {
+            staticClass: "sorting",
+            staticStyle: { width: "133px" },
+            attrs: {
+              tabindex: "0",
+              "aria-controls": "sample_1",
+              rowspan: "1",
+              colspan: "1",
+              "aria-label": " Joined : activate to sort column ascending"
+            }
+          },
+          [_vm._v(" Joined ")]
+        ),
+        _vm._v(" "),
+        _c(
+          "th",
+          {
+            staticClass: "sorting",
+            staticStyle: { width: "136px" },
+            attrs: {
+              tabindex: "0",
+              "aria-controls": "sample_1",
+              rowspan: "1",
+              colspan: "1",
+              "aria-label": " Actions : activate to sort column ascending"
+            }
+          },
+          [_vm._v(" Actions ")]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("span", { staticClass: "label label-sm label-info" }, [
+        _vm._v(" Info ")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "btn-group" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-xs green dropdown-toggle",
+            attrs: {
+              type: "button",
+              "data-toggle": "dropdown",
+              "aria-expanded": "false"
+            }
+          },
+          [
+            _vm._v(" Actions\n                                          "),
+            _c("i", { staticClass: "fa fa-angle-down" })
+          ]
+        ),
+        _vm._v(" "),
+        _c("ul", { staticClass: "dropdown-menu", attrs: { role: "menu" } }, [
+          _c("li", [
+            _c("a", { attrs: { href: "javascript:;" } }, [
+              _c("i", { staticClass: "icon-docs" }),
+              _vm._v(" New Post ")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c("a", { attrs: { href: "javascript:;" } }, [
+              _c("i", { staticClass: "icon-tag" }),
+              _vm._v(" New Comment ")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c("a", { attrs: { href: "javascript:;" } }, [
+              _c("i", { staticClass: "icon-user" }),
+              _vm._v(" New User ")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "divider" }),
+          _vm._v(" "),
+          _c("li", [
+            _c("a", { attrs: { href: "javascript:;" } }, [
+              _c("i", { staticClass: "icon-flag" }),
+              _vm._v(
+                " Comments\n                                                  "
+              ),
+              _c("span", { staticClass: "badge badge-success" }, [_vm._v("4")])
+            ])
+          ])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-3ebb6936", module.exports)
+  }
+}
+
+/***/ }),
+/* 85 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(86)
+/* template */
+var __vue_template__ = __webpack_require__(87)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/admin/PaidApplications.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-385f9d0c", Component.options)
+  } else {
+    hotAPI.reload("data-v-385f9d0c", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 86 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      applications: []
+    };
+  },
+
+  methods: {
+    getPaidApplications: function getPaidApplications() {
+      var _this = this;
+
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/applications/paid').then(function (response) {
+        console.log(response.data);
+        _this.applications = response.data.applications;
+      }).catch();
+    },
+    getApplications: function getApplications(page) {
+      var _this2 = this;
+
+      var url = void 0;
+      if (page == null) {
+        url = '/api/applications/paid';
+      } else {
+        // url = `/user/applications?page=${page}`
+        url = page;
+      }
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(url).then(function (response) {
+        console.log(response.data);
+        _this2.applications = response.data.applications;
+      }).catch(function (err) {
+        return console.log(err);
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.getPaidApplications();
+  }
+});
+
+/***/ }),
+/* 87 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("div", { staticClass: "portlet light " }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "portlet-body" }, [
+            _vm._m(1),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "dataTables_wrapper no-footer",
+                attrs: { id: "sample_1_wrapper" }
+              },
+              [
+                _vm._m(2),
+                _vm._v(" "),
+                _c("div", { staticClass: "table-scrollable" }, [
+                  _c(
+                    "table",
+                    {
+                      staticClass:
+                        "table table-striped table-bordered table-hover table-checkable order-column dataTable no-footer",
+                      attrs: {
+                        id: "sample_1",
+                        role: "grid",
+                        "aria-describedby": "sample_1_info"
+                      }
+                    },
+                    [
+                      _vm._m(3),
+                      _vm._v(" "),
+                      _c(
+                        "tbody",
+                        _vm._l(_vm.applications.data, function(paid) {
+                          return _c(
+                            "tr",
+                            {
+                              key: paid.id,
+                              staticClass: "gradeX odd",
+                              attrs: { role: "row" }
+                            },
+                            [
+                              _c("td", { staticClass: "sorting_1" }, [
+                                _c("a", { attrs: { href: paid.id } }, [
+                                  _vm._v(
+                                    " " + _vm._s(paid.corporate_name) + " "
+                                  )
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c(
+                                  "a",
+                                  {
+                                    attrs: { href: "mailto:userwow@gmail.com" }
+                                  },
+                                  [
+                                    _vm._v(
+                                      " " + _vm._s(paid.business_email) + " "
+                                    )
+                                  ]
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _vm._m(4, true),
+                              _vm._v(" "),
+                              _c("td", { staticClass: "center" }, [
+                                _vm._v(" " + _vm._s(paid.created_at) + " ")
+                              ]),
+                              _vm._v(" "),
+                              _vm._m(5, true)
+                            ]
+                          )
+                        })
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-md-5 col-sm-5" }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-7 col-sm-7" }, [
+                    _c(
+                      "nav",
+                      { attrs: { "aria-label": "Page navigation example" } },
+                      [
+                        _c("ul", { staticClass: "pagination" }, [
+                          _c(
+                            "li",
+                            {
+                              staticClass: "page-item",
+                              class: [
+                                { disabled: !_vm.applications.prev_page_url }
+                              ]
+                            },
+                            [
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "page-link",
+                                  attrs: { href: "#" },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.getApplications(
+                                        _vm.applications.prev_page_url
+                                      )
+                                    }
+                                  }
+                                },
+                                [_vm._v("Previous")]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("li", { staticClass: "page-item disabled" }, [
+                            _c(
+                              "a",
+                              {
+                                staticClass: "page-link text-dark",
+                                attrs: { href: "#" }
+                              },
+                              [
+                                _vm._v(
+                                  "Page " +
+                                    _vm._s(_vm.applications.current_page) +
+                                    " of " +
+                                    _vm._s(_vm.applications.last_page)
+                                )
+                              ]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            {
+                              staticClass: "page-item",
+                              class: [
+                                { disabled: !_vm.applications.next_page_url }
+                              ]
+                            },
+                            [
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "page-link",
+                                  attrs: { href: "#" },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.getApplications(
+                                        _vm.applications.next_page_url
+                                      )
+                                    }
+                                  }
+                                },
+                                [_vm._v("Next")]
+                              )
+                            ]
+                          )
+                        ])
+                      ]
+                    )
+                  ])
+                ])
+              ]
+            )
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "portlet-title" }, [
+      _c("div", { staticClass: "caption font-dark" }, [
+        _c("i", { staticClass: "icon-settings font-dark" }),
+        _vm._v(" "),
+        _c("span", { staticClass: "caption-subject bold uppercase" }, [
+          _vm._v(" Paid Applications ")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "actions" }, [
+        _c(
+          "div",
+          {
+            staticClass: "btn-group btn-group-devided",
+            attrs: { "data-toggle": "buttons" }
+          },
+          [
+            _c(
+              "label",
+              {
+                staticClass:
+                  "btn btn-transparent dark btn-outline btn-circle btn-sm active"
+              },
+              [
+                _c("input", {
+                  staticClass: "toggle",
+                  attrs: { type: "radio", name: "options", id: "option1" }
+                }),
+                _vm._v("Actions\n              ")
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "label",
+              {
+                staticClass:
+                  "btn btn-transparent dark btn-outline btn-circle btn-sm"
+              },
+              [
+                _c("input", {
+                  staticClass: "toggle",
+                  attrs: { type: "radio", name: "options", id: "option2" }
+                }),
+                _vm._v("Settings\n              ")
+              ]
+            )
+          ]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "table-toolbar" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-md-6" }, [
+          _c("div", { staticClass: "btn-group" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn sbold green",
+                attrs: { id: "sample_editable_1_new" }
+              },
+              [
+                _vm._v(" Add New\n                    "),
+                _c("i", { staticClass: "fa fa-plus" })
+              ]
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-6" }, [
+          _c("div", { staticClass: "btn-group pull-right" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn green  btn-outline dropdown-toggle",
+                attrs: { "data-toggle": "dropdown" }
+              },
+              [
+                _vm._v("Tools\n                    "),
+                _c("i", { staticClass: "fa fa-angle-down" })
+              ]
+            )
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-6 col-sm-6" }, [
+        _c(
+          "div",
+          {
+            staticClass: "dataTables_length",
+            attrs: { id: "sample_1_length" }
+          },
+          [
+            _c("label", [
+              _vm._v("Show "),
+              _c(
+                "select",
+                {
+                  staticClass:
+                    "form-control input-sm input-xsmall input-inline",
+                  attrs: {
+                    name: "sample_1_length",
+                    "aria-controls": "sample_1"
+                  }
+                },
+                [
+                  _c("option", { attrs: { value: "5" } }, [_vm._v("5")]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "15" } }, [_vm._v("15")]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "20" } }, [_vm._v("20")]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "-1" } }, [_vm._v("All")])
+                ]
+              )
+            ])
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-6 col-sm-6" }, [
+        _c(
+          "div",
+          {
+            staticClass: "dataTables_filter",
+            attrs: { id: "sample_1_filter" }
+          },
+          [
+            _c("label", [
+              _vm._v("Search:"),
+              _c("input", {
+                staticClass: "form-control input-sm input-small input-inline",
+                attrs: {
+                  type: "search",
+                  placeholder: "",
+                  "aria-controls": "sample_1"
+                }
+              })
+            ])
+          ]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", { attrs: { role: "row" } }, [
+        _c(
+          "th",
+          {
+            staticClass: "sorting_asc",
+            staticStyle: { width: "174px" },
+            attrs: {
+              tabindex: "0",
+              "aria-controls": "sample_1",
+              rowspan: "1",
+              colspan: "1",
+              "aria-sort": "ascending",
+              "aria-label": " Username : activate to sort column descending"
+            }
+          },
+          [_vm._v(" Corporate Name ")]
+        ),
+        _vm._v(" "),
+        _c(
+          "th",
+          {
+            staticClass: "sorting",
+            staticStyle: { width: "260px" },
+            attrs: {
+              tabindex: "0",
+              "aria-controls": "sample_1",
+              rowspan: "1",
+              colspan: "1",
+              "aria-label": " Email : activate to sort column ascending"
+            }
+          },
+          [_vm._v(" Email ")]
+        ),
+        _vm._v(" "),
+        _c(
+          "th",
+          {
+            staticClass: "sorting",
+            staticStyle: { width: "140px" },
+            attrs: {
+              tabindex: "0",
+              "aria-controls": "sample_1",
+              rowspan: "1",
+              colspan: "1",
+              "aria-label": " Status : activate to sort column ascending"
+            }
+          },
+          [_vm._v(" Status ")]
+        ),
+        _vm._v(" "),
+        _c(
+          "th",
+          {
+            staticClass: "sorting",
+            staticStyle: { width: "133px" },
+            attrs: {
+              tabindex: "0",
+              "aria-controls": "sample_1",
+              rowspan: "1",
+              colspan: "1",
+              "aria-label": " Joined : activate to sort column ascending"
+            }
+          },
+          [_vm._v(" Joined ")]
+        ),
+        _vm._v(" "),
+        _c(
+          "th",
+          {
+            staticClass: "sorting",
+            staticStyle: { width: "136px" },
+            attrs: {
+              tabindex: "0",
+              "aria-controls": "sample_1",
+              rowspan: "1",
+              colspan: "1",
+              "aria-label": " Actions : activate to sort column ascending"
+            }
+          },
+          [_vm._v(" Actions ")]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("span", { staticClass: "label label-sm label-info" }, [
+        _vm._v(" Info ")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "btn-group" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-xs green dropdown-toggle",
+            attrs: {
+              type: "button",
+              "data-toggle": "dropdown",
+              "aria-expanded": "false"
+            }
+          },
+          [
+            _vm._v(" Actions\n                                          "),
+            _c("i", { staticClass: "fa fa-angle-down" })
+          ]
+        ),
+        _vm._v(" "),
+        _c("ul", { staticClass: "dropdown-menu", attrs: { role: "menu" } }, [
+          _c("li", [
+            _c("a", { attrs: { href: "javascript:;" } }, [
+              _c("i", { staticClass: "icon-docs" }),
+              _vm._v(" New Post ")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c("a", { attrs: { href: "javascript:;" } }, [
+              _c("i", { staticClass: "icon-tag" }),
+              _vm._v(" New Comment ")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c("a", { attrs: { href: "javascript:;" } }, [
+              _c("i", { staticClass: "icon-user" }),
+              _vm._v(" New User ")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "divider" }),
+          _vm._v(" "),
+          _c("li", [
+            _c("a", { attrs: { href: "javascript:;" } }, [
+              _c("i", { staticClass: "icon-flag" }),
+              _vm._v(
+                " Comments\n                                                  "
+              ),
+              _c("span", { staticClass: "badge badge-success" }, [_vm._v("4")])
+            ])
+          ])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-385f9d0c", module.exports)
+  }
+}
+
+/***/ }),
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(78)
+  __webpack_require__(89)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(80)
+var __vue_script__ = __webpack_require__(91)
 /* template */
-var __vue_template__ = __webpack_require__(81)
+var __vue_template__ = __webpack_require__(92)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -56136,13 +63838,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 78 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(79);
+var content = __webpack_require__(90);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -56162,7 +63864,7 @@ if(false) {
 }
 
 /***/ }),
-/* 79 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -56176,7 +63878,7 @@ exports.push([module.i, "\n.switch[data-v-38378878] {\n  position: relative;\n  
 
 
 /***/ }),
-/* 80 */
+/* 91 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -56917,7 +64619,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 81 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -59531,3893 +67233,10 @@ if (false) {
 }
 
 /***/ }),
-/* 82 */
+/* 93 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 83 */,
-/* 84 */,
-/* 85 */,
-/* 86 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(87)
-}
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(89)
-/* template */
-var __vue_template__ = __webpack_require__(90)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-50c2923c"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/js/components/EditLiquorLicenseForm.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-50c2923c", Component.options)
-  } else {
-    hotAPI.reload("data-v-50c2923c", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 87 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(88);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(4)("b52c8a30", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-50c2923c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./EditLiquorLicenseForm.vue", function() {
-     var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-50c2923c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./EditLiquorLicenseForm.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 88 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(3)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.switch[data-v-50c2923c] {\n  position: relative;\n  display: inline-block;\n  width: 60px;\n  height: 34px;\n}\n.switch input[data-v-50c2923c] { \n  opacity: 0;\n  width: 0;\n  height: 0;\n}\n.slider[data-v-50c2923c] {\n  position: absolute;\n  cursor: pointer;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #ccc;\n  -webkit-transition: .4s;\n  transition: .4s;\n}\n.slider[data-v-50c2923c]:before {\n  position: absolute;\n  content: \"\";\n  height: 26px;\n  width: 26px;\n  left: 4px;\n  bottom: 4px;\n  background-color: white;\n  -webkit-transition: .4s;\n  transition: .4s;\n}\ninput:checked + .slider[data-v-50c2923c] {\n  background-color: #2196F3;\n}\ninput:focus + .slider[data-v-50c2923c] {\n  -webkit-box-shadow: 0 0 1px #2196F3;\n          box-shadow: 0 0 1px #2196F3;\n}\ninput:checked + .slider[data-v-50c2923c]:before {\n  -webkit-transform: translateX(26px);\n  transform: translateX(26px);\n}\n\n/* Rounded sliders */\n.slider.round[data-v-50c2923c] {\n  border-radius: 34px;\n}\n.slider.round[data-v-50c2923c]:before {\n  border-radius: 50%;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 89 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      app_id: '',
-      license_class: '',
-      license: '',
-      fee: '',
-      address: '',
-      city: '',
-      state: '',
-      zip: '',
-      corporate_name: '',
-      corporate_address: '',
-      name_business_to_be_conducted: '',
-      business_phone: '',
-      business_mobile: '',
-      business_email: '',
-      president_name: '',
-      president_address: '',
-      president_phone: '',
-      president_mobile: '',
-      president_email: '',
-      vice_president_name: '',
-      vice_president_address: '',
-      vice_president_phone: '',
-      vice_president_mobile: '',
-      vice_president_email: '',
-      secretary_name: '',
-      secretary_address: '',
-      secretary_phone: '',
-      secretary_mobile: '',
-      secretary_email: '',
-      treasurer_name: '',
-      treasurer_address: '',
-      treasurer_phone: '',
-      treasurer_mobile: '',
-      treasurer_email: '',
-      director_name: '',
-      director_address: '',
-      director_phone: '',
-      director_mobile: '',
-      director_email: '',
-      vice_director_name: '',
-      vice_director_address: '',
-      vice_director_phone: '',
-      vice_director_mobile: '',
-      vice_director_email: '',
-      date_incorporation: '',
-      state_incorporation: '',
-      other_state_incorporation_not_illinois: '',
-      corporation_forth_chapter: '',
-      corporation_agent_name: '',
-      corporation_agent_address: '',
-      corporation_agent_phone: '',
-      corporation_agent_mobile: '',
-      corporation_agent_email: '',
-      principal_kind_business: '',
-      applicant_seek_license_alcoholic_restaurant: '',
-      maitained_to_public_meals_served: '',
-      yes_food_services_are: '',
-      serve_suitable_food: '',
-      qualifications_described_illinois_act: '',
-      applicant_own_premises_license_sought: '',
-      applicant_lease_premises_license_sought: '',
-      lessor_name: '',
-      lessor_address: '',
-      period_covered_lease_from: '',
-      period_covered_lease_to: '',
-      applicant_own_premise_license_sought: '',
-      applicant_food_dispenser: '',
-      applicant_food_dispenser_number_license: '',
-      applicant_actively_involved_day_operation: '',
-      business_liquor_license_sought_manager: '',
-      manager_name: '',
-      manager_address: '',
-      manager_phone: '',
-      amount_anticipated_liquor_sales: '',
-      applicant_seeking_approval_beer_garden: '',
-      applicant_seeking_approval_outdoor_seating_area: '',
-      location_applicants_business_within_100ft_property_of_church: '',
-      manufacturer_agreed_to_pay_license: '',
-      applicant_engaged_manufacturer_alcoholic_liquors: '',
-      applicant_engaged_manufacturer_alcoholic_liquors_location: '',
-      applicant_conducting_business_importing_distributor: '',
-      applicant_conducting_business_importing_distributor_location: '',
-      officer_own_five_percent_convicted_felony: '',
-      officer_own_five_percent_convicted__felony_name: '',
-      officer_own_five_percent_convicted_felony_date: '',
-      officer_own_five_percent_convicted_felony_offence: '',
-      officer_own_five_percent_convicted_violation: '',
-      officer_own_five_percent_convicted__violation_name: '',
-      officer_own_five_percent_convicted_violation_date: '',
-      officer_own_five_percent_convicted_violation_offence: '',
-      officer_own_five_percent_convicted_gambling: '',
-      officer_own_five_percent_convicted__gambling_name: '',
-      officer_own_five_percent_convicted_gambling_date: '',
-      officer_own_five_percent_convicted_gambling_offence: '',
-      made_application_similar_license: '',
-      made_application_similar_license_name: '',
-      made_application_similar_license_date: '',
-      made_application_similar_license_offence: '',
-      corporation_own_twenty_percent_federal_wagering_stamp: '',
-      law_enforcing_official_interested_business_license_sought: '',
-      name_of_party: '',
-      five_percent_such_corporation_been_revoked: '',
-      five_percent_such_corporation_been_revoked_name_license: '',
-      five_percent_such_corporation_been_revoked_reason: '',
-      five_percent_such_corporation_been_revoked_date_revocation: '',
-      status: '',
-      edited: false
-    };
-  },
-
-  methods: {
-    saveForm: function saveForm() {
-      var _this = this;
-
-      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/user/applications', {
-        app_id: this.app_id,
-        class: this.license_class,
-        license: this.license,
-        fee: this.fee,
-        address: this.address,
-        city: this.city,
-        state: this.state,
-        zip: this.zip,
-        corporate_name: this.corporate_name,
-        corporate_address: this.corporate_address,
-        name_business_to_be_conducted: this.name_business_to_be_conducted,
-        business_phone: this.business_phone,
-        business_mobile: this.business_mobile,
-        business_email: this.business_email,
-        president_name: this.president_name,
-        president_address: this.president_address,
-        president_phone: this.president_phone,
-        president_mobile: this.president_mobile,
-        president_email: this.president_email,
-        vice_president_name: this.vice_president_name,
-        vice_president_address: this.vice_president_address,
-        vice_president_phone: this.vice_president_phone,
-        vice_president_mobile: this.vice_president_mobile,
-        vice_president_email: this.vice_president_email,
-        secretary_name: this.secretary_name,
-        secretary_address: this.secretary_address,
-        secretary_phone: this.secretary_phone,
-        secretary_mobile: this.secretary_mobile,
-        secretary_email: this.secretary_email,
-        treasurer_name: this.treasurer_name,
-        treasurer_address: this.treasurer_address,
-        treasurer_phone: this.treasurer_phone,
-        treasurer_mobile: this.treasurer_mobile,
-        treasurer_email: this.treasurer_email,
-        director_name: this.director_name,
-        director_address: this.director_address,
-        director_phone: this.director_phone,
-        director_mobile: this.director_mobile,
-        director_email: this.director_email,
-        vice_director_name: this.vice_president_name,
-        vice_director_address: this.vice_president_address,
-        vice_director_phone: this.vice_president_phone,
-        vice_director_mobile: this.vice_president_mobile,
-        vice_director_email: this.vice_president_email,
-        date_incorporation: this.date_incorporation,
-        state_incorporation: this.state_incorporation,
-        other_state_incorporation_not_illinois: this.other_state_incorporation_not_illinois,
-        corporation_forth_chapter: this.corporation_forth_chapter,
-        corporation_agent_name: this.corporation_agent_name,
-        corporation_agent_address: this.corporation_agent_address,
-        corporation_agent_phone: this.corporation_agent_phone,
-        corporation_agent_mobile: this.corporation_agent_mobile,
-        corporation_agent_email: this.corporation_agent_email,
-        principal_kind_business: this.principal_kind_business,
-        applicant_seek_license_alcoholic_restaurant: this.applicant_seek_license_alcoholic_restaurant,
-        maintained_to_public_meals_served: this.maintained_to_public_meals_served,
-        yes_food_services_are: this.yes_food_services_are,
-        serve_suitable_food: this.serve_suitable_food,
-        qualifications_described_illinois_act: this.qualifications_described_illinois_act,
-        applicant_own_premises_license_sought: this.applicant_own_premises_license_sought,
-        applicant_lease_premises_license_sought: this.applicant_lease_premises_license_sought,
-        lessor_name: this.lessor_name,
-        lessor_address: this.lessor_address,
-        period_covered_lease_from: this.period_covered_lease_from,
-        period_covered_lease_to: this.period_covered_lease_to,
-        applicant_own_premise_license_sought: this.applicant_own_premise_license_sought,
-        applicant_food_dispenser: this.applicant_food_dispenser,
-        applicant_food_dispenser_number_license: this.applicant_food_dispenser_number_license,
-        applicant_actively_involved_day_operation: this.applicant_actively_involved_day_operation,
-        business_liquor_license_sought_manager: this.business_liquor_license_sought_manager,
-        manager_name: this.manager_name,
-        manager_address: this.manager_address,
-        manager_phone: this.manager_phone,
-        amount_anticipated_liquor_sales: this.amount_anticipated_liquor_sales,
-        applicant_seeking_approval_beer_garden: this.applicant_seeking_approval_beer_garden,
-        applicant_seeking_approval_outdoor_seating_area: this.applicant_seeking_approval_outdoor_seating_area,
-        location_applicants_business_within_100ft_property_of_church: this.location_applicants_business_within_100ft_property_of_church,
-        manufacturer_agreed_to_pay_license: this.manufacturer_agreed_to_pay_license,
-        applicant_engaged_manufacturer_alcoholic_liquors: this.applicant_engaged_manufacturer_alcoholic_liquors,
-        applicant_engaged_manufacturer_alcoholic_liquors_location: this.applicant_engaged_manufacturer_alcoholic_liquors_location,
-        applicant_conducting_business_importing_distributor: this.applicant_conducting_business_importing_distributor,
-        applicant_conducting_business_importing_distributor_location: this.applicant_conducting_business_importing_distributor_location,
-        officer_own_five_percent_convicted_felony: this.officer_own_five_percent_convicted_felony,
-        officer_own_five_percent_convicted__felony_name: this.officer_own_five_percent_convicted__felony_name,
-        officer_own_five_percent_convicted_felony_date: this.officer_own_five_percent_convicted_felony_date,
-        officer_own_five_percent_convicted_felony_offence: this.officer_own_five_percent_convicted_felony_offence,
-        officer_own_five_percent_convicted_violation: this.officer_own_five_percent_convicted_violation,
-        officer_own_five_percent_convicted__violation_name: this.officer_own_five_percent_convicted_violation_name,
-        officer_own_five_percent_convicted_violation_date: this.officer_own_five_percent_convicted_violation_date,
-        officer_own_five_percent_convicted_violation_offence: this.officer_own_five_percent_convicted_violation_offence,
-        officer_own_five_percent_convicted_gambling: this.officer_own_five_percent_convicted_gambling,
-        officer_own_five_percent_convicted__gambling_name: this.officer_own_five_percent_convicted__gambling_name,
-        officer_own_five_percent_convicted_gambling_date: this.officer_own_five_percent_convicted_gambling_date,
-        officer_own_five_percent_convicted_gambling_offence: this.officer_own_five_percent_convicted_gambling_offence,
-        made_application_similar_license: this.made_application_similar_license,
-        made_application_similar_license_name: this.made_application_similar_license_name,
-        made_application_similar_license_date: this.made_application_similar_license_date,
-        made_application_similar_license_offence: this.made_application_similar_license_offence,
-        corporation_own_twenty_percent_federal_wagering_stamp: this.corporation_own_twenty_percent_federal_wagering_stamp,
-        law_enforcing_official_interested_business_license_sought: this.law_enforcing_official_interested_business_license_sought,
-        name_of_party: this.name_of_party,
-        five_percent_such_corporation_been_revoked: this.five_percent_such_corporation_been_revoked,
-        five_percent_such_corporation_been_revoked_name_license: this.five_percent_such_corporation_been_revoked_name_license,
-        five_percent_such_corporation_been_revoked_reason: this.five_percent_such_corporation_been_revoked_reason,
-        five_percent_such_corporation_been_revoked_date_revocation: this.five_percent_such_corporation_been_revoked_date_revocation,
-        status: 'incomplete'
-      }).then(function (response) {
-        console.log(response.data);
-        _this.getApplication();
-      }).catch(function (error) {
-        console.log(error);
-      });
-    },
-    getApplication: function getApplication() {
-      var _this2 = this;
-
-      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/user/applications/' + this.params.id).then(function (response) {
-        console.log(response.data);
-        _this2.app_id = response.data.id;
-        _this2.license_class = response.data.license_class;
-        _this2.license = response.data.license;
-        _this2.fee = response.data.fee;
-        _this2.address = response.data.address;
-        _this2.city = response.data.city;
-        _this2.state = response.data.state;
-        _this2.zip = response.data.zip;
-        _this2.corporate_name = response.data.corporate_name;
-        _this2.corporate_address = response.data.corporate_address;
-        _this2.name_business_to_be_conducted = response.data.name_business_to_be_conducted;
-        _this2.business_phone = response.data.business_phone;
-        _this2.business_mobile = response.data.business_mobile;
-        _this2.business_email = response.data.business_email;
-        _this2.president_name = response.data.president_name;
-        _this2.president_address = response.data.president_address;
-        _this2.president_phone = response.data.president_phone;
-        _this2.president_mobile = response.data.president_mobile;
-        _this2.president_email = response.data.president_email;
-        _this2.vice_president_name = response.data.vice_president_name;
-        _this2.vice_president_address = response.data.vice_president_address;
-        _this2.vice_president_phone = response.data.vice_president_phone;
-        _this2.vice_president_mobile = response.data.vice_president_mobile;
-        _this2.vice_president_email = response.data.vice_president_email;
-        _this2.secretary_name = response.data.secretary_name;
-        _this2.secretary_address = response.data.secretary_address;
-        _this2.secretary_phone = response.data.secretary_phone;
-        _this2.secretary_mobile = response.data.secretary_mobile;
-        _this2.secretary_email = response.data.secretary_email;
-        _this2.treasurer_name = response.data.treasurer_name;
-        _this2.treasurer_address = response.data.treasurer_address;
-        _this2.treasurer_phone = response.data.treasurer_phone;
-        _this2.treasurer_mobile = response.data.treasurer_mobile;
-        _this2.treasurer_email = response.data.treasurer_email;
-        _this2.director_name = response.data.director_name;
-        _this2.director_address = response.data.director_address;
-        _this2.director_phone = response.data.director_phone;
-        _this2.director_mobile = response.data.director_mobile;
-        _this2.director_email = response.data.director_email;
-        _this2.vice_director_name = response.data.vice_director_name;
-        _this2.vice_director_address = response.data.vice_director_address;
-        _this2.vice_director_phone = response.data.vice_director_phone;
-        _this2.vice_director_mobile = response.data.vice_director_mobile;
-        _this2.vice_director_email = response.data.vice_director_email;
-        _this2.date_incorporation = response.data.date_incorporation;
-        _this2.state_incorporation = response.data.state_incorporation;
-        _this2.other_state_incorporation_not_illinois = response.data.other_state_incorporation_not_illinois;
-        _this2.corporation_forth_chapter = response.data.corporation_forth_chapter;
-        _this2.corporation_agent_name = response.data.corporation_agent_name;
-        _this2.corporation_agent_address = response.data.corporation_agent_address;
-        _this2.corporation_agent_phone = response.data.corporation_agent_phone;
-        _this2.corporation_agent_mobile = response.data.corporation_agent_mobile;
-        _this2.corporation_agent_email = response.data.corporation_agent_email;
-        _this2.principal_kind_business = response.data.principal_kind_business;
-        _this2.applicant_seek_license_alcoholic_restaurant = response.data.applicant_seek_license_alcoholic_restaurant;
-        _this2.maitained_to_public_meals_served = response.data.maitained_to_public_meals_served;
-        _this2.yes_food_services_are = response.data.yes_food_services_are;
-        _this2.serve_suitable_food = response.data.serve_suitable_food;
-        _this2.qualifications_described_illinois_act = response.data.qualifications_described_illinois_act;
-        _this2.applicant_own_premises_license_sought = response.data.applicant_own_premises_license_sought;
-        _this2.applicant_lease_premises_license_sought = response.data.applicant_lease_premises_license_sought;
-        _this2.lessor_name = response.data.lessor_name;
-        _this2.lessor_address = response.data.lessor_address;
-        _this2.period_covered_lease_from = response.data.period_covered_lease_from;
-        _this2.period_covered_lease_to = response.data.period_covered_lease_to;
-        _this2.applicant_own_premise_license_sought = response.data.applicant_own_premise_license_sought;
-        _this2.applicant_food_dispenser = response.data.applicant_food_dispenser;
-        _this2.applicant_food_dispenser_number_license = response.data.applicant_food_dispenser_number_license;
-        _this2.applicant_actively_involved_day_operation = response.data.applicant_actively_involved_day_operation;
-        _this2.business_liquor_license_sought_manager = response.data.business_liquor_license_sought_manager;
-        _this2.manager_name = response.data.manager_name;
-        _this2.manager_address = response.data.manager_address;
-        _this2.manager_phone = response.data.manager_phone;
-        _this2.amount_anticipated_liquor_sales = response.data.amount_anticipated_liquor_sales;
-        _this2.applicant_seeking_approval_beer_garden = response.data.applicant_seeking_approval_beer_garden;
-        _this2.applicant_seeking_approval_outdoor_seating_area = response.data.applicant_seeking_approval_outdoor_seating_area;
-        _this2.location_applicants_business_within_100ft_property_of_church = response.data.location_applicants_business_within_100ft_property_of_church;
-        _this2.manufacturer_agreed_to_pay_license = response.data.manufacturer_agreed_to_pay_license;
-        _this2.applicant_engaged_manufacturer_alcoholic_liquors = response.data.applicant_engaged_manufacturer_alcoholic_liquors;
-        _this2.applicant_engaged_manufacturer_alcoholic_liquors_location = response.data.applicant_engaged_manufacturer_alcoholic_liquors_location;
-        _this2.applicant_conducting_business_importing_distributor = response.data.applicant_conducting_business_importing_distributor;
-        _this2.applicant_conducting_business_importing_distributor_location = response.data.applicant_conducting_business_importing_distributor_location;
-        _this2.officer_own_five_percent_convicted_felony = response.data.officer_own_five_percent_convicted_felony;
-        _this2.officer_own_five_percent_convicted__felony_name = response.data.officer_own_five_percent_convicted__felony_name;
-        _this2.officer_own_five_percent_convicted_felony_date = response.data.officer_own_five_percent_convicted_felony_date;
-        _this2.officer_own_five_percent_convicted_felony_offence = response.data.officer_own_five_percent_convicted_felony_offence;
-        _this2.officer_own_five_percent_convicted_violation = response.data.officer_own_five_percent_convicted_violation;
-        _this2.officer_own_five_percent_convicted__violation_name = response.data.officer_own_five_percent_convicted__violation_name;
-        _this2.officer_own_five_percent_convicted_violation_date = response.data.officer_own_five_percent_convicted_violation_date;
-        _this2.officer_own_five_percent_convicted_violation_offence = response.data.officer_own_five_percent_convicted_violation_offence;
-        _this2.officer_own_five_percent_convicted_gambling = response.data.officer_own_five_percent_convicted_gambling;
-        _this2.officer_own_five_percent_convicted__gambling_name = response.data.officer_own_five_percent_convicted__gambling_name;
-        _this2.officer_own_five_percent_convicted_gambling_date = response.data.officer_own_five_percent_convicted_gambling_date;
-        _this2.officer_own_five_percent_convicted_gambling_offence = response.data.officer_own_five_percent_convicted_gambling_offence;
-        _this2.made_application_similar_license = response.data.made_application_similar_license;
-        _this2.made_application_similar_license_name = response.data.made_application_similar_license_name;
-        _this2.made_application_similar_license_date = response.data.made_application_similar_license_date;
-        _this2.made_application_similar_license_offence = response.data.made_application_similar_license_offence;
-        _this2.corporation_own_twenty_percent_federal_wagering_stamp = response.data.corporation_own_twenty_percent_federal_wagering_stamp;
-        _this2.law_enforcing_official_interested_business_license_sought = response.data.law_enforcing_official_interested_business_license_sought;
-        _this2.name_of_party = response.data.name_of_party;
-        _this2.five_percent_such_corporation_been_revoked = response.data.five_percent_such_corporation_been_revoked;
-        _this2.five_percent_such_corporation_been_revoked_name_license = response.data.five_percent_such_corporation_been_revoked_name_license;
-        _this2.five_percent_such_corporation_been_revoked_reason = response.data.five_percent_such_corporation_been_revoked_reason;
-        _this2.five_percent_such_corporation_been_revoked_date_revocation = response.data.five_percent_such_corporation_been_revoked_date_revocation;
-
-        if (response.data != 'No data') {}
-      }).catch(function (error) {
-        console.log(error);
-      });
-    },
-    completeApplication: function completeApplication() {
-      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post().then().catch();
-    }
-  },
-  props: ['application'],
-  mounted: function mounted() {
-    console.log(JSON.parse(this.application));
-    this.application = JSON.parse(this.application);
-    // console.log('this route 2: '.this.$router.query.page)
-  }
-});
-
-/***/ }),
-/* 90 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-12" }, [
-        _c("div", { staticClass: "invoice p-3 mb-3" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-1" }),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-10" }, [
-              _vm._m(0),
-              _vm._v(" "),
-              _c("form", [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "inputAddress" } }, [
-                    _vm._v("Address")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      id: "inputAddress",
-                      placeholder: "1234 Main St"
-                    },
-                    domProps: { value: _vm.application.address }
-                  }),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: { type: "hidden", id: "app_id" },
-                    domProps: { value: _vm.application.app_id }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-row" }, [
-                  _c("div", { staticClass: "form-group col-md-6" }, [
-                    _c("label", { attrs: { for: "inputCity" } }, [
-                      _vm._v("City")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: { type: "text", id: "inputCity" },
-                      domProps: { value: _vm.application.city }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group col-md-4" }, [
-                    _c("label", { attrs: { for: "inputState" } }, [
-                      _vm._v("State")
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "select",
-                      {
-                        staticClass: "form-control",
-                        attrs: { id: "inputState" },
-                        domProps: { value: _vm.application.state }
-                      },
-                      [
-                        _c("option", { attrs: { selected: "" } }, [
-                          _vm._v("Choose...")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "AL" } }, [
-                          _vm._v("Alabama")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "AK" } }, [
-                          _vm._v("Alaska")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "AZ" } }, [
-                          _vm._v("Arizona")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "AR" } }, [
-                          _vm._v("Arkansas")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "CA" } }, [
-                          _vm._v("California")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "CO" } }, [
-                          _vm._v("Colorado")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "CT" } }, [
-                          _vm._v("Connecticut")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "DE" } }, [
-                          _vm._v("Delaware")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "DC" } }, [
-                          _vm._v("District Of Columbia")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "FL" } }, [
-                          _vm._v("Florida")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "GA" } }, [
-                          _vm._v("Georgia")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "HI" } }, [
-                          _vm._v("Hawaii")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "ID" } }, [
-                          _vm._v("Idaho")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "IL" } }, [
-                          _vm._v("Illinois")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "IN" } }, [
-                          _vm._v("Indiana")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "IA" } }, [
-                          _vm._v("Iowa")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "KS" } }, [
-                          _vm._v("Kansas")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "KY" } }, [
-                          _vm._v("Kentucky")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "LA" } }, [
-                          _vm._v("Louisiana")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "ME" } }, [
-                          _vm._v("Maine")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "MD" } }, [
-                          _vm._v("Maryland")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "MA" } }, [
-                          _vm._v("Massachusetts")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "MI" } }, [
-                          _vm._v("Michigan")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "MN" } }, [
-                          _vm._v("Minnesota")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "MS" } }, [
-                          _vm._v("Mississippi")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "MO" } }, [
-                          _vm._v("Missouri")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "MT" } }, [
-                          _vm._v("Montana")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "NE" } }, [
-                          _vm._v("Nebraska")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "NV" } }, [
-                          _vm._v("Nevada")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "NH" } }, [
-                          _vm._v("New Hampshire")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "NJ" } }, [
-                          _vm._v("New Jersey")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "NM" } }, [
-                          _vm._v("New Mexico")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "NY" } }, [
-                          _vm._v("New York")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "NC" } }, [
-                          _vm._v("North Carolina")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "ND" } }, [
-                          _vm._v("North Dakota")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "OH" } }, [
-                          _vm._v("Ohio")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "OK" } }, [
-                          _vm._v("Oklahoma")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "OR" } }, [
-                          _vm._v("Oregon")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "PA" } }, [
-                          _vm._v("Pennsylvania")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "RI" } }, [
-                          _vm._v("Rhode Island")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "SC" } }, [
-                          _vm._v("South Carolina")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "SD" } }, [
-                          _vm._v("South Dakota")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "TN" } }, [
-                          _vm._v("Tennessee")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "TX" } }, [
-                          _vm._v("Texas")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "UT" } }, [
-                          _vm._v("Utah")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "VT" } }, [
-                          _vm._v("Vermont")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "VA" } }, [
-                          _vm._v("Virginia")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "WA" } }, [
-                          _vm._v("Washington")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "WV" } }, [
-                          _vm._v("West Virginia")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "WI" } }, [
-                          _vm._v("Wisconsin")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "WY" } }, [
-                          _vm._v("Wyoming")
-                        ])
-                      ]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group col-md-2" }, [
-                    _c("label", { attrs: { for: "inputZip" } }, [
-                      _vm._v("Zip")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: { type: "text", id: "inputZip" },
-                      domProps: { value: _vm.application.zip }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-row" }, [
-                  _c("div", { staticClass: "form-group col-md-4" }, [
-                    _c("label", { attrs: { for: "inputClass" } }, [
-                      _vm._v("Class")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: { type: "text", id: "inputClass" },
-                      domProps: { value: _vm.application.license_class }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group col-md-4" }, [
-                    _c("label", { attrs: { for: "license" } }, [
-                      _vm._v("License")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: { type: "text", id: "license" },
-                      domProps: { value: _vm.application.license }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group col-md-4" }, [
-                    _c("label", { attrs: { for: "fee" } }, [_vm._v("Fee")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: { type: "text", id: "fee" },
-                      domProps: { value: _vm.application.fee }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _vm._m(1),
-                _vm._v(" "),
-                _vm._m(2),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "name" } }, [
-                    _vm._v("Corporate Name")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: { type: "text", id: "corporate-name" },
-                    domProps: { value: _vm.application.corporate_name }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "corporate-address" } }, [
-                    _vm._v("Corporate Address")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      id: "corporate-address",
-                      placeholder: "1234 Main St"
-                    },
-                    domProps: { value: _vm.application.corporate_address }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "conductedname" } }, [
-                    _vm._v("Name under which business is to be conducted:")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: { type: "text", id: "conducted-name" },
-                    domProps: {
-                      value: _vm.application.name_business_to_be_conducted
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-row" }, [
-                  _c("div", { staticClass: "form-group col-md-4" }, [
-                    _c("label", { attrs: { for: "business-phone-number" } }, [
-                      _vm._v("Business Phone No.:")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: { type: "text", id: "business-phone-number" },
-                      domProps: { value: _vm.application.business_phone }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group col-md-4" }, [
-                    _c("label", { attrs: { for: "business-mobile-no" } }, [
-                      _vm._v("Business Mobile No.")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: { type: "text", id: "mobile-no" },
-                      domProps: { value: _vm.application.business_mobile }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group col-md-4" }, [
-                    _c("label", { attrs: { for: "business-email" } }, [
-                      _vm._v("Business Email")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: { type: "text", id: "business-email" },
-                      domProps: { value: _vm.application.business_email }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _vm._m(3),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "president-name" } }, [
-                    _vm._v("President Name")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: { type: "text", id: "president-name" },
-                    domProps: { value: _vm.application.president_name }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "president-address" } }, [
-                    _vm._v("President Address")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      id: "president-address",
-                      placeholder: "1234 Main St"
-                    },
-                    domProps: { value: _vm.application.president_address }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-row" }, [
-                  _c("div", { staticClass: "form-group col-md-4" }, [
-                    _c("label", { attrs: { for: "president-phone-number" } }, [
-                      _vm._v("President Phone No.:")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: { type: "text", id: "president-phone-number" },
-                      domProps: { value: _vm.application.president_phone }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group col-md-4" }, [
-                    _c("label", { attrs: { for: "president-mobile-no" } }, [
-                      _vm._v("President Mobile No.")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: { type: "text", id: "president-mobile-no" },
-                      domProps: { value: _vm.application.president_mobile }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group col-md-4" }, [
-                    _c("label", { attrs: { for: "president-email" } }, [
-                      _vm._v("President Email")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: { type: "text", id: "president-email" },
-                      domProps: { value: _vm.application.president_email }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _vm._m(4),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "vice-president-name" } }, [
-                    _vm._v("Vice President Name")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: { type: "text", id: "vice-president-name" },
-                    domProps: { value: _vm.application.vice_president_name }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "vice-president-address" } }, [
-                    _vm._v("Vice President Address")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      id: "vice-president-address",
-                      placeholder: "1234 Main St"
-                    },
-                    domProps: { value: _vm.application.vice_president_address }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-row" }, [
-                  _c("div", { staticClass: "form-group col-md-4" }, [
-                    _c(
-                      "label",
-                      { attrs: { for: "vice-president-phone-number" } },
-                      [_vm._v("Vice President Phone No.:")]
-                    ),
-                    _vm._v(" "),
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        id: "vice-president-phone-number"
-                      },
-                      domProps: { value: _vm.application.vice_president_phone }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group col-md-4" }, [
-                    _c(
-                      "label",
-                      { attrs: { for: "vice-president-mobile-no" } },
-                      [_vm._v("Vice President Mobile No.")]
-                    ),
-                    _vm._v(" "),
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: { type: "text", id: "vice-president-mobile-no" },
-                      domProps: { value: _vm.application.vice_president_mobile }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group col-md-4" }, [
-                    _c("label", { attrs: { for: "vice-president-email" } }, [
-                      _vm._v("Vice President Email")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: { type: "text", id: "vice-president-email" },
-                      domProps: { value: _vm.application.vice_president_email }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _vm._m(5),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "secretary-name" } }, [
-                    _vm._v("Secretary Name")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: { type: "text", id: "secretary-name" },
-                    domProps: { value: _vm.application.secretary_name }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "secretary-address" } }, [
-                    _vm._v("Secretary Address")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      id: "secretary-address",
-                      placeholder: "1234 Main St"
-                    },
-                    domProps: { value: _vm.application.secretary_address }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-row" }, [
-                  _c("div", { staticClass: "form-group col-md-4" }, [
-                    _c("label", { attrs: { for: "secretary-phone-number" } }, [
-                      _vm._v("Secretary Phone No.:")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: { type: "text", id: "secretary-phone-number" },
-                      domProps: { value: _vm.application.secretary_phone }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group col-md-4" }, [
-                    _c("label", { attrs: { for: "secretary-mobile-no" } }, [
-                      _vm._v("Secretary Mobile No.")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: { type: "text", id: "secretary-mobile-no" },
-                      domProps: { value: _vm.application.secretary_mobile }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group col-md-4" }, [
-                    _c("label", { attrs: { for: "secretary-email" } }, [
-                      _vm._v("Secretary Email")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: { type: "text", id: "secretary-email" },
-                      domProps: { value: _vm.application.secretary_email }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _vm._m(6),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "treasurer-name" } }, [
-                    _vm._v("Treasurer Name")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: { type: "text", id: "treasurer-name" },
-                    domProps: { value: _vm.application.treasurer_name }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "treasurer-address" } }, [
-                    _vm._v("Treasurer Address")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      id: "treasurer-address",
-                      placeholder: "1234 Main St"
-                    },
-                    domProps: { value: _vm.application.treasurer_address }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-row" }, [
-                  _c("div", { staticClass: "form-group col-md-4" }, [
-                    _c("label", { attrs: { for: "treasurer-phone-number" } }, [
-                      _vm._v("Treasurer Phone No.:")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: { type: "text", id: "treasurer-phone-number" },
-                      domProps: { value: _vm.application.treasurer_phone }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group col-md-4" }, [
-                    _c("label", { attrs: { for: "treasurer-mobile-no" } }, [
-                      _vm._v("Treasurer Mobile No.")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: { type: "text", id: "treasurer-mobile-no" },
-                      domProps: { value: _vm.application.treasurer_mobile }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group col-md-4" }, [
-                    _c("label", { attrs: { for: "treasurer-email" } }, [
-                      _vm._v("Treasurer Email")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: { type: "text", id: "treasurer-email" },
-                      domProps: { value: _vm.application.treasurer_email }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _vm._m(7),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "director-name" } }, [
-                    _vm._v("Director Name")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: { type: "text", id: "director-name" },
-                    domProps: { value: _vm.application.director_name }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "director-address" } }, [
-                    _vm._v("Director Address")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      id: "director-address",
-                      placeholder: "1234 Main St"
-                    },
-                    domProps: { value: _vm.application.director_address }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-row" }, [
-                  _c("div", { staticClass: "form-group col-md-4" }, [
-                    _c("label", { attrs: { for: "director-phone-number" } }, [
-                      _vm._v("Director Phone No.:")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: { type: "text", id: "director-phone-number" },
-                      domProps: { value: _vm.application.director_phone }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group col-md-4" }, [
-                    _c("label", { attrs: { for: "director-mobile-no" } }, [
-                      _vm._v("Director Mobile No.")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: { type: "text", id: "director-mobile-no" },
-                      domProps: { value: _vm.application.director_mobile }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group col-md-4" }, [
-                    _c("label", { attrs: { for: "director-email" } }, [
-                      _vm._v("Director Email")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: { type: "text", id: "director-email" },
-                      domProps: { value: _vm.application.director_email }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _vm._m(8),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "vice-director-name" } }, [
-                    _vm._v("Vice Director Name")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: { type: "text", id: "vice-director-name" },
-                    domProps: { value: _vm.application.vice_director_name }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "vice-director-address" } }, [
-                    _vm._v("Vice Director Address")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      id: "vice-director-address",
-                      placeholder: "1234 Main St"
-                    },
-                    domProps: { value: _vm.application.vice_director_address }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-row" }, [
-                  _c("div", { staticClass: "form-group col-md-4" }, [
-                    _c(
-                      "label",
-                      { attrs: { for: "vice-director-phone-number" } },
-                      [_vm._v("Vice Director Phone No.:")]
-                    ),
-                    _vm._v(" "),
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: { type: "text", id: "vice-director-phone-number" },
-                      domProps: { value: _vm.application.vice_director_phone }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group col-md-4" }, [
-                    _c("label", { attrs: { for: "vice-director-mobile-no" } }, [
-                      _vm._v("Vice Director Mobile No.")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: { type: "text", id: "vice-director-mobile-no" },
-                      domProps: { value: _vm.application.vice_director_mobile }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group col-md-4" }, [
-                    _c("label", { attrs: { for: "vice-director-email" } }, [
-                      _vm._v("Vice Director Email")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: { type: "text", id: "vice-director-email" },
-                      domProps: { value: _vm.application.vice_director_email }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "date_incorporation" } }, [
-                    _vm._v("2. Date of Incorporation:")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: { type: "date", id: "date_incorporation" },
-                    domProps: { value: _vm.application.date_incorporation }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "state_of" } }, [
-                    _vm._v("State of:")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: { type: "date", id: "state_of" },
-                    domProps: { value: _vm.application.state_incorporation }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "other_than_illinois" } }, [
-                    _vm._v(
-                      "If the state is a state other than Illinois, the date upon which the corporation was certified as a foreign corporation entitiled to conduct business in Illinois::"
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: { type: "date", id: "other_than_illinois" },
-                    domProps: {
-                      value:
-                        _vm.application.other_state_incorporation_not_illinois
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "object-corporation" } }, [
-                    _vm._v(
-                      "3. Object of the corporation as forth in the chapter:"
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: { type: "text", id: "object-corporation" },
-                    domProps: {
-                      value: _vm.application.corporation_forth_chapter
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _vm._m(9),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "agent-name" } }, [
-                    _vm._v("Agent Name")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: { type: "text", id: "agent-name" },
-                    domProps: { value: _vm.application.corporation_agent_name }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "agent-address" } }, [
-                    _vm._v("Agent Address")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      id: "agent-address",
-                      placeholder: "1234 Main St"
-                    },
-                    domProps: {
-                      value: _vm.application.corporation_agent_address
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-row" }, [
-                  _c("div", { staticClass: "form-group col-md-4" }, [
-                    _c("label", { attrs: { for: "agent-phone-number" } }, [
-                      _vm._v("Agent Phone No.:")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: { type: "text", id: "agent-phone-number" },
-                      domProps: {
-                        value: _vm.application.corporation_agent_phone
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group col-md-4" }, [
-                    _c("label", { attrs: { for: "agent-mobile-no" } }, [
-                      _vm._v("Agent Mobile No.")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: { type: "text", id: "agent-mobile-no" },
-                      domProps: {
-                        value: _vm.application.corporation_agent_mobile
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group col-md-4" }, [
-                    _c("label", { attrs: { for: "agent-email" } }, [
-                      _vm._v("Agent Email")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: { type: "text", id: "agent-email" },
-                      domProps: {
-                        value: _vm.application.corporation_agent_email
-                      }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c(
-                    "label",
-                    { attrs: { for: "principal-kind-of-business" } },
-                    [_vm._v("5. Principal Kind of Business")]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: { type: "text", id: "principal-kind-of-business" },
-                    domProps: { value: _vm.application.principal_kind_business }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c(
-                    "label",
-                    { attrs: { for: "principal-kind-of-business" } },
-                    [
-                      _vm._v(
-                        "6. Does applicant seek a license to sell alcoholic liquor upon the premises as a restaurant? "
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "radio" }, [
-                    _c("label", [
-                      _c("input", {
-                        attrs: {
-                          type: "radio",
-                          id: "principal-kind-of-business1",
-                          name: "seek_license_sell_liquor",
-                          value: "Yes"
-                        },
-                        domProps: {
-                          value:
-                            _vm.application
-                              .applicant_seek_license_alcoholic_restaurant
-                        }
-                      }),
-                      _vm._v(" Yes ")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "radio" }, [
-                    _c("label", [
-                      _c("input", {
-                        attrs: {
-                          type: "radio",
-                          id: "principal-kind-of-business2",
-                          name: "seek_license_sell_liquor",
-                          value: "No"
-                        },
-                        domProps: {
-                          value:
-                            _vm.application
-                              .applicant_seek_license_alcoholic_restaurant
-                        }
-                      }),
-                      _vm._v(" No ")
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _vm._m(10),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "maintained_held" } }, [
-                    _vm._v(
-                      "a) Maintained and held out to the public as a place where meals are actually and regularly served?"
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "radio" }, [
-                    _c("label", [
-                      _c("input", {
-                        attrs: {
-                          type: "radio",
-                          id: "maintained_held1",
-                          name: "maintained_held",
-                          value: "Yes"
-                        },
-                        domProps: {
-                          value:
-                            _vm.application.maitained_to_public_meals_served
-                        }
-                      }),
-                      _vm._v(" Yes ")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "radio" }, [
-                    _c("label", [
-                      _c("input", {
-                        attrs: {
-                          type: "radio",
-                          id: "maintained_held2",
-                          name: "maintained_held",
-                          value: "No"
-                        },
-                        domProps: {
-                          value:
-                            _vm.application.maitained_to_public_meals_served
-                        }
-                      }),
-                      _vm._v(" No ")
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "food_services_are" } }, [
-                    _vm._v("If so, food services are:")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: { type: "text", id: "food_services_are" },
-                    domProps: { value: _vm.application.yes_food_services_are }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "provided_with_adequate" } }, [
-                    _vm._v(
-                      "b) Provided with adequate and sanitary kitchen and dining room equipment and capacity with sufficient employees to prepare, cook and serve suitable food?"
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "radio" }, [
-                    _c("label", [
-                      _c("input", {
-                        attrs: {
-                          type: "radio",
-                          id: "provided_with_adequate1",
-                          name: "provided_with_adequate",
-                          value: "Yes"
-                        },
-                        domProps: { value: _vm.application.serve_suitable_food }
-                      }),
-                      _vm._v(" Yes ")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "radio" }, [
-                    _c("label", [
-                      _c("input", {
-                        attrs: {
-                          type: "radio",
-                          id: "provided_with_adequate2",
-                          name: "provided_with_adequate",
-                          value: "No"
-                        },
-                        domProps: { value: _vm.application.serve_suitable_food }
-                      }),
-                      _vm._v(" No ")
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "applicant_is_club" } }, [
-                    _vm._v(
-                      "7. If applicant is a club, has it the qualifications described in the illinois act relating to alcoholic liquors?"
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "radio" }, [
-                    _c("label", [
-                      _c("input", {
-                        attrs: {
-                          type: "radio",
-                          id: "applicant_is_club1",
-                          name: "applicant_is_club",
-                          value: "Yes"
-                        },
-                        domProps: {
-                          value:
-                            _vm.application
-                              .qualifications_described_illinois_act
-                        }
-                      }),
-                      _vm._v(" Yes ")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "radio" }, [
-                    _c("label", [
-                      _c("input", {
-                        attrs: {
-                          type: "radio",
-                          id: "applicant_is_club2",
-                          name: "applicant_is_club",
-                          value: "No"
-                        },
-                        domProps: {
-                          value:
-                            _vm.application
-                              .qualifications_described_illinois_act
-                        }
-                      }),
-                      _vm._v(" No ")
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "applicant_own_premises" } }, [
-                    _vm._v(
-                      "8. Does applicant own premises for which this license is sought?"
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "radio" }, [
-                    _c("label", [
-                      _c("input", {
-                        attrs: {
-                          type: "radio",
-                          id: "applicant_own_premises1",
-                          name: "applicant_own_premises",
-                          value: "Yes"
-                        },
-                        domProps: {
-                          value:
-                            _vm.application
-                              .applicant_own_premises_license_sought
-                        }
-                      }),
-                      _vm._v(" Yes ")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "radio" }, [
-                    _c("label", [
-                      _c("input", {
-                        attrs: {
-                          type: "radio",
-                          id: "applicant_own_premises2",
-                          name: "applicant_own_premises",
-                          value: "No"
-                        },
-                        domProps: {
-                          value:
-                            _vm.application
-                              .applicant_own_premises_license_sought
-                        }
-                      }),
-                      _vm._v(" No ")
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "applicant_a_lease" } }, [
-                    _vm._v(
-                      "If not, has applicant a lease on such premises covering the full period for which license is sought?"
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "radio" }, [
-                    _c("label", [
-                      _c("input", {
-                        attrs: {
-                          type: "radio",
-                          id: "applicant_a_lease1",
-                          name: "applicant_a_lease",
-                          value: "Yes"
-                        },
-                        domProps: {
-                          value:
-                            _vm.application
-                              .applicant_lease_premises_license_sought
-                        }
-                      }),
-                      _vm._v(" Yes ")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "radio" }, [
-                    _c("label", [
-                      _c("input", {
-                        attrs: {
-                          type: "radio",
-                          id: "applicant_a_lease2",
-                          name: "applicant_a_lease",
-                          value: "No"
-                        },
-                        domProps: {
-                          value:
-                            _vm.application
-                              .applicant_lease_premises_license_sought
-                        }
-                      }),
-                      _vm._v(" No ")
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _vm._m(11),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "lessor-name" } }, [
-                    _vm._v("Name")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: { type: "text", id: "lessor" },
-                    domProps: { value: _vm.application.lessor_name }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "lessor-address" } }, [
-                    _vm._v("Address")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      id: "lesson-address",
-                      placeholder: "1234 Main St"
-                    },
-                    domProps: { value: _vm.application.lessor_address }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "period-covered-lease-from" } }, [
-                    _vm._v("Period Covered Lease")
-                  ]),
-                  _vm._v("\n                From: "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    staticStyle: { width: "50%" },
-                    attrs: { type: "date", id: "period-covered-lease-from" },
-                    domProps: {
-                      value: _vm.application.period_covered_lease_from
-                    }
-                  }),
-                  _vm._v(" - To: "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    staticStyle: { width: "50%" },
-                    attrs: { type: "date", id: "period-covered-lease-to" },
-                    domProps: { value: _vm.application.period_covered_lease_to }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "applicant_own_premises" } }, [
-                    _vm._v(
-                      "8. Does applicant own premises for which this license is sought?"
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "radio" }, [
-                    _c("label", [
-                      _c("input", {
-                        attrs: {
-                          type: "radio",
-                          id: "applicant_own_premises1",
-                          name: "applicant_own_premises",
-                          value: "Yes"
-                        },
-                        domProps: {
-                          value:
-                            _vm.application.applicant_own_premise_license_sought
-                        }
-                      }),
-                      _vm._v(" Yes ")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "radio" }, [
-                    _c("label", [
-                      _c("input", {
-                        attrs: {
-                          type: "radio",
-                          id: "applicant_own_premises2",
-                          name: "applicant_own_premises",
-                          value: "No"
-                        },
-                        domProps: {
-                          value:
-                            _vm.application.applicant_own_premise_license_sought
-                        }
-                      }),
-                      _vm._v(" No ")
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c(
-                    "label",
-                    { attrs: { for: "applicant_a_food_dispenser" } },
-                    [_vm._v("9. Is applicant a food dispenser?")]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "radio" }, [
-                    _c("label", [
-                      _c("input", {
-                        attrs: {
-                          type: "radio",
-                          id: "applicant_a_food_dispenser1",
-                          name: "applicant_a_food_dispenser",
-                          value: "Yes"
-                        },
-                        domProps: {
-                          value: _vm.application.applicant_food_dispenser
-                        }
-                      }),
-                      _vm._v(" Yes ")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "radio" }, [
-                    _c("label", [
-                      _c("input", {
-                        attrs: {
-                          type: "radio",
-                          id: "applicant_a_food_dispenser2",
-                          name: "applicant_a_food_dispenser",
-                          value: "No"
-                        },
-                        domProps: {
-                          value: _vm.application.applicant_food_dispenser
-                        }
-                      }),
-                      _vm._v(" No ")
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "give_no_license" } }, [
-                    _vm._v("If so, give number of license:")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: { type: "text", id: "give_no_license" },
-                    domProps: {
-                      value:
-                        _vm.application.applicant_food_dispenser_number_license
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c(
-                    "label",
-                    { attrs: { for: "applicant_personally_actively" } },
-                    [
-                      _vm._v(
-                        "10. Will applicant be personally, actively involved in the on premise day-to-day operation of the business to be licensed?"
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "radio" }, [
-                    _c("label", [
-                      _c("input", {
-                        attrs: {
-                          type: "radio",
-                          id: "applicant_personally_actively1",
-                          name: "applicant_personally_actively",
-                          value: "Yes"
-                        },
-                        domProps: {
-                          value:
-                            _vm.application
-                              .applicant_actively_involved_day_operation
-                        }
-                      }),
-                      _vm._v(" Yes ")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "radio" }, [
-                    _c("label", [
-                      _c("input", {
-                        attrs: {
-                          type: "radio",
-                          id: "applicant_personally_actively2",
-                          name: "applicant_personally_actively",
-                          value: "No"
-                        },
-                        domProps: {
-                          value:
-                            _vm.application
-                              .applicant_actively_involved_day_operation
-                        }
-                      }),
-                      _vm._v(" No ")
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "business_managed_by" } }, [
-                    _vm._v(
-                      "11. Is the business or will the business for which a liquor license is sought be managed by a manager or agent?"
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "radio" }, [
-                    _c("label", [
-                      _c("input", {
-                        attrs: {
-                          type: "radio",
-                          id: "business_managed_by1",
-                          name: "business_managed_by",
-                          value: "Yes"
-                        },
-                        domProps: {
-                          value:
-                            _vm.application
-                              .business_liquor_license_sought_manager
-                        }
-                      }),
-                      _vm._v(" Yes ")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "radio" }, [
-                    _c("label", [
-                      _c("input", {
-                        attrs: {
-                          type: "radio",
-                          id: "business_managed_by2",
-                          name: "business_managed_by",
-                          value: "No"
-                        },
-                        domProps: {
-                          value:
-                            _vm.application
-                              .business_liquor_license_sought_manager
-                        }
-                      }),
-                      _vm._v(" No ")
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _vm._m(12),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "manager_name" } }, [
-                    _vm._v("Name")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: { type: "text", id: "manager_name" },
-                    domProps: { value: _vm.application.manager_name }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "manager_address" } }, [
-                    _vm._v("Address")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      id: "manager_address",
-                      placeholder: "1234 Main St"
-                    },
-                    domProps: { value: _vm.application.manager_address }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "manager_phone" } }, [
-                    _vm._v("Phone")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: { type: "text", id: "manager_phone" },
-                    domProps: { value: _vm.application.manager_phone }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c(
-                    "label",
-                    { attrs: { for: "amount_anticipated_alcohol" } },
-                    [
-                      _vm._v(
-                        "12. What is the amount of anticipated alcoholic liquor sales a a percentage of gross annual sales of the business?"
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: { type: "text", id: "amount_anticipated_alcohol" },
-                    domProps: {
-                      value: _vm.application.amount_anticipated_liquor_sales
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _vm._m(13),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "beer_garden" } }, [
-                    _vm._v("Beer Garden?")
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "radio" }, [
-                    _c("label", [
-                      _c("input", {
-                        attrs: {
-                          type: "radio",
-                          id: "beer_garden1",
-                          name: "beer_garden",
-                          value: "Yes"
-                        },
-                        domProps: {
-                          value:
-                            _vm.application
-                              .applicant_seeking_approval_beer_garden
-                        }
-                      }),
-                      _vm._v(" Yes ")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "radio" }, [
-                    _c("label", [
-                      _c("input", {
-                        attrs: {
-                          type: "radio",
-                          id: "beer_garden2",
-                          name: "beer_garden",
-                          value: "No"
-                        },
-                        domProps: {
-                          value:
-                            _vm.application
-                              .applicant_seeking_approval_beer_garden
-                        }
-                      }),
-                      _vm._v(" No ")
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "outdoor_seating_area" } }, [
-                    _vm._v("Outdoor seating area?")
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "radio" }, [
-                    _c("label", [
-                      _c("input", {
-                        attrs: {
-                          type: "radio",
-                          id: "outdoor_seating_area1",
-                          name: "outdoor_seating_area",
-                          value: "Yes"
-                        },
-                        domProps: {
-                          value:
-                            _vm.application
-                              .applicant_seeking_approval_outdoor_seating_area
-                        }
-                      }),
-                      _vm._v(" Yes ")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "radio" }, [
-                    _c("label", [
-                      _c("input", {
-                        attrs: {
-                          type: "radio",
-                          id: "outdoor_seating_area2",
-                          name: "outdoor_seating_area",
-                          value: "No"
-                        },
-                        domProps: {
-                          value:
-                            _vm.application
-                              .applicant_seeking_approval_outdoor_seating_area
-                        }
-                      }),
-                      _vm._v(" No ")
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c(
-                    "label",
-                    { attrs: { for: "location_applicant_within_onehundred" } },
-                    [
-                      _vm._v(
-                        "14. Is the location of applicant's business for which license is sought within 100 feet of the property of a church, school, hospital, home for the aged or indigent persons or for veterans, their wives or childer or any military or naval station?"
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "radio" }, [
-                    _c("label", [
-                      _c("input", {
-                        attrs: {
-                          type: "radio",
-                          id: "location_applicant_within_onehundred1",
-                          name: "location_applicant_within_onehundred",
-                          value: "Yes"
-                        },
-                        domProps: {
-                          value:
-                            _vm.application
-                              .location_applicants_business_within_100ft_property_of_church
-                        }
-                      }),
-                      _vm._v(" Yes ")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "radio" }, [
-                    _c("label", [
-                      _c("input", {
-                        attrs: {
-                          type: "radio",
-                          id: "location_applicant_within_onehundred2",
-                          name: "location_applicant_within_onehundred",
-                          value: "No"
-                        },
-                        domProps: {
-                          value:
-                            _vm.application
-                              .location_applicants_business_within_100ft_property_of_church
-                        }
-                      }),
-                      _vm._v(" No ")
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "importing_or_distributor" } }, [
-                    _vm._v(
-                      "15. Has any manufacturer, importing distributor or distributor directly or indirectly paid or agreed to pay for this license, advanced money or anything else of value, or any credit(other than merchandising credit in the ordinary course of business for aperiod not to exceed 90days) or is such person directly or indirectly interested in the ownership, conduct or operation of the place of business?"
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "radio" }, [
-                    _c("label", [
-                      _c("input", {
-                        attrs: {
-                          type: "radio",
-                          id: "importing_or_distributor1",
-                          name: "importing_or_distributor",
-                          value: "Yes"
-                        },
-                        domProps: {
-                          value:
-                            _vm.application.manufacturer_agreed_to_pay_license
-                        }
-                      }),
-                      _vm._v(" Yes ")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "radio" }, [
-                    _c("label", [
-                      _c("input", {
-                        attrs: {
-                          type: "radio",
-                          id: "importing_or_distributor2",
-                          name: "importing_or_distributor",
-                          value: "No"
-                        },
-                        domProps: {
-                          value:
-                            _vm.application.manufacturer_agreed_to_pay_license
-                        }
-                      }),
-                      _vm._v(" No ")
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c(
-                    "label",
-                    { attrs: { for: "applicant_engaged_manufacturer" } },
-                    [
-                      _vm._v(
-                        "16. Is the applicant engaged in the manufacturer of alcoholic liquors?"
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "radio" }, [
-                    _c("label", [
-                      _c("input", {
-                        attrs: {
-                          type: "radio",
-                          id: "applicant_engaged_manufacturer1",
-                          name: "applicant_engaged_manufacturer",
-                          value: "Yes"
-                        },
-                        domProps: {
-                          value:
-                            _vm.application
-                              .applicant_engaged_manufacturer_alcoholic_liquors
-                        }
-                      }),
-                      _vm._v(" Yes ")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "radio" }, [
-                    _c("label", [
-                      _c("input", {
-                        attrs: {
-                          type: "radio",
-                          id: "applicant_engaged_manufacturer2",
-                          name: "applicant_engaged_manufacturer",
-                          value: "No"
-                        },
-                        domProps: {
-                          value:
-                            _vm.application
-                              .applicant_engaged_manufacturer_alcoholic_liquors
-                        }
-                      }),
-                      _vm._v(" No ")
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c(
-                    "label",
-                    { attrs: { for: "yes_applicant_engaged_manufacturer" } },
-                    [_vm._v("If so, at what locations?")]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      id: "yes_applicant_engaged_manufacturer"
-                    },
-                    domProps: {
-                      value:
-                        _vm.application
-                          .applicant_engaged_manufacturer_alcoholic_liquors_location
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c(
-                    "label",
-                    {
-                      attrs: { for: "applicant_conducting_business_importing" }
-                    },
-                    [
-                      _vm._v(
-                        "17. Is the applicant conducting business of an importing distributor or distributor of alcoholic liquors?"
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "radio" }, [
-                    _c("label", [
-                      _c("input", {
-                        attrs: {
-                          type: "radio",
-                          id: "applicant_conducting_business_importing1",
-                          name: "applicant_conducting_business_importing",
-                          value: "Yes"
-                        },
-                        domProps: {
-                          value:
-                            _vm.application
-                              .applicant_conducting_business_importing_distributor
-                        }
-                      }),
-                      _vm._v(" Yes ")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "radio" }, [
-                    _c("label", [
-                      _c("input", {
-                        attrs: {
-                          type: "radio",
-                          id: "applicant_conducting_business_importing2",
-                          name: "applicant_conducting_business_importing",
-                          value: "No"
-                        },
-                        domProps: {
-                          value:
-                            _vm.application
-                              .applicant_conducting_business_importing_distributor
-                        }
-                      }),
-                      _vm._v(" No ")
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c(
-                    "label",
-                    {
-                      attrs: {
-                        for: "yes_applicant_conducting_business_importing"
-                      }
-                    },
-                    [_vm._v("If so, at what locations?")]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      id: "yes_applicant_conducting_business_importing"
-                    },
-                    domProps: {
-                      value:
-                        _vm.application
-                          .applicant_conducting_business_importing_distributor_location
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c(
-                    "label",
-                    { attrs: { for: "stockholders_owning_aggregate" } },
-                    [
-                      _vm._v(
-                        "18. Has any officer, manager, or corporation director, or any stockholder or stockholders owning in the aggregate more than 5% of the stock of such corporation, ever been convicted of any felony under any federal or state law?"
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "radio" }, [
-                    _c("label", [
-                      _c("input", {
-                        attrs: {
-                          type: "radio",
-                          id: "stockholders_owning_aggregate1",
-                          name: "stockholders_owning_aggregate",
-                          value: "Yes"
-                        },
-                        domProps: {
-                          value:
-                            _vm.application
-                              .officer_own_five_percent_convicted_felony
-                        }
-                      }),
-                      _vm._v(" Yes ")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "radio" }, [
-                    _c("label", [
-                      _c("input", {
-                        attrs: {
-                          type: "radio",
-                          id: "stockholders_owning_aggregate2",
-                          name: "stockholders_owning_aggregate",
-                          value: "No"
-                        },
-                        domProps: {
-                          value:
-                            _vm.application
-                              .officer_own_five_percent_convicted_felony
-                        }
-                      }),
-                      _vm._v(" No ")
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _vm._m(14),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "name_person_convicted" } }, [
-                    _vm._v("Name")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: { type: "text", id: "name_person_convicted" },
-                    domProps: {
-                      value:
-                        _vm.application
-                          .officer_own_five_percent_convicted__felony_name
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "date_convicted" } }, [
-                    _vm._v("Date")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: { type: "date", id: "date_convicted" },
-                    domProps: {
-                      value:
-                        _vm.application
-                          .officer_own_five_percent_convicted_felony_date
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "offence_convicted" } }, [
-                    _vm._v("Offence")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: { type: "text", id: "offence_convicted" },
-                    domProps: {
-                      value:
-                        _vm.application
-                          .officer_own_five_percent_convicted_felony_offence
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c(
-                    "label",
-                    {
-                      attrs: {
-                        for: "stockholders_convicted_violation_federal_law"
-                      }
-                    },
-                    [
-                      _vm._v(
-                        "19. Has any officer, manager or diretor of said corporation, or any stockholders owning in the aggregate more than 5% of the stock of such corporation, ever been convicted of a violation of any federal or state liquor law(s)?"
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "radio" }, [
-                    _c("label", [
-                      _c("input", {
-                        attrs: {
-                          type: "radio",
-                          id: "stockholders_convicted_violation_federal_law1",
-                          name: "stockholders_convicted_violation_federal_law",
-                          value: "Yes"
-                        },
-                        domProps: {
-                          value:
-                            _vm.application
-                              .officer_own_five_percent_convicted_violation
-                        }
-                      }),
-                      _vm._v(" Yes ")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "radio" }, [
-                    _c("label", [
-                      _c("input", {
-                        attrs: {
-                          type: "radio",
-                          id: "stockholders_convicted_violation_federal_law2",
-                          name: "stockholders_convicted_violation_federal_law",
-                          value: "No"
-                        },
-                        domProps: {
-                          value:
-                            _vm.application
-                              .officer_own_five_percent_convicted_violation
-                        }
-                      }),
-                      _vm._v(" No ")
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _vm._m(15),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c(
-                    "label",
-                    {
-                      attrs: {
-                        for: "name_stockholders_convicted_violation_federal_law"
-                      }
-                    },
-                    [_vm._v("Name")]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      id: "name_stockholders_convicted_violation_federal_law"
-                    },
-                    domProps: {
-                      value:
-                        _vm.application
-                          .officer_own_five_percent_convicted__violation_name
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c(
-                    "label",
-                    {
-                      attrs: {
-                        for: "date_stockholders_convicted_violation_federal_law"
-                      }
-                    },
-                    [_vm._v("Date")]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "date",
-                      id: "date_stockholders_convicted_violation_federal_law"
-                    },
-                    domProps: {
-                      value:
-                        _vm.application
-                          .officer_own_five_percent_convicted_violation_date
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c(
-                    "label",
-                    {
-                      attrs: {
-                        for:
-                          "offence_stockholders_convicted_violation_federal_law"
-                      }
-                    },
-                    [_vm._v("Offence")]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      id: "offence_stockholders_convicted_violation_federal_law"
-                    },
-                    domProps: {
-                      value:
-                        _vm.application
-                          .officer_own_five_percent_convicted_violation_offence
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c(
-                    "label",
-                    { attrs: { for: "stockholders_convicted_gambling" } },
-                    [
-                      _vm._v(
-                        "20. Has any officer, manager or director of said corporation, or any stockholders owning in the aggregate more than 5% of the stock of such corporation, ever been convicted of gambling, keeping an illegal gambling place, of being the keeper of a house of ill fame; or of pandering or other crime or misdemeanor opposed to decency and morality?"
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "radio" }, [
-                    _c("label", [
-                      _c("input", {
-                        attrs: {
-                          type: "radio",
-                          id: "stockholders_convicted_gambling1",
-                          name: "stockholders_convicted_gambling",
-                          value: "Yes"
-                        },
-                        domProps: {
-                          value:
-                            _vm.application.made_application_similar_license
-                        }
-                      }),
-                      _vm._v(" Yes ")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "radio" }, [
-                    _c("label", [
-                      _c("input", {
-                        attrs: {
-                          type: "radio",
-                          id: "stockholders_convicted_gambling2",
-                          name: "stockholders_convicted_gambling",
-                          value: "No"
-                        },
-                        domProps: {
-                          value:
-                            _vm.application.made_application_similar_license
-                        }
-                      }),
-                      _vm._v(" No ")
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _vm._m(16),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c(
-                    "label",
-                    { attrs: { for: "name_stockholders_convicted_gambling" } },
-                    [_vm._v("Name")]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      id: "name_stockholders_convicted_gambling"
-                    },
-                    domProps: {
-                      value:
-                        _vm.application
-                          .officer_own_five_percent_convicted__gambling_name
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c(
-                    "label",
-                    { attrs: { for: "date_stockholders_convicted_gambling" } },
-                    [_vm._v("Date")]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "date",
-                      id: "date_stockholders_convicted_gambling"
-                    },
-                    domProps: {
-                      value:
-                        _vm.application
-                          .officer_own_five_percent_convicted_gambling_date
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c(
-                    "label",
-                    {
-                      attrs: { for: "offence_stockholders_convicted_gambling" }
-                    },
-                    [_vm._v("Offence")]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      id: "offence_stockholders_convicted_gambling"
-                    },
-                    domProps: {
-                      value:
-                        _vm.application
-                          .officer_own_five_percent_convicted_gambling_offence
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c(
-                    "label",
-                    { attrs: { for: "made_application_for_similar_license" } },
-                    [
-                      _vm._v(
-                        "21. Has the corporation (applicant) or any officer, manager, or director of said corporation, or any stockholders owning in the aggregate more than 5% of the stock of such corporation, made application for a similar license for this period for any premises other than that described above?"
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "radio" }, [
-                    _c("label", [
-                      _c("input", {
-                        attrs: {
-                          type: "radio",
-                          id: "made_application_for_similar_license1",
-                          name: "made_application_for_similar_license",
-                          value: "Yes"
-                        },
-                        domProps: {
-                          value:
-                            _vm.application.made_application_similar_license
-                        }
-                      }),
-                      _vm._v(" Yes ")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "radio" }, [
-                    _c("label", [
-                      _c("input", {
-                        attrs: {
-                          type: "radio",
-                          id: "made_application_for_similar_license2",
-                          name: "made_application_for_similar_license",
-                          value: "No"
-                        },
-                        domProps: {
-                          value:
-                            _vm.application.made_application_similar_license
-                        }
-                      }),
-                      _vm._v(" No ")
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _vm._m(17),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c(
-                    "label",
-                    {
-                      attrs: {
-                        for: "name_made_application_for_similar_license"
-                      }
-                    },
-                    [_vm._v("Name")]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      id: "name_made_application_for_similar_license"
-                    },
-                    domProps: {
-                      value:
-                        _vm.application.made_application_similar_license_name
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c(
-                    "label",
-                    {
-                      attrs: {
-                        for: "date_made_application_for_similar_license"
-                      }
-                    },
-                    [_vm._v("Date")]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "date",
-                      id: "date_made_application_for_similar_license"
-                    },
-                    domProps: {
-                      value:
-                        _vm.application.made_application_similar_license_date
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c(
-                    "label",
-                    {
-                      attrs: {
-                        for: "offence_made_application_for_similar_license"
-                      }
-                    },
-                    [_vm._v("Offence")]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      id: "offence_made_application_for_similar_license"
-                    },
-                    domProps: {
-                      value:
-                        _vm.application.made_application_similar_license_offence
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c(
-                    "label",
-                    {
-                      attrs: { for: "corporation_hold_federal_wagering_stamp" }
-                    },
-                    [
-                      _vm._v(
-                        "22. Does the corporation (applicant) or any officer, manager or director of said corporation or any stockholder(s) owning in the aggregate more than 20% of the stock of such corporation currently hold a federal wagering stamp?"
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      id: "corporation_hold_federal_wagering_stamp"
-                    },
-                    domProps: {
-                      value:
-                        _vm.application
-                          .corporation_own_twenty_percent_federal_wagering_stamp
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c(
-                    "label",
-                    {
-                      attrs: {
-                        for:
-                          "enforcing_official_interested_business_license_sought"
-                      }
-                    },
-                    [
-                      _vm._v(
-                        "23. Is any law enforcing official, mayor, alderman or member of the city council directly or indirectly interested in the business for which license is sought?"
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "radio" }, [
-                    _c("label", [
-                      _c("input", {
-                        attrs: {
-                          type: "radio",
-                          id:
-                            "enforcing_official_interested_business_license_sought1",
-                          name:
-                            "enforcing_official_interested_business_license_sought",
-                          value: "Yes"
-                        },
-                        domProps: {
-                          value:
-                            _vm.application
-                              .law_enforcing_official_interested_business_license_sought
-                        }
-                      }),
-                      _vm._v(" Yes ")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "radio" }, [
-                    _c("label", [
-                      _c("input", {
-                        attrs: {
-                          type: "radio",
-                          id:
-                            "enforcing_official_interested_business_license_sought2",
-                          name:
-                            "enforcing_official_interested_business_license_sought",
-                          value: "No"
-                        },
-                        domProps: {
-                          value:
-                            _vm.application
-                              .law_enforcing_official_interested_business_license_sought
-                        }
-                      }),
-                      _vm._v(" No ")
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "name_party" } }, [
-                    _vm._v("Name of Party")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: { type: "text", id: "name_party" },
-                    domProps: { value: _vm.application.name_of_party }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c(
-                    "label",
-                    {
-                      attrs: { for: "license_previously_issued_been_revoked" }
-                    },
-                    [
-                      _vm._v(
-                        "24. Has any license previously issued by the state, federal or local authorities to the corporation (applicant) or to any officer, manager, or director of said corporation, or any stockholder(s) owning in the aggregate more than 5% of such corporation, been revoked?"
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "radio" }, [
-                    _c("label", [
-                      _c("input", {
-                        attrs: {
-                          type: "radio",
-                          id: "license_previously_issued_been_revoked1",
-                          name: "license_previously_issued_been_revoked",
-                          value: "Yes"
-                        },
-                        domProps: {
-                          value:
-                            _vm.application
-                              .five_percent_such_corporation_been_revoked
-                        }
-                      }),
-                      _vm._v(" Yes ")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "radio" }, [
-                    _c("label", [
-                      _c("input", {
-                        attrs: {
-                          type: "radio",
-                          id: "license_previously_issued_been_revoked2",
-                          name: "license_previously_issued_been_revoked",
-                          value: "No"
-                        },
-                        domProps: {
-                          value:
-                            _vm.application
-                              .five_percent_such_corporation_been_revoked
-                        }
-                      }),
-                      _vm._v(" No ")
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _vm._m(18),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "name_license" } }, [
-                    _vm._v("Name of License")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: { type: "text", id: "name_license" },
-                    domProps: {
-                      value:
-                        _vm.application
-                          .five_percent_such_corporation_been_revoked_name_license
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "reason" } }, [
-                    _vm._v("Reason:")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: { type: "text", id: "reason" },
-                    domProps: {
-                      value:
-                        _vm.application
-                          .five_percent_such_corporation_been_revoked_reason
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "date_revocation" } }, [
-                    _vm._v("Date of Revocation:")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: { type: "date", id: "date_revocation" },
-                    domProps: {
-                      value:
-                        _vm.application
-                          .five_percent_such_corporation_been_revoked_date_revocation
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _vm._m(19),
-                _vm._v(" "),
-                _c("input", {
-                  staticClass: "btn btn-primary",
-                  attrs: { type: "button", value: "Save" },
-                  on: {
-                    click: function($event) {
-                      _vm.saveForm()
-                    }
-                  }
-                })
-              ])
-            ])
-          ])
-        ])
-      ])
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticStyle: { "margin-left": "100px" } }, [
-      _c("h4", [
-        _c("i", { staticClass: "fa fa-globe" }),
-        _vm._v(" CORPORATE FORM "),
-        _c("br"),
-        _vm._v(
-          "\n                APPLICATION FOR CITY RETAILER’S LICENSE TO SELL ALCOHOLIC LIQUORS\n              "
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("p", [
-        _vm._v(
-          "\n                The undersigned hereby files an application for the issuance of a city retailer’s license for the\n                sale of alcoholic liquor for the term ending April 30, 20______, and hereby certifies to the\n                following facts:                                  \n                "
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("strong", [_vm._v("1. Applicant Corporate Information")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("div", [_c("strong", [_vm._v("President")])])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("div", [_c("strong", [_vm._v("Vice President")])])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("div", [_c("strong", [_vm._v("Secretary")])])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("div", [_c("strong", [_vm._v("Treasurer")])])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("div", [_c("strong", [_vm._v("Director")])])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("div", [_c("strong", [_vm._v("Vice Director")])])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("div", [
-        _c("strong", [_vm._v("4. Registered Agent of the Corporation ")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", [_vm._v("If so, are premises:")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", [_vm._v("If so, give Name and Address of lessor:")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", [_vm._v("If so, give Name, Address and Phone")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", { attrs: { for: "amount_anticipated_alcohol" } }, [
-        _vm._v(
-          "13. Is applicant seeking approval for any of the following uses:"
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", [
-        _vm._v(
-          "If so, give name or persons convicted, stating date and offence"
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", [
-        _vm._v(
-          "If so, give name or persons convicted, stating date and offence"
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", [
-        _vm._v(
-          "If so, give name or persons convicted, stating date and offence"
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", [
-        _vm._v(
-          "If so, give name or persons convicted, stating date and offence"
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", [
-        _vm._v(
-          "If so, give name of licensee, and state reasons for and date of revocation:"
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", [_vm._v("Completed?")]),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("label", { staticClass: "switch" }, [
-        _c("input", { attrs: { type: "checkbox" } }),
-        _vm._v(" "),
-        _c("span", { staticClass: "slider round" })
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-50c2923c", module.exports)
-  }
-}
 
 /***/ })
 /******/ ]);

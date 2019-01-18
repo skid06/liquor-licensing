@@ -21,6 +21,16 @@ class DashboardController extends Controller
         return view('admin.completed');
     }
 
+    public function processed()
+    {
+        return view('admin.processed');
+    } 
+    
+    public function paid()
+    {
+        return view('admin.paid');
+    }     
+
     public function show($id)
     {
         $application = Application::where('id', $id)->first();

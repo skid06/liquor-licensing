@@ -17,7 +17,7 @@
                                 <span class="title">Dashboard</span>
                                 <span class="arrow"></span>
                             </a>
-                            <ul class="sub-menu">
+                            <!-- <ul class="sub-menu">
                                 <li class="nav-item start ">
                                     <a href="index.html" class="nav-link ">
                                         <i class="icon-bar-chart"></i>
@@ -38,7 +38,7 @@
                                         <span class="badge badge-danger">5</span>
                                     </a>
                                 </li>
-                            </ul>
+                            </ul> -->
                         </li>
                         <li class="nav-item  ">
                             <a href="javascript:;" class="nav-link nav-toggle">
@@ -62,12 +62,19 @@
                             </ul>
                         </li>  
                         <li class="nav-item  ">
-                            <a href="javascript:;" class="nav-link nav-toggle">
+                            <a href="{{ route('admin.processed') }}" class="nav-link nav-toggle">
                                 <i class="icon-docs"></i>
                                 <span class="title">Processed</span>
                                 <span class="arrow"></span>
                             </a>
-                        </li>                                                  
+                        </li>  
+                        <li class="nav-item  ">
+                            <a href="{{ route('admin.paid') }}" class="nav-link nav-toggle">
+                                <i class="icon-docs"></i>
+                                <span class="title">Paid</span>
+                                <span class="arrow"></span>
+                            </a>
+                        </li>                                                                          
                         <!--<li class="nav-item  ">
                             <a href="javascript:;" class="nav-link nav-toggle">
                                 <i class="icon-diamond"></i>

@@ -7,7 +7,7 @@
           <div class="portlet-title">
             <div class="caption font-dark">
               <i class="icon-settings font-dark"></i>
-              <span class="caption-subject bold uppercase"> Completed Applications </span>
+              <span class="caption-subject bold uppercase"> Processed Applications </span>
             </div>
             <div class="actions">
               <div class="btn-group btn-group-devided" data-toggle="buttons">
@@ -86,21 +86,21 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="gradeX odd" role="row" v-for="completed in applications.data" :key="completed.id">
+                            <tr class="gradeX odd" role="row" v-for="processed in applications.data" :key="processed.id">
                                 <!-- <td>
                                     <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
                                         <input type="checkbox" class="checkboxes" value="1">
                                         <span></span>
                                     </label>
                                 </td> -->
-                                <td class="sorting_1"> <a :href="completed.id"> {{ completed.corporate_name }} </a> </td>
+                                <td class="sorting_1"> <a :href="processed.id"> {{ processed.corporate_name }} </a> </td>
                                 <td>
-                                    <a href="mailto:userwow@gmail.com"> {{ completed.business_email }} </a>
+                                    <a href="mailto:userwow@gmail.com"> {{ processed.business_email }} </a>
                                 </td>
                                 <td>
                                     <span class="label label-sm label-info"> Info </span>
                                 </td>
-                                <td class="center"> {{ completed.created_at }} </td>
+                                <td class="center"> {{ processed.created_at }} </td>
                                 <td>
                                     <div class="btn-group">
                                         <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
@@ -224,9 +224,9 @@ export default {
     }
   },
   methods: {
-    getCompletedApplications() {
+    getProcessedApplications() {
       axios
-        .get('/api/applications/completed')
+        .get('/api/applications/processed')
         .then(response => {
           console.log(response.data)
           this.applications = response.data.applications
@@ -236,7 +236,7 @@ export default {
     getApplications(page){
       let url
       if (page == null) {
-        url = '/api/applications/completed'
+        url = '/api/applications/processed'
       } else {
         // url = `/user/applications?page=${page}`
         url = page
@@ -250,7 +250,7 @@ export default {
     },      
   },
   mounted(){
-    this.getCompletedApplications()
+    this.getProcessedApplications()
   }
 }
 </script>

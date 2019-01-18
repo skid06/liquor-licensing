@@ -30,9 +30,24 @@ class LiquorLicenseController extends Controller
 
     public function completed()
     {
-        $applications = Application::where('status', 'completed')->get();
+        $applications = Application::where('status', 'completed')->paginate(5);
+
         return response()->json(['applications' => $applications]);
     }
+
+    public function processed()
+    {
+        $applications = Application::where('status', 'processed')->paginate(5);
+
+        return response()->json(['applications' => $applications]);
+    }  
+    
+    public function paid()
+    {
+        $applications = Application::where('status', 'paid')->paginate(5);
+
+        return response()->json(['applications' => $applications]);
+    }      
 
     /**
      * Show the form for creating a new resource.
