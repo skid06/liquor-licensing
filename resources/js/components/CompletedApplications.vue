@@ -5,7 +5,7 @@
       <thead>
         <tr>
           <th>Corporate Name</th>
-          <th>User</th>
+          <th>Paid</th>
           <th>Email</th>
           <th>Joined</th>
         </tr>
@@ -13,7 +13,7 @@
       <tbody>
         <tr v-for="application in completed.data" :key="application.id">
           <td>{{ application.corporate_name }}</td>
-          <td>Doe</td>
+          <td>Yes</td>
           <td>{{ application.business_email }}</td>
           <td>{{ application.created_at }}</td>
         </tr>

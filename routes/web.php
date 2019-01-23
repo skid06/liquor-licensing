@@ -14,7 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('/payment-form/{id}', 'ApplicationPaymentController@getPaymentPage');
+Route::post('/checkout', 'ApplicationPaymentController@charge');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

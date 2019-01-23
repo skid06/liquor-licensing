@@ -60,18 +60,133 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 15);
+/******/ 	return __webpack_require__(__webpack_require__.s = 17);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports) {
+
+/* globals __VUE_SSR_CONTEXT__ */
+
+// IMPORTANT: Do NOT use ES2015 features in this file.
+// This module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle.
+
+module.exports = function normalizeComponent (
+  rawScriptExports,
+  compiledTemplate,
+  functionalTemplate,
+  injectStyles,
+  scopeId,
+  moduleIdentifier /* server only */
+) {
+  var esModule
+  var scriptExports = rawScriptExports = rawScriptExports || {}
+
+  // ES6 modules interop
+  var type = typeof rawScriptExports.default
+  if (type === 'object' || type === 'function') {
+    esModule = rawScriptExports
+    scriptExports = rawScriptExports.default
+  }
+
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // render functions
+  if (compiledTemplate) {
+    options.render = compiledTemplate.render
+    options.staticRenderFns = compiledTemplate.staticRenderFns
+    options._compiled = true
+  }
+
+  // functional template
+  if (functionalTemplate) {
+    options.functional = true
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = scopeId
+  }
+
+  var hook
+  if (moduleIdentifier) { // server build
+    hook = function (context) {
+      // 2.3 injection
+      context =
+        context || // cached call
+        (this.$vnode && this.$vnode.ssrContext) || // stateful
+        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
+      // 2.2 with runInNewContext: true
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__
+      }
+      // inject component styles
+      if (injectStyles) {
+        injectStyles.call(this, context)
+      }
+      // register component module identifier for async chunk inferrence
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier)
+      }
+    }
+    // used by ssr in case component is cached and beforeCreate
+    // never gets called
+    options._ssrRegister = hook
+  } else if (injectStyles) {
+    hook = injectStyles
+  }
+
+  if (hook) {
+    var functional = options.functional
+    var existing = functional
+      ? options.render
+      : options.beforeCreate
+
+    if (!functional) {
+      // inject component registration as beforeCreate hook
+      options.beforeCreate = existing
+        ? [].concat(existing, hook)
+        : [hook]
+    } else {
+      // for template-only hot-reload because in that case the render fn doesn't
+      // go through the normalizer
+      options._injectStyles = hook
+      // register for functioal component in vue file
+      options.render = function renderWithStyleInjection (h, context) {
+        hook.call(context)
+        return existing(h, context)
+      }
+    }
+  }
+
+  return {
+    esModule: esModule,
+    exports: scriptExports,
+    options: options
+  }
+}
+
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(23);
+
+/***/ }),
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var bind = __webpack_require__(9);
-var isBuffer = __webpack_require__(22);
+var isBuffer = __webpack_require__(24);
 
 /*global toString:true*/
 
@@ -374,121 +489,6 @@ module.exports = {
 
 
 /***/ }),
-/* 1 */
-/***/ (function(module, exports) {
-
-/* globals __VUE_SSR_CONTEXT__ */
-
-// IMPORTANT: Do NOT use ES2015 features in this file.
-// This module is a runtime utility for cleaner component module output and will
-// be included in the final webpack user bundle.
-
-module.exports = function normalizeComponent (
-  rawScriptExports,
-  compiledTemplate,
-  functionalTemplate,
-  injectStyles,
-  scopeId,
-  moduleIdentifier /* server only */
-) {
-  var esModule
-  var scriptExports = rawScriptExports = rawScriptExports || {}
-
-  // ES6 modules interop
-  var type = typeof rawScriptExports.default
-  if (type === 'object' || type === 'function') {
-    esModule = rawScriptExports
-    scriptExports = rawScriptExports.default
-  }
-
-  // Vue.extend constructor export interop
-  var options = typeof scriptExports === 'function'
-    ? scriptExports.options
-    : scriptExports
-
-  // render functions
-  if (compiledTemplate) {
-    options.render = compiledTemplate.render
-    options.staticRenderFns = compiledTemplate.staticRenderFns
-    options._compiled = true
-  }
-
-  // functional template
-  if (functionalTemplate) {
-    options.functional = true
-  }
-
-  // scopedId
-  if (scopeId) {
-    options._scopeId = scopeId
-  }
-
-  var hook
-  if (moduleIdentifier) { // server build
-    hook = function (context) {
-      // 2.3 injection
-      context =
-        context || // cached call
-        (this.$vnode && this.$vnode.ssrContext) || // stateful
-        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
-      // 2.2 with runInNewContext: true
-      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
-        context = __VUE_SSR_CONTEXT__
-      }
-      // inject component styles
-      if (injectStyles) {
-        injectStyles.call(this, context)
-      }
-      // register component module identifier for async chunk inferrence
-      if (context && context._registeredComponents) {
-        context._registeredComponents.add(moduleIdentifier)
-      }
-    }
-    // used by ssr in case component is cached and beforeCreate
-    // never gets called
-    options._ssrRegister = hook
-  } else if (injectStyles) {
-    hook = injectStyles
-  }
-
-  if (hook) {
-    var functional = options.functional
-    var existing = functional
-      ? options.render
-      : options.beforeCreate
-
-    if (!functional) {
-      // inject component registration as beforeCreate hook
-      options.beforeCreate = existing
-        ? [].concat(existing, hook)
-        : [hook]
-    } else {
-      // for template-only hot-reload because in that case the render fn doesn't
-      // go through the normalizer
-      options._injectStyles = hook
-      // register for functioal component in vue file
-      options.render = function renderWithStyleInjection (h, context) {
-        hook.call(context)
-        return existing(h, context)
-      }
-    }
-  }
-
-  return {
-    esModule: esModule,
-    exports: scriptExports,
-    options: options
-  }
-}
-
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(21);
-
-/***/ }),
 /* 3 */
 /***/ (function(module, exports) {
 
@@ -590,7 +590,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(48)
+var listToStyles = __webpack_require__(55)
 
 /*
 type StyleObject = {
@@ -832,8 +832,8 @@ module.exports = g;
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
-var utils = __webpack_require__(0);
-var normalizeHeaderName = __webpack_require__(24);
+var utils = __webpack_require__(2);
+var normalizeHeaderName = __webpack_require__(26);
 
 var DEFAULT_CONTENT_TYPE = {
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -14096,13 +14096,13 @@ process.umask = function() { return 0; };
 "use strict";
 
 
-var utils = __webpack_require__(0);
-var settle = __webpack_require__(25);
-var buildURL = __webpack_require__(27);
-var parseHeaders = __webpack_require__(28);
-var isURLSameOrigin = __webpack_require__(29);
+var utils = __webpack_require__(2);
+var settle = __webpack_require__(27);
+var buildURL = __webpack_require__(29);
+var parseHeaders = __webpack_require__(30);
+var isURLSameOrigin = __webpack_require__(31);
 var createError = __webpack_require__(12);
-var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(30);
+var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(32);
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -14199,7 +14199,7 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(31);
+      var cookies = __webpack_require__(33);
 
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -14283,7 +14283,7 @@ module.exports = function xhrAdapter(config) {
 "use strict";
 
 
-var enhanceError = __webpack_require__(26);
+var enhanceError = __webpack_require__(28);
 
 /**
  * Create an Error with the specified message, config, error code, request and response.
@@ -14343,12 +14343,65 @@ module.exports = Cancel;
 /* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(16);
-module.exports = __webpack_require__(93);
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(44)
+/* template */
+var __vue_template__ = __webpack_require__(45)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/ExampleComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-299e239e", Component.options)
+  } else {
+    hotAPI.reload("data-v-299e239e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
 
 
 /***/ }),
 /* 16 */
+/***/ (function(module, exports, __webpack_require__) {
+
+!function(e,t){ true?module.exports=t():"function"==typeof define&&define.amd?define("vue-stripe-elements",[],t):"object"==typeof exports?exports["vue-stripe-elements"]=t():e["vue-stripe-elements"]=t()}(this,function(){return function(e){function t(r){if(n[r])return n[r].exports;var o=n[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,t),o.l=!0,o.exports}var n={};return t.m=e,t.c=n,t.i=function(e){return e},t.d=function(e,n,r){t.o(e,n)||Object.defineProperty(e,n,{configurable:!1,enumerable:!0,get:r})},t.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(n,"a",n),n},t.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},t.p="",t(t.s=16)}([function(e,t,n){var r=n(2)(n(15),n(18),null,null);r.options.__file="/Users/fromatob/Projects/vue-stripe-elements/src/StripeElement.vue",r.esModule&&Object.keys(r.esModule).some(function(e){return"default"!==e&&"__esModule"!==e})&&console.error("named exports are not supported in *.vue files."),r.options.functional&&console.error("[vue-loader] StripeElement.vue: functional components are not supported with templates, they should use render functions."),e.exports=r.exports},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default={stripe:{type:[String,Object],required:!0},value:{type:String,required:!1},options:{type:Object,required:!1}}},function(e,t){e.exports=function(e,t,n,r){var o,u=e=e||{},s=typeof e.default;"object"!==s&&"function"!==s||(o=e,u=e.default);var i="function"==typeof u?u.options:u;if(t&&(i.render=t.render,i.staticRenderFns=t.staticRenderFns),n&&(i._scopeId=n),r){var l=i.computed||(i.computed={});Object.keys(r).forEach(function(e){var t=r[e];l[e]=function(){return t}})}return{esModule:o,exports:u,options:i}}},function(e,t,n){"use strict";function r(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{};"object"===(void 0===e?"undefined":s(e))&&"function"==typeof e.elements&&(i.instance=e),void 0===window.Stripe&&null===i.instance?console.error("Stripe V3 library not loaded!"):null===i.instance&&(i.instance=window.Stripe(e)),i.instance.elements?null===i.elements&&(i.elements=i.instance.elements(t)):console.error("Stripe V3 library not loaded!")}function o(e,t){var n=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{};r(t,n.elements||{}),n.style=Object.assign(l,n.style||{});var o=i.elements.create(e,n);return i.createToken=function(e){return i.instance.createToken(o,e)},i.createSource=function(e){return i.instance.createSource(o,e)},i.retrieveSource=function(e){return i.instance.retrieveSource(e)},o}function u(){i.instance=null,i.elements=null,i.createToken=null,i.createSource=null,i.retrieveSource=null}Object.defineProperty(t,"__esModule",{value:!0});var s="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};t.create=o,t.destroy=u;var i=t.Stripe={instance:null,createToken:null,createSource:null,retrieveSource:null,elements:null},l=t.baseStyle={base:{color:"#32325d",lineHeight:"24px",fontFamily:"Helvetica Neue",fontSmoothing:"antialiased",fontSize:"16px","::placeholder":{color:"#aab7c4"}},invalid:{color:"#fa755a",iconColor:"#fa755a"}}},function(e,t,n){"use strict";"function"!=typeof Object.assign&&(Object.assign=function(e,t){if(null==e)throw new TypeError("Cannot convert undefined or null to object");for(var n=Object(e),r=1;r<arguments.length;r++){var o=arguments[r];if(null!=o)for(var u in o)Object.prototype.hasOwnProperty.call(o,u)&&(n[u]=o[u])}return n}),e.exports=Object.assign},function(e,t,n){var r=n(2)(n(10),n(22),null,null);r.options.__file="/Users/fromatob/Projects/vue-stripe-elements/src/Card.vue",r.esModule&&Object.keys(r.esModule).some(function(e){return"default"!==e&&"__esModule"!==e})&&console.error("named exports are not supported in *.vue files."),r.options.functional&&console.error("[vue-loader] Card.vue: functional components are not supported with templates, they should use render functions."),e.exports=r.exports},function(e,t,n){var r=n(2)(n(11),n(19),null,null);r.options.__file="/Users/fromatob/Projects/vue-stripe-elements/src/CardCvc.vue",r.esModule&&Object.keys(r.esModule).some(function(e){return"default"!==e&&"__esModule"!==e})&&console.error("named exports are not supported in *.vue files."),r.options.functional&&console.error("[vue-loader] CardCvc.vue: functional components are not supported with templates, they should use render functions."),e.exports=r.exports},function(e,t,n){var r=n(2)(n(12),n(21),null,null);r.options.__file="/Users/fromatob/Projects/vue-stripe-elements/src/CardExpiry.vue",r.esModule&&Object.keys(r.esModule).some(function(e){return"default"!==e&&"__esModule"!==e})&&console.error("named exports are not supported in *.vue files."),r.options.functional&&console.error("[vue-loader] CardExpiry.vue: functional components are not supported with templates, they should use render functions."),e.exports=r.exports},function(e,t,n){var r=n(2)(n(13),n(20),null,null);r.options.__file="/Users/fromatob/Projects/vue-stripe-elements/src/CardNumber.vue",r.esModule&&Object.keys(r.esModule).some(function(e){return"default"!==e&&"__esModule"!==e})&&console.error("named exports are not supported in *.vue files."),r.options.functional&&console.error("[vue-loader] CardNumber.vue: functional components are not supported with templates, they should use render functions."),e.exports=r.exports},function(e,t,n){var r=n(2)(n(14),n(17),null,null);r.options.__file="/Users/fromatob/Projects/vue-stripe-elements/src/PostalCode.vue",r.esModule&&Object.keys(r.esModule).some(function(e){return"default"!==e&&"__esModule"!==e})&&console.error("named exports are not supported in *.vue files."),r.options.functional&&console.error("[vue-loader] PostalCode.vue: functional components are not supported with templates, they should use render functions."),e.exports=r.exports},function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{default:e}}Object.defineProperty(t,"__esModule",{value:!0});var o=n(1),u=r(o),s=n(0),i=r(s);t.default={props:u.default,components:{StripeElement:i.default},methods:{blur:function(){this.$refs.element.blur()},clear:function(){this.$refs.element.clear()},focus:function(){this.$refs.element.focus()},update:function(e){this.$refs.element.update(e)}}}},function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{default:e}}Object.defineProperty(t,"__esModule",{value:!0});var o=n(1),u=r(o),s=n(0),i=r(s);t.default={props:u.default,components:{StripeElement:i.default},methods:{blur:function(){this.$refs.element.blur()},clear:function(){this.$refs.element.clear()},focus:function(){this.$refs.element.focus()},update:function(e){this.$refs.element.update(e)}}}},function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{default:e}}Object.defineProperty(t,"__esModule",{value:!0});var o=n(1),u=r(o),s=n(0),i=r(s);t.default={props:u.default,components:{StripeElement:i.default},methods:{blur:function(){this.$refs.element.blur()},clear:function(){this.$refs.element.clear()},focus:function(){this.$refs.element.focus()},update:function(e){this.$refs.element.update(e)}}}},function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{default:e}}Object.defineProperty(t,"__esModule",{value:!0});var o=n(1),u=r(o),s=n(0),i=r(s);t.default={props:u.default,components:{StripeElement:i.default},methods:{blur:function(){this.$refs.element.blur()},clear:function(){this.$refs.element.clear()},focus:function(){this.$refs.element.focus()},update:function(e){this.$refs.element.update(e)}}}},function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{default:e}}Object.defineProperty(t,"__esModule",{value:!0});var o=n(1),u=r(o),s=n(0),i=r(s);t.default={props:u.default,components:{StripeElement:i.default},methods:{blur:function(){this.$refs.element.blur()},clear:function(){this.$refs.element.clear()},focus:function(){this.$refs.element.focus()},update:function(e){this.$refs.element.update(e)}}}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=n(1),o=function(e){return e&&e.__esModule?e:{default:e}}(r),u=n(3);t.default={props:Object.assign({type:{type:String,required:!0}},o.default),beforeMount:function(){var e=this;this._element=(0,u.create)(this.type,this.stripe,this.options),this._element.on("blur",function(t){return e.$emit("blur")}),this._element.on("focus",function(t){return e.$emit("focus")}),this._element.on("change",function(t){return e.$emit("change",t)})},mounted:function(){var e=document.createElement("div");this._element.mount(e),this.$el.appendChild(e)},beforeDestroy:function(){this._element.unmount(),this._element.destroy(),(0,u.destroy)()},methods:{blur:function(){this._element.blur()},clear:function(){this._element.clear()},focus:function(){this._element.focus()},update:function(){this._element.update()}}}},function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{default:e}}n(4);var o=n(3),u=n(0),s=r(u),i=n(5),l=r(i),c=n(7),f=r(c),a=n(6),p=r(a),d=n(8),m=r(d),v=n(9),h=r(v);e.exports={Card:l.default,CardNumber:m.default,CardExpiry:f.default,CardCvc:p.default,PostalCode:h.default,StripeElement:s.default,baseStyle:o.baseStyle,get instance(){return o.Stripe.instance},get createToken(){return o.Stripe.createToken},get createSource(){return o.Stripe.createSource},get retrieveSource(){return o.Stripe.retrieveSource}}},function(e,t,n){e.exports={render:function(){var e=this,t=e.$createElement;return(e._self._c||t)("stripe-element",{ref:"element",attrs:{type:"postalCode",stripe:e.stripe,value:e.value,options:e.options},on:{blur:function(t){e.$emit("blur")},focus:function(t){e.$emit("focus")},empty:function(t){e.$emit("empty")},change:function(t){e.$emit("change",t)}}})},staticRenderFns:[]},e.exports.render._withStripped=!0},function(e,t,n){e.exports={render:function(){var e=this,t=e.$createElement;return(e._self._c||t)("div")},staticRenderFns:[]},e.exports.render._withStripped=!0},function(e,t,n){e.exports={render:function(){var e=this,t=e.$createElement;return(e._self._c||t)("stripe-element",{ref:"element",attrs:{type:"cardCvc",stripe:e.stripe,value:e.value,options:e.options},on:{blur:function(t){e.$emit("blur")},focus:function(t){e.$emit("focus")},change:function(t){e.$emit("change",t)}}})},staticRenderFns:[]},e.exports.render._withStripped=!0},function(e,t,n){e.exports={render:function(){var e=this,t=e.$createElement;return(e._self._c||t)("stripe-element",{ref:"element",attrs:{type:"cardNumber",stripe:e.stripe,value:e.value,options:e.options},on:{blur:function(t){e.$emit("blur")},focus:function(t){e.$emit("focus")},change:function(t){e.$emit("change",t)}}})},staticRenderFns:[]},e.exports.render._withStripped=!0},function(e,t,n){e.exports={render:function(){var e=this,t=e.$createElement;return(e._self._c||t)("stripe-element",{ref:"element",attrs:{type:"cardExpiry",stripe:e.stripe,value:e.value,options:e.options},on:{blur:function(t){e.$emit("blur")},focus:function(t){e.$emit("focus")},change:function(t){e.$emit("change",t)}}})},staticRenderFns:[]},e.exports.render._withStripped=!0},function(e,t,n){e.exports={render:function(){var e=this,t=e.$createElement;return(e._self._c||t)("stripe-element",{ref:"element",attrs:{type:"card",stripe:e.stripe,value:e.value,options:e.options},on:{blur:function(t){e.$emit("blur")},focus:function(t){e.$emit("focus")},change:function(t){e.$emit("change",t)}}})},staticRenderFns:[]},e.exports.render._withStripped=!0}])});
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(18);
+module.exports = __webpack_require__(100);
+
+
+/***/ }),
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -14358,9 +14411,9 @@ module.exports = __webpack_require__(93);
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-__webpack_require__(17);
+__webpack_require__(19);
 
-window.Vue = __webpack_require__(39);
+window.Vue = __webpack_require__(41);
 
 /**
  * The following block of code may be used to automatically register your
@@ -14370,18 +14423,21 @@ window.Vue = __webpack_require__(39);
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-Vue.component('example-component', __webpack_require__(42));
-Vue.component('liquor-license-form', __webpack_require__(45));
-Vue.component('edit-liquor-license-form', __webpack_require__(51));
-Vue.component('my-applications', __webpack_require__(56));
-Vue.component('processed-applications', __webpack_require__(59));
-Vue.component('completed-applications', __webpack_require__(64));
-Vue.component('incomplete-applications', __webpack_require__(69));
-Vue.component('paid-applications', __webpack_require__(74));
-Vue.component('admin-completed-applications', __webpack_require__(79));
-Vue.component('admin-processed-applications', __webpack_require__(82));
-Vue.component('admin-paid-applications', __webpack_require__(85));
-Vue.component('show-application', __webpack_require__(88));
+Vue.component('example-component', __webpack_require__(15));
+Vue.component('card-element', __webpack_require__(46));
+Vue.component('payment-form', __webpack_require__(49));
+Vue.component('example-component', __webpack_require__(15));
+Vue.component('liquor-license-form', __webpack_require__(52));
+Vue.component('edit-liquor-license-form', __webpack_require__(58));
+Vue.component('my-applications', __webpack_require__(63));
+Vue.component('processed-applications', __webpack_require__(66));
+Vue.component('completed-applications', __webpack_require__(71));
+Vue.component('incomplete-applications', __webpack_require__(76));
+Vue.component('paid-applications', __webpack_require__(81));
+Vue.component('admin-completed-applications', __webpack_require__(86));
+Vue.component('admin-processed-applications', __webpack_require__(89));
+Vue.component('admin-paid-applications', __webpack_require__(92));
+Vue.component('show-application', __webpack_require__(95));
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key)))
@@ -14397,11 +14453,11 @@ var app = new Vue({
 });
 
 /***/ }),
-/* 17 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-window._ = __webpack_require__(18);
+window._ = __webpack_require__(20);
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -14413,7 +14469,7 @@ try {
   window.Popper = __webpack_require__(7).default;
   window.$ = window.jQuery = __webpack_require__(8);
 
-  __webpack_require__(20);
+  __webpack_require__(22);
 } catch (e) {}
 
 /**
@@ -14422,7 +14478,7 @@ try {
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-window.axios = __webpack_require__(2);
+window.axios = __webpack_require__(1);
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
@@ -14458,7 +14514,7 @@ if (token) {
 // });
 
 /***/ }),
-/* 18 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -31570,10 +31626,10 @@ if (token) {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(19)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(21)(module)))
 
 /***/ }),
-/* 19 */
+/* 21 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -31601,7 +31657,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 20 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -35551,15 +35607,15 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 21 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(0);
+var utils = __webpack_require__(2);
 var bind = __webpack_require__(9);
-var Axios = __webpack_require__(23);
+var Axios = __webpack_require__(25);
 var defaults = __webpack_require__(6);
 
 /**
@@ -35594,14 +35650,14 @@ axios.create = function create(instanceConfig) {
 
 // Expose Cancel & CancelToken
 axios.Cancel = __webpack_require__(14);
-axios.CancelToken = __webpack_require__(37);
+axios.CancelToken = __webpack_require__(39);
 axios.isCancel = __webpack_require__(13);
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(38);
+axios.spread = __webpack_require__(40);
 
 module.exports = axios;
 
@@ -35610,7 +35666,7 @@ module.exports.default = axios;
 
 
 /***/ }),
-/* 22 */
+/* 24 */
 /***/ (function(module, exports) {
 
 /*!
@@ -35637,16 +35693,16 @@ function isSlowBuffer (obj) {
 
 
 /***/ }),
-/* 23 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var defaults = __webpack_require__(6);
-var utils = __webpack_require__(0);
-var InterceptorManager = __webpack_require__(32);
-var dispatchRequest = __webpack_require__(33);
+var utils = __webpack_require__(2);
+var InterceptorManager = __webpack_require__(34);
+var dispatchRequest = __webpack_require__(35);
 
 /**
  * Create a new instance of Axios
@@ -35723,13 +35779,13 @@ module.exports = Axios;
 
 
 /***/ }),
-/* 24 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(0);
+var utils = __webpack_require__(2);
 
 module.exports = function normalizeHeaderName(headers, normalizedName) {
   utils.forEach(headers, function processHeader(value, name) {
@@ -35742,7 +35798,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 
 
 /***/ }),
-/* 25 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35775,7 +35831,7 @@ module.exports = function settle(resolve, reject, response) {
 
 
 /***/ }),
-/* 26 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35803,13 +35859,13 @@ module.exports = function enhanceError(error, config, code, request, response) {
 
 
 /***/ }),
-/* 27 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(0);
+var utils = __webpack_require__(2);
 
 function encode(val) {
   return encodeURIComponent(val).
@@ -35876,13 +35932,13 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 
 
 /***/ }),
-/* 28 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(0);
+var utils = __webpack_require__(2);
 
 // Headers whose duplicates are ignored by node
 // c.f. https://nodejs.org/api/http.html#http_message_headers
@@ -35936,13 +35992,13 @@ module.exports = function parseHeaders(headers) {
 
 
 /***/ }),
-/* 29 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(0);
+var utils = __webpack_require__(2);
 
 module.exports = (
   utils.isStandardBrowserEnv() ?
@@ -36011,7 +36067,7 @@ module.exports = (
 
 
 /***/ }),
-/* 30 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36054,13 +36110,13 @@ module.exports = btoa;
 
 
 /***/ }),
-/* 31 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(0);
+var utils = __webpack_require__(2);
 
 module.exports = (
   utils.isStandardBrowserEnv() ?
@@ -36114,13 +36170,13 @@ module.exports = (
 
 
 /***/ }),
-/* 32 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(0);
+var utils = __webpack_require__(2);
 
 function InterceptorManager() {
   this.handlers = [];
@@ -36173,18 +36229,18 @@ module.exports = InterceptorManager;
 
 
 /***/ }),
-/* 33 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(0);
-var transformData = __webpack_require__(34);
+var utils = __webpack_require__(2);
+var transformData = __webpack_require__(36);
 var isCancel = __webpack_require__(13);
 var defaults = __webpack_require__(6);
-var isAbsoluteURL = __webpack_require__(35);
-var combineURLs = __webpack_require__(36);
+var isAbsoluteURL = __webpack_require__(37);
+var combineURLs = __webpack_require__(38);
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -36266,13 +36322,13 @@ module.exports = function dispatchRequest(config) {
 
 
 /***/ }),
-/* 34 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(0);
+var utils = __webpack_require__(2);
 
 /**
  * Transform the data for a request or a response
@@ -36293,7 +36349,7 @@ module.exports = function transformData(data, headers, fns) {
 
 
 /***/ }),
-/* 35 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36314,7 +36370,7 @@ module.exports = function isAbsoluteURL(url) {
 
 
 /***/ }),
-/* 36 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36335,7 +36391,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 
 
 /***/ }),
-/* 37 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36399,7 +36455,7 @@ module.exports = CancelToken;
 
 
 /***/ }),
-/* 38 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36433,7 +36489,7 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 39 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47396,10 +47452,10 @@ Vue.compile = compileToFunctions;
 
 module.exports = Vue;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(40).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(42).setImmediate))
 
 /***/ }),
-/* 40 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var scope = (typeof global !== "undefined" && global) ||
@@ -47455,7 +47511,7 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(41);
+__webpack_require__(43);
 // On some exotic environments, it's not clear which object `setimmediate` was
 // able to install onto.  Search each possibility in the same order as the
 // `setimmediate` library.
@@ -47469,7 +47525,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ }),
-/* 41 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -47662,54 +47718,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(10)))
 
 /***/ }),
-/* 42 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(43)
-/* template */
-var __vue_template__ = __webpack_require__(44)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/js/components/ExampleComponent.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-299e239e", Component.options)
-  } else {
-    hotAPI.reload("data-v-299e239e", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -47738,7 +47747,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -47781,19 +47790,366 @@ if (false) {
 }
 
 /***/ }),
-/* 45 */
+/* 46 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(47)
+/* template */
+var __vue_template__ = __webpack_require__(48)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/CardElement.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-02d0deb1", Component.options)
+  } else {
+    hotAPI.reload("data-v-02d0deb1", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 47 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_stripe_elements_plus__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_stripe_elements_plus___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_stripe_elements_plus__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: { Card: __WEBPACK_IMPORTED_MODULE_0_vue_stripe_elements_plus__["Card"] },
+  data: function data() {
+    return {
+      complete: false,
+      errorMessage: '',
+      stripeOptions: {
+        // see https://stripe.com/docs/stripe.js#element-options for details
+        style: {
+          base: {
+            color: '#32325d',
+            lineHeight: '18px',
+            fontFamily: '"Raleway", Helvetica, sans-serif',
+            fontSmoothing: 'antialiased',
+            fontSize: '16px',
+            '::placeholder': {
+              color: '#aab7c4'
+            }
+          },
+          invalid: {
+            color: '#fa755a',
+            iconColor: '#fa755a'
+          }
+        },
+        hidePostalCode: true
+      }
+    };
+  },
+
+  methods: {
+    pay: function pay() {
+      // createToken returns a Promise which resolves in a result object with
+      // either a token or an error key.
+      // See https://stripe.com/docs/api#tokens for the token object.
+      // See https://stripe.com/docs/api#errors for the error object.
+      // More general https://stripe.com/docs/stripe.js#stripe-create-token.
+      Object(__WEBPACK_IMPORTED_MODULE_0_vue_stripe_elements_plus__["createToken"])().then(function (data) {
+        return console.log(data.token);
+      });
+    },
+    change: function change(event) {
+      this.errorMessage = event.error ? event.error.message : '';
+    }
+  }
+});
+
+/***/ }),
+/* 48 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("card", {
+        staticClass: "stripe-card",
+        class: { complete: _vm.complete },
+        attrs: {
+          stripe: "pk_test_ZpeCcMeI4Ai3VuCWytohUs36",
+          options: _vm.stripeOptions
+        },
+        on: {
+          change: function($event) {
+            _vm.change($event)
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c("div", {
+        attrs: { id: "card-errors", role: "alert" },
+        domProps: { textContent: _vm._s(_vm.errorMessage) }
+      })
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-02d0deb1", module.exports)
+  }
+}
+
+/***/ }),
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(46)
+  __webpack_require__(104)
 }
-var normalizeComponent = __webpack_require__(1)
+var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(49)
+var __vue_script__ = __webpack_require__(50)
 /* template */
-var __vue_template__ = __webpack_require__(50)
+var __vue_template__ = __webpack_require__(106)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-51d39462"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/PaymentForm.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-51d39462", Component.options)
+  } else {
+    hotAPI.reload("data-v-51d39462", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 50 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_stripe_elements_plus__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_stripe_elements_plus___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_stripe_elements_plus__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      csrf: document.head.querySelector('meta[name="csrf-token"]').content,
+      name_on_card: '',
+      email: '',
+      success_message: '',
+      isHide: true
+    };
+  },
+
+  props: ['id'],
+  methods: {
+    pay: function pay() {
+      var _this = this;
+
+      // createToken returns a Promise which resolves in a result object with
+      // either a token or an error key.
+      // See https://stripe.com/docs/api#tokens for the token object.
+      // See https://stripe.com/docs/api#errors for the error object.
+      // More general https://stripe.com/docs/stripe.js#stripe-create-token.
+      var options = {
+        name: this.name_on_card
+      };
+      Object(__WEBPACK_IMPORTED_MODULE_1_vue_stripe_elements_plus__["createToken"])(options).then(function (result) {
+        // var form = document.getElementById('payment-form');
+        var hiddenInput = document.createElement('input');
+        hiddenInput.setAttribute('type', 'hidden');
+        hiddenInput.setAttribute('name', 'stripeToken');
+        hiddenInput.setAttribute('value', result.token.id);
+        _this.$el.appendChild(hiddenInput);
+        // Submit the form
+        // this.$el.submit();
+
+        __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/checkout', { id: _this.id, email: _this.email, stripeToken: result.token.id }).then(function (response) {
+          console.log(response.data);
+          _this.success_message = response.data.message;
+          _this.isHide = false;
+        }).catch();
+      });
+    }
+  },
+  mounted: function mounted() {
+    console.log(this.id);
+  }
+});
+
+/***/ }),
+/* 51 */,
+/* 52 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(53)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(56)
+/* template */
+var __vue_template__ = __webpack_require__(57)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -47832,13 +48188,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 46 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(47);
+var content = __webpack_require__(54);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -47858,7 +48214,7 @@ if(false) {
 }
 
 /***/ }),
-/* 47 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -47866,13 +48222,13 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n.switch[data-v-2e20b4a6] {\n  position: relative;\n  display: inline-block;\n  width: 60px;\n  height: 34px;\n}\n.switch input[data-v-2e20b4a6] { \n  opacity: 0;\n  width: 0;\n  height: 0;\n}\n.slider[data-v-2e20b4a6] {\n  position: absolute;\n  cursor: pointer;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #ccc;\n  -webkit-transition: .4s;\n  transition: .4s;\n}\n.slider[data-v-2e20b4a6]:before {\n  position: absolute;\n  content: \"\";\n  height: 26px;\n  width: 26px;\n  left: 4px;\n  bottom: 4px;\n  background-color: white;\n  -webkit-transition: .4s;\n  transition: .4s;\n}\ninput:checked + .slider[data-v-2e20b4a6] {\n  background-color: #2196F3;\n}\ninput:focus + .slider[data-v-2e20b4a6] {\n  -webkit-box-shadow: 0 0 1px #2196F3;\n          box-shadow: 0 0 1px #2196F3;\n}\ninput:checked + .slider[data-v-2e20b4a6]:before {\n  -webkit-transform: translateX(26px);\n  transform: translateX(26px);\n}\n\n/* Rounded sliders */\n.slider.round[data-v-2e20b4a6] {\n  border-radius: 34px;\n}\n.slider.round[data-v-2e20b4a6]:before {\n  border-radius: 50%;\n}\n", ""]);
+exports.push([module.i, "\n.hide[data-v-2e20b4a6]{\n  display: none;\n}\n.switch[data-v-2e20b4a6] {\n  position: relative;\n  display: inline-block;\n  width: 60px;\n  height: 34px;\n}\n.switch input[data-v-2e20b4a6] { \n  opacity: 0;\n  width: 0;\n  height: 0;\n}\n.slider[data-v-2e20b4a6] {\n  position: absolute;\n  cursor: pointer;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #ccc;\n  -webkit-transition: .4s;\n  transition: .4s;\n}\n.slider[data-v-2e20b4a6]:before {\n  position: absolute;\n  content: \"\";\n  height: 26px;\n  width: 26px;\n  left: 4px;\n  bottom: 4px;\n  background-color: white;\n  -webkit-transition: .4s;\n  transition: .4s;\n}\ninput:checked + .slider[data-v-2e20b4a6] {\n  background-color: #2196F3;\n}\ninput:focus + .slider[data-v-2e20b4a6] {\n  -webkit-box-shadow: 0 0 1px #2196F3;\n          box-shadow: 0 0 1px #2196F3;\n}\ninput:checked + .slider[data-v-2e20b4a6]:before {\n  -webkit-transform: translateX(26px);\n  transform: translateX(26px);\n}\n\n/* Rounded sliders */\n.slider.round[data-v-2e20b4a6] {\n  border-radius: 34px;\n}\n.slider.round[data-v-2e20b4a6]:before {\n  border-radius: 50%;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 48 */
+/* 55 */
 /***/ (function(module, exports) {
 
 /**
@@ -47905,13 +48261,22 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
-/* 49 */
+/* 56 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -48637,12 +49002,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       five_percent_such_corporation_been_revoked_reason: '',
       five_percent_such_corporation_been_revoked_date_revocation: '',
       status: '',
-      edited: false
+      isHide: true
     };
   },
 
   methods: {
-    saveForm: function saveForm() {
+    saveForm: function saveForm(submit) {
       var _this = this;
 
       __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/user/applications', {
@@ -48751,115 +49116,121 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         five_percent_such_corporation_been_revoked_name_license: this.five_percent_such_corporation_been_revoked_name_license,
         five_percent_such_corporation_been_revoked_reason: this.five_percent_such_corporation_been_revoked_reason,
         five_percent_such_corporation_been_revoked_date_revocation: this.five_percent_such_corporation_been_revoked_date_revocation,
-        status: 'incomplete'
+        status: submit == 'city' ? 'completed' : 'incomplete'
+        // status: this.status
       }).then(function (response) {
         console.log(response.data);
-        _this.app_id = response.data.id;
-        _this.license_class = response.data.license_class;
-        _this.license = response.data.license;
-        _this.fee = response.data.fee;
-        _this.address = response.data.address;
-        _this.city = response.data.city;
-        _this.state = response.data.state;
-        _this.zip = response.data.zip;
-        _this.corporate_name = response.data.corporate_name;
-        _this.corporate_address = response.data.corporate_address;
-        _this.name_business_to_be_conducted = response.data.name_business_to_be_conducted;
-        _this.business_phone = response.data.business_phone;
-        _this.business_mobile = response.data.business_mobile;
-        _this.business_email = response.data.business_email;
-        _this.president_name = response.data.president_name;
-        _this.president_address = response.data.president_address;
-        _this.president_phone = response.data.president_phone;
-        _this.president_mobile = response.data.president_mobile;
-        _this.president_email = response.data.president_email;
-        _this.vice_president_name = response.data.vice_president_name;
-        _this.vice_president_address = response.data.vice_president_address;
-        _this.vice_president_phone = response.data.vice_president_phone;
-        _this.vice_president_mobile = response.data.vice_president_mobile;
-        _this.vice_president_email = response.data.vice_president_email;
-        _this.secretary_name = response.data.secretary_name;
-        _this.secretary_address = response.data.secretary_address;
-        _this.secretary_phone = response.data.secretary_phone;
-        _this.secretary_mobile = response.data.secretary_mobile;
-        _this.secretary_email = response.data.secretary_email;
-        _this.treasurer_name = response.data.treasurer_name;
-        _this.treasurer_address = response.data.treasurer_address;
-        _this.treasurer_phone = response.data.treasurer_phone;
-        _this.treasurer_mobile = response.data.treasurer_mobile;
-        _this.treasurer_email = response.data.treasurer_email;
-        _this.director_name = response.data.director_name;
-        _this.director_address = response.data.director_address;
-        _this.director_phone = response.data.director_phone;
-        _this.director_mobile = response.data.director_mobile;
-        _this.director_email = response.data.director_email;
-        _this.vice_director_name = response.data.vice_director_name;
-        _this.vice_director_address = response.data.vice_director_address;
-        _this.vice_director_phone = response.data.vice_director_phone;
-        _this.vice_director_mobile = response.data.vice_director_mobile;
-        _this.vice_director_email = response.data.vice_director_email;
-        _this.date_incorporation = response.data.date_incorporation;
-        _this.state_incorporation = response.data.state_incorporation;
-        _this.other_state_incorporation_not_illinois = response.data.other_state_incorporation_not_illinois;
-        _this.corporation_forth_chapter = response.data.corporation_forth_chapter;
-        _this.corporation_agent_name = response.data.corporation_agent_name;
-        _this.corporation_agent_address = response.data.corporation_agent_address;
-        _this.corporation_agent_phone = response.data.corporation_agent_phone;
-        _this.corporation_agent_mobile = response.data.corporation_agent_mobile;
-        _this.corporation_agent_email = response.data.corporation_agent_email;
-        _this.principal_kind_business = response.data.principal_kind_business;
-        _this.applicant_seek_license_alcoholic_restaurant = response.data.applicant_seek_license_alcoholic_restaurant;
-        _this.maitained_to_public_meals_served = response.data.maitained_to_public_meals_served;
-        _this.yes_food_services_are = response.data.yes_food_services_are;
-        _this.serve_suitable_food = response.data.serve_suitable_food;
-        _this.qualifications_described_illinois_act = response.data.qualifications_described_illinois_act;
-        _this.applicant_own_premises_license_sought = response.data.applicant_own_premises_license_sought;
-        _this.applicant_lease_premises_license_sought = response.data.applicant_lease_premises_license_sought;
-        _this.lessor_name = response.data.lessor_name;
-        _this.lessor_address = response.data.lessor_address;
-        _this.period_covered_lease_from = response.data.period_covered_lease_from;
-        _this.period_covered_lease_to = response.data.period_covered_lease_to;
-        _this.applicant_own_premise_license_sought = response.data.applicant_own_premise_license_sought;
-        _this.applicant_food_dispenser = response.data.applicant_food_dispenser;
-        _this.applicant_food_dispenser_number_license = response.data.applicant_food_dispenser_number_license;
-        _this.applicant_actively_involved_day_operation = response.data.applicant_actively_involved_day_operation;
-        _this.business_liquor_license_sought_manager = response.data.business_liquor_license_sought_manager;
-        _this.manager_name = response.data.manager_name;
-        _this.manager_address = response.data.manager_address;
-        _this.manager_phone = response.data.manager_phone;
-        _this.amount_anticipated_liquor_sales = response.data.amount_anticipated_liquor_sales;
-        _this.applicant_seeking_approval_beer_garden = response.data.applicant_seeking_approval_beer_garden;
-        _this.applicant_seeking_approval_outdoor_seating_area = response.data.applicant_seeking_approval_outdoor_seating_area;
-        _this.location_applicants_business_within_100ft_property_of_church = response.data.location_applicants_business_within_100ft_property_of_church;
-        _this.manufacturer_agreed_to_pay_license = response.data.manufacturer_agreed_to_pay_license;
-        _this.applicant_engaged_manufacturer_alcoholic_liquors = response.data.applicant_engaged_manufacturer_alcoholic_liquors;
-        _this.applicant_engaged_manufacturer_alcoholic_liquors_location = response.data.applicant_engaged_manufacturer_alcoholic_liquors_location;
-        _this.applicant_conducting_business_importing_distributor = response.data.applicant_conducting_business_importing_distributor;
-        _this.applicant_conducting_business_importing_distributor_location = response.data.applicant_conducting_business_importing_distributor_location;
-        _this.officer_own_five_percent_convicted_felony = response.data.officer_own_five_percent_convicted_felony;
-        _this.officer_own_five_percent_convicted__felony_name = response.data.officer_own_five_percent_convicted__felony_name;
-        _this.officer_own_five_percent_convicted_felony_date = response.data.officer_own_five_percent_convicted_felony_date;
-        _this.officer_own_five_percent_convicted_felony_offence = response.data.officer_own_five_percent_convicted_felony_offence;
-        _this.officer_own_five_percent_convicted_violation = response.data.officer_own_five_percent_convicted_violation;
-        _this.officer_own_five_percent_convicted__violation_name = response.data.officer_own_five_percent_convicted__violation_name;
-        _this.officer_own_five_percent_convicted_violation_date = response.data.officer_own_five_percent_convicted_violation_date;
-        _this.officer_own_five_percent_convicted_violation_offence = response.data.officer_own_five_percent_convicted_violation_offence;
-        _this.officer_own_five_percent_convicted_gambling = response.data.officer_own_five_percent_convicted_gambling;
-        _this.officer_own_five_percent_convicted__gambling_name = response.data.officer_own_five_percent_convicted__gambling_name;
-        _this.officer_own_five_percent_convicted_gambling_date = response.data.officer_own_five_percent_convicted_gambling_date;
-        _this.officer_own_five_percent_convicted_gambling_offence = response.data.officer_own_five_percent_convicted_gambling_offence;
-        _this.made_application_similar_license = response.data.made_application_similar_license;
-        _this.made_application_similar_license_name = response.data.made_application_similar_license_name;
-        _this.made_application_similar_license_date = response.data.made_application_similar_license_date;
-        _this.made_application_similar_license_offence = response.data.made_application_similar_license_offence;
-        _this.corporation_own_twenty_percent_federal_wagering_stamp = response.data.corporation_own_twenty_percent_federal_wagering_stamp;
-        _this.law_enforcing_official_interested_business_license_sought = response.data.law_enforcing_official_interested_business_license_sought;
-        _this.name_of_party = response.data.name_of_party;
-        _this.five_percent_such_corporation_been_revoked = response.data.five_percent_such_corporation_been_revoked;
-        _this.five_percent_such_corporation_been_revoked_name_license = response.data.five_percent_such_corporation_been_revoked_name_license;
-        _this.five_percent_such_corporation_been_revoked_reason = response.data.five_percent_such_corporation_been_revoked_reason;
-        _this.five_percent_such_corporation_been_revoked_date_revocation = response.data.five_percent_such_corporation_been_revoked_date_revocation;
-        _this.getApplication(response.data.id);
+        if (submit == 'city') {
+          window.location.href = '/payment-form/' + response.data.id;
+        } else {
+          _this.app_id = response.data.id;
+          _this.license_class = response.data.license;
+          _this.license = response.data.license;
+          _this.fee = response.data.fee;
+          _this.address = response.data.address;
+          _this.city = response.data.city;
+          _this.state = response.data.state;
+          _this.zip = response.data.zip;
+          _this.corporate_name = response.data.corporate_name;
+          _this.corporate_address = response.data.corporate_address;
+          _this.name_business_to_be_conducted = response.data.name_business_to_be_conducted;
+          _this.business_phone = response.data.business_phone;
+          _this.business_mobile = response.data.business_mobile;
+          _this.business_email = response.data.business_email;
+          _this.president_name = response.data.president_name;
+          _this.president_address = response.data.president_address;
+          _this.president_phone = response.data.president_phone;
+          _this.president_mobile = response.data.president_mobile;
+          _this.president_email = response.data.president_email;
+          _this.vice_president_name = response.data.vice_president_name;
+          _this.vice_president_address = response.data.vice_president_address;
+          _this.vice_president_phone = response.data.vice_president_phone;
+          _this.vice_president_mobile = response.data.vice_president_mobile;
+          _this.vice_president_email = response.data.vice_president_email;
+          _this.secretary_name = response.data.secretary_name;
+          _this.secretary_address = response.data.secretary_address;
+          _this.secretary_phone = response.data.secretary_phone;
+          _this.secretary_mobile = response.data.secretary_mobile;
+          _this.secretary_email = response.data.secretary_email;
+          _this.treasurer_name = response.data.treasurer_name;
+          _this.treasurer_address = response.data.treasurer_address;
+          _this.treasurer_phone = response.data.treasurer_phone;
+          _this.treasurer_mobile = response.data.treasurer_mobile;
+          _this.treasurer_email = response.data.treasurer_email;
+          _this.director_name = response.data.director_name;
+          _this.director_address = response.data.director_address;
+          _this.director_phone = response.data.director_phone;
+          _this.director_mobile = response.data.director_mobile;
+          _this.director_email = response.data.director_email;
+          _this.vice_director_name = response.data.vice_director_name;
+          _this.vice_director_address = response.data.vice_director_address;
+          _this.vice_director_phone = response.data.vice_director_phone;
+          _this.vice_director_mobile = response.data.vice_director_mobile;
+          _this.vice_director_email = response.data.vice_director_email;
+          _this.date_incorporation = response.data.date_incorporation;
+          _this.state_incorporation = response.data.state_incorporation;
+          _this.other_state_incorporation_not_illinois = response.data.other_state_incorporation_not_illinois;
+          _this.corporation_forth_chapter = response.data.corporation_forth_chapter;
+          _this.corporation_agent_name = response.data.corporation_agent_name;
+          _this.corporation_agent_address = response.data.corporation_agent_address;
+          _this.corporation_agent_phone = response.data.corporation_agent_phone;
+          _this.corporation_agent_mobile = response.data.corporation_agent_mobile;
+          _this.corporation_agent_email = response.data.corporation_agent_email;
+          _this.principal_kind_business = response.data.principal_kind_business;
+          _this.applicant_seek_license_alcoholic_restaurant = response.data.applicant_seek_license_alcoholic_restaurant;
+          _this.maitained_to_public_meals_served = response.data.maitained_to_public_meals_served;
+          _this.yes_food_services_are = response.data.yes_food_services_are;
+          _this.serve_suitable_food = response.data.serve_suitable_food;
+          _this.qualifications_described_illinois_act = response.data.qualifications_described_illinois_act;
+          _this.applicant_own_premises_license_sought = response.data.applicant_own_premises_license_sought;
+          _this.applicant_lease_premises_license_sought = response.data.applicant_lease_premises_license_sought;
+          _this.lessor_name = response.data.lessor_name;
+          _this.lessor_address = response.data.lessor_address;
+          _this.period_covered_lease_from = response.data.period_covered_lease_from;
+          _this.period_covered_lease_to = response.data.period_covered_lease_to;
+          _this.applicant_own_premise_license_sought = response.data.applicant_own_premise_license_sought;
+          _this.applicant_food_dispenser = response.data.applicant_food_dispenser;
+          _this.applicant_food_dispenser_number_license = response.data.applicant_food_dispenser_number_license;
+          _this.applicant_actively_involved_day_operation = response.data.applicant_actively_involved_day_operation;
+          _this.business_liquor_license_sought_manager = response.data.business_liquor_license_sought_manager;
+          _this.manager_name = response.data.manager_name;
+          _this.manager_address = response.data.manager_address;
+          _this.manager_phone = response.data.manager_phone;
+          _this.amount_anticipated_liquor_sales = response.data.amount_anticipated_liquor_sales;
+          _this.applicant_seeking_approval_beer_garden = response.data.applicant_seeking_approval_beer_garden;
+          _this.applicant_seeking_approval_outdoor_seating_area = response.data.applicant_seeking_approval_outdoor_seating_area;
+          _this.location_applicants_business_within_100ft_property_of_church = response.data.location_applicants_business_within_100ft_property_of_church;
+          _this.manufacturer_agreed_to_pay_license = response.data.manufacturer_agreed_to_pay_license;
+          _this.applicant_engaged_manufacturer_alcoholic_liquors = response.data.applicant_engaged_manufacturer_alcoholic_liquors;
+          _this.applicant_engaged_manufacturer_alcoholic_liquors_location = response.data.applicant_engaged_manufacturer_alcoholic_liquors_location;
+          _this.applicant_conducting_business_importing_distributor = response.data.applicant_conducting_business_importing_distributor;
+          _this.applicant_conducting_business_importing_distributor_location = response.data.applicant_conducting_business_importing_distributor_location;
+          _this.officer_own_five_percent_convicted_felony = response.data.officer_own_five_percent_convicted_felony;
+          _this.officer_own_five_percent_convicted__felony_name = response.data.officer_own_five_percent_convicted__felony_name;
+          _this.officer_own_five_percent_convicted_felony_date = response.data.officer_own_five_percent_convicted_felony_date;
+          _this.officer_own_five_percent_convicted_felony_offence = response.data.officer_own_five_percent_convicted_felony_offence;
+          _this.officer_own_five_percent_convicted_violation = response.data.officer_own_five_percent_convicted_violation;
+          _this.officer_own_five_percent_convicted__violation_name = response.data.officer_own_five_percent_convicted__violation_name;
+          _this.officer_own_five_percent_convicted_violation_date = response.data.officer_own_five_percent_convicted_violation_date;
+          _this.officer_own_five_percent_convicted_violation_offence = response.data.officer_own_five_percent_convicted_violation_offence;
+          _this.officer_own_five_percent_convicted_gambling = response.data.officer_own_five_percent_convicted_gambling;
+          _this.officer_own_five_percent_convicted__gambling_name = response.data.officer_own_five_percent_convicted__gambling_name;
+          _this.officer_own_five_percent_convicted_gambling_date = response.data.officer_own_five_percent_convicted_gambling_date;
+          _this.officer_own_five_percent_convicted_gambling_offence = response.data.officer_own_five_percent_convicted_gambling_offence;
+          _this.made_application_similar_license = response.data.made_application_similar_license;
+          _this.made_application_similar_license_name = response.data.made_application_similar_license_name;
+          _this.made_application_similar_license_date = response.data.made_application_similar_license_date;
+          _this.made_application_similar_license_offence = response.data.made_application_similar_license_offence;
+          _this.corporation_own_twenty_percent_federal_wagering_stamp = response.data.corporation_own_twenty_percent_federal_wagering_stamp;
+          _this.law_enforcing_official_interested_business_license_sought = response.data.law_enforcing_official_interested_business_license_sought;
+          _this.name_of_party = response.data.name_of_party;
+          _this.five_percent_such_corporation_been_revoked = response.data.five_percent_such_corporation_been_revoked;
+          _this.five_percent_such_corporation_been_revoked_name_license = response.data.five_percent_such_corporation_been_revoked_name_license;
+          _this.five_percent_such_corporation_been_revoked_reason = response.data.five_percent_such_corporation_been_revoked_reason;
+          _this.five_percent_such_corporation_been_revoked_date_revocation = response.data.five_percent_such_corporation_been_revoked_date_revocation;
+          // this.getApplication(response.data.id)
+          _this.isHide = false;
+        }
       }).catch(function (error) {
         console.log(error);
       });
@@ -48979,9 +49350,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       }).catch(function (error) {
         console.log(error);
       });
-    },
-    completeApplication: function completeApplication() {
-      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post().then().catch();
     }
   },
 
@@ -48991,7 +49359,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 50 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -49009,6 +49377,22 @@ var render = function() {
               _vm._m(0),
               _vm._v(" "),
               _c("form", [
+                _c(
+                  "div",
+                  {
+                    class: {
+                      hide: _vm.isHide,
+                      alert: true,
+                      "alert-success": true
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                This application has been saved.\n            "
+                    )
+                  ]
+                ),
+                _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
                   _c("label", { attrs: { for: "inputAddress" } }, [
                     _vm._v("Address")
@@ -53594,18 +53978,46 @@ var render = function() {
                   })
                 ]),
                 _vm._v(" "),
-                _vm._m(19),
+                _c("div", { staticClass: "form-group" }),
                 _vm._v(" "),
-                _c("input", {
-                  staticClass: "btn btn-primary",
-                  attrs: { type: "button", value: "Save" },
-                  on: {
-                    click: function($event) {
-                      _vm.saveForm()
+                _c("div", { staticClass: "form-group" }, [
+                  _c("input", {
+                    staticClass: "btn btn-primary",
+                    attrs: { type: "button", value: "Save" },
+                    on: {
+                      click: function($event) {
+                        _vm.saveForm()
+                      }
                     }
+                  }),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass: "btn btn-success",
+                    attrs: { type: "button", value: "Submit to City" },
+                    on: {
+                      click: function($event) {
+                        _vm.saveForm("city")
+                      }
+                    }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  class: {
+                    hide: _vm.isHide,
+                    alert: true,
+                    "alert-success": true
                   }
-                })
-              ])
+                },
+                [
+                  _vm._v(
+                    "\n              This application has been saved.\n            "
+                  )
+                ]
+              )
             ])
           ])
         ])
@@ -53802,22 +54214,6 @@ var staticRenderFns = [
         )
       ])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", [_vm._v("Completed?")]),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("label", { staticClass: "switch" }, [
-        _c("input", { attrs: { type: "checkbox" } }),
-        _vm._v(" "),
-        _c("span", { staticClass: "slider round" })
-      ])
-    ])
   }
 ]
 render._withStripped = true
@@ -53830,19 +54226,19 @@ if (false) {
 }
 
 /***/ }),
-/* 51 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(52)
+  __webpack_require__(59)
 }
-var normalizeComponent = __webpack_require__(1)
+var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(54)
+var __vue_script__ = __webpack_require__(61)
 /* template */
-var __vue_template__ = __webpack_require__(55)
+var __vue_template__ = __webpack_require__(62)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -53881,13 +54277,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 52 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(53);
+var content = __webpack_require__(60);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -53907,7 +54303,7 @@ if(false) {
 }
 
 /***/ }),
-/* 53 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -53915,19 +54311,26 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n.switch[data-v-50c2923c] {\n  position: relative;\n  display: inline-block;\n  width: 60px;\n  height: 34px;\n}\n.switch input[data-v-50c2923c] { \n  opacity: 0;\n  width: 0;\n  height: 0;\n}\n.slider[data-v-50c2923c] {\n  position: absolute;\n  cursor: pointer;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #ccc;\n  -webkit-transition: .4s;\n  transition: .4s;\n}\n.slider[data-v-50c2923c]:before {\n  position: absolute;\n  content: \"\";\n  height: 26px;\n  width: 26px;\n  left: 4px;\n  bottom: 4px;\n  background-color: white;\n  -webkit-transition: .4s;\n  transition: .4s;\n}\ninput:checked + .slider[data-v-50c2923c] {\n  background-color: #2196F3;\n}\ninput:focus + .slider[data-v-50c2923c] {\n  -webkit-box-shadow: 0 0 1px #2196F3;\n          box-shadow: 0 0 1px #2196F3;\n}\ninput:checked + .slider[data-v-50c2923c]:before {\n  -webkit-transform: translateX(26px);\n  transform: translateX(26px);\n}\n\n/* Rounded sliders */\n.slider.round[data-v-50c2923c] {\n  border-radius: 34px;\n}\n.slider.round[data-v-50c2923c]:before {\n  border-radius: 50%;\n}\n", ""]);
+exports.push([module.i, "\n.hide[data-v-50c2923c]{\n  display: none;\n}\n.switch[data-v-50c2923c] {\n  position: relative;\n  display: inline-block;\n  width: 60px;\n  height: 34px;\n}\n.switch input[data-v-50c2923c] { \n  opacity: 0;\n  width: 0;\n  height: 0;\n}\n.slider[data-v-50c2923c] {\n  position: absolute;\n  cursor: pointer;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #ccc;\n  -webkit-transition: .4s;\n  transition: .4s;\n}\n.slider[data-v-50c2923c]:before {\n  position: absolute;\n  content: \"\";\n  height: 26px;\n  width: 26px;\n  left: 4px;\n  bottom: 4px;\n  background-color: white;\n  -webkit-transition: .4s;\n  transition: .4s;\n}\ninput:checked + .slider[data-v-50c2923c] {\n  background-color: #2196F3;\n}\ninput:focus + .slider[data-v-50c2923c] {\n  -webkit-box-shadow: 0 0 1px #2196F3;\n          box-shadow: 0 0 1px #2196F3;\n}\ninput:checked + .slider[data-v-50c2923c]:before {\n  -webkit-transform: translateX(26px);\n  transform: translateX(26px);\n}\n\n/* Rounded sliders */\n.slider.round[data-v-50c2923c] {\n  border-radius: 34px;\n}\n.slider.round[data-v-50c2923c]:before {\n  border-radius: 50%;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 54 */
+/* 61 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -54653,7 +55056,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       five_percent_such_corporation_been_revoked_reason: '',
       five_percent_such_corporation_been_revoked_date_revocation: '',
       status: '',
-      edited: false
+      isHide: true
     };
   },
 
@@ -54767,7 +55170,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     }
   },
   methods: {
-    saveForm: function saveForm() {
+    saveForm: function saveForm(submit) {
       var _this = this;
 
       __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/user/applications', {
@@ -54876,132 +55279,123 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         five_percent_such_corporation_been_revoked_name_license: this.five_percent_such_corporation_been_revoked_name_license,
         five_percent_such_corporation_been_revoked_reason: this.five_percent_such_corporation_been_revoked_reason,
         five_percent_such_corporation_been_revoked_date_revocation: this.five_percent_such_corporation_been_revoked_date_revocation,
-        status: 'incomplete'
+        status: submit == 'city' ? 'completed' : 'incomplete'
       }).then(function (response) {
-        console.log(response.data);
-        _this.getApplication();
+        if (submit == 'city') {
+          window.location.href = '/payment-form/' + response.data.id;
+        } else {
+          _this.app_id = response.data.id;
+          _this.license_class = response.data.license;
+          _this.license = response.data.license;
+          _this.fee = response.data.fee;
+          _this.address = response.data.address;
+          _this.city = response.data.city;
+          _this.state = response.data.state;
+          _this.zip = response.data.zip;
+          _this.corporate_name = response.data.corporate_name;
+          _this.corporate_address = response.data.corporate_address;
+          _this.name_business_to_be_conducted = response.data.name_business_to_be_conducted;
+          _this.business_phone = response.data.business_phone;
+          _this.business_mobile = response.data.business_mobile;
+          _this.business_email = response.data.business_email;
+          _this.president_name = response.data.president_name;
+          _this.president_address = response.data.president_address;
+          _this.president_phone = response.data.president_phone;
+          _this.president_mobile = response.data.president_mobile;
+          _this.president_email = response.data.president_email;
+          _this.vice_president_name = response.data.vice_president_name;
+          _this.vice_president_address = response.data.vice_president_address;
+          _this.vice_president_phone = response.data.vice_president_phone;
+          _this.vice_president_mobile = response.data.vice_president_mobile;
+          _this.vice_president_email = response.data.vice_president_email;
+          _this.secretary_name = response.data.secretary_name;
+          _this.secretary_address = response.data.secretary_address;
+          _this.secretary_phone = response.data.secretary_phone;
+          _this.secretary_mobile = response.data.secretary_mobile;
+          _this.secretary_email = response.data.secretary_email;
+          _this.treasurer_name = response.data.treasurer_name;
+          _this.treasurer_address = response.data.treasurer_address;
+          _this.treasurer_phone = response.data.treasurer_phone;
+          _this.treasurer_mobile = response.data.treasurer_mobile;
+          _this.treasurer_email = response.data.treasurer_email;
+          _this.director_name = response.data.director_name;
+          _this.director_address = response.data.director_address;
+          _this.director_phone = response.data.director_phone;
+          _this.director_mobile = response.data.director_mobile;
+          _this.director_email = response.data.director_email;
+          _this.vice_director_name = response.data.vice_director_name;
+          _this.vice_director_address = response.data.vice_director_address;
+          _this.vice_director_phone = response.data.vice_director_phone;
+          _this.vice_director_mobile = response.data.vice_director_mobile;
+          _this.vice_director_email = response.data.vice_director_email;
+          _this.date_incorporation = response.data.date_incorporation;
+          _this.state_incorporation = response.data.state_incorporation;
+          _this.other_state_incorporation_not_illinois = response.data.other_state_incorporation_not_illinois;
+          _this.corporation_forth_chapter = response.data.corporation_forth_chapter;
+          _this.corporation_agent_name = response.data.corporation_agent_name;
+          _this.corporation_agent_address = response.data.corporation_agent_address;
+          _this.corporation_agent_phone = response.data.corporation_agent_phone;
+          _this.corporation_agent_mobile = response.data.corporation_agent_mobile;
+          _this.corporation_agent_email = response.data.corporation_agent_email;
+          _this.principal_kind_business = response.data.principal_kind_business;
+          _this.applicant_seek_license_alcoholic_restaurant = response.data.applicant_seek_license_alcoholic_restaurant;
+          _this.maitained_to_public_meals_served = response.data.maitained_to_public_meals_served;
+          _this.yes_food_services_are = response.data.yes_food_services_are;
+          _this.serve_suitable_food = response.data.serve_suitable_food;
+          _this.qualifications_described_illinois_act = response.data.qualifications_described_illinois_act;
+          _this.applicant_own_premises_license_sought = response.data.applicant_own_premises_license_sought;
+          _this.applicant_lease_premises_license_sought = response.data.applicant_lease_premises_license_sought;
+          _this.lessor_name = response.data.lessor_name;
+          _this.lessor_address = response.data.lessor_address;
+          _this.period_covered_lease_from = response.data.period_covered_lease_from;
+          _this.period_covered_lease_to = response.data.period_covered_lease_to;
+          _this.applicant_own_premise_license_sought = response.data.applicant_own_premise_license_sought;
+          _this.applicant_food_dispenser = response.data.applicant_food_dispenser;
+          _this.applicant_food_dispenser_number_license = response.data.applicant_food_dispenser_number_license;
+          _this.applicant_actively_involved_day_operation = response.data.applicant_actively_involved_day_operation;
+          _this.business_liquor_license_sought_manager = response.data.business_liquor_license_sought_manager;
+          _this.manager_name = response.data.manager_name;
+          _this.manager_address = response.data.manager_address;
+          _this.manager_phone = response.data.manager_phone;
+          _this.amount_anticipated_liquor_sales = response.data.amount_anticipated_liquor_sales;
+          _this.applicant_seeking_approval_beer_garden = response.data.applicant_seeking_approval_beer_garden;
+          _this.applicant_seeking_approval_outdoor_seating_area = response.data.applicant_seeking_approval_outdoor_seating_area;
+          _this.location_applicants_business_within_100ft_property_of_church = response.data.location_applicants_business_within_100ft_property_of_church;
+          _this.manufacturer_agreed_to_pay_license = response.data.manufacturer_agreed_to_pay_license;
+          _this.applicant_engaged_manufacturer_alcoholic_liquors = response.data.applicant_engaged_manufacturer_alcoholic_liquors;
+          _this.applicant_engaged_manufacturer_alcoholic_liquors_location = response.data.applicant_engaged_manufacturer_alcoholic_liquors_location;
+          _this.applicant_conducting_business_importing_distributor = response.data.applicant_conducting_business_importing_distributor;
+          _this.applicant_conducting_business_importing_distributor_location = response.data.applicant_conducting_business_importing_distributor_location;
+          _this.officer_own_five_percent_convicted_felony = response.data.officer_own_five_percent_convicted_felony;
+          _this.officer_own_five_percent_convicted__felony_name = response.data.officer_own_five_percent_convicted__felony_name;
+          _this.officer_own_five_percent_convicted_felony_date = response.data.officer_own_five_percent_convicted_felony_date;
+          _this.officer_own_five_percent_convicted_felony_offence = response.data.officer_own_five_percent_convicted_felony_offence;
+          _this.officer_own_five_percent_convicted_violation = response.data.officer_own_five_percent_convicted_violation;
+          _this.officer_own_five_percent_convicted__violation_name = response.data.officer_own_five_percent_convicted__violation_name;
+          _this.officer_own_five_percent_convicted_violation_date = response.data.officer_own_five_percent_convicted_violation_date;
+          _this.officer_own_five_percent_convicted_violation_offence = response.data.officer_own_five_percent_convicted_violation_offence;
+          _this.officer_own_five_percent_convicted_gambling = response.data.officer_own_five_percent_convicted_gambling;
+          _this.officer_own_five_percent_convicted__gambling_name = response.data.officer_own_five_percent_convicted__gambling_name;
+          _this.officer_own_five_percent_convicted_gambling_date = response.data.officer_own_five_percent_convicted_gambling_date;
+          _this.officer_own_five_percent_convicted_gambling_offence = response.data.officer_own_five_percent_convicted_gambling_offence;
+          _this.made_application_similar_license = response.data.made_application_similar_license;
+          _this.made_application_similar_license_name = response.data.made_application_similar_license_name;
+          _this.made_application_similar_license_date = response.data.made_application_similar_license_date;
+          _this.made_application_similar_license_offence = response.data.made_application_similar_license_offence;
+          _this.corporation_own_twenty_percent_federal_wagering_stamp = response.data.corporation_own_twenty_percent_federal_wagering_stamp;
+          _this.law_enforcing_official_interested_business_license_sought = response.data.law_enforcing_official_interested_business_license_sought;
+          _this.name_of_party = response.data.name_of_party;
+          _this.five_percent_such_corporation_been_revoked = response.data.five_percent_such_corporation_been_revoked;
+          _this.five_percent_such_corporation_been_revoked_name_license = response.data.five_percent_such_corporation_been_revoked_name_license;
+          _this.five_percent_such_corporation_been_revoked_reason = response.data.five_percent_such_corporation_been_revoked_reason;
+          _this.five_percent_such_corporation_been_revoked_date_revocation = response.data.five_percent_such_corporation_been_revoked_date_revocation;
+          // this.getApplication(response.data.id)
+          _this.isHide = false;
+        }
+        // this.getApplication()
       }).catch(function (error) {
         console.log(error);
       });
-    },
-    getApplication: function getApplication() {
-      var _this2 = this;
-
-      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/user/applications/' + this.params.id).then(function (response) {
-        console.log(response.data);
-        _this2.app_id = response.data.id;
-        _this2.license_class = response.data.license_class;
-        _this2.license = response.data.license;
-        _this2.fee = response.data.fee;
-        _this2.address = response.data.address;
-        _this2.city = response.data.city;
-        _this2.state = response.data.state;
-        _this2.zip = response.data.zip;
-        _this2.corporate_name = response.data.corporate_name;
-        _this2.corporate_address = response.data.corporate_address;
-        _this2.name_business_to_be_conducted = response.data.name_business_to_be_conducted;
-        _this2.business_phone = response.data.business_phone;
-        _this2.business_mobile = response.data.business_mobile;
-        _this2.business_email = response.data.business_email;
-        _this2.president_name = response.data.president_name;
-        _this2.president_address = response.data.president_address;
-        _this2.president_phone = response.data.president_phone;
-        _this2.president_mobile = response.data.president_mobile;
-        _this2.president_email = response.data.president_email;
-        _this2.vice_president_name = response.data.vice_president_name;
-        _this2.vice_president_address = response.data.vice_president_address;
-        _this2.vice_president_phone = response.data.vice_president_phone;
-        _this2.vice_president_mobile = response.data.vice_president_mobile;
-        _this2.vice_president_email = response.data.vice_president_email;
-        _this2.secretary_name = response.data.secretary_name;
-        _this2.secretary_address = response.data.secretary_address;
-        _this2.secretary_phone = response.data.secretary_phone;
-        _this2.secretary_mobile = response.data.secretary_mobile;
-        _this2.secretary_email = response.data.secretary_email;
-        _this2.treasurer_name = response.data.treasurer_name;
-        _this2.treasurer_address = response.data.treasurer_address;
-        _this2.treasurer_phone = response.data.treasurer_phone;
-        _this2.treasurer_mobile = response.data.treasurer_mobile;
-        _this2.treasurer_email = response.data.treasurer_email;
-        _this2.director_name = response.data.director_name;
-        _this2.director_address = response.data.director_address;
-        _this2.director_phone = response.data.director_phone;
-        _this2.director_mobile = response.data.director_mobile;
-        _this2.director_email = response.data.director_email;
-        _this2.vice_director_name = response.data.vice_director_name;
-        _this2.vice_director_address = response.data.vice_director_address;
-        _this2.vice_director_phone = response.data.vice_director_phone;
-        _this2.vice_director_mobile = response.data.vice_director_mobile;
-        _this2.vice_director_email = response.data.vice_director_email;
-        _this2.date_incorporation = response.data.date_incorporation;
-        _this2.state_incorporation = response.data.state_incorporation;
-        _this2.other_state_incorporation_not_illinois = response.data.other_state_incorporation_not_illinois;
-        _this2.corporation_forth_chapter = response.data.corporation_forth_chapter;
-        _this2.corporation_agent_name = response.data.corporation_agent_name;
-        _this2.corporation_agent_address = response.data.corporation_agent_address;
-        _this2.corporation_agent_phone = response.data.corporation_agent_phone;
-        _this2.corporation_agent_mobile = response.data.corporation_agent_mobile;
-        _this2.corporation_agent_email = response.data.corporation_agent_email;
-        _this2.principal_kind_business = response.data.principal_kind_business;
-        _this2.applicant_seek_license_alcoholic_restaurant = response.data.applicant_seek_license_alcoholic_restaurant;
-        _this2.maitained_to_public_meals_served = response.data.maitained_to_public_meals_served;
-        _this2.yes_food_services_are = response.data.yes_food_services_are;
-        _this2.serve_suitable_food = response.data.serve_suitable_food;
-        _this2.qualifications_described_illinois_act = response.data.qualifications_described_illinois_act;
-        _this2.applicant_own_premises_license_sought = response.data.applicant_own_premises_license_sought;
-        _this2.applicant_lease_premises_license_sought = response.data.applicant_lease_premises_license_sought;
-        _this2.lessor_name = response.data.lessor_name;
-        _this2.lessor_address = response.data.lessor_address;
-        _this2.period_covered_lease_from = response.data.period_covered_lease_from;
-        _this2.period_covered_lease_to = response.data.period_covered_lease_to;
-        _this2.applicant_own_premise_license_sought = response.data.applicant_own_premise_license_sought;
-        _this2.applicant_food_dispenser = response.data.applicant_food_dispenser;
-        _this2.applicant_food_dispenser_number_license = response.data.applicant_food_dispenser_number_license;
-        _this2.applicant_actively_involved_day_operation = response.data.applicant_actively_involved_day_operation;
-        _this2.business_liquor_license_sought_manager = response.data.business_liquor_license_sought_manager;
-        _this2.manager_name = response.data.manager_name;
-        _this2.manager_address = response.data.manager_address;
-        _this2.manager_phone = response.data.manager_phone;
-        _this2.amount_anticipated_liquor_sales = response.data.amount_anticipated_liquor_sales;
-        _this2.applicant_seeking_approval_beer_garden = response.data.applicant_seeking_approval_beer_garden;
-        _this2.applicant_seeking_approval_outdoor_seating_area = response.data.applicant_seeking_approval_outdoor_seating_area;
-        _this2.location_applicants_business_within_100ft_property_of_church = response.data.location_applicants_business_within_100ft_property_of_church;
-        _this2.manufacturer_agreed_to_pay_license = response.data.manufacturer_agreed_to_pay_license;
-        _this2.applicant_engaged_manufacturer_alcoholic_liquors = response.data.applicant_engaged_manufacturer_alcoholic_liquors;
-        _this2.applicant_engaged_manufacturer_alcoholic_liquors_location = response.data.applicant_engaged_manufacturer_alcoholic_liquors_location;
-        _this2.applicant_conducting_business_importing_distributor = response.data.applicant_conducting_business_importing_distributor;
-        _this2.applicant_conducting_business_importing_distributor_location = response.data.applicant_conducting_business_importing_distributor_location;
-        _this2.officer_own_five_percent_convicted_felony = response.data.officer_own_five_percent_convicted_felony;
-        _this2.officer_own_five_percent_convicted__felony_name = response.data.officer_own_five_percent_convicted__felony_name;
-        _this2.officer_own_five_percent_convicted_felony_date = response.data.officer_own_five_percent_convicted_felony_date;
-        _this2.officer_own_five_percent_convicted_felony_offence = response.data.officer_own_five_percent_convicted_felony_offence;
-        _this2.officer_own_five_percent_convicted_violation = response.data.officer_own_five_percent_convicted_violation;
-        _this2.officer_own_five_percent_convicted__violation_name = response.data.officer_own_five_percent_convicted__violation_name;
-        _this2.officer_own_five_percent_convicted_violation_date = response.data.officer_own_five_percent_convicted_violation_date;
-        _this2.officer_own_five_percent_convicted_violation_offence = response.data.officer_own_five_percent_convicted_violation_offence;
-        _this2.officer_own_five_percent_convicted_gambling = response.data.officer_own_five_percent_convicted_gambling;
-        _this2.officer_own_five_percent_convicted__gambling_name = response.data.officer_own_five_percent_convicted__gambling_name;
-        _this2.officer_own_five_percent_convicted_gambling_date = response.data.officer_own_five_percent_convicted_gambling_date;
-        _this2.officer_own_five_percent_convicted_gambling_offence = response.data.officer_own_five_percent_convicted_gambling_offence;
-        _this2.made_application_similar_license = response.data.made_application_similar_license;
-        _this2.made_application_similar_license_name = response.data.made_application_similar_license_name;
-        _this2.made_application_similar_license_date = response.data.made_application_similar_license_date;
-        _this2.made_application_similar_license_offence = response.data.made_application_similar_license_offence;
-        _this2.corporation_own_twenty_percent_federal_wagering_stamp = response.data.corporation_own_twenty_percent_federal_wagering_stamp;
-        _this2.law_enforcing_official_interested_business_license_sought = response.data.law_enforcing_official_interested_business_license_sought;
-        _this2.name_of_party = response.data.name_of_party;
-        _this2.five_percent_such_corporation_been_revoked = response.data.five_percent_such_corporation_been_revoked;
-        _this2.five_percent_such_corporation_been_revoked_name_license = response.data.five_percent_such_corporation_been_revoked_name_license;
-        _this2.five_percent_such_corporation_been_revoked_reason = response.data.five_percent_such_corporation_been_revoked_reason;
-        _this2.five_percent_such_corporation_been_revoked_date_revocation = response.data.five_percent_such_corporation_been_revoked_date_revocation;
-
-        if (response.data != 'No data') {}
-      }).catch(function (error) {
-        console.log(error);
-      });
-    },
-    completeApplication: function completeApplication() {
-      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post().then().catch();
     }
   },
   props: ['application'],
@@ -55009,12 +55403,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     console.log(JSON.parse(this.application));
     this.application = JSON.parse(this.application);
     this.getAppData;
-    // console.log('this route 2: '.this.$router.query.page)
   }
 });
 
 /***/ }),
-/* 55 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -55032,6 +55425,22 @@ var render = function() {
               _vm._m(0),
               _vm._v(" "),
               _c("form", [
+                _c(
+                  "div",
+                  {
+                    class: {
+                      hide: _vm.isHide,
+                      alert: true,
+                      "alert-success": true
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n              This application has been saved.\n            "
+                    )
+                  ]
+                ),
+                _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
                   _c("label", { attrs: { for: "inputAddress" } }, [
                     _vm._v("Address")
@@ -59617,8 +60026,6 @@ var render = function() {
                   })
                 ]),
                 _vm._v(" "),
-                _vm._m(19),
-                _vm._v(" "),
                 _c("input", {
                   staticClass: "btn btn-primary",
                   attrs: { type: "button", value: "Save" },
@@ -59627,8 +60034,34 @@ var render = function() {
                       _vm.saveForm()
                     }
                   }
+                }),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "btn btn-success",
+                  attrs: { type: "button", value: "Submit to City" },
+                  on: {
+                    click: function($event) {
+                      _vm.saveForm("city")
+                    }
+                  }
                 })
-              ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  class: {
+                    hide: _vm.isHide,
+                    alert: true,
+                    "alert-success": true
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n              This application has been saved.\n            "
+                  )
+                ]
+              )
             ])
           ])
         ])
@@ -59825,22 +60258,6 @@ var staticRenderFns = [
         )
       ])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", [_vm._v("Completed?")]),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("label", { staticClass: "switch" }, [
-        _c("input", { attrs: { type: "checkbox" } }),
-        _vm._v(" "),
-        _c("span", { staticClass: "slider round" })
-      ])
-    ])
   }
 ]
 render._withStripped = true
@@ -59853,15 +60270,15 @@ if (false) {
 }
 
 /***/ }),
-/* 56 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(1)
+var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(57)
+var __vue_script__ = __webpack_require__(64)
 /* template */
-var __vue_template__ = __webpack_require__(58)
+var __vue_template__ = __webpack_require__(65)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -59900,12 +60317,12 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 57 */
+/* 64 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 //
 //
@@ -59959,7 +60376,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 58 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -59982,7 +60399,7 @@ var render = function() {
                 _c("h3", [
                   _c("a", { attrs: { href: "/applications/incomplete" } }, [
                     _vm._v(
-                      "Incomplete Applications (" +
+                      "Saved Applications (" +
                         _vm._s(_vm.incomplete.length) +
                         ")"
                     )
@@ -60009,16 +60426,6 @@ var render = function() {
                       "Processed Applications (" +
                         _vm._s(_vm.processed.length) +
                         ")"
-                    )
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "mb-10" }, [
-                _c("h3", [
-                  _c("a", { attrs: { href: "/applications/paid" } }, [
-                    _vm._v(
-                      "Paid Applications (" + _vm._s(_vm.paid.length) + ")"
                     )
                   ])
                 ])
@@ -60054,19 +60461,19 @@ if (false) {
 }
 
 /***/ }),
-/* 59 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(60)
+  __webpack_require__(67)
 }
-var normalizeComponent = __webpack_require__(1)
+var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(62)
+var __vue_script__ = __webpack_require__(69)
 /* template */
-var __vue_template__ = __webpack_require__(63)
+var __vue_template__ = __webpack_require__(70)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -60105,13 +60512,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 60 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(61);
+var content = __webpack_require__(68);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -60131,7 +60538,7 @@ if(false) {
 }
 
 /***/ }),
-/* 61 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -60145,12 +60552,12 @@ exports.push([module.i, "\n.table[data-v-26114db6]{\n  background-color: white;\
 
 
 /***/ }),
-/* 62 */
+/* 69 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 //
 //
@@ -60244,7 +60651,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 63 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -60367,19 +60774,19 @@ if (false) {
 }
 
 /***/ }),
-/* 64 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(65)
+  __webpack_require__(72)
 }
-var normalizeComponent = __webpack_require__(1)
+var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(67)
+var __vue_script__ = __webpack_require__(74)
 /* template */
-var __vue_template__ = __webpack_require__(68)
+var __vue_template__ = __webpack_require__(75)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -60418,13 +60825,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 65 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(66);
+var content = __webpack_require__(73);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -60444,7 +60851,7 @@ if(false) {
 }
 
 /***/ }),
-/* 66 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -60458,12 +60865,12 @@ exports.push([module.i, "\n.table[data-v-36ff5eb3]{\n  background-color: white;\
 
 
 /***/ }),
-/* 67 */
+/* 74 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 //
 //
@@ -60557,7 +60964,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 68 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -60576,7 +60983,7 @@ var render = function() {
           return _c("tr", { key: application.id }, [
             _c("td", [_vm._v(_vm._s(application.corporate_name))]),
             _vm._v(" "),
-            _c("td", [_vm._v("Doe")]),
+            _c("td", [_vm._v("Yes")]),
             _vm._v(" "),
             _c("td", [_vm._v(_vm._s(application.business_email))]),
             _vm._v(" "),
@@ -60661,7 +61068,7 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", [_vm._v("Corporate Name")]),
         _vm._v(" "),
-        _c("th", [_vm._v("User")]),
+        _c("th", [_vm._v("Paid")]),
         _vm._v(" "),
         _c("th", [_vm._v("Email")]),
         _vm._v(" "),
@@ -60680,19 +61087,19 @@ if (false) {
 }
 
 /***/ }),
-/* 69 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(70)
+  __webpack_require__(77)
 }
-var normalizeComponent = __webpack_require__(1)
+var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(72)
+var __vue_script__ = __webpack_require__(79)
 /* template */
-var __vue_template__ = __webpack_require__(73)
+var __vue_template__ = __webpack_require__(80)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -60731,13 +61138,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 70 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(71);
+var content = __webpack_require__(78);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -60757,7 +61164,7 @@ if(false) {
 }
 
 /***/ }),
-/* 71 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -60771,12 +61178,12 @@ exports.push([module.i, "\n.table[data-v-7becd568]{\n  background-color: white;\
 
 
 /***/ }),
-/* 72 */
+/* 79 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 //
 //
@@ -60870,7 +61277,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 73 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -61001,19 +61408,19 @@ if (false) {
 }
 
 /***/ }),
-/* 74 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(75)
+  __webpack_require__(82)
 }
-var normalizeComponent = __webpack_require__(1)
+var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(77)
+var __vue_script__ = __webpack_require__(84)
 /* template */
-var __vue_template__ = __webpack_require__(78)
+var __vue_template__ = __webpack_require__(85)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -61052,13 +61459,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 75 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(76);
+var content = __webpack_require__(83);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -61078,7 +61485,7 @@ if(false) {
 }
 
 /***/ }),
-/* 76 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -61092,12 +61499,12 @@ exports.push([module.i, "\n.table[data-v-767d7cfa]{\n  background-color: white;\
 
 
 /***/ }),
-/* 77 */
+/* 84 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 //
 //
@@ -61191,7 +61598,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 78 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -61314,15 +61721,15 @@ if (false) {
 }
 
 /***/ }),
-/* 79 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(1)
+var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(80)
+var __vue_script__ = __webpack_require__(87)
 /* template */
-var __vue_template__ = __webpack_require__(81)
+var __vue_template__ = __webpack_require__(88)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -61361,12 +61768,12 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 80 */
+/* 87 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 //
 //
@@ -61627,7 +62034,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 81 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -62139,15 +62546,15 @@ if (false) {
 }
 
 /***/ }),
-/* 82 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(1)
+var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(83)
+var __vue_script__ = __webpack_require__(90)
 /* template */
-var __vue_template__ = __webpack_require__(84)
+var __vue_template__ = __webpack_require__(91)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -62186,12 +62593,12 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 83 */
+/* 90 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 //
 //
@@ -62452,7 +62859,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 84 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -62964,15 +63371,15 @@ if (false) {
 }
 
 /***/ }),
-/* 85 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(1)
+var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(86)
+var __vue_script__ = __webpack_require__(93)
 /* template */
-var __vue_template__ = __webpack_require__(87)
+var __vue_template__ = __webpack_require__(94)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -63011,12 +63418,12 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 86 */
+/* 93 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 //
 //
@@ -63277,7 +63684,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 87 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -63787,19 +64194,19 @@ if (false) {
 }
 
 /***/ }),
-/* 88 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(89)
+  __webpack_require__(96)
 }
-var normalizeComponent = __webpack_require__(1)
+var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(91)
+var __vue_script__ = __webpack_require__(98)
 /* template */
-var __vue_template__ = __webpack_require__(92)
+var __vue_template__ = __webpack_require__(99)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -63838,13 +64245,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 89 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(90);
+var content = __webpack_require__(97);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -63864,7 +64271,7 @@ if(false) {
 }
 
 /***/ }),
-/* 90 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -63878,7 +64285,7 @@ exports.push([module.i, "\n.switch[data-v-38378878] {\n  position: relative;\n  
 
 
 /***/ }),
-/* 91 */
+/* 98 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -64619,7 +65026,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 92 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -67233,10 +67640,256 @@ if (false) {
 }
 
 /***/ }),
-/* 93 */
+/* 100 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 101 */,
+/* 102 */,
+/* 103 */,
+/* 104 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(105);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(4)("99e9d8c2", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-51d39462\",\"scoped\":true,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./PaymentForm.vue", function() {
+     var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-51d39462\",\"scoped\":true,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./PaymentForm.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 105 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.hide[data-v-51d39462]{\n    display: none\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 106 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "form",
+    {
+      attrs: { id: "payment-form" },
+      on: {
+        submit: function($event) {
+          $event.preventDefault()
+          _vm.pay()
+        }
+      }
+    },
+    [
+      _c(
+        "div",
+        { class: { hide: _vm.isHide, alert: true, "alert-success": true } },
+        [_vm._v("\n          " + _vm._s(_vm.success_message) + "\n      ")]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "email" } }, [_vm._v("Email Address")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.email,
+              expression: "email"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { type: "email", id: "email" },
+          domProps: { value: _vm.email },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.email = $event.target.value
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "name_on_card" } }, [
+          _vm._v("Name on Card")
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.name_on_card,
+              expression: "name_on_card"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { type: "text", id: "name_on_card", name: "name_on_card" },
+          domProps: { value: _vm.name_on_card },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.name_on_card = $event.target.value
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _vm._m(0),
+      _vm._v(" "),
+      _vm._m(1),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "form-group" },
+        [
+          _c("label", { attrs: { for: "card-element" } }, [
+            _vm._v("Credit Card")
+          ]),
+          _vm._v(" "),
+          _c("card-element")
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("input", {
+        attrs: { type: "hidden", name: "_token" },
+        domProps: { value: _vm.csrf }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "spacer" }),
+      _vm._v(" "),
+      _c(
+        "button",
+        { staticClass: "btn btn-success", attrs: { type: "submit" } },
+        [_vm._v("Submit Payment")]
+      )
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-6" }, [
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "address" } }, [_vm._v("Address")]),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { type: "text", id: "address", name: "address" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3" }, [
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "city" } }, [_vm._v("City")]),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { type: "text", id: "city", name: "city" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3" }, [
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "province" } }, [_vm._v("Province")]),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { type: "text", id: "province", name: "province" }
+          })
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-4" }, [
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "postalcode" } }, [
+            _vm._v("Postal Code")
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { type: "text", id: "postalcode", name: "postalcode" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-4" }, [
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "country" } }, [_vm._v("Country")]),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { type: "text", id: "country", name: "country" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-4" }, [
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "phone" } }, [_vm._v("Phone")]),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { type: "text", id: "phone", name: "phone" }
+          })
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-51d39462", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

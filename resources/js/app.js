@@ -18,6 +18,9 @@ window.Vue = require('vue');
  */
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'))
+Vue.component('card-element', require('./components/CardElement.vue'))
+Vue.component('payment-form', require('./components/PaymentForm.vue'))
+Vue.component('example-component', require('./components/ExampleComponent.vue'))
 Vue.component('liquor-license-form', require('./components/LiquorLicenseForm.vue'))
 Vue.component('edit-liquor-license-form', require('./components/EditLiquorLicenseForm.vue'))
 Vue.component('my-applications', require('./components/MyApplications.vue'))

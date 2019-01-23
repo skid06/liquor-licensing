@@ -196,7 +196,7 @@ class UserLiquorLicenseController extends Controller
         $application->five_percent_such_corporation_been_revoked_name_license = $request->five_percent_such_corporation_been_revoked_name_license; 
         $application->five_percent_such_corporation_been_revoked_reason = $request->five_percent_such_corporation_been_revoked_reason; 
         $application->five_percent_such_corporation_been_revoked_date_revocation = $request->five_percent_such_corporation_been_revoked_date_revocation;  
-        $application->status = 'incomplete';  
+        $application->status = $request->status;  
         $application->save();
         
         return $application;

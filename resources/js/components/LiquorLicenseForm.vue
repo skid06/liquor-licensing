@@ -15,6 +15,9 @@
                 </h4>
               </div>
               <form>
+              <div :class="{hide: isHide, 'alert': true, 'alert-success': true}">
+                  This application has been saved.
+              </div>                
                 <div class="form-group">
                   <label for="inputAddress">Address</label>
                   <input type="text" class="form-control" v-model="address" id="inputAddress" placeholder="1234 Main St">
@@ -596,14 +599,20 @@
                   <input type="date" class="form-control" v-model="five_percent_such_corporation_been_revoked_date_revocation" id="date_revocation">
                 </div>         
                 <div class="form-group">
-                  <label>Completed?</label> <br />
+                  <!-- <label>Completed?</label> <br />
                   <label class="switch">
                     <input type="checkbox">
                     <span class="slider round"></span>
-                  </label>  
-                </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
-                <input type="button" class="btn btn-primary" @click="saveForm()" value="Save">              
-              </form>                              
+                  </label>   --> 
+                </div>    
+                <div class="form-group">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+                  <input type="button" class="btn btn-primary" @click="saveForm()" value="Save">  
+                  <input type="button" class="btn btn-success" @click="saveForm('city')" value="Submit to City">
+                </div>            
+              </form>   
+              <div :class="{hide: isHide, 'alert': true, 'alert-success': true}">
+                This application has been saved.
+              </div>                            
             </div>
           </div>
         </div>  
@@ -723,11 +732,11 @@ export default {
       five_percent_such_corporation_been_revoked_reason: '', 
       five_percent_such_corporation_been_revoked_date_revocation: '', 
       status: '',
-      edited: false
+      isHide: true
     }
   },
   methods: {
-    saveForm(){
+    saveForm(submit){
       axios
         .post('/user/applications', {
           app_id: this.app_id,
@@ -835,116 +844,123 @@ export default {
           five_percent_such_corporation_been_revoked_name_license: this.five_percent_such_corporation_been_revoked_name_license, 
           five_percent_such_corporation_been_revoked_reason: this.five_percent_such_corporation_been_revoked_reason, 
           five_percent_such_corporation_been_revoked_date_revocation: this.five_percent_such_corporation_been_revoked_date_revocation, 
-          status: 'incomplete'          
+          status: (submit == 'city' ? 'completed' : 'incomplete')
+          // status: this.status
         })
         .then(response => {
           console.log(response.data)
-          this.app_id = response.data.id
-          this.license_class = response.data.license_class
-          this.license = response.data.license
-          this.fee = response.data.fee
-          this.address = response.data.address
-          this.city = response.data.city
-          this.state = response.data.state
-          this.zip = response.data.zip
-          this.corporate_name = response.data.corporate_name
-          this.corporate_address = response.data.corporate_address
-          this.name_business_to_be_conducted = response.data.name_business_to_be_conducted
-          this.business_phone = response.data.business_phone
-          this.business_mobile = response.data.business_mobile
-          this.business_email = response.data.business_email
-          this.president_name = response.data.president_name
-          this.president_address = response.data.president_address
-          this.president_phone = response.data.president_phone
-          this.president_mobile = response.data.president_mobile
-          this.president_email = response.data.president_email
-          this.vice_president_name = response.data.vice_president_name
-          this.vice_president_address = response.data.vice_president_address
-          this.vice_president_phone = response.data.vice_president_phone
-          this.vice_president_mobile = response.data.vice_president_mobile
-          this.vice_president_email = response.data.vice_president_email
-          this.secretary_name = response.data.secretary_name
-          this.secretary_address = response.data.secretary_address
-          this.secretary_phone = response.data.secretary_phone
-          this.secretary_mobile = response.data.secretary_mobile
-          this.secretary_email = response.data.secretary_email   
-          this.treasurer_name = response.data.treasurer_name
-          this.treasurer_address = response.data.treasurer_address
-          this.treasurer_phone = response.data.treasurer_phone
-          this.treasurer_mobile = response.data.treasurer_mobile
-          this.treasurer_email = response.data.treasurer_email
-          this.director_name = response.data.director_name
-          this.director_address = response.data.director_address
-          this.director_phone = response.data.director_phone
-          this.director_mobile = response.data.director_mobile
-          this.director_email = response.data.director_email
-          this.vice_director_name = response.data.vice_director_name
-          this.vice_director_address = response.data.vice_director_address
-          this.vice_director_phone = response.data.vice_director_phone
-          this.vice_director_mobile = response.data.vice_director_mobile
-          this.vice_director_email = response.data.vice_director_email
-          this.date_incorporation = response.data.date_incorporation
-          this.state_incorporation = response.data.state_incorporation
-          this.other_state_incorporation_not_illinois = response.data.other_state_incorporation_not_illinois
-          this.corporation_forth_chapter = response.data.corporation_forth_chapter
-          this.corporation_agent_name = response.data.corporation_agent_name
-          this.corporation_agent_address = response.data.corporation_agent_address
-          this.corporation_agent_phone = response.data.corporation_agent_phone
-          this.corporation_agent_mobile = response.data.corporation_agent_mobile
-          this.corporation_agent_email = response.data.corporation_agent_email   
-          this.principal_kind_business = response.data.principal_kind_business
-          this.applicant_seek_license_alcoholic_restaurant = response.data.applicant_seek_license_alcoholic_restaurant
-          this.maitained_to_public_meals_served = response.data.maitained_to_public_meals_served  
-          this.yes_food_services_are = response.data.yes_food_services_are   
-          this.serve_suitable_food = response.data.serve_suitable_food    
-          this.qualifications_described_illinois_act = response.data.qualifications_described_illinois_act 
-          this.applicant_own_premises_license_sought = response.data.applicant_own_premises_license_sought   
-          this.applicant_lease_premises_license_sought = response.data.applicant_lease_premises_license_sought  
-          this.lessor_name = response.data.lessor_name  
-          this.lessor_address = response.data.lessor_address   
-          this.period_covered_lease_from = response.data.period_covered_lease_from                                                   
-          this.period_covered_lease_to = response.data.period_covered_lease_to
-          this.applicant_own_premise_license_sought = response.data.applicant_own_premise_license_sought
-          this.applicant_food_dispenser = response.data.applicant_food_dispenser
-          this.applicant_food_dispenser_number_license = response.data.applicant_food_dispenser_number_license
-          this.applicant_actively_involved_day_operation = response.data.applicant_actively_involved_day_operation
-          this.business_liquor_license_sought_manager = response.data.business_liquor_license_sought_manager
-          this.manager_name = response.data.manager_name
-          this.manager_address = response.data.manager_address
-          this.manager_phone = response.data.manager_phone
-          this.amount_anticipated_liquor_sales = response.data.amount_anticipated_liquor_sales 
-          this.applicant_seeking_approval_beer_garden = response.data.applicant_seeking_approval_beer_garden           
-          this.applicant_seeking_approval_outdoor_seating_area = response.data.applicant_seeking_approval_outdoor_seating_area 
-          this.location_applicants_business_within_100ft_property_of_church = response.data.location_applicants_business_within_100ft_property_of_church 
-          this.manufacturer_agreed_to_pay_license = response.data.manufacturer_agreed_to_pay_license  
-          this.applicant_engaged_manufacturer_alcoholic_liquors = response.data.applicant_engaged_manufacturer_alcoholic_liquors  
-          this.applicant_engaged_manufacturer_alcoholic_liquors_location = response.data.applicant_engaged_manufacturer_alcoholic_liquors_location
-          this.applicant_conducting_business_importing_distributor = response.data.applicant_conducting_business_importing_distributor
-          this.applicant_conducting_business_importing_distributor_location = response.data.applicant_conducting_business_importing_distributor_location 
-          this.officer_own_five_percent_convicted_felony = response.data.officer_own_five_percent_convicted_felony 
-          this.officer_own_five_percent_convicted__felony_name = response.data.officer_own_five_percent_convicted__felony_name 
-          this.officer_own_five_percent_convicted_felony_date = response.data.officer_own_five_percent_convicted_felony_date
-          this.officer_own_five_percent_convicted_felony_offence = response.data.officer_own_five_percent_convicted_felony_offence 
-          this.officer_own_five_percent_convicted_violation = response.data.officer_own_five_percent_convicted_violation 
-          this.officer_own_five_percent_convicted__violation_name = response.data.officer_own_five_percent_convicted__violation_name 
-          this.officer_own_five_percent_convicted_violation_date = response.data.officer_own_five_percent_convicted_violation_date
-          this.officer_own_five_percent_convicted_violation_offence = response.data.officer_own_five_percent_convicted_violation_offence
-          this.officer_own_five_percent_convicted_gambling = response.data.officer_own_five_percent_convicted_gambling 
-          this.officer_own_five_percent_convicted__gambling_name = response.data.officer_own_five_percent_convicted__gambling_name 
-          this.officer_own_five_percent_convicted_gambling_date = response.data.officer_own_five_percent_convicted_gambling_date
-          this.officer_own_five_percent_convicted_gambling_offence = response.data.officer_own_five_percent_convicted_gambling_offence
-          this.made_application_similar_license = response.data.made_application_similar_license 
-          this.made_application_similar_license_name = response.data.made_application_similar_license_name 
-          this.made_application_similar_license_date = response.data.made_application_similar_license_date
-          this.made_application_similar_license_offence = response.data.made_application_similar_license_offence                                        
-          this.corporation_own_twenty_percent_federal_wagering_stamp = response.data.corporation_own_twenty_percent_federal_wagering_stamp 
-          this.law_enforcing_official_interested_business_license_sought = response.data.law_enforcing_official_interested_business_license_sought 
-          this.name_of_party = response.data.name_of_party 
-          this.five_percent_such_corporation_been_revoked = response.data.five_percent_such_corporation_been_revoked 
-          this.five_percent_such_corporation_been_revoked_name_license = response.data.five_percent_such_corporation_been_revoked_name_license 
-          this.five_percent_such_corporation_been_revoked_reason = response.data.five_percent_such_corporation_been_revoked_reason 
-          this.five_percent_such_corporation_been_revoked_date_revocation = response.data.five_percent_such_corporation_been_revoked_date_revocation                     
-          this.getApplication(response.data.id)
+          if(submit == 'city'){
+            window.location.href = `/payment-form/${response.data.id}`
+          }
+          else{
+            this.app_id = response.data.id
+            this.license_class = response.data.license
+            this.license = response.data.license
+            this.fee = response.data.fee
+            this.address = response.data.address
+            this.city = response.data.city
+            this.state = response.data.state
+            this.zip = response.data.zip
+            this.corporate_name = response.data.corporate_name
+            this.corporate_address = response.data.corporate_address
+            this.name_business_to_be_conducted = response.data.name_business_to_be_conducted
+            this.business_phone = response.data.business_phone
+            this.business_mobile = response.data.business_mobile
+            this.business_email = response.data.business_email
+            this.president_name = response.data.president_name
+            this.president_address = response.data.president_address
+            this.president_phone = response.data.president_phone
+            this.president_mobile = response.data.president_mobile
+            this.president_email = response.data.president_email
+            this.vice_president_name = response.data.vice_president_name
+            this.vice_president_address = response.data.vice_president_address
+            this.vice_president_phone = response.data.vice_president_phone
+            this.vice_president_mobile = response.data.vice_president_mobile
+            this.vice_president_email = response.data.vice_president_email
+            this.secretary_name = response.data.secretary_name
+            this.secretary_address = response.data.secretary_address
+            this.secretary_phone = response.data.secretary_phone
+            this.secretary_mobile = response.data.secretary_mobile
+            this.secretary_email = response.data.secretary_email   
+            this.treasurer_name = response.data.treasurer_name
+            this.treasurer_address = response.data.treasurer_address
+            this.treasurer_phone = response.data.treasurer_phone
+            this.treasurer_mobile = response.data.treasurer_mobile
+            this.treasurer_email = response.data.treasurer_email
+            this.director_name = response.data.director_name
+            this.director_address = response.data.director_address
+            this.director_phone = response.data.director_phone
+            this.director_mobile = response.data.director_mobile
+            this.director_email = response.data.director_email
+            this.vice_director_name = response.data.vice_director_name
+            this.vice_director_address = response.data.vice_director_address
+            this.vice_director_phone = response.data.vice_director_phone
+            this.vice_director_mobile = response.data.vice_director_mobile
+            this.vice_director_email = response.data.vice_director_email
+            this.date_incorporation = response.data.date_incorporation
+            this.state_incorporation = response.data.state_incorporation
+            this.other_state_incorporation_not_illinois = response.data.other_state_incorporation_not_illinois
+            this.corporation_forth_chapter = response.data.corporation_forth_chapter
+            this.corporation_agent_name = response.data.corporation_agent_name
+            this.corporation_agent_address = response.data.corporation_agent_address
+            this.corporation_agent_phone = response.data.corporation_agent_phone
+            this.corporation_agent_mobile = response.data.corporation_agent_mobile
+            this.corporation_agent_email = response.data.corporation_agent_email   
+            this.principal_kind_business = response.data.principal_kind_business
+            this.applicant_seek_license_alcoholic_restaurant = response.data.applicant_seek_license_alcoholic_restaurant
+            this.maitained_to_public_meals_served = response.data.maitained_to_public_meals_served  
+            this.yes_food_services_are = response.data.yes_food_services_are   
+            this.serve_suitable_food = response.data.serve_suitable_food    
+            this.qualifications_described_illinois_act = response.data.qualifications_described_illinois_act 
+            this.applicant_own_premises_license_sought = response.data.applicant_own_premises_license_sought   
+            this.applicant_lease_premises_license_sought = response.data.applicant_lease_premises_license_sought  
+            this.lessor_name = response.data.lessor_name  
+            this.lessor_address = response.data.lessor_address   
+            this.period_covered_lease_from = response.data.period_covered_lease_from                                                   
+            this.period_covered_lease_to = response.data.period_covered_lease_to
+            this.applicant_own_premise_license_sought = response.data.applicant_own_premise_license_sought
+            this.applicant_food_dispenser = response.data.applicant_food_dispenser
+            this.applicant_food_dispenser_number_license = response.data.applicant_food_dispenser_number_license
+            this.applicant_actively_involved_day_operation = response.data.applicant_actively_involved_day_operation
+            this.business_liquor_license_sought_manager = response.data.business_liquor_license_sought_manager
+            this.manager_name = response.data.manager_name
+            this.manager_address = response.data.manager_address
+            this.manager_phone = response.data.manager_phone
+            this.amount_anticipated_liquor_sales = response.data.amount_anticipated_liquor_sales 
+            this.applicant_seeking_approval_beer_garden = response.data.applicant_seeking_approval_beer_garden           
+            this.applicant_seeking_approval_outdoor_seating_area = response.data.applicant_seeking_approval_outdoor_seating_area 
+            this.location_applicants_business_within_100ft_property_of_church = response.data.location_applicants_business_within_100ft_property_of_church 
+            this.manufacturer_agreed_to_pay_license = response.data.manufacturer_agreed_to_pay_license  
+            this.applicant_engaged_manufacturer_alcoholic_liquors = response.data.applicant_engaged_manufacturer_alcoholic_liquors  
+            this.applicant_engaged_manufacturer_alcoholic_liquors_location = response.data.applicant_engaged_manufacturer_alcoholic_liquors_location
+            this.applicant_conducting_business_importing_distributor = response.data.applicant_conducting_business_importing_distributor
+            this.applicant_conducting_business_importing_distributor_location = response.data.applicant_conducting_business_importing_distributor_location 
+            this.officer_own_five_percent_convicted_felony = response.data.officer_own_five_percent_convicted_felony 
+            this.officer_own_five_percent_convicted__felony_name = response.data.officer_own_five_percent_convicted__felony_name 
+            this.officer_own_five_percent_convicted_felony_date = response.data.officer_own_five_percent_convicted_felony_date
+            this.officer_own_five_percent_convicted_felony_offence = response.data.officer_own_five_percent_convicted_felony_offence 
+            this.officer_own_five_percent_convicted_violation = response.data.officer_own_five_percent_convicted_violation 
+            this.officer_own_five_percent_convicted__violation_name = response.data.officer_own_five_percent_convicted__violation_name 
+            this.officer_own_five_percent_convicted_violation_date = response.data.officer_own_five_percent_convicted_violation_date
+            this.officer_own_five_percent_convicted_violation_offence = response.data.officer_own_five_percent_convicted_violation_offence
+            this.officer_own_five_percent_convicted_gambling = response.data.officer_own_five_percent_convicted_gambling 
+            this.officer_own_five_percent_convicted__gambling_name = response.data.officer_own_five_percent_convicted__gambling_name 
+            this.officer_own_five_percent_convicted_gambling_date = response.data.officer_own_five_percent_convicted_gambling_date
+            this.officer_own_five_percent_convicted_gambling_offence = response.data.officer_own_five_percent_convicted_gambling_offence
+            this.made_application_similar_license = response.data.made_application_similar_license 
+            this.made_application_similar_license_name = response.data.made_application_similar_license_name 
+            this.made_application_similar_license_date = response.data.made_application_similar_license_date
+            this.made_application_similar_license_offence = response.data.made_application_similar_license_offence                                        
+            this.corporation_own_twenty_percent_federal_wagering_stamp = response.data.corporation_own_twenty_percent_federal_wagering_stamp 
+            this.law_enforcing_official_interested_business_license_sought = response.data.law_enforcing_official_interested_business_license_sought 
+            this.name_of_party = response.data.name_of_party 
+            this.five_percent_such_corporation_been_revoked = response.data.five_percent_such_corporation_been_revoked 
+            this.five_percent_such_corporation_been_revoked_name_license = response.data.five_percent_such_corporation_been_revoked_name_license 
+            this.five_percent_such_corporation_been_revoked_reason = response.data.five_percent_such_corporation_been_revoked_reason 
+            this.five_percent_such_corporation_been_revoked_date_revocation = response.data.five_percent_such_corporation_been_revoked_date_revocation                     
+            // this.getApplication(response.data.id)
+            this.isHide = false
+          }
         })
         .catch(error => {
           console.log(error)
@@ -1069,12 +1085,6 @@ export default {
           console.log(error)
         });
     },
-    completeApplication(){
-      axios
-        .post()
-        .then()
-        .catch()
-    }
   },
 
   mounted(){
@@ -1084,6 +1094,9 @@ export default {
 </script>
 
 <style scoped>
+.hide{
+  display: none;
+}
 .switch {
   position: relative;
   display: inline-block;
