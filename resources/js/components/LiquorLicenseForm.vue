@@ -93,7 +93,24 @@
                 <div class="form-row">
                   <div class="form-group col-md-4">
                     <label for="inputClass">Class</label>
-                    <input type="text" class="form-control" v-model="license_class" id="inputClass"> 
+                    <select id="inputClass" class="form-control" v-model="license_class">
+                      <option selected="">Choose...</option>
+                      <option value="Class A">Class A</option>
+                      <option value="Class B">Class B</option>
+                      <option value="Class C">Class C</option>
+                      <option value="Class D">Class D</option>
+                      <option value="Class R-1">Class R-1</option>
+                      <option value="Class R-2">Class R-2</option>
+                      <option value="Class R-3">Class R-3</option>
+                      <option value="Class R-4">Class R-4</option>
+                      <option value="Class W">Class W</option>
+                      <option value="Class E">Class E</option>
+                      <option value="Class G">Class G</option>
+                      <option value="Class CTR">Class CTR</option>
+                      <option value="Class F">Class F</option>
+                      <option value="Class H">Class H</option>
+                    </select>
+                    <!-- <input type="text" class="form-control" v-model="license_class" id="inputClass">  -->
                   </div>  
                   <div class="form-group col-md-4">
                     <label for="license">License</label>

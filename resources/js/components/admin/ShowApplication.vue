@@ -589,14 +589,14 @@
             <label for="date_revocation">Date of Revocation:</label>
             <input type="date" class="form-control" :value="application.five_percent_such_corporation_been_revoked_date_revocation" id="date_revocation">
           </div>         
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label>Completed?</label> <br />
             <label class="switch">
               <input type="checkbox">
               <span class="slider round"></span>
             </label>  
           </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
-          <input type="button" class="btn btn-primary" @click="saveForm()" value="Save">              
+          <input type="button" class="btn btn-primary" @click="saveForm()" value="Save">               -->
         </form>                              
       </div>
     </div>   

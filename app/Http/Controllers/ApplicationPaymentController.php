@@ -36,7 +36,6 @@ class ApplicationPaymentController extends Controller
             $app->status = 'paid';
             $app->save();
 
-            // return $charge;
             $payment = new Payment;
             $payment->user_id = \Auth::user()->id;
             $payment->application_id = $request->id;
