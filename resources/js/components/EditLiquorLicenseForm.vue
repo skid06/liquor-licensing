@@ -621,10 +621,63 @@
                     <input type="checkbox">
                     <span class="slider round"></span>
                   </label>  
-                </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                -->
-                <input type="button" class="btn btn-primary" @click="saveForm()" value="Save"> 
-                <input type="button" class="btn btn-success" @click="saveForm('city')" value="Submit to City">             
-              </form>      
+                </div>-->
+                <div v-if="application.status === 'incomplete'">
+                  <input type="button" class="btn btn-primary" @click="saveForm()" value="Save"> 
+                  <input type="button" class="btn btn-success" @click="saveForm('city')" value="Submit to City"> 
+                </div>
+                <div v-else-if="application.status === 'completed'">
+                  <input type="button" class="btn btn-primary" @click="saveForm()" value="Update"> 
+                </div>
+              </form> 
+              <!-- <a v-if="application.status === 'completed'" href="javascript:;" class="btn btn-lg red">
+                 
+                <i class="glyphicon glyphicon-align-left"></i>Notes
+              </a>   -->
+              <a v-if="application.status === 'completed'" @click="getLogs" href="#" class="btn btn-lg red btn-popup" data-toggle="modal" data-target="#myModal"> Notes
+                <i class="fa fa-edit"></i>
+              </a>     
+              
+              <!-- Modal -->
+              <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+                
+                  <!-- Modal content-->
+                  <div class="modal-content mt-element-list">
+                    <div class="modal-header mt-list-head list-simple ext-1 font-white bg-green-sharp">
+                      <div class="list-head-title-container">
+                        
+                        <h3 class="modal-title list-title">Notes</h3>
+                      </div>
+                    </div>
+                    <div class="modal-body mt-element-list">
+                      <div class="mt-list-container list-simple ext-1">
+                        <ul>
+                          <li class="mt-list-item done" v-for="log in messages" :key="log.id">
+                            <div class="list-icon-container">
+                              <span style="font-size:10px;"> {{ log.admin_id != null ? log.admin.name : 'You' }} </span>
+                            </div>
+                            <div class="list-datetime"> {{ log.created_at | moment("from", "now") }} </div>
+                            <div class="list-item-content">
+                              <p class="uppercase">
+                                <a href="javascript:;">{{ log.message }}</a>
+                              </p>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="form-group mt">
+                        <textarea class="form-control" id="message" v-model="form.message" placeholder="Enter New Message"></textarea>
+                      </div>
+                      <button type="button" @click="postNote" class="btn btn-default btn-success"><span class="glyphicon glyphicon-plus"></span> Save</button>                       
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>                
+                  
+                </div>
+              </div>                                  
               <div :class="{hide: isHide, 'alert': true, 'alert-success': true}">
                 This application has been saved.
               </div>                                       
@@ -747,13 +800,17 @@ export default {
       five_percent_such_corporation_been_revoked_reason: '', 
       five_percent_such_corporation_been_revoked_date_revocation: '', 
       status: '',
-      isHide: true
+      isHide: true,
+      messages: [],
+      form: {
+        message: ''
+      }
     }
   },
   computed: {
     getAppData(){
       this.app_id = this.application.id
-      this.license_class = this.application.license_class
+      this.license_class = this.application.class
       this.license = this.application.license
       this.fee = this.application.fee
       this.address = this.application.address
@@ -976,7 +1033,7 @@ export default {
           }
           else{
             this.app_id = response.data.id
-            this.license_class = response.data.license
+            this.license_class = response.data.class
             this.license = response.data.license
             this.fee = response.data.fee
             this.address = response.data.address
@@ -1089,17 +1146,136 @@ export default {
           console.log(error)
         });
     },
+    getLogs(){
+      axios
+        .get(`/application/${this.application.id}/notes`)
+        .then(response => {
+          console.log(response)
+          this.messages = response.data
+        })
+    },
+    postNote(){
+      axios
+        .post(`/application/${this.application.id}/notes`,{ message: this.form.message })
+        .then(response => {
+          this.messages.push(response.data.note)
+          this.form = {}
+          console.log(response.data)
+        })
+    }    
   },
-  props: ['application'],
+  props: ['application', 'formStatus'],
   mounted(){
     console.log(JSON.parse(this.application))
     this.application = JSON.parse(this.application)
     this.getAppData
+    this.getLogs()
   },
 }
 </script>
 
 <style scoped>
+.uppercase{
+  text-align: center !important;
+}
+.form-group.mt{
+  margin-top:50px;
+}
+.mt-element-list .list-default.ext-1.mt-list-container ul>.mt-list-item:hover{background-color:#e5e5e5}
+.btn-default {
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+}
+.mt-element-list .list-simple.mt-list-container ul>.mt-list-item>.list-datetime {
+  text-align: right !important;
+  float: right !important;
+  width: 91px !important;
+  font-size: 10px !important;
+}
+.mt-element-list .list-simple.mt-list-head {
+    padding: 15px;
+}
+.modal .modal-header {
+ border-bottom: 1px solid #EFEFEF;
+}    
+.mt-list-head{
+  background: #2ab4c0!important;
+}
+.mt-list-container{
+  border-left: 1px solid;
+  border-right: 1px solid;
+  border-bottom: 1px solid;
+  border-color: #e7ecf1;
+}
+.mt-list-container ul{
+  margin-bottom: 0;
+  padding: 0;  
+}
+.modal .modal-header .close {
+  margin-top: 0!important;
+}
+      
+button.close {
+  padding: 0;
+  cursor: pointer;
+  background: 0 0;
+  border: 0;
+  -webkit-appearance: none;
+}
+.mt-element-list .list-simple.ext-1.mt-list-container ul>.mt-list-item.done{
+  border-color: #26C281 #26C281 #e7ecf1;
+}
+.mt-element-list .list-simple.ext-1.mt-list-container ul>.mt-list-item{
+  padding: 15px;
+  border-left: 3px solid;  
+}
+.mt-element-list .list-simple.mt-list-container ul>.mt-list-item {
+  list-style: none;
+  border-bottom: 1px solid;
+}
+.mt-element-list .list-simple.mt-list-container ul>.mt-list-item>.list-icon-container {
+  font-size: 14px;
+  float: left;
+}
+li [class*=" icon-"], li [class^=icon-] {
+  top: 1px;
+  position: relative;
+}        
+.icon-check:before {
+  content: "\e080";
+} 
+.mt-element-list .list-simple.mt-list-container ul>.mt-list-item>.list-datetime {
+  text-align: right;
+  float: right;
+  width: 60px;
+}
+.mt-element-list .list-simple.mt-list-container ul>.mt-list-item>.list-item-content {
+  padding: 0 75px 0 60px;
+}
+.list-item-content a{
+  text-shadow: none;
+  color: #337ab7;  
+}     
+.mt-element-list .list-simple.mt-list-head .list-title {
+  margin: 0;
+  padding-right: 85px;
+}
+.modal .modal-header h3 {
+  font-weight: 300;
+  color: white;
+}
+.modal-title {
+  line-height: 1.42857;
+}  
+.btn-popup{
+  position:fixed; 
+  bottom: 50px; 
+  right: 200px; 
+  color: #fff; 
+  background-color: #e12330; 
+  border-color: #e12330; 
+}
 .hide{
   display: none;
 }

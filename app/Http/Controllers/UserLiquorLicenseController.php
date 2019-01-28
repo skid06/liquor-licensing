@@ -28,16 +28,16 @@ class UserLiquorLicenseController extends Controller
             ->paginate(5);
 
         $completed = Application::where('user_id', \Auth::user()->id)
-        ->where('status', 'completed')
-        ->paginate(5); 
+            ->where('status', 'completed')
+            ->paginate(5); 
      
         $paid = Application::where('user_id', \Auth::user()->id)
             ->where('status', 'paid')
             ->paginate(5);
 
         $processed = Application::where('user_id', \Auth::user()->id)
-        ->where('status', 'processed')
-        ->paginate(5);         
+            ->where('status', 'processed')
+            ->paginate(5);         
 
         
         return response()->json(['processed' => $processed, 'incomplete' => $incomplete, 'completed' => $completed, 'paid' => $paid]);

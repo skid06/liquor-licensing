@@ -6,19 +6,21 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use App\Application;
 
 class NewApplicationAlert extends Mailable
 {
     use Queueable, SerializesModels;
+    public $application;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Application $application)
     {
-        //
+        $this->application = $application;
     }
 
     /**

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Cartalyst\Stripe\Exception\CardErrorException;
+
+use App\Events\NewApplication;
 use App\Application;
 use App\Payment;
 
@@ -23,7 +25,7 @@ class ApplicationPaymentController extends Controller
 
     public function charge(Request $request)
     {
-        try{
+        try {
             $charge = Stripe::charges()->create([
                 'amount' => 35.00,
                 'currency' => 'USD',
@@ -48,8 +50,10 @@ class ApplicationPaymentController extends Controller
             $payment->name_on_card = $charge['source']['name'];
             $payment->save();
 
+            // Send Email Alert to admins
+            event(new NewApplication($app));
+
             return response()->json(["message" => "Thank you! Your payment has been accepted.", "data" => $charge]);
-            // return back()->with('success_message', 'Thank you! Your payment has been accepted.');
 
         } catch (CardErrorException $e) {
             return response()->json(['error' => $e->getMessage()]);

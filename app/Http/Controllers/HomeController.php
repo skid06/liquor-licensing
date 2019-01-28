@@ -42,12 +42,16 @@ class HomeController extends Controller
         return view('incomplete-applications');
     }
     
-    public function showIncompleteApplication($id)
+    public function showApplication($id, $status)
     {
-        $application = Application::where('id', $id)->first();
-        $data['application'] = $application;        
+        $application = Application::where('id', $id)
+            ->where('status', $status)
+            ->first();
+
+        $data['application'] = $application;
+
         return view('incomplete-form-application', $data);
-    }    
+    }       
 
     public function completed()
     {

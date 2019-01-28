@@ -597,7 +597,51 @@
             </label>  
           </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
           <input type="button" class="btn btn-primary" @click="saveForm()" value="Save">               -->
-        </form>                              
+        </form>     
+        <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal<i class="fa fa-edit"></i></button> -->
+        <a href="#" @click="getLogs" class="btn btn-lg red btn-popup" data-toggle="modal" data-target="#myModal"> Notes
+          <i class="fa fa-edit"></i>
+        </a>     
+        
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+          <div class="modal-dialog">
+          
+            <!-- Modal content-->
+            <div class="modal-content mt-element-list">
+              <div class="modal-header mt-list-head list-simple ext-1 font-white bg-green-sharp">
+                <div class="list-head-title-container">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h3 class="modal-title list-title">Notes</h3>
+                </div>
+              </div>
+              <div class="modal-body mt-element-list">
+                <div class="mt-list-container list-simple ext-1">
+                  <ul>
+                    <li class="mt-list-item done" v-for="log in messages" :key="log.id">
+                      <div class="list-icon-container">
+                        <span style="font-size:10px;"> {{ log.admin_id != null ? 'You' : log.application.user.name }} </span>
+                      </div>
+                      <div class="list-datetime"> {{ log.created_at | moment("from", "now") }} </div>
+                      <div class="list-item-content">
+                        <p class="body-message">
+                          <a href="javascript:;">{{ log.message }}</a>
+                        </p>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="form-group mt">
+                  <textarea class="form-control" id="message" v-model="form.message" placeholder="Enter New Message"></textarea>
+                </div>
+                <button type="button" @click="postNote" class="btn btn-default btn-success"><span class="glyphicon glyphicon-plus"></span> Save</button> 
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>                            
       </div>
     </div>   
   </div>
@@ -610,7 +654,7 @@ export default {
       app_id: '',
       license_class: '',
       license: '',
-      fee: '24',
+      fee: '',
       address: '',
       city: '',
       state: '',
@@ -713,13 +757,18 @@ export default {
       five_percent_such_corporation_been_revoked_reason: '', 
       five_percent_such_corporation_been_revoked_date_revocation: '', 
       completed: false,
-      edited: false      
+      edited: false,
+      messages: [],
+      form: {
+        message: ''
+      }
     }
   },
   props: ['application'],
   mounted(){
     console.log(JSON.parse(this.application))
     this.application = JSON.parse(this.application)
+    this.getLogs()
     // console.log('this route 2: '.this.$router.query.page)
   },
   methods:{
@@ -730,11 +779,45 @@ export default {
           console.log(response.data)
         })
         .catch()
-    }
+    },
+    getLogs(){
+      axios
+        .get(`/application/${this.application.id}/notes`)
+        .then(response => {
+          console.log(response)
+          this.messages = response.data
+        })
+    },
+    postNote(){
+      axios
+        .post(`/application/${this.application.id}/notes`,{ message: this.form.message })
+        .then(response => {
+          this.messages.push(response.data.note)
+          console.log(response.data)
+          this.form = {}
+        })
+    } 
   }
 }
 </script>
 <style scoped>
+.body-message{
+  text-align: center !important;
+}
+.form-group.mt{
+  margin-top:50px;
+}
+.mt-element-list .list-simple.mt-list-container ul>.mt-list-item>.list-datetime {
+  text-align: right !important;
+  float: right !important;
+  width: 91px !important;
+  font-size: 10px !important;
+}
+.btn-popup{
+  position:fixed; 
+  bottom: 50px; 
+  right: 200px;  
+}
 .switch {
   position: relative;
   display: inline-block;

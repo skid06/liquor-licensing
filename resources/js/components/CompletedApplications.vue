@@ -12,7 +12,7 @@
       </thead>
       <tbody>
         <tr v-for="application in completed.data" :key="application.id">
-          <td>{{ application.corporate_name }}</td>
+          <td><a :href="`/applications/show/${ application.id }/completed`">{{ application.corporate_name }}</a></td>
           <td>Yes</td>
           <td>{{ application.business_email }}</td>
           <td>{{ application.created_at }}</td>

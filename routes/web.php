@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,16 +14,24 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+// This route is used by both user and admin for getting the application's notes
+// Route::get('/application/{id}/notes', function ($id) {
+//     return App\Note::where('application_id', $id)->with(['application.user','admin'])->get();
+// });
+Route::get('/application/{id}/notes', 'ApplicationNoteController@index');
+Route::post('/application/{id}/notes', 'ApplicationNoteController@store');
+
 Route::get('/payment-form/{id}', 'ApplicationPaymentController@getPaymentPage');
 Route::post('/checkout', 'ApplicationPaymentController@charge');
-Auth::routes();
+Auth::routes(); 
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/my-applications', 'HomeController@my_applications')->name('my.applications');
 Route::get('/applications/processed', 'HomeController@processed')->name('my.applications.processed');
 Route::get('/applications/completed', 'HomeController@completed')->name('my.applications.completed');
 Route::get('/applications/incomplete', 'HomeController@incomplete')->name('my.applications.incomplete');
-Route::get('/applications/incomplete/{id}', 'HomeController@showIncompleteApplication')->name('my.applications.incomplete.id');
+Route::get('/applications/show/{id}/{status}', 'HomeController@showApplication')->name('my.applications.show.id');
 Route::get('/applications/paid', 'HomeController@paid')->name('my.applications.paid');
 
 // Route::post('/save-form', 'UserLiquorLicenseController@store');

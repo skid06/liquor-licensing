@@ -12,7 +12,7 @@
       </thead>
       <tbody>
         <tr v-for="application in incomplete.data" :key="application.id">
-          <td><a :href="`/applications/incomplete/${ application.id }`"> {{ application.corporate_name }} </a></td>
+          <td><a :href="`/applications/show/${ application.id }/incomplete`"> {{ application.corporate_name }} </a></td>
           <td>Doe</td>
           <td>{{ application.business_email }}</td>
           <td>{{ application.created_at }}</td>
