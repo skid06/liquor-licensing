@@ -65,7 +65,7 @@
                                 </select></label></div>
                     </div>
                     <div class="col-md-6 col-sm-6">
-                        <div id="sample_1_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm input-small input-inline" placeholder="" aria-controls="sample_1"></label></div>
+                        <div id="sample_1_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm input-small input-inline" placeholder="Search Applications" aria-controls="sample_1" v-model="search" @keyup="searchCompletedApplications"></label></div>
                     </div>
                 </div>
                 <div class="table-scrollable">
@@ -80,7 +80,7 @@
                                 </th> -->
                                 <th class="sorting_asc" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-sort="ascending" aria-label=" Username : activate to sort column descending" style="width: 174px;"> Corporate Name </th>
                                 <th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label=" Email : activate to sort column ascending" style="width: 260px;"> Email </th>
-                                <th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label=" Status : activate to sort column ascending" style="width: 140px;"> Status </th>
+                                <th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label=" Status : activate to sort column ascending" style="width: 140px;"> Applicant </th>
                                 <th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label=" Joined : activate to sort column ascending" style="width: 133px;"> Joined </th>
                                 <th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label=" Actions : activate to sort column ascending" style="width: 136px;"> Actions </th>
                             </tr>
@@ -98,7 +98,7 @@
                                     <a href="mailto:userwow@gmail.com"> {{ completed.business_email }} </a>
                                 </td>
                                 <td>
-                                    <span class="label label-sm label-info"> Info </span>
+                                    <span class="label label-sm label-info"> {{ completed.user.name }} </span>
                                 </td>
                                 <td class="center"> {{ completed.created_at }} </td>
                                 <td>
@@ -220,7 +220,8 @@ import axios from 'axios'
 export default {
   data(){
     return {
-      applications: []
+      applications: [],
+      search: ''
     }
   },
   methods: {
@@ -233,6 +234,15 @@ export default {
         })
         .catch()
     },
+    searchCompletedApplications() {
+      axios
+        .get(`/api/applications/completed/${this.search}`)
+        .then(response => {
+          console.log(response.data)
+          this.applications = response.data.applications
+        })
+        .catch()
+    },    
     getApplications(page){
       let url
       if (page == null) {

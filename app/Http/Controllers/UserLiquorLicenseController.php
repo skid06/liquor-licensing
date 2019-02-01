@@ -6,6 +6,7 @@ use App\Http\Resources\ApplicationCollection;
 use Illuminate\Http\Request;
 use App\Application;
 use App\User;
+use App\Events\UserApplicationProcessed;
 
 class UserLiquorLicenseController extends Controller
 {
@@ -247,5 +248,18 @@ class UserLiquorLicenseController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function processApplication($id)
+    {
+        $app = Application::where('id', $id)->with('user')->first();
+
+        $app->status = 'processed';
+        $app->save();
+
+        // Send Email Alert to user when application has been processed.
+        event(new UserApplicationProcessed($app));
+
+        return $app;
     }
 }

@@ -98,7 +98,7 @@
                                     <a href="mailto:userwow@gmail.com"> {{ processed.business_email }} </a>
                                 </td>
                                 <td>
-                                    <span class="label label-sm label-info"> Info </span>
+                                    <span class="label label-sm label-info"> {{ processed.user.name }} </span>
                                 </td>
                                 <td class="center"> {{ processed.created_at }} </td>
                                 <td>

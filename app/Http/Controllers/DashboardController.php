@@ -19,7 +19,7 @@ class DashboardController extends Controller
     public function completed()
     {
         return view('admin.completed');
-    }
+    }   
 
     public function processed()
     {

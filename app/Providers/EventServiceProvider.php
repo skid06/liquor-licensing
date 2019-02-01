@@ -21,6 +21,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\NewApplication' => [
             'App\Listeners\SendAlertToAdmin',
         ],
+        'App\Events\UserApplicationProcessed' => [
+            'App\Listeners\SendProcessedAlertToUser'
+        ]
     ];
 
     /**

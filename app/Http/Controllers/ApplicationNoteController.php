@@ -38,13 +38,26 @@ class ApplicationNoteController extends Controller
      */
     public function store(Request $request, $id)
     {
-        $note = new Note;
-        $note->application_id = $id; 
-        $note->message = $request->message;
-        $note->admin_id = Auth::guard('admin')->user() ? Auth::guard('admin')->user()->id : null;
-        $note->save();
+        try {
+            $this->validate($request, [
+                'message'   => 'required'
+            ]);
 
-        return response()->json(["note" => $note, "message" => "You have posted a comment."]);
+            $note = new Note;
+            $note->application_id = $id; 
+            $note->message = $request->message;
+            $note->admin_id = Auth::guard('admin')->user() ? Auth::guard('admin')->user()->id : null;
+            $note->save();
+    
+            return response()->json(["note" => $note, "message" => "You have posted a comment."]);
+        } catch (ValidationException $exception) {
+            return response()->json([
+                'status' => 'error',
+                'msg'    => 'Error',
+                'errors' => $exception->errors(),
+            ], 422);
+        }
+
     }
 
     /**

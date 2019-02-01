@@ -43,7 +43,8 @@ Route::prefix('user/applications')->group(function() {
     Route::get('/all', 'UserLiquorLicenseController@all');       
     Route::post('/', 'UserLiquorLicenseController@store');
     Route::get('/processed', 'UserLiquorLicenseController@index');
-    Route::get('/{id}', 'UserLiquorLicenseController@edit');    
+    Route::get('/{id}', 'UserLiquorLicenseController@edit');
+    Route::post('/{id}/processed', 'UserLiquorLicenseController@processApplication');    
 });  
 
 Route::prefix('admin')->group(function() {
@@ -54,4 +55,11 @@ Route::prefix('admin')->group(function() {
     Route::get('/paid', 'DashboardController@paid')->name('admin.paid');
     Route::get('/{id}', 'DashboardController@show')->name('admin.show');
     Route::get('/', 'DashboardController@main')->name('admin.dashboard');
+});
+
+Route::prefix('official')->group(function() {
+    Route::get('/login', 'Auth\OfficialLoginController@showLoginForm')->name('official.login');
+    Route::post('/login', 'Auth\OfficialLoginController@login')->name('official.login.submit');
+    Route::get('/completed', 'OfficialDashboardController@completed')->name('official.completed');
+    Route::get('/', 'OfficialDashboardController@completed')->name('official.dashboard');
 });

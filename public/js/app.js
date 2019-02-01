@@ -59352,7 +59352,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n.uppercase[data-v-50c2923c]{\n  text-align: center !important;\n}\n.form-group.mt[data-v-50c2923c]{\n  margin-top:50px;\n}\n.mt-element-list .list-default.ext-1.mt-list-container ul>.mt-list-item[data-v-50c2923c]:hover{background-color:#e5e5e5\n}\n.btn-default[data-v-50c2923c] {\n  color: #333;\n  background-color: #fff;\n  border-color: #ccc;\n}\n.mt-element-list .list-simple.mt-list-container ul>.mt-list-item>.list-datetime[data-v-50c2923c] {\n  text-align: right !important;\n  float: right !important;\n  width: 91px !important;\n  font-size: 10px !important;\n}\n.mt-element-list .list-simple.mt-list-head[data-v-50c2923c] {\n    padding: 15px;\n}\n.modal .modal-header[data-v-50c2923c] {\n border-bottom: 1px solid #EFEFEF;\n}\n.mt-list-head[data-v-50c2923c]{\n  background: #2ab4c0!important;\n}\n.mt-list-container[data-v-50c2923c]{\n  border-left: 1px solid;\n  border-right: 1px solid;\n  border-bottom: 1px solid;\n  border-color: #e7ecf1;\n}\n.mt-list-container ul[data-v-50c2923c]{\n  margin-bottom: 0;\n  padding: 0;\n}\n.modal .modal-header .close[data-v-50c2923c] {\n  margin-top: 0!important;\n}\nbutton.close[data-v-50c2923c] {\n  padding: 0;\n  cursor: pointer;\n  background: 0 0;\n  border: 0;\n  -webkit-appearance: none;\n}\n.mt-element-list .list-simple.ext-1.mt-list-container ul>.mt-list-item.done[data-v-50c2923c]{\n  border-color: #26C281 #26C281 #e7ecf1;\n}\n.mt-element-list .list-simple.ext-1.mt-list-container ul>.mt-list-item[data-v-50c2923c]{\n  padding: 15px;\n  border-left: 3px solid;\n}\n.mt-element-list .list-simple.mt-list-container ul>.mt-list-item[data-v-50c2923c] {\n  list-style: none;\n  border-bottom: 1px solid;\n}\n.mt-element-list .list-simple.mt-list-container ul>.mt-list-item>.list-icon-container[data-v-50c2923c] {\n  font-size: 14px;\n  float: left;\n}\nli [class*=\" icon-\"][data-v-50c2923c], li [class^=icon-][data-v-50c2923c] {\n  top: 1px;\n  position: relative;\n}\n.icon-check[data-v-50c2923c]:before {\n  content: \"\\E080\";\n}\n.mt-element-list .list-simple.mt-list-container ul>.mt-list-item>.list-datetime[data-v-50c2923c] {\n  text-align: right;\n  float: right;\n  width: 60px;\n}\n.mt-element-list .list-simple.mt-list-container ul>.mt-list-item>.list-item-content[data-v-50c2923c] {\n  padding: 0 75px 0 60px;\n}\n.list-item-content a[data-v-50c2923c]{\n  text-shadow: none;\n  color: #337ab7;\n}\n.mt-element-list .list-simple.mt-list-head .list-title[data-v-50c2923c] {\n  margin: 0;\n  padding-right: 85px;\n}\n.modal .modal-header h3[data-v-50c2923c] {\n  font-weight: 300;\n  color: white;\n}\n.modal-title[data-v-50c2923c] {\n  line-height: 1.42857;\n}\n.btn-popup[data-v-50c2923c]{\n  position:fixed; \n  bottom: 50px; \n  right: 200px; \n  color: #fff; \n  background-color: #e12330; \n  border-color: #e12330;\n}\n.hide[data-v-50c2923c]{\n  display: none;\n}\n.switch[data-v-50c2923c] {\n  position: relative;\n  display: inline-block;\n  width: 60px;\n  height: 34px;\n}\n.switch input[data-v-50c2923c] { \n  opacity: 0;\n  width: 0;\n  height: 0;\n}\n.slider[data-v-50c2923c] {\n  position: absolute;\n  cursor: pointer;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #ccc;\n  -webkit-transition: .4s;\n  transition: .4s;\n}\n.slider[data-v-50c2923c]:before {\n  position: absolute;\n  content: \"\";\n  height: 26px;\n  width: 26px;\n  left: 4px;\n  bottom: 4px;\n  background-color: white;\n  -webkit-transition: .4s;\n  transition: .4s;\n}\ninput:checked + .slider[data-v-50c2923c] {\n  background-color: #2196F3;\n}\ninput:focus + .slider[data-v-50c2923c] {\n  -webkit-box-shadow: 0 0 1px #2196F3;\n          box-shadow: 0 0 1px #2196F3;\n}\ninput:checked + .slider[data-v-50c2923c]:before {\n  -webkit-transform: translateX(26px);\n  transform: translateX(26px);\n}\n\n/* Rounded sliders */\n.slider.round[data-v-50c2923c] {\n  border-radius: 34px;\n}\n.slider.round[data-v-50c2923c]:before {\n  border-radius: 50%;\n}\n", ""]);
+exports.push([module.i, "\n.alert-danger[data-v-50c2923c] {\n  display: block;\n  margin-top: 10px;\n  background: none\n}\n.uppercase[data-v-50c2923c]{\n  text-align: center !important;\n}\n.form-group.mt[data-v-50c2923c]{\n  margin-top:50px;\n}\n.mt-element-list .list-default.ext-1.mt-list-container ul>.mt-list-item[data-v-50c2923c]:hover{background-color:#e5e5e5\n}\n.btn-default[data-v-50c2923c] {\n  color: #333;\n  background-color: #fff;\n  border-color: #ccc;\n}\n.mt-element-list .list-simple.mt-list-container ul>.mt-list-item>.list-datetime[data-v-50c2923c] {\n  text-align: right !important;\n  float: right !important;\n  width: 91px !important;\n  font-size: 10px !important;\n}\n.mt-element-list .list-simple.mt-list-head[data-v-50c2923c] {\n    padding: 15px;\n}\n.modal .modal-header[data-v-50c2923c] {\n border-bottom: 1px solid #EFEFEF;\n}\n.mt-list-head[data-v-50c2923c]{\n  background: #2ab4c0!important;\n}\n.mt-list-container[data-v-50c2923c]{\n  border-left: 1px solid;\n  border-right: 1px solid;\n  border-bottom: 1px solid;\n  border-color: #e7ecf1;\n}\n.mt-list-container ul[data-v-50c2923c]{\n  margin-bottom: 0;\n  padding: 0;\n}\n.modal .modal-header .close[data-v-50c2923c] {\n  margin-top: 0!important;\n}\nbutton.close[data-v-50c2923c] {\n  padding: 0;\n  cursor: pointer;\n  background: 0 0;\n  border: 0;\n  -webkit-appearance: none;\n}\n.mt-element-list .list-simple.ext-1.mt-list-container ul>.mt-list-item.done[data-v-50c2923c]{\n  border-color: #26C281 #26C281 #e7ecf1;\n}\n.mt-element-list .list-simple.ext-1.mt-list-container ul>.mt-list-item[data-v-50c2923c]{\n  padding: 15px;\n  border-left: 3px solid;\n}\n.mt-element-list .list-simple.mt-list-container ul>.mt-list-item[data-v-50c2923c] {\n  list-style: none;\n  border-bottom: 1px solid;\n}\n.mt-element-list .list-simple.mt-list-container ul>.mt-list-item>.list-icon-container[data-v-50c2923c] {\n  font-size: 14px;\n  float: left;\n}\nli [class*=\" icon-\"][data-v-50c2923c], li [class^=icon-][data-v-50c2923c] {\n  top: 1px;\n  position: relative;\n}\n.icon-check[data-v-50c2923c]:before {\n  content: \"\\E080\";\n}\n.mt-element-list .list-simple.mt-list-container ul>.mt-list-item>.list-datetime[data-v-50c2923c] {\n  text-align: right;\n  float: right;\n  width: 60px;\n}\n.mt-element-list .list-simple.mt-list-container ul>.mt-list-item>.list-item-content[data-v-50c2923c] {\n  padding: 0 75px 0 60px;\n}\n.list-item-content a[data-v-50c2923c]{\n  text-shadow: none;\n  color: #337ab7;\n}\n.mt-element-list .list-simple.mt-list-head .list-title[data-v-50c2923c] {\n  margin: 0;\n  padding-right: 85px;\n}\n.modal .modal-header h3[data-v-50c2923c] {\n  font-weight: 300;\n  color: white;\n}\n.modal-title[data-v-50c2923c] {\n  line-height: 1.42857;\n}\n.btn-popup[data-v-50c2923c]{\n  position:fixed; \n  bottom: 50px; \n  right: 200px; \n  color: #fff; \n  background-color: #e12330; \n  border-color: #e12330;\n}\n.hide[data-v-50c2923c]{\n  display: none;\n}\n.switch[data-v-50c2923c] {\n  position: relative;\n  display: inline-block;\n  width: 60px;\n  height: 34px;\n}\n.switch input[data-v-50c2923c] { \n  opacity: 0;\n  width: 0;\n  height: 0;\n}\n.slider[data-v-50c2923c] {\n  position: absolute;\n  cursor: pointer;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #ccc;\n  -webkit-transition: .4s;\n  transition: .4s;\n}\n.slider[data-v-50c2923c]:before {\n  position: absolute;\n  content: \"\";\n  height: 26px;\n  width: 26px;\n  left: 4px;\n  bottom: 4px;\n  background-color: white;\n  -webkit-transition: .4s;\n  transition: .4s;\n}\ninput:checked + .slider[data-v-50c2923c] {\n  background-color: #2196F3;\n}\ninput:focus + .slider[data-v-50c2923c] {\n  -webkit-box-shadow: 0 0 1px #2196F3;\n          box-shadow: 0 0 1px #2196F3;\n}\ninput:checked + .slider[data-v-50c2923c]:before {\n  -webkit-transform: translateX(26px);\n  transform: translateX(26px);\n}\n\n/* Rounded sliders */\n.slider.round[data-v-50c2923c] {\n  border-radius: 34px;\n}\n.slider.round[data-v-50c2923c]:before {\n  border-radius: 50%;\n}\n", ""]);
 
 // exports
 
@@ -59365,6 +59365,11 @@ exports.push([module.i, "\n.uppercase[data-v-50c2923c]{\n  text-align: center !i
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
 //
 //
 //
@@ -60171,7 +60176,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       messages: [],
       form: {
         message: ''
-      }
+      },
+      errors: [],
+      withError: false
     };
   },
 
@@ -60526,7 +60533,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/application/' + this.application.id + '/notes', { message: this.form.message }).then(function (response) {
         _this3.messages.push(response.data.note);
         _this3.form = {};
+        _this3.errors = [];
+        _this3.withError = false;
         console.log(response.data);
+      }).catch(function (err) {
+        // this.$store.commit("login_failed", 'Wrong email or password.')
+        _this3.errors = err.response.data.errors;
+        _this3.withError = true;
+        console.log({ err: err });
       });
     }
   },
@@ -65438,6 +65452,26 @@ var render = function() {
                                 }),
                                 _vm._v(" Save")
                               ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                class: {
+                                  "form-group": true,
+                                  "alert-danger": _vm.withError
+                                }
+                              },
+                              [
+                                _c(
+                                  "ul",
+                                  _vm._l(_vm.errors.message, function(error) {
+                                    return _c("li", { key: error }, [
+                                      _vm._v(_vm._s(error))
+                                    ])
+                                  })
+                                )
+                              ]
                             )
                           ]
                         ),
@@ -67443,7 +67477,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      applications: []
+      applications: [],
+      search: ''
     };
   },
 
@@ -67456,8 +67491,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         _this.applications = response.data.applications;
       }).catch();
     },
-    getApplications: function getApplications(page) {
+    searchCompletedApplications: function searchCompletedApplications() {
       var _this2 = this;
+
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/applications/completed/' + this.search).then(function (response) {
+        console.log(response.data);
+        _this2.applications = response.data.applications;
+      }).catch();
+    },
+    getApplications: function getApplications(page) {
+      var _this3 = this;
 
       var url = void 0;
       if (page == null) {
@@ -67468,7 +67511,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       }
       __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(url).then(function (response) {
         console.log(response.data);
-        _this2.applications = response.data.applications;
+        _this3.applications = response.data.applications;
       }).catch(function (err) {
         return console.log(err);
       });
@@ -67503,7 +67546,51 @@ var render = function() {
                 attrs: { id: "sample_1_wrapper" }
               },
               [
-                _vm._m(2),
+                _c("div", { staticClass: "row" }, [
+                  _vm._m(2),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-6 col-sm-6" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "dataTables_filter",
+                        attrs: { id: "sample_1_filter" }
+                      },
+                      [
+                        _c("label", [
+                          _vm._v("Search:"),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.search,
+                                expression: "search"
+                              }
+                            ],
+                            staticClass:
+                              "form-control input-sm input-small input-inline",
+                            attrs: {
+                              type: "search",
+                              placeholder: "Search Applications",
+                              "aria-controls": "sample_1"
+                            },
+                            domProps: { value: _vm.search },
+                            on: {
+                              keyup: _vm.searchCompletedApplications,
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.search = $event.target.value
+                              }
+                            }
+                          })
+                        ])
+                      ]
+                    )
+                  ])
+                ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "table-scrollable" }, [
                   _c(
@@ -67555,13 +67642,23 @@ var render = function() {
                                 )
                               ]),
                               _vm._v(" "),
-                              _vm._m(4, true),
+                              _c("td", [
+                                _c(
+                                  "span",
+                                  { staticClass: "label label-sm label-info" },
+                                  [
+                                    _vm._v(
+                                      " " + _vm._s(completed.user.name) + " "
+                                    )
+                                  ]
+                                )
+                              ]),
                               _vm._v(" "),
                               _c("td", { staticClass: "center" }, [
                                 _vm._v(" " + _vm._s(completed.created_at) + " ")
                               ]),
                               _vm._v(" "),
-                              _vm._m(5, true)
+                              _vm._m(4, true)
                             ]
                           )
                         })
@@ -67763,64 +67860,32 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-6 col-sm-6" }, [
-        _c(
-          "div",
-          {
-            staticClass: "dataTables_length",
-            attrs: { id: "sample_1_length" }
-          },
-          [
-            _c("label", [
-              _vm._v("Show "),
-              _c(
-                "select",
-                {
-                  staticClass:
-                    "form-control input-sm input-xsmall input-inline",
-                  attrs: {
-                    name: "sample_1_length",
-                    "aria-controls": "sample_1"
-                  }
-                },
-                [
-                  _c("option", { attrs: { value: "5" } }, [_vm._v("5")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "15" } }, [_vm._v("15")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "20" } }, [_vm._v("20")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "-1" } }, [_vm._v("All")])
-                ]
-              )
-            ])
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-6 col-sm-6" }, [
-        _c(
-          "div",
-          {
-            staticClass: "dataTables_filter",
-            attrs: { id: "sample_1_filter" }
-          },
-          [
-            _c("label", [
-              _vm._v("Search:"),
-              _c("input", {
-                staticClass: "form-control input-sm input-small input-inline",
-                attrs: {
-                  type: "search",
-                  placeholder: "",
-                  "aria-controls": "sample_1"
-                }
-              })
-            ])
-          ]
-        )
-      ])
+    return _c("div", { staticClass: "col-md-6 col-sm-6" }, [
+      _c(
+        "div",
+        { staticClass: "dataTables_length", attrs: { id: "sample_1_length" } },
+        [
+          _c("label", [
+            _vm._v("Show "),
+            _c(
+              "select",
+              {
+                staticClass: "form-control input-sm input-xsmall input-inline",
+                attrs: { name: "sample_1_length", "aria-controls": "sample_1" }
+              },
+              [
+                _c("option", { attrs: { value: "5" } }, [_vm._v("5")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "15" } }, [_vm._v("15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "20" } }, [_vm._v("20")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "-1" } }, [_vm._v("All")])
+              ]
+            )
+          ])
+        ]
+      )
     ])
   },
   function() {
@@ -67875,7 +67940,7 @@ var staticRenderFns = [
               "aria-label": " Status : activate to sort column ascending"
             }
           },
-          [_vm._v(" Status ")]
+          [_vm._v(" Applicant ")]
         ),
         _vm._v(" "),
         _c(
@@ -67909,16 +67974,6 @@ var staticRenderFns = [
           },
           [_vm._v(" Actions ")]
         )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("span", { staticClass: "label label-sm label-info" }, [
-        _vm._v(" Info ")
       ])
     ])
   },
@@ -68380,13 +68435,23 @@ var render = function() {
                                 )
                               ]),
                               _vm._v(" "),
-                              _vm._m(4, true),
+                              _c("td", [
+                                _c(
+                                  "span",
+                                  { staticClass: "label label-sm label-info" },
+                                  [
+                                    _vm._v(
+                                      " " + _vm._s(processed.user.name) + " "
+                                    )
+                                  ]
+                                )
+                              ]),
                               _vm._v(" "),
                               _c("td", { staticClass: "center" }, [
                                 _vm._v(" " + _vm._s(processed.created_at) + " ")
                               ]),
                               _vm._v(" "),
-                              _vm._m(5, true)
+                              _vm._m(4, true)
                             ]
                           )
                         })
@@ -68734,16 +68799,6 @@ var staticRenderFns = [
           },
           [_vm._v(" Actions ")]
         )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("span", { staticClass: "label label-sm label-info" }, [
-        _vm._v(" Info ")
       ])
     ])
   },
@@ -69725,7 +69780,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n.body-message[data-v-38378878]{\n  text-align: center !important;\n}\n.form-group.mt[data-v-38378878]{\n  margin-top:50px;\n}\n.mt-element-list .list-simple.mt-list-container ul>.mt-list-item>.list-datetime[data-v-38378878] {\n  text-align: right !important;\n  float: right !important;\n  width: 91px !important;\n  font-size: 10px !important;\n}\n.btn-popup[data-v-38378878]{\n  position:fixed; \n  bottom: 50px; \n  right: 200px;\n}\n.switch[data-v-38378878] {\n  position: relative;\n  display: inline-block;\n  width: 60px;\n  height: 34px;\n}\n.switch input[data-v-38378878] { \n  opacity: 0;\n  width: 0;\n  height: 0;\n}\n.slider[data-v-38378878] {\n  position: absolute;\n  cursor: pointer;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #ccc;\n  -webkit-transition: .4s;\n  transition: .4s;\n}\n.slider[data-v-38378878]:before {\n  position: absolute;\n  content: \"\";\n  height: 26px;\n  width: 26px;\n  left: 4px;\n  bottom: 4px;\n  background-color: white;\n  -webkit-transition: .4s;\n  transition: .4s;\n}\ninput:checked + .slider[data-v-38378878] {\n  background-color: #2196F3;\n}\ninput:focus + .slider[data-v-38378878] {\n  -webkit-box-shadow: 0 0 1px #2196F3;\n          box-shadow: 0 0 1px #2196F3;\n}\ninput:checked + .slider[data-v-38378878]:before {\n  -webkit-transform: translateX(26px);\n  transform: translateX(26px);\n}\n\n/* Rounded sliders */\n.slider.round[data-v-38378878] {\n  border-radius: 34px;\n}\n.slider.round[data-v-38378878]:before {\n  border-radius: 50%;\n}\n", ""]);
+exports.push([module.i, "\n.alert-danger[data-v-38378878] {\n  display: block;\n  margin-top: 10px;\n  background: none\n}\n.alert-success[data-v-38378878]{\n  background-color: none !important;\n}\n.hide[data-v-38378878]{\n    display: none\n}\n.body-message[data-v-38378878]{\n  text-align: center !important;\n}\n.form-group.mt[data-v-38378878]{\n  margin-top:50px;\n}\n.mt-element-list .list-simple.mt-list-container ul>.mt-list-item>.list-datetime[data-v-38378878] {\n  text-align: right !important;\n  float: right !important;\n  width: 91px !important;\n  font-size: 10px !important;\n}\n.btn-popup[data-v-38378878]{\n  position:fixed; \n  bottom: 50px; \n  right: 200px;\n}\n.switch[data-v-38378878] {\n  position: relative;\n  display: inline-block;\n  width: 60px;\n  height: 34px;\n}\n.switch input[data-v-38378878] { \n  opacity: 0;\n  width: 0;\n  height: 0;\n}\n.slider[data-v-38378878] {\n  position: absolute;\n  cursor: pointer;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #ccc;\n  -webkit-transition: .4s;\n  transition: .4s;\n}\n.slider[data-v-38378878]:before {\n  position: absolute;\n  content: \"\";\n  height: 26px;\n  width: 26px;\n  left: 4px;\n  bottom: 4px;\n  background-color: white;\n  -webkit-transition: .4s;\n  transition: .4s;\n}\ninput:checked + .slider[data-v-38378878] {\n  background-color: #2196F3;\n}\ninput:focus + .slider[data-v-38378878] {\n  -webkit-box-shadow: 0 0 1px #2196F3;\n          box-shadow: 0 0 1px #2196F3;\n}\ninput:checked + .slider[data-v-38378878]:before {\n  -webkit-transform: translateX(26px);\n  transform: translateX(26px);\n}\n\n/* Rounded sliders */\n.slider.round[data-v-38378878] {\n  border-radius: 34px;\n}\n.slider.round[data-v-38378878]:before {\n  border-radius: 50%;\n}\n", ""]);
 
 // exports
 
@@ -69736,6 +69791,15 @@ exports.push([module.i, "\n.body-message[data-v-38378878]{\n  text-align: center
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -70499,7 +70563,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       messages: [],
       form: {
         message: ''
-      }
+      },
+      isHide: true,
+      success_message: '',
+      errors: [],
+      withError: false
     };
   },
 
@@ -70532,6 +70600,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         _this2.messages.push(response.data.note);
         console.log(response.data);
         _this2.form = {};
+        _this2.errors = [];
+        _this2.withError = false;
+      }).catch(function (err) {
+        // this.$store.commit("login_failed", 'Wrong email or password.')
+        _this2.errors = err.response.data.errors;
+        _this2.withError = true;
+        console.log({ err: err });
+      });
+    },
+    process: function process() {
+      var _this3 = this;
+
+      axios.post('/user/applications/' + this.application.id + '/processed').then(function (response) {
+        console.log(response);
+        _this3.isHide = false;
+        _this3.success_message = "You have successfully processed this application.";
       });
     }
   }
@@ -73043,12 +73127,70 @@ var render = function() {
                     },
                     [
                       _c("span", { staticClass: "glyphicon glyphicon-plus" }),
-                      _vm._v(" Save")
+                      _vm._v(" Add Note")
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      class: {
+                        "form-group": true,
+                        "alert-danger": _vm.withError
+                      }
+                    },
+                    [
+                      _c(
+                        "ul",
+                        _vm._l(_vm.errors.message, function(error) {
+                          return _c("li", { key: error }, [
+                            _vm._v(_vm._s(error))
+                          ])
+                        })
+                      )
                     ]
                   )
                 ]),
                 _vm._v(" "),
-                _vm._m(20)
+                _c("div", { staticClass: "modal-footer" }, [
+                  _c(
+                    "div",
+                    {
+                      class: {
+                        hide: _vm.isHide,
+                        alert: true,
+                        "alert-success": true
+                      },
+                      staticStyle: { float: "left" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                " +
+                          _vm._s(_vm.success_message) +
+                          "\n            "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-default btn-primary",
+                      attrs: { type: "button" },
+                      on: { click: _vm.process }
+                    },
+                    [_vm._v("Processed")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-default",
+                      attrs: { type: "button", "data-dismiss": "modal" }
+                    },
+                    [_vm._v("Close")]
+                  )
+                ])
               ])
             ])
           ]
@@ -73272,21 +73414,6 @@ var staticRenderFns = [
         ])
       ]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-footer" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-default",
-          attrs: { type: "button", "data-dismiss": "modal" }
-        },
-        [_vm._v("Close")]
-      )
-    ])
   }
 ]
 render._withStripped = true

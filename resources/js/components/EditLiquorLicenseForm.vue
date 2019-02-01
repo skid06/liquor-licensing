@@ -669,7 +669,12 @@
                       <div class="form-group mt">
                         <textarea class="form-control" id="message" v-model="form.message" placeholder="Enter New Message"></textarea>
                       </div>
-                      <button type="button" @click="postNote" class="btn btn-default btn-success"><span class="glyphicon glyphicon-plus"></span> Save</button>                       
+                      <button type="button" @click="postNote" class="btn btn-default btn-success"><span class="glyphicon glyphicon-plus"></span> Save</button>       
+                      <div :class="{'form-group': true, 'alert-danger': withError}" style="">
+                        <ul>
+                          <li v-for="error in errors.message" :key="error">{{ error }}</li>
+                        </ul>
+                      </div>                                      
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -804,7 +809,9 @@ export default {
       messages: [],
       form: {
         message: ''
-      }
+      },
+      errors: [],
+      withError: false
     }
   },
   computed: {
@@ -1160,8 +1167,16 @@ export default {
         .then(response => {
           this.messages.push(response.data.note)
           this.form = {}
+          this.errors = []
+          this.withError = false          
           console.log(response.data)
         })
+        .catch(err => {
+          // this.$store.commit("login_failed", 'Wrong email or password.')
+          this.errors = err.response.data.errors
+          this.withError = true
+          console.log({err})
+        })         
     }    
   },
   props: ['application', 'formStatus'],
@@ -1175,6 +1190,11 @@ export default {
 </script>
 
 <style scoped>
+.alert-danger {
+  display: block;
+  margin-top: 10px;
+  background: none
+}
 .uppercase{
   text-align: center !important;
 }

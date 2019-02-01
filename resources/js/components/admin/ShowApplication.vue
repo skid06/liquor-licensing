@@ -634,9 +634,18 @@
                 <div class="form-group mt">
                   <textarea class="form-control" id="message" v-model="form.message" placeholder="Enter New Message"></textarea>
                 </div>
-                <button type="button" @click="postNote" class="btn btn-default btn-success"><span class="glyphicon glyphicon-plus"></span> Save</button> 
+                <button type="button" @click="postNote" class="btn btn-default btn-success"><span class="glyphicon glyphicon-plus"></span> Add Note</button> 
+                <div :class="{'form-group': true, 'alert-danger': withError}" style="">
+                  <ul>
+                    <li v-for="error in errors.message" :key="error">{{ error }}</li>
+                  </ul>
+                </div>
               </div>
               <div class="modal-footer">
+              <div :class="{ hide: isHide, 'alert': true, 'alert-success': true }" style="float: left">
+                  {{ success_message }}
+              </div>                
+                <button type="button" class="btn btn-default btn-primary" @click="process" >Processed</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
               </div>
             </div>
@@ -761,7 +770,11 @@ export default {
       messages: [],
       form: {
         message: ''
-      }
+      },
+      isHide: true,
+      success_message: '',
+      errors: [],
+      withError: false
     }
   },
   props: ['application'],
@@ -795,12 +808,40 @@ export default {
           this.messages.push(response.data.note)
           console.log(response.data)
           this.form = {}
+          this.errors = []
+          this.withError = false
+        })
+        .catch(err => {
+          // this.$store.commit("login_failed", 'Wrong email or password.')
+          this.errors = err.response.data.errors
+          this.withError = true
+          console.log({err})
+        })        
+    },
+    process(){
+      axios
+        .post(`/user/applications/${this.application.id}/processed`)
+        .then(response => {
+          console.log(response)
+          this.isHide = false
+          this.success_message = "You have successfully processed this application."
         })
     } 
   }
 }
 </script>
 <style scoped>
+.alert-danger {
+  display: block;
+  margin-top: 10px;
+  background: none
+}
+.alert-success{
+  background-color: none !important;
+}
+.hide{
+    display: none
+}
 .body-message{
   text-align: center !important;
 }
