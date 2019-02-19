@@ -5,15 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Application;
 use App\User;
+use Carbon\Carbon;
 
 class LiquorLicenseController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     * This Controller serves the admin for getting all applications of ALL users
-     * 
-     * @return \Illuminate\Http\Response
-     */
+    protected $application;
+
+    public function __construct(Application $application)
+    {
+        $this->application = $application;
+    }
+
     public function index(Request $request)
     {
         return \Auth::user()->id;
@@ -27,6 +29,73 @@ class LiquorLicenseController extends Controller
         }
         
     }
+
+    public function filterApplicationByDate(string $by, int $count, string $status)
+    {
+        $app = "";
+        $appCount = 0;
+        $getApp = [];
+
+        if($by === 'day'){
+            if(is_numeric($count) && $count >= 1){
+                if($status === 'all'){
+                    $applications = $this->application
+                                        ->whereDate('created_at', '>=', Carbon::now()->subDays($count))
+                                        ->paginate(5);                      
+                }
+                else {
+                    $applications = $this->application
+                                        ->where('status', $status)
+                                        ->whereDate('created_at', '>=', Carbon::now()->subDays($count))
+                                        ->paginate(5); 
+                }
+
+                return response()->json(["applications" => $applications]);
+
+            }
+            
+        }
+        elseif($by === 'month'){
+            if(is_numeric($count) && $count >= 1){
+                if($status === 'all'){
+                    $applications = $this->application
+                                    ->whereDate('created_at', '>=', Carbon::now()->subMonths($count))
+                                    ->paginate(5); 
+                }
+                else {
+                    $applications = $this->application
+                                    ->where('status', $status)
+                                    ->whereDate('created_at', '>=', Carbon::now()->subMonths($count))
+                                    ->paginate(5); 
+                }
+
+
+                return response()->json(["applications" => $applications]);
+
+            }         
+        }
+        elseif($by === 'year'){
+            if(is_numeric($count) && $count >= 1){
+                if($status === 'all'){
+                    $applications = $this->application
+                                    ->where('created_at', '>=', Carbon::now()->subYears($count))
+                                    ->paginate(5);
+                }
+                else {
+                    $applications = $this->application
+                                    ->where('status', $status)
+                                    ->where('created_at', '>=', Carbon::now()->subYears($count))
+                                    ->paginate(5); 
+                }                               
+                
+                return response()->json(["applications" => $applications]);
+                       
+            }           
+        }
+        else{
+            return 'Parameters not allowed.';
+        }              
+    }      
 
     public function completed()
     {

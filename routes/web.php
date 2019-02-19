@@ -55,6 +55,8 @@ Route::prefix('admin')->group(function() {
     Route::get('/paid', 'DashboardController@paid')->name('admin.paid');
     Route::get('/{id}', 'DashboardController@show')->name('admin.show');
     Route::get('/', 'DashboardController@main')->name('admin.dashboard');
+    Route::get('/filter/payment/{by}/{count}', 'ApplicationPaymentController@filterPaymentByDate')->name('admin.filter.payments');
+    Route::get('/filter/applications/{by}/{count}/{status}', 'LiquorLicenseController@filterApplicationByDate')->name('admin.filter.applications');
 });
 
 Route::prefix('official')->group(function() {

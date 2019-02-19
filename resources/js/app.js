@@ -10,6 +10,7 @@ require('./bootstrap');
 window.Vue = require('vue');
 Vue.use(require('vue-moment'));
 
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -33,6 +34,8 @@ Vue.component('admin-completed-applications', require('./components/admin/Comple
 Vue.component('admin-processed-applications', require('./components/admin/ProcessedApplications.vue'))
 Vue.component('admin-paid-applications', require('./components/admin/PaidApplications.vue'))
 Vue.component('show-application', require('./components/admin/ShowApplication.vue'))
+Vue.component('order-sales', require('./components/admin/OrderSales.vue'))
+Vue.component('report-overview', require('./components/admin/ReportOverview.vue'))
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key)))
