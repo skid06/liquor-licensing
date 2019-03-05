@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Http\Repositories\LiquorRepository;
+use App\Http\Repositories\Interfaces\ApplicationInterface;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,5 +26,6 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+        $this->app->singleton(ApplicationInterface::class, LiquorRepository::class);
     }
 }

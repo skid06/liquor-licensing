@@ -36,22 +36,7 @@ import axios from 'axios'
 export default {
   data(){
     return {
-      incomplete: [],
-      links:{
-        first: null,
-        last: null,
-        next: null,
-        prev: null
-      },
-      meta:{
-        current_page: null,
-        from: null,
-        last_page: null,
-        path: null,
-        per_page: null,
-        to: null,
-        total: null
-      }      
+      incomplete: [],     
     }
   },
   mounted(){
@@ -60,19 +45,16 @@ export default {
   methods: {
     getIncompleteApplications(){
       axios
-        .get('/user/applications')
+        .get('/api/user/applications/incomplete/no')
         .then(response => {
             console.log(response)
-            this.incomplete = response.data.incomplete
-            // this.meta.current_page = response.data.incomplete.current_page
-            // this.meta = response.data.incomplete
-            
+            this.incomplete = response.data.applications            
         })
     },
     getApplications(page){
       let url
       if (page == null) {
-        url = '/user/applications'
+        url = '/api/user/applications'
       } else {
         // url = `/user/applications?page=${page}`
         url = page
@@ -80,7 +62,7 @@ export default {
       axios.get(url)
       .then(response => {
         console.log(response.data)
-        this.incomplete = response.data.incomplete
+        this.incomplete = response.data.applications
       })
       .catch(err => console.log(err))
     },    

@@ -36,53 +36,35 @@ import axios from 'axios'
 export default {
   data(){
     return {
-      processed: [],
-      links:{
-        first: null,
-        last: null,
-        next: null,
-        prev: null
-      },
-      meta:{
-        current_page: null,
-        from: null,
-        last_page: null,
-        path: null,
-        per_page: null,
-        to: null,
-        total: null
-      }      
+      processed: [],    
     }
   },
   mounted(){
     this.getProcessedApplications()
   },
   methods: {
-    getProcessedApplications(){
-      axios
-        .get('/user/applications')
+    async getProcessedApplications(){
+      await axios
+        .get('/api/user/applications/processed/no')
         .then(response => {
             console.log(response)
-            this.processed = response.data.processed
-            // this.meta.current_page = response.data.processed.current_page
-            // this.meta = response.data.processed
-            
+            this.processed = response.data.applications            
         })
     },
     getApplications(page){
       let url
       if (page == null) {
-        url = '/user/applications'
+        url = '/api/user/applications/processed/no'
       } else {
         // url = `/user/applications?page=${page}`
         url = page
       }
       axios.get(url)
-      .then(response => {
-        console.log(response.data)
-        this.processed = response.data.processed
-      })
-      .catch(err => console.log(err))
+          .then(response => {
+            console.log(response.data)
+            this.processed = response.data.applications
+          })
+          .catch(err => console.log(err))
     },    
   }
 }

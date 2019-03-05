@@ -227,16 +227,16 @@ export default {
   methods: {
     getCompletedApplications() {
       axios
-        .get('/api/applications/completed')
+        .get('/api/admin/applications/completed')
         .then(response => {
-          console.log(response.data)
+          console.log(response)
           this.applications = response.data.applications
         })
         .catch()
     },
     searchCompletedApplications() {
       axios
-        .get(`/api/applications/completed/${this.search}`)
+        .get(`/api/admin/applications/completed/${this.search}`)
         .then(response => {
           console.log(response.data)
           this.applications = response.data.applications
@@ -246,7 +246,7 @@ export default {
     getApplications(page){
       let url
       if (page == null) {
-        url = '/api/applications/completed'
+        url = '/api/admin/applications/completed'
       } else {
         // url = `/user/applications?page=${page}`
         url = page

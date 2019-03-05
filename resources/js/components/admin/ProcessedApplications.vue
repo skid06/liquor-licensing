@@ -226,7 +226,7 @@ export default {
   methods: {
     getProcessedApplications() {
       axios
-        .get('/api/applications/processed')
+        .get('/api/admin/applications/processed')
         .then(response => {
           console.log(response.data)
           this.applications = response.data.applications
@@ -236,7 +236,7 @@ export default {
     getApplications(page){
       let url
       if (page == null) {
-        url = '/api/applications/processed'
+        url = '/api/admin/applications/processed'
       } else {
         // url = `/user/applications?page=${page}`
         url = page

@@ -16,9 +16,10 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('/applications/completed', 'LiquorLicenseController@completed');
-Route::get('/applications/completed/{search}', 'LiquorLicenseController@searchCompleted');
-Route::get('/applications/processed', 'LiquorLicenseController@processed');
-Route::get('/applications/paid', 'LiquorLicenseController@paid');
-Route::get('/{id}', 'LiquorLicenseController@show')->name('admin-app-id');
+
+// Route::get('/applications/completed', 'LiquorLicenseController@completed');
+// Route::get('/applications/completed/{search}', 'LiquorLicenseController@searchCompleted');
+// Route::get('/applications/processed', 'LiquorLicenseController@processed');
+// Route::get('/applications/paid', 'LiquorLicenseController@paid');
+// Route::get('/{id}', 'LiquorLicenseController@show')->name('admin-app-id');
   

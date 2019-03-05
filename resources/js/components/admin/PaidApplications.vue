@@ -226,7 +226,7 @@ export default {
   methods: {
     getPaidApplications() {
       axios
-        .get('/api/applications/paid')
+        .get('/api/admin/applications/paid')
         .then(response => {
           console.log(response.data)
           this.applications = response.data.applications
@@ -236,7 +236,7 @@ export default {
     getApplications(page){
       let url
       if (page == null) {
-        url = '/api/applications/paid'
+        url = '/api/admin/applications/paid'
       } else {
         // url = `/user/applications?page=${page}`
         url = page

@@ -634,7 +634,7 @@
                  
                 <i class="glyphicon glyphicon-align-left"></i>Notes
               </a>   -->
-              <a v-if="application.status === 'completed'" @click="getLogs" href="#" class="btn btn-lg red btn-popup" data-toggle="modal" data-target="#myModal"> Notes
+              <a v-if="application.status === 'completed'" @click="getNotes" href="#" class="btn btn-lg red btn-popup" data-toggle="modal" data-target="#myModal"> Notes
                 <i class="fa fa-edit"></i>
               </a>     
               
@@ -926,7 +926,7 @@ export default {
   methods: {
     saveForm(submit){
       axios
-        .post('/user/applications', {
+        .post('/api/user/applications', {
           app_id: this.app_id,
           class: this.license_class,
           license: this.license,
@@ -1153,9 +1153,9 @@ export default {
           console.log(error)
         });
     },
-    getLogs(){
+    getNotes(){
       axios
-        .get(`/application/${this.application.id}/notes`)
+        .get(`/api/user/applications/${this.application.id}/notes`)
         .then(response => {
           console.log(response)
           this.messages = response.data
@@ -1163,7 +1163,7 @@ export default {
     },
     postNote(){
       axios
-        .post(`/application/${this.application.id}/notes`,{ message: this.form.message })
+        .post(`/api/user/applications/${this.application.id}/notes`,{ message: this.form.message })
         .then(response => {
           this.messages.push(response.data.note)
           this.form = {}
@@ -1184,7 +1184,7 @@ export default {
     console.log(JSON.parse(this.application))
     this.application = JSON.parse(this.application)
     this.getAppData
-    this.getLogs()
+    this.getNotes()
   },
 }
 </script>
