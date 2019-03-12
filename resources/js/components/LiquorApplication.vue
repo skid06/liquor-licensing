@@ -15,9 +15,9 @@
                 </h4>
               </div>
               <form>
-              <div :class="{hide: isHide, 'alert': true, 'alert-success': true}">
+              <!-- <div :class="{hide: isHide, 'alert': true, 'alert-success': true}">
                   This application has been saved.
-              </div>
+              </div> -->
                 <fieldset class="fieldset">  
                   <legend class="legend">Business Informations</legend>              
                   <div class="form-group">

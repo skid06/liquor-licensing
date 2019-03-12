@@ -11,6 +11,7 @@ window.Vue = require('vue');
 Vue.use(require('vue-moment'));
 
 
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -38,6 +39,40 @@ Vue.component('show-application', require('./components/admin/ShowApplication.vu
 Vue.component('order-sales', require('./components/admin/OrderSales.vue'))
 Vue.component('report-overview', require('./components/admin/ReportOverview.vue'))
 
+
+import VueRouter from 'vue-router';
+import Vuetify from 'vuetify'
+import 'vuetify/dist/vuetify.min.css'
+import Vuex from 'vuex';
+// import {routes} from './routes';
+// import MainContainer from './layout/MainContainer'
+
+Vue.component('NavigationDrawer', require('./layouts/NavigationDrawer.vue'))
+Vue.component('Toolbar', require('./layouts/Toolbar.vue'))
+Vue.component('Footer', require('./layouts/Footer.vue'))
+Vue.component('vue-liquor-application', require('./pages/LiquorApplication.vue'))
+
+Vue.use(VueRouter);
+Vue.use(Vuex);
+Vue.use(Vuetify);
+Vue.use(require('vue-moment'));
+
+Vue.mixin({
+	data: () => ({
+		drawers: ['Default (no property)', 'Permanent', 'Temporary'],
+		primaryDrawer: {
+			model: null,
+			type: 'temporary',
+			clipped: true,
+			floating: false,
+			mini: false
+		},
+		footer: {
+			inset: false
+		}
+	})    
+})
+
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key)))
 
@@ -47,6 +82,7 @@ Vue.component('report-overview', require('./components/admin/ReportOverview.vue'
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+
 const app = new Vue({
-    el: '#app'
+	el: '#app',
 });

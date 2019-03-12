@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/vuetify', function () {
+    return view('vuetify');
+});
+
 Route::get('/payment-form/{id}', 'ApplicationPaymentController@getPaymentPage');
 Route::post('/checkout', 'ApplicationPaymentController@charge');
 Auth::routes(); 

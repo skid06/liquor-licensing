@@ -18,15 +18,6 @@ class LiquorLicenseController extends Controller
 
     public function index(Request $request)
     {
-        return \Auth::user()->id;
-        $application = Application::where('user_id', \Auth::user()->id)->first();
-
-        if(!empty($application)){
-            return $application;
-        }
-        else{
-            return 'No data';
-        }
         
     }
 

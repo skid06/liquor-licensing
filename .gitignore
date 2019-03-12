@@ -5,6 +5,9 @@
 /.vscode
 /nbproject
 /.vagrant
+/node_modules
+/vendor
+.env
 Homestead.json
 Homestead.yaml
 npm-debug.log
