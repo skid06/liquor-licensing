@@ -25,7 +25,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/liquor-application', function () {
-    return view('liquor-application');
+    return view('vuetify');
 });
 Route::get('/my-applications', 'HomeController@my_applications')->name('my.applications');
 Route::get('/applications/processed', 'HomeController@processed')->name('my.applications.processed');
