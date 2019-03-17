@@ -24,9 +24,14 @@ Route::post('/checkout', 'ApplicationPaymentController@charge');
 Auth::routes(); 
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/liquor-application', function () {
-    return view('liquor-application');
+    return view('vuetify');
 });
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
+
 Route::get('/my-applications', 'HomeController@my_applications')->name('my.applications');
 Route::get('/applications/processed', 'HomeController@processed')->name('my.applications.processed');
 Route::get('/applications/completed', 'HomeController@completed')->name('my.applications.completed');

@@ -24,10 +24,73 @@
           :mini-variant="primaryDrawer.mini"
           absolute
           overflow
-          app
-          style="background:#A88442"
-        ></v-navigation-drawer>
-        <v-toolbar :clipped-left="primaryDrawer.clipped" app absolute >
+          class="grey lighten-4"
+          app>
+          <v-list>
+            <v-list-tile>
+              <v-list-tile-action>
+                <v-icon>dashboard</v-icon>
+              </v-list-tile-action>
+              <v-list-tile-title>Dashboard</v-list-tile-title>
+            </v-list-tile>
+
+            <v-list-group
+              prepend-icon="assignment"
+              value="true"
+            >
+              <template v-slot:activator>
+                <v-list-tile>
+                  <v-list-tile-title>Licensing Applications</v-list-tile-title>
+                </v-list-tile>
+              </template>
+              <v-list-group
+                no-action
+                sub-group
+                value="true"
+              >
+                <template v-slot:activator>
+                  <v-list-tile>
+                    <v-list-tile-title>Liquor</v-list-tile-title>
+                  </v-list-tile>
+                </template>
+
+                <v-list-tile
+                  v-for="(application, i) in applications"
+                  :key="i"
+                  @click=""
+                >
+                  <v-list-tile-title v-text="application[0]"></v-list-tile-title>
+                  <v-list-tile-action>
+                    <v-icon v-text="application[1]"></v-icon>
+                  </v-list-tile-action>
+                </v-list-tile>
+              </v-list-group>
+
+              <v-list-group
+                sub-group
+                no-action
+              >
+                <template v-slot:activator>
+                  <v-list-tile>
+                    <v-list-tile-title>Restaurant</v-list-tile-title>
+                  </v-list-tile>
+                </template>
+                <v-list-tile
+                  v-for="(crud, i) in cruds"
+                  :key="i"
+                  @click=""
+                >
+                  <v-list-tile-title v-text="crud[0]"></v-list-tile-title>
+                  <v-list-tile-action>
+                    <v-icon v-text="crud[1]"></v-icon>
+                  </v-list-tile-action>
+                </v-list-tile>
+              </v-list-group>
+            </v-list-group>
+          </v-list>        
+        </v-navigation-drawer>
+        <!-- @include('vuetify-layout.partials.navigation-drawer') -->
+        <v-toolbar :clipped-left="primaryDrawer.clipped" color="#A88442" app absolute >
           <v-toolbar-side-icon
             v-if="primaryDrawer.type !== 'permanent'"
             @click.stop="primaryDrawer.model = !primaryDrawer.model"
@@ -39,48 +102,57 @@
               width="185">
             </v-img>
           </v-toolbar-title>
+          <v-toolbar-items class="hidden-sm-and-down">
+          <v-autocomplete
+            v-model="select"
+            :loading="loading"
+            :items="items"
+            :search-input.sync="search"
+            cache-items
+            class="mt-2 ml-5"
+            flat
+            hide-no-data
+            hide-details
+            label="Search Applications..."
+            solo-inverted
+          ></v-autocomplete>
+          <v-btn icon>
+            <v-icon>more_vert</v-icon>
+          </v-btn>
+          </v-toolbar-items>          
+          <v-spacer></v-spacer>
+          <v-layout
+            justify-space-around
+            wrap
+          >
+            <v-avatar 
+              color="indigo" 
+              size="40">
+                <v-icon dark>account_circle</v-icon>
+            </v-avatar>
+
+            <v-badge overlap>
+              <template v-slot:badge>
+                <span>3</span>
+              </template>
+
+              <v-avatar
+                color="purple red--after"
+                size="40"
+              >
+                <v-icon dark>notifications</v-icon>
+              </v-avatar>
+            </v-badge>
+
+            <v-avatar size="40">
+              <img
+                src="https://cdn.vuetifyjs.com/images/john.jpg"
+                alt="John"
+              >
+            </v-avatar>            
+          </v-layout>            
         </v-toolbar>
         <v-content>
-          <!-- <v-container fluid>
-            <v-layout align-center justify-center>
-              <v-flex xs10>
-                <v-card>
-                  <v-card-text>
-                    <v-layout row wrap>
-                      <v-flex xs12 md6>
-                        <span>Scheme</span>
-                        <v-switch v-model="dark" primary label="Dark"></v-switch>
-                      </v-flex>
-                      <v-flex xs12 md6>
-                        <span>Drawer</span>
-                        <v-radio-group v-model="primaryDrawer.type" column>
-                          <v-radio
-                            v-for="drawer in drawers"
-                            :key="drawer"
-                            :label="drawer"
-                            :value="drawer.toLowerCase()"
-                            primary
-                          ></v-radio>
-                        </v-radio-group>
-                        <v-switch v-model="primaryDrawer.clipped" label="Clipped" primary></v-switch>
-                        <v-switch v-model="primaryDrawer.floating" label="Floating" primary></v-switch>
-                        <v-switch v-model="primaryDrawer.mini" label="Mini" primary></v-switch>
-                      </v-flex>
-                      <v-flex xs12 md6>
-                        <span>Footer</span>
-                        <v-switch v-model="footer.inset" label="Inset" primary></v-switch>
-                      </v-flex>
-                    </v-layout>
-                  </v-card-text>
-                  <v-card-actions>
-                    <v-spacer></v-spacer>
-                    <v-btn flat>Cancel</v-btn>
-                    <v-btn flat color="primary">Submit</v-btn>
-                  </v-card-actions>
-                </v-card>
-              </v-flex>
-            </v-layout>
-          </v-container> -->
           <v-container>
             
               @yield('content')

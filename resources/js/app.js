@@ -51,6 +51,7 @@ Vue.component('NavigationDrawer', require('./layouts/NavigationDrawer.vue'))
 Vue.component('Toolbar', require('./layouts/Toolbar.vue'))
 Vue.component('Footer', require('./layouts/Footer.vue'))
 Vue.component('vue-liquor-application', require('./pages/LiquorApplication.vue'))
+Vue.component('dashboard', require('./admin/Dashboard.vue'))
 
 Vue.use(VueRouter);
 Vue.use(Vuex);
@@ -62,15 +63,112 @@ Vue.mixin({
 		drawers: ['Default (no property)', 'Permanent', 'Temporary'],
 		primaryDrawer: {
 			model: null,
-			type: 'temporary',
+			type: 'default',
 			clipped: true,
 			floating: false,
 			mini: false
 		},
 		footer: {
 			inset: false
+		},
+		applications: [
+			['New', 'add'],
+			['Saved', 'edit'],
+			['Completed', 'beenhere'],
+			['Processed', 'done']
+		],
+		cruds: [
+			['Create', 'add'],
+			['Read', 'insert_drive_file'],
+			['Update', 'update'],
+			['Delete', 'delete']
+		],
+		auth: null,		
+		loading: false,
+		items: [],
+		search: null,
+		select: null,
+		states: [
+			'Alabama',
+			'Alaska',
+			'American Samoa',
+			'Arizona',
+			'Arkansas',
+			'California',
+			'Colorado',
+			'Connecticut',
+			'Delaware',
+			'District of Columbia',
+			'Federated States of Micronesia',
+			'Florida',
+			'Georgia',
+			'Guam',
+			'Hawaii',
+			'Idaho',
+			'Illinois',
+			'Indiana',
+			'Iowa',
+			'Kansas',
+			'Kentucky',
+			'Louisiana',
+			'Maine',
+			'Marshall Islands',
+			'Maryland',
+			'Massachusetts',
+			'Michigan',
+			'Minnesota',
+			'Mississippi',
+			'Missouri',
+			'Montana',
+			'Nebraska',
+			'Nevada',
+			'New Hampshire',
+			'New Jersey',
+			'New Mexico',
+			'New York',
+			'North Carolina',
+			'North Dakota',
+			'Northern Mariana Islands',
+			'Ohio',
+			'Oklahoma',
+			'Oregon',
+			'Palau',
+			'Pennsylvania',
+			'Puerto Rico',
+			'Rhode Island',
+			'South Carolina',
+			'South Dakota',
+			'Tennessee',
+			'Texas',
+			'Utah',
+			'Vermont',
+			'Virgin Island',
+			'Virginia',
+			'Washington',
+			'West Virginia',
+			'Wisconsin',
+			'Wyoming'
+		]		
+	}),
+
+	watch: {
+		search (val) {
+			val && val !== this.select && this.querySelections(val)
 		}
-	})    
+	},
+	
+	methods: {
+		querySelections (v) {
+			this.loading = true
+			// Simulated ajax query
+			setTimeout(() => {
+				this.items = this.states.filter(e => {
+					return (e || '').toLowerCase().indexOf((v || '').toLowerCase()) > -1
+				})
+				this.loading = false
+			}, 500)
+		}
+	}	
 })
 
 // const files = require.context('./', true, /\.vue$/i)

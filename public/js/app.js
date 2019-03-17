@@ -19200,6 +19200,7 @@ Vue.component('NavigationDrawer', __webpack_require__(125));
 Vue.component('Toolbar', __webpack_require__(128));
 Vue.component('Footer', __webpack_require__(131));
 Vue.component('vue-liquor-application', __webpack_require__(134));
+Vue.component('dashboard', __webpack_require__(141));
 
 Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]);
 Vue.use(__WEBPACK_IMPORTED_MODULE_3_vuex__["a" /* default */]);
@@ -19207,21 +19208,50 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_1_vuetify___default.a);
 Vue.use(__webpack_require__(17));
 
 Vue.mixin({
-  data: function data() {
-    return {
-      drawers: ['Default (no property)', 'Permanent', 'Temporary'],
-      primaryDrawer: {
-        model: null,
-        type: 'temporary',
-        clipped: true,
-        floating: false,
-        mini: false
-      },
-      footer: {
-        inset: false
-      }
-    };
-  }
+	data: function data() {
+		return {
+			drawers: ['Default (no property)', 'Permanent', 'Temporary'],
+			primaryDrawer: {
+				model: null,
+				type: 'default',
+				clipped: true,
+				floating: false,
+				mini: false
+			},
+			footer: {
+				inset: false
+			},
+			applications: [['New', 'add'], ['Saved', 'edit'], ['Completed', 'beenhere'], ['Processed', 'done']],
+			cruds: [['Create', 'add'], ['Read', 'insert_drive_file'], ['Update', 'update'], ['Delete', 'delete']],
+			auth: null,
+			loading: false,
+			items: [],
+			search: null,
+			select: null,
+			states: ['Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'District of Columbia', 'Federated States of Micronesia', 'Florida', 'Georgia', 'Guam', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Marshall Islands', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Northern Mariana Islands', 'Ohio', 'Oklahoma', 'Oregon', 'Palau', 'Pennsylvania', 'Puerto Rico', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virgin Island', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming']
+		};
+	},
+
+	watch: {
+		search: function search(val) {
+			val && val !== this.select && this.querySelections(val);
+		}
+	},
+
+	methods: {
+		querySelections: function querySelections(v) {
+			var _this = this;
+
+			this.loading = true;
+			// Simulated ajax query
+			setTimeout(function () {
+				_this.items = _this.states.filter(function (e) {
+					return (e || '').toLowerCase().indexOf((v || '').toLowerCase()) > -1;
+				});
+				_this.loading = false;
+			}, 500);
+		}
+	}
 });
 
 // const files = require.context('./', true, /\.vue$/i)
@@ -19234,7 +19264,7 @@ Vue.mixin({
  */
 
 var app = new Vue({
-  el: '#app'
+	el: '#app'
 });
 
 /***/ }),
@@ -110844,9 +110874,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'NavigationDrawer'
+  // name: 'NavigationDrawer',
+  data: function data() {
+    return {
+      drawers: ['Default (no property)', 'Permanent', 'Temporary'],
+      primaryDrawer: {
+        model: null,
+        type: 'temporary',
+        clipped: true,
+        floating: false,
+        mini: false
+      }
+    };
+  }
 });
 
 /***/ }),
@@ -110857,31 +110901,26 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("v-navigation-drawer", {
-        attrs: {
-          permanent: _vm.primaryDrawer.type === "permanent",
-          temporary: _vm.primaryDrawer.type === "temporary",
-          clipped: _vm.primaryDrawer.clipped,
-          floating: _vm.primaryDrawer.floating,
-          "mini-variant": _vm.primaryDrawer.mini,
-          absolute: "",
-          overflow: "",
-          app: ""
-        },
-        model: {
-          value: _vm.primaryDrawer.model,
-          callback: function($$v) {
-            _vm.$set(_vm.primaryDrawer, "model", $$v)
-          },
-          expression: "primaryDrawer.model"
-        }
-      })
-    ],
-    1
-  )
+  return _c("v-navigation-drawer", {
+    staticStyle: {},
+    attrs: {
+      permanent: _vm.primaryDrawer.type === "permanent",
+      temporary: _vm.primaryDrawer.type === "temporary",
+      clipped: _vm.primaryDrawer.clipped,
+      floating: _vm.primaryDrawer.floating,
+      "mini-variant": _vm.primaryDrawer.mini,
+      absolute: "",
+      overflow: "",
+      app: ""
+    },
+    model: {
+      value: _vm.primaryDrawer.model,
+      callback: function($$v) {
+        _vm.$set(_vm.primaryDrawer, "model", $$v)
+      },
+      expression: "primaryDrawer.model"
+    }
+  })
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -111201,6 +111240,80 @@ exports.push([module.i, "\n.input-width[data-v-03a05c73]{\n width: 95%;\n}\n\n",
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -111977,118 +112090,33 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {
-      business: {
-        name: '',
-        address: '',
-        phone: '',
-        email: '',
-        classification: ''
-      },
-      contact: {
-        person: '',
-        title: '',
-        email: ''
-      },
-      corporate: {
-        name: '',
-        address: ''
-      },
-      storeManager: {
-        name: '',
-        email: '',
-        address: '',
-        phone: ''
-      },
-      president: {
-        name: '',
-        email: '',
-        address: '',
-        phone: ''
-      },
-      vicePresident: {
-        name: '',
-        email: '',
-        address: '',
-        phone: ''
-      },
-      secretary: {
-        name: '',
-        email: '',
-        address: '',
-        phone: ''
-      },
-      treasurer: {
-        name: '',
-        email: '',
-        address: '',
-        phone: ''
-      },
-      otherCorporate: {
-        name: '',
-        address: ''
-      },
-      birth: {
-        country: '',
-        date: ''
-      },
-      isNaturalized: "No",
-      naturalized: {
-        city: '',
-        state: '',
-        date: ''
-      },
-      state_of_organization: '',
-      llc_manager: {
-        name: '',
-        email: '',
-        phone: ''
-      },
-      store_manager: {
-        name: '',
-        email: '',
-        phone: '',
-        address: ''
-      },
-      state_of_incorporation: '',
-      had_business: '',
+    var _ref;
+
+    return _ref = {
+      business_name: '',
+      business_address: '',
+      business_phone: '',
+      business_email: '',
+      business_classification: '',
+      born_outside_us: false,
       born_us_parents: '',
-      classifications: ['Corporation', 'Limited Liability Company', 'General Partnership', 'Limited Partnership', 'Sole Proprietorship'],
-      bornOutsideUSoptions: ['Yes', 'No'],
-      isEditing: false,
-      model: null,
-      selected_partnership: '',
-      hideCorporation: true,
-      hideLLC: true,
-      hidePartnership: true,
-      hideBusinessNotIncorporated: true,
-      bornOutsideUS: false,
-      establishmentSection: false,
-      establishment_owner: {
-        name: '',
-        address: '',
-        phone: ''
-      },
-      lessor: {
-        name: '',
-        address: '',
-        phone: ''
-      },
-      owner_lease_premises: '',
-      liquorLicense_anotherPremise: '',
-      otherEstablishment: {
-        name: '',
-        address: ''
-      },
-      action_pending_against_owner: '',
-      owner_been_issued_wagering_stamp: '',
-      previous_liquor_license_been_revoked: '',
-      liquor_license_fee: [],
-      members: [{ id: 1, name: '', email: '', phone: '', address: '' }],
-      shareholders: [{ id: 1, name: '', percentage_owned: '', address: '' }],
-      owners: [{ id: 1, name: '', percentage: '', email: '', address: '' }],
-      states: ['Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'District of Columbia', 'Federated States of Micronesia', 'Florida', 'Georgia', 'Guam', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Marshall Islands', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Northern Mariana Islands', 'Ohio', 'Oklahoma', 'Oregon', 'Palau', 'Pennsylvania', 'Puerto Rico', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virgin Island', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming']
-    };
+      date_of_birth: new Date().toISOString().substr(0, 10),
+      birth_country: '',
+      naturalized: "No"
+    }, _defineProperty(_ref, 'naturalized', {
+      city: '',
+      state: '',
+      date: ''
+    }), _defineProperty(_ref, 'contact_person', ''), _defineProperty(_ref, 'contact_title', ''), _defineProperty(_ref, 'contact_email', ''), _defineProperty(_ref, 'corporate_name', ''), _defineProperty(_ref, 'corporate_address', ''), _defineProperty(_ref, 'store_manager_name', ''), _defineProperty(_ref, 'store_manager_email', ''), _defineProperty(_ref, 'store_manager_address', ''), _defineProperty(_ref, 'store_manager_phone', ''), _defineProperty(_ref, 'president_name', ''), _defineProperty(_ref, 'president_email', ''), _defineProperty(_ref, 'president_address', ''), _defineProperty(_ref, 'president_phone', ''), _defineProperty(_ref, 'vice_president_name', ''), _defineProperty(_ref, 'vice_president_email', ''), _defineProperty(_ref, 'vice_president_address', ''), _defineProperty(_ref, 'vice_president_phone', ''), _defineProperty(_ref, 'secretary_name', ''), _defineProperty(_ref, 'secretary_email', ''), _defineProperty(_ref, 'secretary_address', ''), _defineProperty(_ref, 'secretary_phone', ''), _defineProperty(_ref, 'treasurer_name', ''), _defineProperty(_ref, 'treasurer_email', ''), _defineProperty(_ref, 'treasurer_address', ''), _defineProperty(_ref, 'treasurer_phone', ''), _defineProperty(_ref, 'other_corporate_name', ''), _defineProperty(_ref, 'other_corporate_address', ''), _defineProperty(_ref, 'state_of_organization', ''), _defineProperty(_ref, 'llc_manager', {
+      name: '',
+      email: '',
+      phone: ''
+    }), _defineProperty(_ref, 'store_manager', {
+      name: '',
+      email: '',
+      phone: '',
+      address: ''
+    }), _defineProperty(_ref, 'date_qualified_transact_business', new Date().toISOString().substr(0, 10)), _defineProperty(_ref, 'had_business_other_corporation', ''), _defineProperty(_ref, 'classifications', ['Corporation', 'Limited Liability Company', 'General Partnership', 'Limited Partnership', 'Sole Proprietorship']), _defineProperty(_ref, 'bornOutsideUSoptions', ['Yes', 'No']), _defineProperty(_ref, 'isEditing', false), _defineProperty(_ref, 'model', null), _defineProperty(_ref, 'selected_partnership', ''), _defineProperty(_ref, 'hideCorporation', true), _defineProperty(_ref, 'hideLLC', true), _defineProperty(_ref, 'hidePartnership', true), _defineProperty(_ref, 'hideBusinessNotIncorporated', true), _defineProperty(_ref, 'establishmentSection', false), _defineProperty(_ref, 'establishment_owner_name', ''), _defineProperty(_ref, 'establishment_owner_address', ''), _defineProperty(_ref, 'establishment_owner_phone', ''), _defineProperty(_ref, 'lessor_name', ''), _defineProperty(_ref, 'lessor_address', ''), _defineProperty(_ref, 'lessor_phone', ''), _defineProperty(_ref, 'owner_lease_premises', ''), _defineProperty(_ref, 'liquor_license_another_premise', ''), _defineProperty(_ref, 'other_establishment_name', ''), _defineProperty(_ref, 'other_establishment_address', ''), _defineProperty(_ref, 'action_pending_against_owner', ''), _defineProperty(_ref, 'owner_been_issued_wagering_stamp', ''), _defineProperty(_ref, 'previous_liquor_license_been_revoked', ''), _defineProperty(_ref, 'liquor_license_fee', []), _defineProperty(_ref, 'members', [{ id: 1, name: '', email: '', phone: '', address: '' }]), _defineProperty(_ref, 'shareholders', [{ id: 1, name: '', percentage_owned: '', address: '' }]), _defineProperty(_ref, 'owners', [{ id: 1, name: '', percentage: '', email: '', address: '' }]), _defineProperty(_ref, 'states', ['Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'District of Columbia', 'Federated States of Micronesia', 'Florida', 'Georgia', 'Guam', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Marshall Islands', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Northern Mariana Islands', 'Ohio', 'Oklahoma', 'Oregon', 'Palau', 'Pennsylvania', 'Puerto Rico', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virgin Island', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming']), _defineProperty(_ref, 'date', new Date().toISOString().substr(0, 10)), _defineProperty(_ref, 'menu', false), _defineProperty(_ref, 'modal', false), _defineProperty(_ref, 'menu2', false), _ref;
   },
 
   methods: {
@@ -112101,7 +112129,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     addOwner: function addOwner() {
       this.owners.push({ id: this.owners.length + 1, name: '', percentage: '', email: '', address: '' });
     },
-    activeClassification: function activeClassification(type) {
+    selectClassification: function selectClassification(type) {
       if (type == 'Corporation') {
         this.hideCorporation = false;
         this.hideLLC = true;
@@ -112125,9 +112153,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     checkBornOutsideUS: function checkBornOutsideUS(type) {
       if (type == 'Yes') {
-        this.bornOutsideUS = true;
+        this.born_outside_us = true;
       } else {
-        this.bornOutsideUS = false;
+        this.born_outside_us = false;
         this.born_us_parents = false;
       }
     },
@@ -112184,11 +112212,11 @@ var render = function() {
                     staticClass: "input-width",
                     attrs: { label: "Business Name" },
                     model: {
-                      value: _vm.business.name,
+                      value: _vm.business_name,
                       callback: function($$v) {
-                        _vm.$set(_vm.business, "name", $$v)
+                        _vm.business_name = $$v
                       },
-                      expression: "business.name"
+                      expression: "business_name"
                     }
                   })
                 ],
@@ -112203,11 +112231,11 @@ var render = function() {
                     staticClass: "input-width",
                     attrs: { label: "Business Address" },
                     model: {
-                      value: _vm.business.address,
+                      value: _vm.business_address,
                       callback: function($$v) {
-                        _vm.$set(_vm.business, "address", $$v)
+                        _vm.business_address = $$v
                       },
-                      expression: "business.address"
+                      expression: "business_address"
                     }
                   })
                 ],
@@ -112222,11 +112250,11 @@ var render = function() {
                     staticClass: "input-width",
                     attrs: { label: "Business Phone" },
                     model: {
-                      value: _vm.business.phone,
+                      value: _vm.business_phone,
                       callback: function($$v) {
-                        _vm.$set(_vm.business, "phone", $$v)
+                        _vm.business_phone = $$v
                       },
-                      expression: "business.phone"
+                      expression: "business_phone"
                     }
                   })
                 ],
@@ -112241,11 +112269,11 @@ var render = function() {
                     staticClass: "input-width",
                     attrs: { label: "Busines Email" },
                     model: {
-                      value: _vm.business.email,
+                      value: _vm.business_email,
                       callback: function($$v) {
-                        _vm.$set(_vm.business, "email", $$v)
+                        _vm.business_email = $$v
                       },
-                      expression: "business.email"
+                      expression: "business_email"
                     }
                   })
                 ],
@@ -112260,11 +112288,11 @@ var render = function() {
                     staticClass: "input-width",
                     attrs: { label: "Contact Person", required: "" },
                     model: {
-                      value: _vm.contact.person,
+                      value: _vm.contact_person,
                       callback: function($$v) {
-                        _vm.$set(_vm.contact, "person", $$v)
+                        _vm.contact_person = $$v
                       },
-                      expression: "contact.person"
+                      expression: "contact_person"
                     }
                   })
                 ],
@@ -112279,11 +112307,11 @@ var render = function() {
                     staticClass: "input-width",
                     attrs: { label: "Title", required: "" },
                     model: {
-                      value: _vm.contact.title,
+                      value: _vm.contact_title,
                       callback: function($$v) {
-                        _vm.$set(_vm.contact, "title", $$v)
+                        _vm.contact_title = $$v
                       },
-                      expression: "contact.title"
+                      expression: "contact_title"
                     }
                   })
                 ],
@@ -112298,11 +112326,11 @@ var render = function() {
                     staticClass: "input-width",
                     attrs: { label: "Phone", required: "" },
                     model: {
-                      value: _vm.contact.email,
+                      value: _vm.contact_email,
                       callback: function($$v) {
-                        _vm.$set(_vm.contact, "email", $$v)
+                        _vm.contact_email = $$v
                       },
-                      expression: "contact.email"
+                      expression: "contact_email"
                     }
                   })
                 ],
@@ -112319,13 +112347,13 @@ var render = function() {
                       label: "Business Classification",
                       id: "inputBusinessClassification"
                     },
-                    on: { change: _vm.activeClassification },
+                    on: { change: _vm.selectClassification },
                     model: {
-                      value: _vm.business.classification,
+                      value: _vm.business_classification,
                       callback: function($$v) {
-                        _vm.$set(_vm.business, "classification", $$v)
+                        _vm.business_classification = $$v
                       },
-                      expression: "business.classification"
+                      expression: "business_classification"
                     }
                   })
                 ],
@@ -112344,7 +112372,7 @@ var render = function() {
                 },
                 [
                   _c("v-subheader", { staticClass: "pa-0" }, [
-                    _c("h3", [_vm._v(_vm._s(_vm.business.classification))])
+                    _c("h3", [_vm._v(_vm._s(_vm.business_classification))])
                   ]),
                   _vm._v(" "),
                   _c(
@@ -112355,11 +112383,11 @@ var render = function() {
                         staticClass: "input-width",
                         attrs: { label: "Corporate Name" },
                         model: {
-                          value: _vm.corporate.name,
+                          value: _vm.corporate_name,
                           callback: function($$v) {
-                            _vm.$set(_vm.corporate, "name", $$v)
+                            _vm.corporate_name = $$v
                           },
-                          expression: "corporate.name"
+                          expression: "corporate_name"
                         }
                       })
                     ],
@@ -112374,11 +112402,11 @@ var render = function() {
                         staticClass: "input-width",
                         attrs: { label: "Corporate Address" },
                         model: {
-                          value: _vm.corporate.address,
+                          value: _vm.corporate_address,
                           callback: function($$v) {
-                            _vm.$set(_vm.corporate, "address", $$v)
+                            _vm.corporate_address = $$v
                           },
-                          expression: "corporate.address"
+                          expression: "corporate_address"
                         }
                       })
                     ],
@@ -112393,11 +112421,11 @@ var render = function() {
                         staticClass: "input-width",
                         attrs: { label: "Store Manager" },
                         model: {
-                          value: _vm.storeManager.name,
+                          value: _vm.store_manager_name,
                           callback: function($$v) {
-                            _vm.$set(_vm.storeManager, "name", $$v)
+                            _vm.store_manager_name = $$v
                           },
-                          expression: "storeManager.name"
+                          expression: "store_manager_name"
                         }
                       })
                     ],
@@ -112412,11 +112440,11 @@ var render = function() {
                         staticClass: "input-width",
                         attrs: { label: "Email" },
                         model: {
-                          value: _vm.storeManager.email,
+                          value: _vm.store_manager_email,
                           callback: function($$v) {
-                            _vm.$set(_vm.storeManager, "email", $$v)
+                            _vm.store_manager_email = $$v
                           },
-                          expression: "storeManager.email"
+                          expression: "store_manager_email"
                         }
                       })
                     ],
@@ -112431,11 +112459,11 @@ var render = function() {
                         staticClass: "input-width",
                         attrs: { label: "Phone" },
                         model: {
-                          value: _vm.storeManager.phone,
+                          value: _vm.store_manager_phone,
                           callback: function($$v) {
-                            _vm.$set(_vm.storeManager, "phone", $$v)
+                            _vm.store_manager_phone = $$v
                           },
-                          expression: "storeManager.phone"
+                          expression: "store_manager_phone"
                         }
                       })
                     ],
@@ -112450,11 +112478,11 @@ var render = function() {
                         staticClass: "input-width",
                         attrs: { label: "Address" },
                         model: {
-                          value: _vm.storeManager.address,
+                          value: _vm.store_manager_address,
                           callback: function($$v) {
-                            _vm.$set(_vm.storeManager, "address", $$v)
+                            _vm.store_manager_address = $$v
                           },
-                          expression: "storeManager.address"
+                          expression: "store_manager_address"
                         }
                       })
                     ],
@@ -112477,11 +112505,11 @@ var render = function() {
                         staticClass: "input-width",
                         attrs: { label: "President" },
                         model: {
-                          value: _vm.president.name,
+                          value: _vm.president_name,
                           callback: function($$v) {
-                            _vm.$set(_vm.president, "name", $$v)
+                            _vm.president_name = $$v
                           },
-                          expression: "president.name"
+                          expression: "president_name"
                         }
                       })
                     ],
@@ -112496,11 +112524,11 @@ var render = function() {
                         staticClass: "input-width",
                         attrs: { label: "Email" },
                         model: {
-                          value: _vm.president.email,
+                          value: _vm.president_email,
                           callback: function($$v) {
-                            _vm.$set(_vm.president, "email", $$v)
+                            _vm.president_email = $$v
                           },
-                          expression: "president.email"
+                          expression: "president_email"
                         }
                       })
                     ],
@@ -112515,11 +112543,11 @@ var render = function() {
                         staticClass: "input-width",
                         attrs: { label: "Phone" },
                         model: {
-                          value: _vm.president.phone,
+                          value: _vm.president_phone,
                           callback: function($$v) {
-                            _vm.$set(_vm.president, "phone", $$v)
+                            _vm.president_phone = $$v
                           },
-                          expression: "president.phone"
+                          expression: "president_phone"
                         }
                       })
                     ],
@@ -112534,11 +112562,11 @@ var render = function() {
                         staticClass: "input-width",
                         attrs: { label: "Address" },
                         model: {
-                          value: _vm.president.address,
+                          value: _vm.president_address,
                           callback: function($$v) {
-                            _vm.$set(_vm.president, "address", $$v)
+                            _vm.president_address = $$v
                           },
-                          expression: "president.address"
+                          expression: "president_address"
                         }
                       })
                     ],
@@ -112553,11 +112581,11 @@ var render = function() {
                         staticClass: "input-width",
                         attrs: { label: "Vice President" },
                         model: {
-                          value: _vm.vicePresident.name,
+                          value: _vm.vice_president_name,
                           callback: function($$v) {
-                            _vm.$set(_vm.vicePresident, "name", $$v)
+                            _vm.vice_president_name = $$v
                           },
-                          expression: "vicePresident.name"
+                          expression: "vice_president_name"
                         }
                       })
                     ],
@@ -112572,11 +112600,11 @@ var render = function() {
                         staticClass: "input-width",
                         attrs: { label: "Vice President Email" },
                         model: {
-                          value: _vm.vicePresident.email,
+                          value: _vm.vice_president_email,
                           callback: function($$v) {
-                            _vm.$set(_vm.vicePresident, "email", $$v)
+                            _vm.vice_president_email = $$v
                           },
-                          expression: "vicePresident.email"
+                          expression: "vice_president_email"
                         }
                       })
                     ],
@@ -112591,11 +112619,11 @@ var render = function() {
                         staticClass: "input-width",
                         attrs: { label: "Vice President Phone" },
                         model: {
-                          value: _vm.vicePresident.phone,
+                          value: _vm.vice_president_phone,
                           callback: function($$v) {
-                            _vm.$set(_vm.vicePresident, "phone", $$v)
+                            _vm.vice_president_phone = $$v
                           },
-                          expression: "vicePresident.phone"
+                          expression: "vice_president_phone"
                         }
                       })
                     ],
@@ -112610,11 +112638,11 @@ var render = function() {
                         staticClass: "input-width",
                         attrs: { label: "Vice President Address" },
                         model: {
-                          value: _vm.vicePresident.address,
+                          value: _vm.vice_president_address,
                           callback: function($$v) {
-                            _vm.$set(_vm.vicePresident, "address", $$v)
+                            _vm.vice_president_address = $$v
                           },
-                          expression: "vicePresident.address"
+                          expression: "vice_president_address"
                         }
                       })
                     ],
@@ -112629,11 +112657,11 @@ var render = function() {
                         staticClass: "input-width",
                         attrs: { label: "Secretary" },
                         model: {
-                          value: _vm.secretary.name,
+                          value: _vm.secretary_name,
                           callback: function($$v) {
-                            _vm.$set(_vm.secretary, "name", $$v)
+                            _vm.secretary_name = $$v
                           },
-                          expression: "secretary.name"
+                          expression: "secretary_name"
                         }
                       })
                     ],
@@ -112648,11 +112676,11 @@ var render = function() {
                         staticClass: "input-width",
                         attrs: { label: "Secretary Email" },
                         model: {
-                          value: _vm.secretary.email,
+                          value: _vm.secretary_email,
                           callback: function($$v) {
-                            _vm.$set(_vm.secretary, "email", $$v)
+                            _vm.secretary_email = $$v
                           },
-                          expression: "secretary.email"
+                          expression: "secretary_email"
                         }
                       })
                     ],
@@ -112667,11 +112695,11 @@ var render = function() {
                         staticClass: "input-width",
                         attrs: { label: "Secretary Phone" },
                         model: {
-                          value: _vm.secretary.phone,
+                          value: _vm.secretary_phone,
                           callback: function($$v) {
-                            _vm.$set(_vm.secretary, "phone", $$v)
+                            _vm.secretary_phone = $$v
                           },
-                          expression: "secretary.phone"
+                          expression: "secretary_phone"
                         }
                       })
                     ],
@@ -112686,11 +112714,11 @@ var render = function() {
                         staticClass: "input-width",
                         attrs: { label: "Secretary Address" },
                         model: {
-                          value: _vm.secretary.address,
+                          value: _vm.secretary_address,
                           callback: function($$v) {
-                            _vm.$set(_vm.secretary, "address", $$v)
+                            _vm.secretary_address = $$v
                           },
-                          expression: "secretary.address"
+                          expression: "secretary_address"
                         }
                       })
                     ],
@@ -112705,11 +112733,11 @@ var render = function() {
                         staticClass: "input-width",
                         attrs: { label: "Treasurer" },
                         model: {
-                          value: _vm.treasurer.name,
+                          value: _vm.treasurer_name,
                           callback: function($$v) {
-                            _vm.$set(_vm.treasurer, "name", $$v)
+                            _vm.treasurer_name = $$v
                           },
-                          expression: "treasurer.name"
+                          expression: "treasurer_name"
                         }
                       })
                     ],
@@ -112724,11 +112752,11 @@ var render = function() {
                         staticClass: "input-width",
                         attrs: { label: "Treasurer Email" },
                         model: {
-                          value: _vm.treasurer.email,
+                          value: _vm.treasurer_email,
                           callback: function($$v) {
-                            _vm.$set(_vm.treasurer, "email", $$v)
+                            _vm.treasurer_email = $$v
                           },
-                          expression: "treasurer.email"
+                          expression: "treasurer_email"
                         }
                       })
                     ],
@@ -112743,11 +112771,11 @@ var render = function() {
                         staticClass: "input-width",
                         attrs: { label: "Treasurer Phone" },
                         model: {
-                          value: _vm.treasurer.phone,
+                          value: _vm.treasurer_phone,
                           callback: function($$v) {
-                            _vm.$set(_vm.treasurer, "phone", $$v)
+                            _vm.treasurer_phone = $$v
                           },
-                          expression: "treasurer.phone"
+                          expression: "treasurer_phone"
                         }
                       })
                     ],
@@ -112762,11 +112790,11 @@ var render = function() {
                         staticClass: "input-width",
                         attrs: { label: "Treasurer Address" },
                         model: {
-                          value: _vm.treasurer.address,
+                          value: _vm.treasurer_address,
                           callback: function($$v) {
-                            _vm.$set(_vm.treasurer, "address", $$v)
+                            _vm.treasurer_address = $$v
                           },
-                          expression: "treasurer.address"
+                          expression: "treasurer_address"
                         }
                       })
                     ],
@@ -112878,11 +112906,11 @@ var render = function() {
                         {
                           attrs: { mandatory: false, row: "" },
                           model: {
-                            value: _vm.had_business,
+                            value: _vm.had_business_other_corporation,
                             callback: function($$v) {
-                              _vm.had_business = $$v
+                              _vm.had_business_other_corporation = $$v
                             },
-                            expression: "had_business"
+                            expression: "had_business_other_corporation"
                           }
                         },
                         [
@@ -112898,62 +112926,166 @@ var render = function() {
                     1
                   ),
                   _vm._v(" "),
-                  _c(
-                    "v-flex",
-                    { attrs: { xs12: "", md12: "" } },
-                    [
-                      _c("v-text-field", {
-                        staticClass: "input-width",
-                        attrs: { label: "Other Corporate Name" },
-                        model: {
-                          value: _vm.otherCorporate.name,
-                          callback: function($$v) {
-                            _vm.$set(_vm.otherCorporate, "name", $$v)
-                          },
-                          expression: "otherCorporate.name"
-                        }
-                      })
-                    ],
-                    1
-                  ),
+                  _vm.had_business_other_corporation == "Yes"
+                    ? _c(
+                        "v-flex",
+                        { attrs: { xs12: "", md12: "" } },
+                        [
+                          _c("v-text-field", {
+                            staticClass: "input-width",
+                            attrs: { label: "Other Corporate Name" },
+                            model: {
+                              value: _vm.other_corporate_name,
+                              callback: function($$v) {
+                                _vm.other_corporate_name = $$v
+                              },
+                              expression: "other_corporate_name"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.had_business_other_corporation == "Yes"
+                    ? _c(
+                        "v-flex",
+                        { attrs: { xs12: "", md12: "" } },
+                        [
+                          _c("v-text-field", {
+                            staticClass: "input-width",
+                            attrs: { label: "Other Corporate Address" },
+                            model: {
+                              value: _vm.other_corporate_address,
+                              callback: function($$v) {
+                                _vm.other_corporate_address = $$v
+                              },
+                              expression: "other_corporate_address"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    : _vm._e(),
                   _vm._v(" "),
                   _c(
                     "v-flex",
                     { attrs: { xs12: "", md12: "" } },
                     [
-                      _c("v-text-field", {
-                        staticClass: "input-width",
-                        attrs: { label: "Other Corporate Address" },
-                        model: {
-                          value: _vm.otherCorporate.address,
-                          callback: function($$v) {
-                            _vm.$set(_vm.otherCorporate, "address", $$v)
+                      _c(
+                        "v-dialog",
+                        {
+                          ref: "dialog",
+                          attrs: {
+                            "return-value": _vm.date,
+                            persistent: "",
+                            lazy: "",
+                            "full-width": "",
+                            width: "290px"
                           },
-                          expression: "otherCorporate.address"
-                        }
-                      })
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-flex",
-                    { attrs: { xs12: "", md12: "" } },
-                    [
-                      _c("v-text-field", {
-                        staticClass: "input-width",
-                        attrs: {
-                          label:
-                            "If state of incorporation is NOT Illinois, when was the corporation become qualified to transact business in Illinois?"
+                          on: {
+                            "update:returnValue": function($event) {
+                              _vm.date = $event
+                            },
+                            "update:return-value": function($event) {
+                              _vm.date = $event
+                            }
+                          },
+                          scopedSlots: _vm._u(
+                            [
+                              {
+                                key: "activator",
+                                fn: function(ref) {
+                                  var on = ref.on
+                                  return [
+                                    _c(
+                                      "v-text-field",
+                                      _vm._g(
+                                        {
+                                          staticClass: "input-width",
+                                          attrs: {
+                                            label:
+                                              "If state of incorporation is NOT Illinois, when was the corporation become qualified to transact business in Illinois?",
+                                            "prepend-icon": "event",
+                                            readonly: ""
+                                          },
+                                          model: {
+                                            value:
+                                              _vm.date_qualified_transact_business,
+                                            callback: function($$v) {
+                                              _vm.date_qualified_transact_business = $$v
+                                            },
+                                            expression:
+                                              "date_qualified_transact_business"
+                                          }
+                                        },
+                                        on
+                                      )
+                                    )
+                                  ]
+                                }
+                              }
+                            ],
+                            null,
+                            false,
+                            1821642118
+                          ),
+                          model: {
+                            value: _vm.modal,
+                            callback: function($$v) {
+                              _vm.modal = $$v
+                            },
+                            expression: "modal"
+                          }
                         },
-                        model: {
-                          value: _vm.state_of_incorporation,
-                          callback: function($$v) {
-                            _vm.state_of_incorporation = $$v
-                          },
-                          expression: "state_of_incorporation"
-                        }
-                      })
+                        [
+                          _vm._v(" "),
+                          _c(
+                            "v-date-picker",
+                            {
+                              attrs: { scrollable: "" },
+                              model: {
+                                value: _vm.date,
+                                callback: function($$v) {
+                                  _vm.date = $$v
+                                },
+                                expression: "date"
+                              }
+                            },
+                            [
+                              _c("v-spacer"),
+                              _vm._v(" "),
+                              _c(
+                                "v-btn",
+                                {
+                                  attrs: { flat: "", color: "primary" },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.modal = false
+                                    }
+                                  }
+                                },
+                                [_vm._v("Cancel")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-btn",
+                                {
+                                  attrs: { flat: "", color: "primary" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.$refs.dialog.save(_vm.date)
+                                    }
+                                  }
+                                },
+                                [_vm._v("OK")]
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
                     ],
                     1
                   )
@@ -112971,7 +113103,7 @@ var render = function() {
                 },
                 [
                   _c("v-subheader", { staticClass: "pa-0" }, [
-                    _c("h3", [_vm._v(_vm._s(_vm.business.classification))])
+                    _c("h3", [_vm._v(_vm._s(_vm.business_classification))])
                   ]),
                   _vm._v(" "),
                   _c(
@@ -113233,7 +113365,7 @@ var render = function() {
                 { staticClass: "pa-0 mr-5 ml-5" },
                 [
                   _c("v-subheader", { staticClass: "pa-0" }, [
-                    _c("h3", [_vm._v(_vm._s(_vm.business.classification))])
+                    _c("h3", [_vm._v(_vm._s(_vm.business_classification))])
                   ])
                 ],
                 1
@@ -113355,7 +113487,14 @@ var render = function() {
                           label: "Was the owner born outside the US?",
                           id: "inputBusinessClassification"
                         },
-                        on: { change: _vm.checkBornOutsideUS }
+                        on: { change: _vm.checkBornOutsideUS },
+                        model: {
+                          value: _vm.born_outside_us,
+                          callback: function($$v) {
+                            _vm.born_outside_us = $$v
+                          },
+                          expression: "born_outside_us"
+                        }
                       })
                     ],
                     1
@@ -113365,7 +113504,7 @@ var render = function() {
               )
             : _vm._e(),
           _vm._v(" "),
-          _vm.bornOutsideUS
+          _vm.born_outside_us
             ? _c(
                 "v-layout",
                 {
@@ -113421,11 +113560,11 @@ var render = function() {
                         staticClass: "input-width",
                         attrs: { label: "Birth Country" },
                         model: {
-                          value: _vm.birth.country,
+                          value: _vm.birth_country,
                           callback: function($$v) {
-                            _vm.$set(_vm.birth, "country", $$v)
+                            _vm.birth_country = $$v
                           },
-                          expression: "birth.country"
+                          expression: "birth_country"
                         }
                       })
                     ],
@@ -113436,17 +113575,117 @@ var render = function() {
                     "v-flex",
                     { attrs: { xs12: "", md6: "" } },
                     [
-                      _c("v-text-field", {
-                        staticClass: "input-width",
-                        attrs: { label: "Date of Birth" },
-                        model: {
-                          value: _vm.birth.date,
-                          callback: function($$v) {
-                            _vm.$set(_vm.birth, "date", $$v)
+                      _c(
+                        "v-dialog",
+                        {
+                          ref: "dialog",
+                          attrs: {
+                            "return-value": _vm.date,
+                            persistent: "",
+                            lazy: "",
+                            "full-width": "",
+                            width: "290px"
                           },
-                          expression: "birth.date"
-                        }
-                      })
+                          on: {
+                            "update:returnValue": function($event) {
+                              _vm.date = $event
+                            },
+                            "update:return-value": function($event) {
+                              _vm.date = $event
+                            }
+                          },
+                          scopedSlots: _vm._u(
+                            [
+                              {
+                                key: "activator",
+                                fn: function(ref) {
+                                  var on = ref.on
+                                  return [
+                                    _c(
+                                      "v-text-field",
+                                      _vm._g(
+                                        {
+                                          staticClass: "input-width",
+                                          attrs: {
+                                            label: "Date of Birth",
+                                            "prepend-icon": "event",
+                                            readonly: ""
+                                          },
+                                          model: {
+                                            value: _vm.date_of_birth,
+                                            callback: function($$v) {
+                                              _vm.date_of_birth = $$v
+                                            },
+                                            expression: "date_of_birth"
+                                          }
+                                        },
+                                        on
+                                      )
+                                    )
+                                  ]
+                                }
+                              }
+                            ],
+                            null,
+                            false,
+                            2225445424
+                          ),
+                          model: {
+                            value: _vm.modal,
+                            callback: function($$v) {
+                              _vm.modal = $$v
+                            },
+                            expression: "modal"
+                          }
+                        },
+                        [
+                          _vm._v(" "),
+                          _c(
+                            "v-date-picker",
+                            {
+                              attrs: { scrollable: "" },
+                              model: {
+                                value: _vm.date,
+                                callback: function($$v) {
+                                  _vm.date = $$v
+                                },
+                                expression: "date"
+                              }
+                            },
+                            [
+                              _c("v-spacer"),
+                              _vm._v(" "),
+                              _c(
+                                "v-btn",
+                                {
+                                  attrs: { flat: "", color: "primary" },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.modal = false
+                                    }
+                                  }
+                                },
+                                [_vm._v("Cancel")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-btn",
+                                {
+                                  attrs: { flat: "", color: "primary" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.$refs.dialog.save(_vm.date)
+                                    }
+                                  }
+                                },
+                                [_vm._v("OK")]
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
                     ],
                     1
                   )
@@ -113471,11 +113710,11 @@ var render = function() {
                         {
                           attrs: { row: "" },
                           model: {
-                            value: _vm.isNaturalized,
+                            value: _vm.naturalized,
                             callback: function($$v) {
-                              _vm.isNaturalized = $$v
+                              _vm.naturalized = $$v
                             },
-                            expression: "isNaturalized"
+                            expression: "naturalized"
                           }
                         },
                         [
@@ -113495,7 +113734,7 @@ var render = function() {
               )
             : _vm._e(),
           _vm._v(" "),
-          _vm.born_us_parents == "Yes" && _vm.isNaturalized == "Yes"
+          _vm.born_us_parents == "Yes" && _vm.naturalized == "Yes"
             ? _c(
                 "v-layout",
                 { staticClass: "mr-5 ml-5", attrs: { row: "", wrap: "" } },
@@ -113508,11 +113747,11 @@ var render = function() {
                         staticClass: "input-width",
                         attrs: { label: "City" },
                         model: {
-                          value: _vm.naturalized.city,
+                          value: _vm.naturalized_city,
                           callback: function($$v) {
-                            _vm.$set(_vm.naturalized, "city", $$v)
+                            _vm.naturalized_city = $$v
                           },
-                          expression: "naturalized.city"
+                          expression: "naturalized_city"
                         }
                       })
                     ],
@@ -113527,11 +113766,11 @@ var render = function() {
                         staticClass: "input-width",
                         attrs: { label: "State" },
                         model: {
-                          value: _vm.naturalized.state,
+                          value: _vm.naturalized_state,
                           callback: function($$v) {
-                            _vm.$set(_vm.naturalized, "state", $$v)
+                            _vm.naturalized_state = $$v
                           },
-                          expression: "naturalized.state"
+                          expression: "naturalized_state"
                         }
                       })
                     ],
@@ -113542,17 +113781,117 @@ var render = function() {
                     "v-flex",
                     { attrs: { xs12: "", md4: "" } },
                     [
-                      _c("v-text-field", {
-                        staticClass: "input-width",
-                        attrs: { label: "Date" },
-                        model: {
-                          value: _vm.naturalized.date,
-                          callback: function($$v) {
-                            _vm.$set(_vm.naturalized, "date", $$v)
+                      _c(
+                        "v-dialog",
+                        {
+                          ref: "dialog",
+                          attrs: {
+                            "return-value": _vm.date,
+                            persistent: "",
+                            lazy: "",
+                            "full-width": "",
+                            width: "290px"
                           },
-                          expression: "naturalized.date"
-                        }
-                      })
+                          on: {
+                            "update:returnValue": function($event) {
+                              _vm.date = $event
+                            },
+                            "update:return-value": function($event) {
+                              _vm.date = $event
+                            }
+                          },
+                          scopedSlots: _vm._u(
+                            [
+                              {
+                                key: "activator",
+                                fn: function(ref) {
+                                  var on = ref.on
+                                  return [
+                                    _c(
+                                      "v-text-field",
+                                      _vm._g(
+                                        {
+                                          staticClass: "input-width",
+                                          attrs: {
+                                            label: "Date",
+                                            "prepend-icon": "event",
+                                            readonly: ""
+                                          },
+                                          model: {
+                                            value: _vm.naturalized_date,
+                                            callback: function($$v) {
+                                              _vm.naturalized_date = $$v
+                                            },
+                                            expression: "naturalized_date"
+                                          }
+                                        },
+                                        on
+                                      )
+                                    )
+                                  ]
+                                }
+                              }
+                            ],
+                            null,
+                            false,
+                            634887308
+                          ),
+                          model: {
+                            value: _vm.modal,
+                            callback: function($$v) {
+                              _vm.modal = $$v
+                            },
+                            expression: "modal"
+                          }
+                        },
+                        [
+                          _vm._v(" "),
+                          _c(
+                            "v-date-picker",
+                            {
+                              attrs: { scrollable: "" },
+                              model: {
+                                value: _vm.date,
+                                callback: function($$v) {
+                                  _vm.date = $$v
+                                },
+                                expression: "date"
+                              }
+                            },
+                            [
+                              _c("v-spacer"),
+                              _vm._v(" "),
+                              _c(
+                                "v-btn",
+                                {
+                                  attrs: { flat: "", color: "primary" },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.modal = false
+                                    }
+                                  }
+                                },
+                                [_vm._v("Cancel")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-btn",
+                                {
+                                  attrs: { flat: "", color: "primary" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.$refs.dialog.save(_vm.date)
+                                    }
+                                  }
+                                },
+                                [_vm._v("OK")]
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
                     ],
                     1
                   )
@@ -113612,11 +113951,11 @@ var render = function() {
                         staticClass: "input-width",
                         attrs: { label: "Owner's Name" },
                         model: {
-                          value: _vm.establishment_owner.name,
+                          value: _vm.establishment_owner_name,
                           callback: function($$v) {
-                            _vm.$set(_vm.establishment_owner, "name", $$v)
+                            _vm.establishment_owner_name = $$v
                           },
-                          expression: "establishment_owner.name"
+                          expression: "establishment_owner_name"
                         }
                       })
                     ],
@@ -113631,11 +113970,11 @@ var render = function() {
                         staticClass: "input-width",
                         attrs: { label: "Owner's Address" },
                         model: {
-                          value: _vm.establishment_owner.address,
+                          value: _vm.establishment_owner_address,
                           callback: function($$v) {
-                            _vm.$set(_vm.establishment_owner, "address", $$v)
+                            _vm.establishment_owner_address = $$v
                           },
-                          expression: "establishment_owner.address"
+                          expression: "establishment_owner_address"
                         }
                       })
                     ],
@@ -113650,11 +113989,11 @@ var render = function() {
                         staticClass: "input-width",
                         attrs: { label: "Owner's Phone" },
                         model: {
-                          value: _vm.establishment_owner.phone,
+                          value: _vm.establishment_owner_phone,
                           callback: function($$v) {
-                            _vm.$set(_vm.establishment_owner, "phone", $$v)
+                            _vm.establishment_owner_phone = $$v
                           },
-                          expression: "establishment_owner.phone"
+                          expression: "establishment_owner_phone"
                         }
                       })
                     ],
@@ -113681,11 +114020,11 @@ var render = function() {
                         staticClass: "input-width",
                         attrs: { label: "Lessor's Name" },
                         model: {
-                          value: _vm.lessor.name,
+                          value: _vm.lessor_name,
                           callback: function($$v) {
-                            _vm.$set(_vm.lessor, "name", $$v)
+                            _vm.lessor_name = $$v
                           },
-                          expression: "lessor.name"
+                          expression: "lessor_name"
                         }
                       })
                     ],
@@ -113700,11 +114039,11 @@ var render = function() {
                         staticClass: "input-width",
                         attrs: { label: "Lessor's Address" },
                         model: {
-                          value: _vm.lessor.address,
+                          value: _vm.lessor_address,
                           callback: function($$v) {
-                            _vm.$set(_vm.lessor, "address", $$v)
+                            _vm.lessor_address = $$v
                           },
-                          expression: "lessor.address"
+                          expression: "lessor_address"
                         }
                       })
                     ],
@@ -113719,11 +114058,11 @@ var render = function() {
                         staticClass: "input-width",
                         attrs: { label: "Lessor's Phone" },
                         model: {
-                          value: _vm.lessor.phone,
+                          value: _vm.lessor_phone,
                           callback: function($$v) {
-                            _vm.$set(_vm.lessor, "phone", $$v)
+                            _vm.lessor_phone = $$v
                           },
-                          expression: "lessor.phone"
+                          expression: "lessor_phone"
                         }
                       })
                     ],
@@ -113738,11 +114077,11 @@ var render = function() {
                         staticClass: "input-width",
                         attrs: { label: "Lease End Date" },
                         model: {
-                          value: _vm.lessor.end_date,
+                          value: _vm.lessor_end_date,
                           callback: function($$v) {
-                            _vm.$set(_vm.lessor, "end_date", $$v)
+                            _vm.lessor_end_date = $$v
                           },
-                          expression: "lessor.end_date"
+                          expression: "lessor_end_date"
                         }
                       })
                     ],
@@ -113781,7 +114120,7 @@ var render = function() {
                           }
                         ],
                         ref: "fileInput",
-                        attrs: { type: "file" },
+                        attrs: { type: "file", id: "current_lease" },
                         on: { change: _vm.onFilePicked }
                       })
                     ],
@@ -113803,11 +114142,11 @@ var render = function() {
                         {
                           attrs: { row: "" },
                           model: {
-                            value: _vm.liquorLicense_anotherPremise,
+                            value: _vm.liquor_license_another_premise,
                             callback: function($$v) {
-                              _vm.liquorLicense_anotherPremise = $$v
+                              _vm.liquor_license_another_premise = $$v
                             },
-                            expression: "liquorLicense_anotherPremise"
+                            expression: "liquor_license_another_premise"
                           }
                         },
                         [
@@ -113827,7 +114166,7 @@ var render = function() {
               )
             : _vm._e(),
           _vm._v(" "),
-          _vm.liquorLicense_anotherPremise == "Yes"
+          _vm.liquor_license_another_premise == "Yes"
             ? _c(
                 "v-layout",
                 {
@@ -113843,11 +114182,11 @@ var render = function() {
                         staticClass: "input-width",
                         attrs: { label: "Name of other establishment" },
                         model: {
-                          value: _vm.otherEstablishment.name,
+                          value: _vm.other_establishment_name,
                           callback: function($$v) {
-                            _vm.$set(_vm.otherEstablishment, "name", $$v)
+                            _vm.other_establishment_name = $$v
                           },
-                          expression: "otherEstablishment.name"
+                          expression: "other_establishment_name"
                         }
                       })
                     ],
@@ -113862,11 +114201,11 @@ var render = function() {
                         staticClass: "input-width",
                         attrs: { label: "Address of other establishment" },
                         model: {
-                          value: _vm.otherEstablishment.address,
+                          value: _vm.other_establishment_address,
                           callback: function($$v) {
-                            _vm.$set(_vm.otherEstablishment, "address", $$v)
+                            _vm.other_establishment_address = $$v
                           },
-                          expression: "otherEstablishment.address"
+                          expression: "other_establishment_address"
                         }
                       })
                     ],
@@ -114147,6 +114486,891 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 140 */,
+/* 141 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(142)
+/* template */
+var __vue_template__ = __webpack_require__(143)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/admin/Dashboard.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-af0944b4", Component.options)
+  } else {
+    hotAPI.reload("data-v-af0944b4", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 142 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      application: {
+        headers: [{ title: 'All' }, { title: 'Processed' }, { title: 'Completed' }, { title: 'Expired' }]
+      },
+      items: [{ text: 'Total Sales', icon: 'show_chart', color: 'primary' }, { text: 'Processed Applications', icon: 'assignment', color: 'error' }, { text: 'Completed Applications', icon: 'gradient', color: 'success' }],
+      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      date_ranges: [{ text: 'Yesterday' }, { text: 'Past 7 Days' }, { text: 'This Month' }, { text: 'Past 3 Months' }, { text: 'Past 6 Months' }, { text: 'This Year' }, { text: 'Last Year' }, { text: 'All Time' }],
+      dialog: false,
+      headers: [{
+        text: 'Dessert (100g serving)',
+        align: 'left',
+        sortable: false,
+        value: 'name'
+      }, { text: 'Calories', value: 'calories' }, { text: 'Fat (g)', value: 'fat' }, { text: 'Carbs (g)', value: 'carbs' }, { text: 'Protein (g)', value: 'protein' }, { text: 'Actions', value: 'name', sortable: false }],
+      desserts: [],
+      editedIndex: -1,
+      editedItem: {
+        name: '',
+        calories: 0,
+        fat: 0,
+        carbs: 0,
+        protein: 0
+      },
+      defaultItem: {
+        name: '',
+        calories: 0,
+        fat: 0,
+        carbs: 0,
+        protein: 0
+      }
+    };
+  },
+
+
+  computed: {
+    formTitle: function formTitle() {
+      return this.editedIndex === -1 ? 'New Item' : 'Edit Item';
+    }
+  },
+
+  watch: {
+    dialog: function dialog(val) {
+      val || this.close();
+    }
+  },
+
+  created: function created() {
+    this.initialize();
+  },
+
+
+  methods: {
+    initialize: function initialize() {
+      this.desserts = [{
+        name: 'Frozen Yogurt',
+        calories: 159,
+        fat: 6.0,
+        carbs: 24,
+        protein: 4.0
+      }, {
+        name: 'Ice cream sandwich',
+        calories: 237,
+        fat: 9.0,
+        carbs: 37,
+        protein: 4.3
+      }, {
+        name: 'Eclair',
+        calories: 262,
+        fat: 16.0,
+        carbs: 23,
+        protein: 6.0
+      }, {
+        name: 'Cupcake',
+        calories: 305,
+        fat: 3.7,
+        carbs: 67,
+        protein: 4.3
+      }, {
+        name: 'Gingerbread',
+        calories: 356,
+        fat: 16.0,
+        carbs: 49,
+        protein: 3.9
+      }, {
+        name: 'Jelly bean',
+        calories: 375,
+        fat: 0.0,
+        carbs: 94,
+        protein: 0.0
+      }, {
+        name: 'Lollipop',
+        calories: 392,
+        fat: 0.2,
+        carbs: 98,
+        protein: 0
+      }, {
+        name: 'Honeycomb',
+        calories: 408,
+        fat: 3.2,
+        carbs: 87,
+        protein: 6.5
+      }, {
+        name: 'Donut',
+        calories: 452,
+        fat: 25.0,
+        carbs: 51,
+        protein: 4.9
+      }, {
+        name: 'KitKat',
+        calories: 518,
+        fat: 26.0,
+        carbs: 65,
+        protein: 7
+      }];
+    },
+    editItem: function editItem(item) {
+      this.editedIndex = this.desserts.indexOf(item);
+      this.editedItem = Object.assign({}, item);
+      this.dialog = true;
+    },
+    deleteItem: function deleteItem(item) {
+      var index = this.desserts.indexOf(item);
+      confirm('Are you sure you want to delete this item?') && this.desserts.splice(index, 1);
+    },
+    close: function close() {
+      var _this = this;
+
+      this.dialog = false;
+      setTimeout(function () {
+        _this.editedItem = Object.assign({}, _this.defaultItem);
+        _this.editedIndex = -1;
+      }, 300);
+    },
+    save: function save() {
+      if (this.editedIndex > -1) {
+        Object.assign(this.desserts[this.editedIndex], this.editedItem);
+      } else {
+        this.desserts.push(this.editedItem);
+      }
+      this.close();
+    }
+  }
+});
+
+/***/ }),
+/* 143 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "dashboard" },
+    [
+      _c("v-layout", [
+        _c(
+          "div",
+          { staticClass: "text-xs-center left" },
+          [
+            _c(
+              "v-menu",
+              {
+                attrs: { transition: "slide-x-transition", bottom: "" },
+                scopedSlots: _vm._u([
+                  {
+                    key: "activator",
+                    fn: function(ref) {
+                      var on = ref.on
+                      return [
+                        _c(
+                          "v-btn",
+                          _vm._g({ attrs: { color: "cyan", dark: "" } }, on),
+                          [_vm._v("\n            Filter Date\n          ")]
+                        )
+                      ]
+                    }
+                  }
+                ])
+              },
+              [
+                _vm._v(" "),
+                _c(
+                  "v-list",
+                  _vm._l(_vm.date_ranges, function(item, i) {
+                    return _c(
+                      "v-list-tile",
+                      { key: i, on: { click: function($event) {} } },
+                      [_c("v-list-tile-title", [_vm._v(_vm._s(item.text))])],
+                      1
+                    )
+                  }),
+                  1
+                )
+              ],
+              1
+            )
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _c(
+        "v-layout",
+        { staticClass: "mb-500", attrs: { row: "", wrap: "" } },
+        _vm._l(_vm.items, function(item) {
+          return _c(
+            "v-flex",
+            { key: item, attrs: { x12: "", sm4: "", md4: "" } },
+            [
+              _c(
+                "v-card",
+                {
+                  staticClass: "text-xs-center ma-3",
+                  attrs: { flat: "", color: item.color, height: "100" }
+                },
+                [
+                  _c("v-card-title", [
+                    _c(
+                      "div",
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "headline" },
+                          [
+                            _c(
+                              "v-icon",
+                              {
+                                staticClass: "pt-2",
+                                attrs: { dark: "", size: "40" }
+                              },
+                              [_vm._v(" " + _vm._s(item.icon) + " ")]
+                            )
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "v-btn",
+                          {
+                            staticClass: "white--text",
+                            attrs: { size: "45", flat: "" }
+                          },
+                          [_vm._v(" " + _vm._s(item.text) + ": 100 ")]
+                        )
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("v-card-actions")
+                ],
+                1
+              )
+            ],
+            1
+          )
+        }),
+        1
+      ),
+      _vm._v(" "),
+      _c("v-spacer"),
+      _vm._v(" "),
+      _c("v-subheader", { staticClass: "mt-5 mb-2" }, [
+        _c("h1", [_vm._v("Applications")])
+      ]),
+      _vm._v(" "),
+      _c(
+        "v-tabs",
+        {
+          attrs: { color: "cyan", dark: "", "slider-color": "yellow" },
+          model: {
+            value: _vm.active,
+            callback: function($$v) {
+              _vm.active = $$v
+            },
+            expression: "active"
+          }
+        },
+        [
+          _vm._l(_vm.application.headers, function(header) {
+            return _c("v-tab", { key: header, attrs: { ripple: "" } }, [
+              _vm._v("\n      " + _vm._s(header.title) + "\n\n    ")
+            ])
+          }),
+          _vm._v(" "),
+          _vm._l(_vm.application.headers, function(header) {
+            return _c("v-tab-item", { key: header }, [
+              _c(
+                "div",
+                [
+                  _c(
+                    "v-toolbar",
+                    { attrs: { flat: "", color: "white" } },
+                    [
+                      _c("v-toolbar-title", [
+                        _vm._v(" " + _vm._s(header.title) + " ")
+                      ]),
+                      _vm._v(" "),
+                      _c("v-divider", {
+                        staticClass: "mx-2",
+                        attrs: { inset: "", vertical: "" }
+                      }),
+                      _vm._v(" "),
+                      _c("v-spacer"),
+                      _vm._v(" "),
+                      _c(
+                        "v-dialog",
+                        {
+                          attrs: { "max-width": "500px" },
+                          scopedSlots: _vm._u(
+                            [
+                              {
+                                key: "activator",
+                                fn: function(ref) {
+                                  var on = ref.on
+                                  return [
+                                    _c(
+                                      "v-btn",
+                                      _vm._g(
+                                        {
+                                          staticClass: "mb-2",
+                                          attrs: { color: "primary", dark: "" }
+                                        },
+                                        on
+                                      ),
+                                      [_vm._v("New Item")]
+                                    )
+                                  ]
+                                }
+                              }
+                            ],
+                            null,
+                            true
+                          ),
+                          model: {
+                            value: _vm.dialog,
+                            callback: function($$v) {
+                              _vm.dialog = $$v
+                            },
+                            expression: "dialog"
+                          }
+                        },
+                        [
+                          _vm._v(" "),
+                          _c(
+                            "v-card",
+                            [
+                              _c("v-card-title", [
+                                _c("span", { staticClass: "headline" }, [
+                                  _vm._v(_vm._s(_vm.formTitle))
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "v-card-text",
+                                [
+                                  _c(
+                                    "v-container",
+                                    { attrs: { "grid-list-md": "" } },
+                                    [
+                                      _c(
+                                        "v-layout",
+                                        { attrs: { wrap: "" } },
+                                        [
+                                          _c(
+                                            "v-flex",
+                                            {
+                                              attrs: {
+                                                xs12: "",
+                                                sm6: "",
+                                                md4: ""
+                                              }
+                                            },
+                                            [
+                                              _c("v-text-field", {
+                                                attrs: {
+                                                  label: "Dessert name"
+                                                },
+                                                model: {
+                                                  value: _vm.editedItem.name,
+                                                  callback: function($$v) {
+                                                    _vm.$set(
+                                                      _vm.editedItem,
+                                                      "name",
+                                                      $$v
+                                                    )
+                                                  },
+                                                  expression: "editedItem.name"
+                                                }
+                                              })
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-flex",
+                                            {
+                                              attrs: {
+                                                xs12: "",
+                                                sm6: "",
+                                                md4: ""
+                                              }
+                                            },
+                                            [
+                                              _c("v-text-field", {
+                                                attrs: { label: "Calories" },
+                                                model: {
+                                                  value:
+                                                    _vm.editedItem.calories,
+                                                  callback: function($$v) {
+                                                    _vm.$set(
+                                                      _vm.editedItem,
+                                                      "calories",
+                                                      $$v
+                                                    )
+                                                  },
+                                                  expression:
+                                                    "editedItem.calories"
+                                                }
+                                              })
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-flex",
+                                            {
+                                              attrs: {
+                                                xs12: "",
+                                                sm6: "",
+                                                md4: ""
+                                              }
+                                            },
+                                            [
+                                              _c("v-text-field", {
+                                                attrs: { label: "Fat (g)" },
+                                                model: {
+                                                  value: _vm.editedItem.fat,
+                                                  callback: function($$v) {
+                                                    _vm.$set(
+                                                      _vm.editedItem,
+                                                      "fat",
+                                                      $$v
+                                                    )
+                                                  },
+                                                  expression: "editedItem.fat"
+                                                }
+                                              })
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-flex",
+                                            {
+                                              attrs: {
+                                                xs12: "",
+                                                sm6: "",
+                                                md4: ""
+                                              }
+                                            },
+                                            [
+                                              _c("v-text-field", {
+                                                attrs: { label: "Carbs (g)" },
+                                                model: {
+                                                  value: _vm.editedItem.carbs,
+                                                  callback: function($$v) {
+                                                    _vm.$set(
+                                                      _vm.editedItem,
+                                                      "carbs",
+                                                      $$v
+                                                    )
+                                                  },
+                                                  expression: "editedItem.carbs"
+                                                }
+                                              })
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-flex",
+                                            {
+                                              attrs: {
+                                                xs12: "",
+                                                sm6: "",
+                                                md4: ""
+                                              }
+                                            },
+                                            [
+                                              _c("v-text-field", {
+                                                attrs: { label: "Protein (g)" },
+                                                model: {
+                                                  value: _vm.editedItem.protein,
+                                                  callback: function($$v) {
+                                                    _vm.$set(
+                                                      _vm.editedItem,
+                                                      "protein",
+                                                      $$v
+                                                    )
+                                                  },
+                                                  expression:
+                                                    "editedItem.protein"
+                                                }
+                                              })
+                                            ],
+                                            1
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-card-actions",
+                                [
+                                  _c("v-spacer"),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-btn",
+                                    {
+                                      attrs: {
+                                        color: "blue darken-1",
+                                        flat: ""
+                                      },
+                                      on: { click: _vm.close }
+                                    },
+                                    [_vm._v("Cancel")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-btn",
+                                    {
+                                      attrs: {
+                                        color: "blue darken-1",
+                                        flat: ""
+                                      },
+                                      on: { click: _vm.save }
+                                    },
+                                    [_vm._v("Save")]
+                                  )
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("v-data-table", {
+                    staticClass: "elevation-1",
+                    attrs: { headers: _vm.headers, items: _vm.desserts },
+                    scopedSlots: _vm._u(
+                      [
+                        {
+                          key: "items",
+                          fn: function(props) {
+                            return [
+                              _c("td", [_vm._v(_vm._s(props.item.name))]),
+                              _vm._v(" "),
+                              _c("td", { staticClass: "text-xs-right" }, [
+                                _vm._v(_vm._s(props.item.calories))
+                              ]),
+                              _vm._v(" "),
+                              _c("td", { staticClass: "text-xs-right" }, [
+                                _vm._v(_vm._s(props.item.fat))
+                              ]),
+                              _vm._v(" "),
+                              _c("td", { staticClass: "text-xs-right" }, [
+                                _vm._v(_vm._s(props.item.carbs))
+                              ]),
+                              _vm._v(" "),
+                              _c("td", { staticClass: "text-xs-right" }, [
+                                _vm._v(_vm._s(props.item.protein))
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "td",
+                                { staticClass: "justify-center layout px-0" },
+                                [
+                                  _c(
+                                    "v-icon",
+                                    {
+                                      staticClass: "mr-2",
+                                      attrs: { small: "" },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.editItem(props.item)
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n              edit\n            "
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-icon",
+                                    {
+                                      attrs: { small: "" },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.deleteItem(props.item)
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n              delete\n            "
+                                      )
+                                    ]
+                                  )
+                                ],
+                                1
+                              )
+                            ]
+                          }
+                        },
+                        {
+                          key: "no-data",
+                          fn: function() {
+                            return [
+                              _c(
+                                "v-btn",
+                                {
+                                  attrs: { color: "primary" },
+                                  on: { click: _vm.initialize }
+                                },
+                                [_vm._v("Reset")]
+                              )
+                            ]
+                          },
+                          proxy: true
+                        }
+                      ],
+                      null,
+                      true
+                    )
+                  })
+                ],
+                1
+              )
+            ])
+          })
+        ],
+        2
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-af0944b4", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

@@ -16,5 +16,9 @@ class Note extends Model
 
     public function application(){
         return $this->belongsTo(Application::class);
-    }    
+    } 
+    
+    public function liquorApplication(){
+        return $this->belongsTo(LiquorApplication::class);
+    }     
 }

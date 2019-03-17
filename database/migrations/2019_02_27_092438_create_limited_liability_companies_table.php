@@ -15,12 +15,14 @@ class CreateLimitedLiabilityCompaniesTable extends Migration
     {
         Schema::create('limited_liability_companies', function (Blueprint $table) {
             $table->increments('id');
-            $table->increments('liquor_application_id')->unsigned()->index();
-            $table->string('llc_manager')->nullable();
-            $table->string('email');
-            $table->string('phone');
-            $table->string('member');
-            $table->string('member_email');
+            $table->string('llc_manager_name')->nullable();
+            $table->string('llc_manager_email');
+            $table->string('llc_manager_phone');
+            $table->string('store_manager_name');
+            $table->string('store_manager_email');
+            $table->string('store_manager_phone');
+            $table->string('store_manager_address');
+            $table->string('state_of_organization');
             $table->timestamps();
         });
     }
