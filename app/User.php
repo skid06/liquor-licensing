@@ -33,6 +33,11 @@ class User extends Authenticatable
         return $this->hasMany(Application::class);
     }
 
+    public function liquorApplications()
+    {
+        return $this->hasMany(LiquorApplication::class);
+    }    
+
     public function payments()
     {
         return $this->hasMany(Payment::class);

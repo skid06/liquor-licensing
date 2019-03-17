@@ -1,5 +1,6 @@
 /public/hot
 /public/storage
+/public/js
 /storage/*.key
 /.idea
 /.vscode

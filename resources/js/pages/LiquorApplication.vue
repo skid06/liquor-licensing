@@ -6,7 +6,7 @@
       <v-layout row wrap class="mr-5 ml-5">
         <v-flex xs12 md12 >
           <v-text-field
-            v-model="business.name"
+            v-model="business_name"
             label="Business Name"
             class="input-width"
           ></v-text-field>
@@ -14,7 +14,7 @@
 
         <v-flex xs12 md12 >
           <v-text-field
-            v-model="business.address"
+            v-model="business_address"
             label="Business Address"
             class="input-width"
           ></v-text-field>
@@ -22,7 +22,7 @@
 
         <v-flex xs12 md6 >
           <v-text-field
-            v-model="business.phone"
+            v-model="business_phone"
             label="Business Phone"
             class="input-width"
           ></v-text-field>
@@ -30,7 +30,7 @@
 
         <v-flex xs12 md6 >
           <v-text-field
-            v-model="business.email"
+            v-model="business_email"
             label="Busines Email"
             class="input-width"
           ></v-text-field>
@@ -38,7 +38,7 @@
 
         <v-flex xs12 md4 >
           <v-text-field
-            v-model="contact.person"
+            v-model="contact_person"
             label="Contact Person"
             required
             class="input-width"
@@ -47,7 +47,7 @@
 
         <v-flex xs12 md4 >
           <v-text-field
-            v-model="contact.title"
+            v-model="contact_title"
             label="Title"
             required
             class="input-width"
@@ -56,7 +56,7 @@
 
         <v-flex xs12 md4 >
           <v-text-field
-            v-model="contact.email"
+            v-model="contact_email"
             label="Phone"
             required
             class="input-width"
@@ -67,18 +67,18 @@
           <v-select
             :items="classifications"
             label="Business Classification"
-            v-model="business.classification" 
+            v-model="business_classification" 
             id="inputBusinessClassification" 
-            @change="activeClassification"
+            @change="selectClassification"
           ></v-select>
         </v-flex> 
       </v-layout>       
 
       <v-layout id="corporation-section" row wrap class="mr-5 ml-5" v-if="!hideCorporation">        
-        <v-subheader class="pa-0"><h3>{{ business.classification }}</h3></v-subheader>
+        <v-subheader class="pa-0"><h3>{{ business_classification }}</h3></v-subheader>
         <v-flex xs12 md12 >
           <v-text-field
-            v-model="corporate.name"
+            v-model="corporate_name"
             label="Corporate Name"
             class="input-width"
           ></v-text-field>
@@ -86,7 +86,7 @@
 
         <v-flex xs12 md12 >
           <v-text-field
-            v-model="corporate.address"
+            v-model="corporate_address"
             label="Corporate Address"
             class="input-width"
           ></v-text-field>
@@ -94,7 +94,7 @@
 
         <v-flex xs12 md6 >
           <v-text-field
-            v-model="storeManager.name"
+            v-model="store_manager_name"
             label="Store Manager"
             class="input-width"
           ></v-text-field>
@@ -102,7 +102,7 @@
 
         <v-flex xs12 md6 >
           <v-text-field
-            v-model="storeManager.email"
+            v-model="store_manager_email"
             label="Email"
             class="input-width"
           ></v-text-field>
@@ -110,7 +110,7 @@
 
         <v-flex xs12 md6 >
           <v-text-field
-            v-model="storeManager.phone"
+            v-model="store_manager_phone"
             label="Phone"
             class="input-width"
             ></v-text-field>
@@ -118,7 +118,7 @@
 
         <v-flex xs12 md6 >
           <v-text-field
-            v-model="storeManager.address"
+            v-model="store_manager_address"
             label="Address"
             class="input-width"
           ></v-text-field>
@@ -128,7 +128,7 @@
        
         <v-flex xs12 md6 >
           <v-text-field
-            v-model="president.name"
+            v-model="president_name"
             label="President"
             class="input-width"
           ></v-text-field>
@@ -136,7 +136,7 @@
 
         <v-flex xs12 md6 >
           <v-text-field
-            v-model="president.email"
+            v-model="president_email"
             label="Email"
             class="input-width"
           ></v-text-field>
@@ -144,7 +144,7 @@
 
         <v-flex xs12 md6 >
           <v-text-field
-            v-model="president.phone"
+            v-model="president_phone"
             label="Phone"
             class="input-width"
             ></v-text-field>
@@ -152,7 +152,7 @@
 
         <v-flex xs12 md6 >
           <v-text-field
-            v-model="president.address"
+            v-model="president_address"
             label="Address"
             class="input-width"
           ></v-text-field>
@@ -160,7 +160,7 @@
 
         <v-flex xs12 md6 >
           <v-text-field
-            v-model="vicePresident.name"
+            v-model="vice_president_name"
             label="Vice President"
             class="input-width"
           ></v-text-field>
@@ -168,7 +168,7 @@
 
         <v-flex xs12 md6 >
           <v-text-field
-            v-model="vicePresident.email"
+            v-model="vice_president_email"
             label="Vice President Email"
             class="input-width"
           ></v-text-field>
@@ -176,7 +176,7 @@
 
         <v-flex xs12 md6 >
           <v-text-field
-            v-model="vicePresident.phone"
+            v-model="vice_president_phone"
             label="Vice President Phone"
             class="input-width"
             ></v-text-field>
@@ -184,7 +184,7 @@
 
         <v-flex xs12 md6 >
           <v-text-field
-            v-model="vicePresident.address"
+            v-model="vice_president_address"
             label="Vice President Address"
             class="input-width"
           ></v-text-field>  
@@ -192,7 +192,7 @@
 
         <v-flex xs12 md6 >
           <v-text-field
-            v-model="secretary.name"
+            v-model="secretary_name"
             label="Secretary"
             class="input-width"
           ></v-text-field>
@@ -200,7 +200,7 @@
 
         <v-flex xs12 md6 >
           <v-text-field
-            v-model="secretary.email"
+            v-model="secretary_email"
             label="Secretary Email"
             class="input-width"
           ></v-text-field>
@@ -208,7 +208,7 @@
 
         <v-flex xs12 md6 >
           <v-text-field
-            v-model="secretary.phone"
+            v-model="secretary_phone"
             label="Secretary Phone"
             class="input-width"
             ></v-text-field>
@@ -216,7 +216,7 @@
 
         <v-flex xs12 md6 >
           <v-text-field
-            v-model="secretary.address"
+            v-model="secretary_address"
             label="Secretary Address"
             class="input-width"
           ></v-text-field>                  
@@ -224,7 +224,7 @@
 
         <v-flex xs12 md6 >
           <v-text-field
-            v-model="treasurer.name"
+            v-model="treasurer_name"
             label="Treasurer"
             class="input-width"
           ></v-text-field>
@@ -232,7 +232,7 @@
 
         <v-flex xs12 md6 >
           <v-text-field
-            v-model="treasurer.email"
+            v-model="treasurer_email"
             label="Treasurer Email"
             class="input-width"
           ></v-text-field>
@@ -240,7 +240,7 @@
 
         <v-flex xs12 md6 >
           <v-text-field
-            v-model="treasurer.phone"
+            v-model="treasurer_phone"
             label="Treasurer Phone"
             class="input-width"
             ></v-text-field>
@@ -248,7 +248,7 @@
 
         <v-flex xs12 md6 >
           <v-text-field
-            v-model="treasurer.address"
+            v-model="treasurer_address"
             label="Treasurer Address"
             class="input-width"
           ></v-text-field>            
@@ -288,39 +288,64 @@
       <v-layout row wrap class="mr-5 ml-5 mt-10" v-if="!hideCorporation">
         <v-container fluid>  
           <p>Have you had a business within the City of Loves Park under any other corporate name?</p>
-          <v-radio-group v-model="had_business" :mandatory="false" row>
+          <v-radio-group v-model="had_business_other_corporation" :mandatory="false" row>
             <v-radio label="Yes" value="Yes"></v-radio>
             <v-radio label="No" value="No"></v-radio>
           </v-radio-group>                   
         </v-container> 
 
-        <v-flex xs12 md12 >
+        <v-flex xs12 md12 v-if="had_business_other_corporation == 'Yes'">
           <v-text-field
-            v-model="otherCorporate.name"
+            v-model="other_corporate_name"
             label="Other Corporate Name"
             class="input-width"
           ></v-text-field>
         </v-flex>
 
-        <v-flex xs12 md12 >
+        <v-flex xs12 md12 v-if="had_business_other_corporation == 'Yes'">
           <v-text-field
-            v-model="otherCorporate.address"
+            v-model="other_corporate_address"
             label="Other Corporate Address"
             class="input-width"
           ></v-text-field>
         </v-flex>  
 
         <v-flex xs12 md12 >
-          <v-text-field
-            v-model="state_of_incorporation"
+          <!-- <v-text-field
+            v-model="date_qualified_transact_business"
             label="If state of incorporation is NOT Illinois, when was the corporation become qualified to transact business in Illinois?"
             class="input-width"
-          ></v-text-field>
+          ></v-text-field> -->
+          <v-dialog
+            ref="dialog"
+            v-model="modal"
+            :return-value.sync="date"
+            persistent
+            lazy
+            full-width
+            width="290px"
+          >
+            <template v-slot:activator="{ on }">
+              <v-text-field
+                v-model="date_qualified_transact_business"
+                label="If state of incorporation is NOT Illinois, when was the corporation become qualified to transact business in Illinois?"
+                prepend-icon="event"
+                class="input-width"
+                readonly
+                v-on="on"
+              ></v-text-field>
+            </template>
+            <v-date-picker v-model="date" scrollable>
+              <v-spacer></v-spacer>
+              <v-btn flat color="primary" @click="modal = false">Cancel</v-btn>
+              <v-btn flat color="primary" @click="$refs.dialog.save(date)">OK</v-btn>
+            </v-date-picker>
+          </v-dialog>          
         </v-flex>                       
       </v-layout>   
 
       <v-layout id="llc-section" row wrap class="mr-5 ml-5" v-if="!hideLLC">        
-        <v-subheader class="pa-0"><h3>{{ business.classification }}</h3></v-subheader>
+        <v-subheader class="pa-0"><h3>{{ business_classification }}</h3></v-subheader>
         <v-flex xs12 md12 >
           <v-text-field
             v-model="state_of_organization"
@@ -426,7 +451,7 @@
       >Add Member</v-btn>         
 
       <v-container v-if="!hidePartnership" class="pa-0 mr-5 ml-5">
-        <v-subheader class="pa-0"><h3>{{ business.classification }}</h3></v-subheader>
+        <v-subheader class="pa-0"><h3>{{ business_classification }}</h3></v-subheader>
       </v-container>
 
       <v-layout id="partnership-section" row wrap class="mr-5 ml-5" v-if="!hidePartnership" v-for="owner in owners" :key="owner.id"> 
@@ -473,13 +498,14 @@
           <v-select
             :items="bornOutsideUSoptions"
             label="Was the owner born outside the US?"
-            id="inputBusinessClassification" 
+            id="inputBusinessClassification"
+            v-model="born_outside_us"
             @change="checkBornOutsideUS"
           ></v-select>
         </v-flex>  
       </v-layout>   
 
-      <v-layout row wrap class="mr-5 ml-5 mt-10" v-if="bornOutsideUS">  
+      <v-layout row wrap class="mr-5 ml-5 mt-10" v-if="born_outside_us">  
         <v-container fluid> 
           <p>Born of US Parents?</p>
           <v-radio-group v-model="born_us_parents" row>
@@ -492,35 +518,60 @@
       <v-layout row wrap class="mr-5 ml-5" v-if="born_us_parents == 'Yes'">
         <v-flex xs12 md6 >
           <v-text-field
-            v-model="birth.country"
+            v-model="birth_country"
             label="Birth Country"
             class="input-width"
           ></v-text-field>
         </v-flex>
 
         <v-flex xs12 md6 >
-          <v-text-field
-            v-model="birth.date"
+          <v-dialog
+            ref="dialog"
+            v-model="modal"
+            :return-value.sync="date"
+            persistent
+            lazy
+            full-width
+            width="290px"
+          >
+            <template v-slot:activator="{ on }">
+              <v-text-field
+                v-model="date_of_birth"
+                label="Date of Birth"
+                prepend-icon="event"
+                class="input-width"
+                readonly
+                v-on="on"
+              ></v-text-field>
+            </template>
+            <v-date-picker v-model="date" scrollable>
+              <v-spacer></v-spacer>
+              <v-btn flat color="primary" @click="modal = false">Cancel</v-btn>
+              <v-btn flat color="primary" @click="$refs.dialog.save(date)">OK</v-btn>
+            </v-date-picker>
+          </v-dialog>           
+          <!-- <v-text-field
+            v-model="date_of_birth"
             label="Date of Birth"
             class="input-width"
-          ></v-text-field>
+          ></v-text-field> -->
         </v-flex> 
       </v-layout>  
 
       <v-layout row wrap class="mr-5 ml-5" v-if="born_us_parents == 'Yes'">  
         <v-flex xs12 md12 >
           <p>Naturalized?</p>
-          <v-radio-group v-model="isNaturalized" row>
+          <v-radio-group v-model="naturalized" row>
             <v-radio label="Yes" value="Yes"></v-radio>
             <v-radio label="No" value="No"></v-radio>
           </v-radio-group>          
         </v-flex> 
       </v-layout> 
 
-      <v-layout row wrap class="mr-5 ml-5" v-if="born_us_parents == 'Yes' && isNaturalized == 'Yes'">
+      <v-layout row wrap class="mr-5 ml-5" v-if="born_us_parents == 'Yes' && naturalized == 'Yes'">
         <v-flex xs12 md4 >
           <v-text-field
-            v-model="naturalized.city"
+            v-model="naturalized_city"
             label="City"
             class="input-width"
           ></v-text-field>
@@ -528,19 +579,39 @@
 
         <v-flex xs12 md4 >
           <v-text-field
-            v-model="naturalized.state"
+            v-model="naturalized_state"
             label="State"
             class="input-width"
           ></v-text-field>
         </v-flex>         
 
         <v-flex xs12 md4 >
-          <v-text-field
-            v-model="naturalized.date"
-            label="Date"
-            class="input-width"
-          ></v-text-field>
-        </v-flex>
+          <v-dialog
+            ref="dialog"
+            v-model="modal"
+            :return-value.sync="date"
+            persistent
+            lazy
+            full-width
+            width="290px"
+          >
+            <template v-slot:activator="{ on }">
+              <v-text-field
+                v-model="naturalized_date"
+                label="Date"
+                prepend-icon="event"
+                class="input-width"
+                readonly
+                v-on="on"
+              ></v-text-field>
+            </template>
+            <v-date-picker v-model="date" scrollable>
+              <v-spacer></v-spacer>
+              <v-btn flat color="primary" @click="modal = false">Cancel</v-btn>
+              <v-btn flat color="primary" @click="$refs.dialog.save(date)">OK</v-btn>
+            </v-date-picker>
+          </v-dialog>  
+        </v-flex>          
       </v-layout>       
 
       <v-layout row wrap class="mr-5 ml-5 mt-10" v-if="establishmentSection">
@@ -554,7 +625,7 @@
 
         <v-flex xs12 md4 >
           <v-text-field
-            v-model="establishment_owner.name"
+            v-model="establishment_owner_name"
             label="Owner's Name"
             class="input-width"
           ></v-text-field>
@@ -562,7 +633,7 @@
 
         <v-flex xs12 md4 >
           <v-text-field
-            v-model="establishment_owner.address"
+            v-model="establishment_owner_address"
             label="Owner's Address"
             class="input-width"
           ></v-text-field>
@@ -570,7 +641,7 @@
 
         <v-flex xs12 md4 >
           <v-text-field
-            v-model="establishment_owner.phone"
+            v-model="establishment_owner_phone"
             label="Owner's Phone"
             class="input-width"
           ></v-text-field>
@@ -580,7 +651,7 @@
       <v-layout row wrap class="mr-5 ml-5 mt-10" v-if="establishmentSection && owner_lease_premises == 'Yes'">
         <v-flex xs12 md6 >
           <v-text-field
-            v-model="lessor.name"
+            v-model="lessor_name"
             label="Lessor's Name"
             class="input-width"
           ></v-text-field>
@@ -588,7 +659,7 @@
 
         <v-flex xs12 md6 >
           <v-text-field
-            v-model="lessor.address"
+            v-model="lessor_address"
             label="Lessor's Address"
             class="input-width"
           ></v-text-field>
@@ -596,7 +667,7 @@
 
         <v-flex xs12 md6 >
           <v-text-field
-            v-model="lessor.phone"
+            v-model="lessor_phone"
             label="Lessor's Phone"
             class="input-width"
           ></v-text-field>
@@ -604,7 +675,7 @@
 
         <v-flex xs12 md6 >
           <v-text-field
-            v-model="lessor.end_date"
+            v-model="lessor_end_date"
             label="Lease End Date"
             class="input-width"
           ></v-text-field>
@@ -622,24 +693,25 @@
           <input 
             type="file" 
             v-show="false" 
-            ref="fileInput" 
+            ref="fileInput"
+            id="current_lease"
             @change="onFilePicked"
           />
         </v-flex>  
       
         <v-flex class="pt-20" xs12 md12>
           <p>Does the owner hold a liquor license at another premise?</p>
-          <v-radio-group v-model="liquorLicense_anotherPremise" row>
+          <v-radio-group v-model="liquor_license_another_premise" row>
             <v-radio label="Yes" value="Yes"></v-radio>
             <v-radio label="No" value="No"></v-radio>
           </v-radio-group>          
         </v-flex>                                          
       </v-layout> 
 
-      <v-layout row wrap class="mr-5 ml-5 mt-10" v-if="liquorLicense_anotherPremise == 'Yes'">
+      <v-layout row wrap class="mr-5 ml-5 mt-10" v-if="liquor_license_another_premise == 'Yes'">
         <v-flex xs12 md6 >
           <v-text-field
-            v-model="otherEstablishment.name"
+            v-model="other_establishment_name"
             label="Name of other establishment"
             class="input-width"
           ></v-text-field>
@@ -647,7 +719,7 @@
 
         <v-flex xs12 md6 >
           <v-text-field
-            v-model="otherEstablishment.address"
+            v-model="other_establishment_address"
             label="Address of other establishment"
             class="input-width"
           ></v-text-field>
@@ -775,66 +847,48 @@
   export default {
     data () {
       return {
-        business:{
-          name: '',
-          address: '',
-          phone: '',
-          email: '',
-          classification: ''
-        },
-        contact: {
-          person: '',
-          title: '',
-          email: ''
-        },
-        corporate: {
-          name: '',
-          address: ''
-        },
-        storeManager: {
-          name: '',
-          email: '',
-          address: '',
-          phone: ''
-        },
-        president: {
-          name: '',
-          email: '',
-          address: '',
-          phone: ''
-        }, 
-        vicePresident: {
-          name: '',
-          email: '',
-          address: '',
-          phone: ''
-        },    
-        secretary: {
-          name: '',
-          email: '',
-          address: '',
-          phone: ''
-        },  
-        treasurer: {
-          name: '',
-          email: '',
-          address: '',
-          phone: ''
-        }, 
-        otherCorporate: {
-          name: '',
-          address: ''
-        },   
-        birth: {
-          country: '',
-          date: ''
-        },  
-        isNaturalized: "No",
+        business_name: '',
+        business_address: '',
+        business_phone: '',
+        business_email: '',
+        business_classification: '',
+        born_outside_us: false,
+        born_us_parents: '',
+        date_of_birth: new Date().toISOString().substr(0, 10),
+        birth_country: '',   
+        naturalized: "No",      
         naturalized: {
           city: '',
           state: '',
           date: ''
-        },
+        },                
+        contact_person: '',
+        contact_title: '',
+        contact_email: '',
+        corporate_name: '',
+        corporate_address: '',
+        store_manager_name: '',
+        store_manager_email: '',
+        store_manager_address: '',
+        store_manager_phone: '',
+        president_name: '',
+        president_email: '',
+        president_address: '',
+        president_phone: '', 
+        vice_president_name: '',
+        vice_president_email: '',
+        vice_president_address: '',
+        vice_president_phone: '',    
+        secretary_name: '',
+        secretary_email: '',
+        secretary_address: '',
+        secretary_phone: '',  
+        treasurer_name: '',
+        treasurer_email: '',
+        treasurer_address: '',
+        treasurer_phone: '', 
+        other_corporate_name: '',
+        other_corporate_address: '',   
         state_of_organization: '',
         llc_manager: {
           name: '',
@@ -847,9 +901,8 @@
           phone: '',
           address: ''
         },        
-        state_of_incorporation: '',
-        had_business: '',
-        born_us_parents: '',                   
+        date_qualified_transact_business: new Date().toISOString().substr(0, 10),
+        had_business_other_corporation: '',                   
         classifications: ['Corporation', 'Limited Liability Company', 'General Partnership', 'Limited Partnership', 'Sole Proprietorship'],
         bornOutsideUSoptions: ['Yes', 'No'],
         isEditing: false,
@@ -859,24 +912,17 @@
         hideLLC: true,
         hidePartnership: true,
         hideBusinessNotIncorporated: true,
-        bornOutsideUS: false,
         establishmentSection: false,
-        establishment_owner: {
-          name: '',
-          address: '',
-          phone: ''
-        },
-        lessor: {
-          name: '',
-          address: '',
-          phone: ''
-        },        
+        establishment_owner_name: '',
+        establishment_owner_address: '',
+        establishment_owner_phone: '',
+        lessor_name: '',
+        lessor_address: '',
+        lessor_phone: '',        
         owner_lease_premises: '',
-        liquorLicense_anotherPremise : '',
-        otherEstablishment: {
-          name: '',
-          address: ''
-        },
+        liquor_license_another_premise : '',
+        other_establishment_name: '',
+        other_establishment_address: '',
         action_pending_against_owner: '',
         owner_been_issued_wagering_stamp: '',
         previous_liquor_license_been_revoked: '',
@@ -905,7 +951,11 @@
           'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee',
           'Texas', 'Utah', 'Vermont', 'Virgin Island', 'Virginia',
           'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
-        ]
+        ],
+        date: new Date().toISOString().substr(0, 10),
+        menu: false,
+        modal: false,
+        menu2: false
       }
     },
     methods: {
@@ -921,7 +971,7 @@
         this.owners.push({ id: this.owners.length + 1, name: '', percentage: '', email: '', address: '' })
       },
 
-      activeClassification(type) {
+      selectClassification(type) {
         if(type == 'Corporation') {
           this.hideCorporation = false
           this.hideLLC = true
@@ -948,11 +998,11 @@
 
       checkBornOutsideUS(type) {
         if(type == 'Yes') {
-          this.bornOutsideUS = true   
+          this.born_outside_us = true   
           
         } 
         else {
-          this.bornOutsideUS = false 
+          this.born_outside_us = false 
           this.born_us_parents = false
         }     
       },

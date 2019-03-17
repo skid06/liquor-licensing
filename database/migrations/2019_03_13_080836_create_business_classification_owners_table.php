@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateShareholderCorporationsTable extends Migration
+class CreateBusinessClassificationOwnersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreateShareholderCorporationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('corporation_shareholders', function (Blueprint $table) {
+        Schema::create('business_classification_owners', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('corporation_id')->unsigned()->index();
             $table->string('name');
+            $table->string('email');
             $table->string('percentage_owned');
-            $table->string('address');
+            $table->string('address'); 
+            $table->integer('ownerable_id')->unsigned()->index();
+            $table->string('ownerable_type');                       
             $table->timestamps();
         });
     }
@@ -30,6 +32,6 @@ class CreateShareholderCorporationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('corporation_shareholders');
+        Schema::dropIfExists('business_classification_owners');
     }
 }

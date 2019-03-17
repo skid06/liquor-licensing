@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <!-- <div> -->
     <v-navigation-drawer
       v-model="primaryDrawer.model"
       :permanent="primaryDrawer.type === 'permanent'"
@@ -10,12 +10,26 @@
       absolute
       overflow
       app
-    ></v-navigation-drawer>    
-  </div>
+      style="background:"
+    >
+    </v-navigation-drawer>  
+  <!-- </div> -->
 </template>
 
 <script>
 export default {
-  name: 'NavigationDrawer' 
+  // name: 'NavigationDrawer',
+  data(){
+    return {
+      drawers: ['Default (no property)', 'Permanent', 'Temporary'],
+      primaryDrawer: {
+        model: null,
+        type: 'temporary',
+        clipped: true,
+        floating: false,
+        mini: false
+      },      
+    }
+  }
 }
 </script>
