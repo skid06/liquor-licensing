@@ -125,12 +125,6 @@
             justify-space-around
             wrap
           >
-            <v-avatar 
-              color="indigo" 
-              size="40">
-                <v-icon dark>account_circle</v-icon>
-            </v-avatar>
-
             <v-badge overlap>
               <template v-slot:badge>
                 <span>3</span>
@@ -144,12 +138,17 @@
               </v-avatar>
             </v-badge>
 
-            <v-avatar size="40">
+            <v-avatar 
+              color="indigo" 
+              size="40">
+                <v-icon dark>account_circle</v-icon>
+            </v-avatar>
+            <!-- <v-avatar size="40">
               <img
                 src="https://cdn.vuetifyjs.com/images/john.jpg"
                 alt="John"
               >
-            </v-avatar>            
+            </v-avatar>             -->
           </v-layout>            
         </v-toolbar>
         <v-content>
