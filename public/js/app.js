@@ -19135,7 +19135,7 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(21);
-module.exports = __webpack_require__(139);
+module.exports = __webpack_require__(142);
 
 
 /***/ }),
@@ -19200,7 +19200,7 @@ Vue.component('NavigationDrawer', __webpack_require__(125));
 Vue.component('Toolbar', __webpack_require__(128));
 Vue.component('Footer', __webpack_require__(131));
 Vue.component('vue-liquor-application', __webpack_require__(134));
-Vue.component('dashboard', __webpack_require__(141));
+Vue.component('dashboard', __webpack_require__(139));
 
 Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]);
 Vue.use(__WEBPACK_IMPORTED_MODULE_3_vuex__["a" /* default */]);
@@ -114483,21 +114483,14 @@ if (false) {
 
 /***/ }),
 /* 139 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 140 */,
-/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(142)
+var __vue_script__ = __webpack_require__(140)
 /* template */
-var __vue_template__ = __webpack_require__(143)
+var __vue_template__ = __webpack_require__(141)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -114536,7 +114529,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 142 */
+/* 140 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -114842,7 +114835,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 143 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -115371,6 +115364,12 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-af0944b4", module.exports)
   }
 }
+
+/***/ }),
+/* 142 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
