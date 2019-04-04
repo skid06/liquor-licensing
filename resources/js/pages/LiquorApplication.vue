@@ -6,60 +6,88 @@
       <v-layout row wrap class="mr-5 ml-5">
         <v-flex xs12 md12 >
           <v-text-field
+            v-model="app_id"
+            v-show="false"
+          ></v-text-field>
+          <v-text-field
             v-model="business_name"
+            v-validate="'required|min:3'"
+            :counter="10"
+            data-vv-name="business_name"
+            :error-messages="errors.collect('business_name')"
             label="Business Name"
             class="input-width"
+            outline
+            outline
           ></v-text-field>
         </v-flex>
 
         <v-flex xs12 md12 >
           <v-text-field
             v-model="business_address"
+            v-validate="'required|min:3'"
+            :counter="10"
+            data-vv-name="business_address"
+            :error-messages="errors.collect('business_address')"            
             label="Business Address"
             class="input-width"
+            outline
           ></v-text-field>
         </v-flex>
 
         <v-flex xs12 md6 >
           <v-text-field
             v-model="business_phone"
+            v-validate="'required|min:7'"
+            :counter="10"
+            data-vv-name="business_phone"
+            :error-messages="errors.collect('business_phone')"             
             label="Business Phone"
             class="input-width"
+            outline
           ></v-text-field>
         </v-flex>
 
         <v-flex xs12 md6 >
           <v-text-field
             v-model="business_email"
+            v-validate="'required|email'"
+            :counter="10"
+            data-vv-name="business_address"
+            :error-messages="errors.collect('business_address')"             
             label="Busines Email"
             class="input-width"
+            outline
           ></v-text-field>
         </v-flex>         
 
         <v-flex xs12 md4 >
           <v-text-field
-            v-model="contact_person"
+            v-model="business_contact_person"
             label="Contact Person"
             required
             class="input-width"
+            outline
           ></v-text-field>
         </v-flex>
 
         <v-flex xs12 md4 >
           <v-text-field
-            v-model="contact_title"
+            v-model="business_contact_title"
             label="Title"
             required
             class="input-width"
+            outline
           ></v-text-field>
         </v-flex>
 
         <v-flex xs12 md4 >
           <v-text-field
-            v-model="contact_email"
+            v-model="business_contact_phone"
             label="Phone"
             required
             class="input-width"
+            outline
           ></v-text-field>
         </v-flex>    
 
@@ -68,8 +96,12 @@
             :items="classifications"
             label="Business Classification"
             v-model="business_classification" 
+            v-validate="'required'"
+            :error-messages="errors.collect('business_classification')"
+            data-vv-name="business_classification"
             id="inputBusinessClassification" 
             @change="selectClassification"
+            outline
           ></v-select>
         </v-flex> 
       </v-layout>       
@@ -81,6 +113,7 @@
             v-model="corporate_name"
             label="Corporate Name"
             class="input-width"
+            outline
           ></v-text-field>
         </v-flex>
 
@@ -89,6 +122,7 @@
             v-model="corporate_address"
             label="Corporate Address"
             class="input-width"
+            outline
           ></v-text-field>
         </v-flex> 
 
@@ -97,6 +131,7 @@
             v-model="store_manager_name"
             label="Store Manager"
             class="input-width"
+            outline
           ></v-text-field>
         </v-flex>
 
@@ -105,6 +140,7 @@
             v-model="store_manager_email"
             label="Email"
             class="input-width"
+            outline
           ></v-text-field>
         </v-flex>
 
@@ -113,6 +149,7 @@
             v-model="store_manager_phone"
             label="Phone"
             class="input-width"
+            outline
             ></v-text-field>
         </v-flex>
 
@@ -121,6 +158,7 @@
             v-model="store_manager_address"
             label="Address"
             class="input-width"
+            outline
           ></v-text-field>
         </v-flex>       
 
@@ -131,6 +169,7 @@
             v-model="president_name"
             label="President"
             class="input-width"
+            outline
           ></v-text-field>
         </v-flex>
 
@@ -139,6 +178,7 @@
             v-model="president_email"
             label="Email"
             class="input-width"
+            outline
           ></v-text-field>
         </v-flex>
 
@@ -147,6 +187,7 @@
             v-model="president_phone"
             label="Phone"
             class="input-width"
+            outline
             ></v-text-field>
         </v-flex>
 
@@ -155,6 +196,7 @@
             v-model="president_address"
             label="Address"
             class="input-width"
+            outline
           ></v-text-field>
         </v-flex>  
 
@@ -163,6 +205,7 @@
             v-model="vice_president_name"
             label="Vice President"
             class="input-width"
+            outline
           ></v-text-field>
         </v-flex>
 
@@ -171,6 +214,7 @@
             v-model="vice_president_email"
             label="Vice President Email"
             class="input-width"
+            outline
           ></v-text-field>
         </v-flex>
 
@@ -179,6 +223,7 @@
             v-model="vice_president_phone"
             label="Vice President Phone"
             class="input-width"
+            outline
             ></v-text-field>
         </v-flex>
 
@@ -187,6 +232,7 @@
             v-model="vice_president_address"
             label="Vice President Address"
             class="input-width"
+            outline
           ></v-text-field>  
         </v-flex>  
 
@@ -195,6 +241,7 @@
             v-model="secretary_name"
             label="Secretary"
             class="input-width"
+            outline
           ></v-text-field>
         </v-flex>
 
@@ -203,6 +250,7 @@
             v-model="secretary_email"
             label="Secretary Email"
             class="input-width"
+            outline
           ></v-text-field>
         </v-flex>
 
@@ -211,6 +259,7 @@
             v-model="secretary_phone"
             label="Secretary Phone"
             class="input-width"
+            outline
             ></v-text-field>
         </v-flex>
 
@@ -219,6 +268,7 @@
             v-model="secretary_address"
             label="Secretary Address"
             class="input-width"
+            outline
           ></v-text-field>                  
         </v-flex>  
 
@@ -227,6 +277,7 @@
             v-model="treasurer_name"
             label="Treasurer"
             class="input-width"
+            outline
           ></v-text-field>
         </v-flex>
 
@@ -235,6 +286,7 @@
             v-model="treasurer_email"
             label="Treasurer Email"
             class="input-width"
+            outline
           ></v-text-field>
         </v-flex>
 
@@ -243,6 +295,7 @@
             v-model="treasurer_phone"
             label="Treasurer Phone"
             class="input-width"
+            outline
             ></v-text-field>
         </v-flex>
 
@@ -251,6 +304,7 @@
             v-model="treasurer_address"
             label="Treasurer Address"
             class="input-width"
+            outline
           ></v-text-field>            
         </v-flex>                                    
       </v-layout>  
@@ -261,6 +315,7 @@
             v-model="shareholder.name"
             label="Shareholder"
             class="input-width"
+            outline
           ></v-text-field>
         </v-flex>
 
@@ -269,6 +324,7 @@
             v-model="shareholder.percentage_owned"
             label="Shareholder Percentage Owned"
             class="input-width"
+            outline
           ></v-text-field>
         </v-flex>
 
@@ -277,13 +333,15 @@
             v-model="shareholder.address"
             label="Shareholder Address"
             class="input-width"
+            outline
           ></v-text-field>            
         </v-flex>       
       </v-layout>   
       <v-btn
         @click="addShareHolder" 
         v-if="!hideCorporation"
-      >Add Shareholder</v-btn>  
+        class="success"
+      ><v-icon dark>add</v-icon>Shareholder</v-btn>  
 
       <v-layout row wrap class="mr-5 ml-5 mt-10" v-if="!hideCorporation">
         <v-container fluid>  
@@ -299,6 +357,7 @@
             v-model="other_corporate_name"
             label="Other Corporate Name"
             class="input-width"
+            outline
           ></v-text-field>
         </v-flex>
 
@@ -307,6 +366,7 @@
             v-model="other_corporate_address"
             label="Other Corporate Address"
             class="input-width"
+            outline
           ></v-text-field>
         </v-flex>  
 
@@ -315,6 +375,7 @@
             v-model="date_qualified_transact_business"
             label="If state of incorporation is NOT Illinois, when was the corporation become qualified to transact business in Illinois?"
             class="input-width"
+            outline
           ></v-text-field> -->
           <v-dialog
             ref="dialog"
@@ -331,6 +392,7 @@
                 label="If state of incorporation is NOT Illinois, when was the corporation become qualified to transact business in Illinois?"
                 prepend-icon="event"
                 class="input-width"
+                outline
                 readonly
                 v-on="on"
               ></v-text-field>
@@ -351,62 +413,70 @@
             v-model="state_of_organization"
             label="State of Organization"
             class="input-width"
+            outline
           ></v-text-field>
         </v-flex>
 
         <v-flex xs12 md12 >
           <v-text-field
-            v-model="llc_manager.name"
+            v-model="llc_manager_name"
             label="LLC Manager"
             class="input-width"
+            outline
           ></v-text-field>
         </v-flex> 
 
         <v-flex xs12 md6 >
           <v-text-field
-            v-model="llc_manager.email"
+            v-model="llc_manager_email"
             label="LLC Manager' Email"
             class="input-width"
+            outline
           ></v-text-field>
         </v-flex> 
 
         <v-flex xs12 md6 >
           <v-text-field
-            v-model="llc_manager.phone"
+            v-model="llc_manager_phone"
             label="LLC Manager's Phone"
             class="input-width"
+            outline
           ></v-text-field>
         </v-flex> 
 
         <v-flex xs12 md6 >
           <v-text-field
-            v-model="store_manager.name"
+            v-model="store_manager_name"
             label="Store Manager"
             class="input-width"
+            outline
           ></v-text-field>
         </v-flex> 
 
         <v-flex xs12 md6 >
           <v-text-field
-            v-model="store_manager.email"
+            v-model="store_manager_email"
             label="Store Manager's Email"
             class="input-width"
+            outline
           ></v-text-field>
         </v-flex>
 
         <v-flex xs12 md6 >
           <v-text-field
-            v-model="store_manager.phone"
+            v-model="store_manager_phone"
             label="Store Manager's Phone"
             class="input-width"
+            outline
           ></v-text-field>
         </v-flex> 
 
         <v-flex xs12 md6 >
           <v-text-field
-            v-model="store_manager.address"
+            v-model="store_manager_address"
             label="Store Manager's Address"
             class="input-width"
+            outline
           ></v-text-field>          
         </v-flex>                                
       </v-layout>
@@ -417,6 +487,7 @@
             v-model="member.name"
             label="Member"
             class="input-width"
+            outline
           ></v-text-field>
         </v-flex> 
 
@@ -425,6 +496,7 @@
             v-model="member.email"
             label="Member's Email"
             class="input-width"
+            outline
           ></v-text-field>
         </v-flex>
 
@@ -433,6 +505,7 @@
             v-model="member.phone"
             label="Member's Phone"
             class="input-width"
+            outline
           ></v-text-field>
         </v-flex> 
 
@@ -441,6 +514,7 @@
             v-model="member.address"
             label="Member's Address"
             class="input-width"
+            outline
           ></v-text-field>          
         </v-flex>                                
       </v-layout>   
@@ -448,7 +522,8 @@
       <v-btn
         @click="addMember" 
         v-if="!hideLLC"
-      >Add Member</v-btn>         
+        class="success"
+      ><v-icon dark>add</v-icon>Member</v-btn>         
 
       <v-container v-if="!hidePartnership" class="pa-0 mr-5 ml-5">
         <v-subheader class="pa-0"><h3>{{ business_classification }}</h3></v-subheader>
@@ -460,6 +535,7 @@
             v-model="owner.name"
             label="Owner"
             class="input-width"
+            outline
           ></v-text-field>
         </v-flex> 
 
@@ -468,6 +544,7 @@
             v-model="owner.percentage"
             label="Owner's Percentage"
             class="input-width"
+            outline
           ></v-text-field>
         </v-flex> 
 
@@ -476,6 +553,7 @@
             v-model="owners.email"
             label="Owner's Email"
             class="input-width"
+            outline
           ></v-text-field>
         </v-flex>
 
@@ -484,6 +562,7 @@
             v-model="owner.address"
             label="Owner's Address"
             class="input-width"
+            outline
           ></v-text-field>          
         </v-flex>
       </v-layout>   
@@ -491,7 +570,8 @@
       <v-btn
         @click="addOwner" 
         v-if="!hidePartnership"
-      >Add Ownership</v-btn>             
+        class="success"
+      ><v-icon dark>add</v-icon> Ownership</v-btn>             
 
       <v-layout row wrap class="mr-5 ml-5 mt-10" v-if="!hideBusinessNotIncorporated">
         <v-flex xs12 md12>
@@ -521,6 +601,7 @@
             v-model="birth_country"
             label="Birth Country"
             class="input-width"
+            outline
           ></v-text-field>
         </v-flex>
 
@@ -540,6 +621,7 @@
                 label="Date of Birth"
                 prepend-icon="event"
                 class="input-width"
+                outline
                 readonly
                 v-on="on"
               ></v-text-field>
@@ -554,6 +636,7 @@
             v-model="date_of_birth"
             label="Date of Birth"
             class="input-width"
+            outline
           ></v-text-field> -->
         </v-flex> 
       </v-layout>  
@@ -574,6 +657,7 @@
             v-model="naturalized_city"
             label="City"
             class="input-width"
+            outline
           ></v-text-field>
         </v-flex>
 
@@ -582,6 +666,7 @@
             v-model="naturalized_state"
             label="State"
             class="input-width"
+            outline
           ></v-text-field>
         </v-flex>         
 
@@ -601,6 +686,7 @@
                 label="Date"
                 prepend-icon="event"
                 class="input-width"
+                outline
                 readonly
                 v-on="on"
               ></v-text-field>
@@ -628,6 +714,7 @@
             v-model="establishment_owner_name"
             label="Owner's Name"
             class="input-width"
+            outline
           ></v-text-field>
         </v-flex>
 
@@ -636,6 +723,7 @@
             v-model="establishment_owner_address"
             label="Owner's Address"
             class="input-width"
+            outline
           ></v-text-field>
         </v-flex>         
 
@@ -644,6 +732,7 @@
             v-model="establishment_owner_phone"
             label="Owner's Phone"
             class="input-width"
+            outline
           ></v-text-field>
         </v-flex>        
       </v-layout> 
@@ -654,6 +743,7 @@
             v-model="lessor_name"
             label="Lessor's Name"
             class="input-width"
+            outline
           ></v-text-field>
         </v-flex>
 
@@ -662,6 +752,7 @@
             v-model="lessor_address"
             label="Lessor's Address"
             class="input-width"
+            outline
           ></v-text-field>
         </v-flex>         
 
@@ -670,6 +761,7 @@
             v-model="lessor_phone"
             label="Lessor's Phone"
             class="input-width"
+            outline
           ></v-text-field>
         </v-flex>       
 
@@ -678,6 +770,7 @@
             v-model="lessor_end_date"
             label="Lease End Date"
             class="input-width"
+            outline
           ></v-text-field>
         </v-flex>  
 
@@ -714,6 +807,7 @@
             v-model="other_establishment_name"
             label="Name of other establishment"
             class="input-width"
+            outline
           ></v-text-field>
         </v-flex>
 
@@ -722,6 +816,7 @@
             v-model="other_establishment_address"
             label="Address of other establishment"
             class="input-width"
+            outline
           ></v-text-field>
         </v-flex> 
       </v-layout>  
@@ -836,17 +931,26 @@
               label="Class CTR - Catering business to provide and serve alcoholic liquor: $1,000.00" 
               value="Class CTR"
             ></v-radio>                                            
-          </v-radio-group>                                                                            
+          </v-radio-group>                                                                                      
         </v-flex>                         
-      </v-layout>                                                
+      </v-layout>          
+      <v-btn
+        @click="saveApplication"
+        class="primary"
+      >Save</v-btn>                                             
     </v-card-text>
   </v-card>
 </template>
 
 <script>
   export default {
+    $_veeValidate: {
+      validator: 'new'
+    },
+
     data () {
       return {
+        app_id: '',
         business_name: '',
         business_address: '',
         business_phone: '',
@@ -857,14 +961,12 @@
         date_of_birth: new Date().toISOString().substr(0, 10),
         birth_country: '',   
         naturalized: "No",      
-        naturalized: {
-          city: '',
-          state: '',
-          date: ''
-        },                
-        contact_person: '',
-        contact_title: '',
-        contact_email: '',
+        naturalized_city: '',
+        naturalized_state: '',
+        naturalized_date: '',              
+        business_contact_person: '',
+        business_contact_title: '',
+        business_contact_phone: '',
         corporate_name: '',
         corporate_address: '',
         store_manager_name: '',
@@ -890,19 +992,11 @@
         other_corporate_name: '',
         other_corporate_address: '',   
         state_of_organization: '',
-        llc_manager: {
-          name: '',
-          email: '',
-          phone: ''
-        },
-        store_manager: {
-          name: '',
-          email: '',
-          phone: '',
-          address: ''
-        },        
+        llc_manager_name: '',
+        llc_manager_email: '',
+        llc_manager_phone: '',        
         date_qualified_transact_business: new Date().toISOString().substr(0, 10),
-        had_business_other_corporation: '',                   
+        had_business_other_corporation: '',            
         classifications: ['Corporation', 'Limited Liability Company', 'General Partnership', 'Limited Partnership', 'Sole Proprietorship'],
         bornOutsideUSoptions: ['Yes', 'No'],
         isEditing: false,
@@ -918,7 +1012,8 @@
         establishment_owner_phone: '',
         lessor_name: '',
         lessor_address: '',
-        lessor_phone: '',        
+        lessor_phone: '',   
+        lessor_end_date: '',     
         owner_lease_premises: '',
         liquor_license_another_premise : '',
         other_establishment_name: '',
@@ -959,6 +1054,83 @@
       }
     },
     methods: {
+      saveApplication() {
+        this.$validator.validateAll()
+          .then(result => {
+            if(result){
+              axios
+                .post('/api/user/applications', {
+                  business_name: this.business_name,
+                  business_address: this.business_address,
+                  business_phone: this.business_phone,
+                  business_email: this.business_email,
+                  business_classification: this.business_classification,
+                  born_outside_us: this.born_outside_us,
+                  born_us_parents: this.born_us_parents,
+                  date_of_birth: this.date_of_birth,
+                  birth_country: this.birth_country,   
+                  naturalized: this.naturalized,      
+                  naturalized_city: this.naturalized_city,
+                  naturalized_state: this.naturalized_state,
+                  naturalized_date: this.naturalized_date,              
+                  business_contact_person: this.business_contact_person,
+                  business_contact_title: this.business_contact_title,
+                  business_contact_phone: this.business_contact_phone,
+                  corporate_name: this.corporate_name,
+                  corporate_address: this.corporate_address,
+                  store_manager_name: this.store_manager_name,
+                  store_manager_email: this.store_manager_email,
+                  store_manager_address: this.store_manager_address,
+                  store_manager_phone: this.store_manager_phone,
+                  president_name: this.president_name,
+                  president_email: this.president_email,
+                  president_address: this.president_address,
+                  president_phone: this.president_phone,
+                  vice_president_name: this.vice_president_name,
+                  vice_president_email: this.vice_president_email,
+                  vice_president_address: this.vice_president_address,
+                  vice_president_phone: this.vice_president_phone,
+                  secretary_name: this.secretary_name,
+                  secretary_email: this.secretary_email,
+                  secretary_address: this.secretary_address,
+                  secretary_phone: this.secretary_phone,
+                  treasurer_name: this.treasurer_name,
+                  treasurer_email: this.treasurer_address,
+                  treasurer_address: this.treasurer_address,
+                  treasurer_phone: this.treasurer_phone,
+                  other_corporate_name: this.other_corporate_name,
+                  other_corporate_address: this.other_corporate_address,
+                  state_of_organization: this.state_of_organization,
+                  llc_manager_name: this.llc_manager_name,
+                  llc_manager_email: this.llc_manager_email,
+                  llc_manager_phone: this.llc_manager_phone,
+                  date_qualified_transact_business: this.date_qualified_transact_business,
+                  had_business_other_corporation: this.had_business_other_corporation,
+                  establishment_owner_name: this.establishment_owner_name,
+                  establishment_owner_address: this.establishment_owner_address,
+                  establishment_owner_phone: this.establishment_owner_phone,
+                  lessor_name: this.lessor_name,
+                  lessor_address: this.lessor_address,
+                  lessor_phone: this.lessor_phone,
+                  owner_lease_premises: this.owner_lease_premises,
+                  liquor_license_another_premise : this.liquor_license_another_premise,
+                  other_establishment_name: this.other_establishment_name,
+                  other_establishment_address: this.other_establishment_address,
+                  action_pending_against_owner: this.action_pending_against_owner,
+                  owner_been_issued_wagering_stamp: this.owner_been_issued_wagering_stamp,
+                  previous_liquor_license_been_revoked: this.previous_liquor_license_been_revoked,
+                })
+                .then(response => {
+                  console.log(response)
+                })
+                .catch()
+                return
+            }
+            // else {
+            //   alert('Correct them errors!');
+            // }
+          })
+      },
       addMember() {
         this.members.push({ id: this.members.length + 1, name: '', email: '', phone: '', address: '' })
       },
@@ -1031,5 +1203,7 @@
 .input-width{
  width: 95%;
 }
-
+.v-btn{
+  margin-left: 50px;
+}
 </style>

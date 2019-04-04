@@ -3,7 +3,7 @@ namespace App\Http\Repositories\Interfaces;
 
 interface ApplicationInterface
 {
-   public function store(array $attributes);
+   public function store($attributes);
 
    public function show($id);
 

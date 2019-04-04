@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class LiquorApplication extends Model
 {
+    protected $table = 'liquor_applications';
+
     protected $fillable = [
         'business_name', 'business_address', 'business_phone',
         'business_email', 'business_contact_person', 'business_classification', 
@@ -17,7 +19,7 @@ class LiquorApplication extends Model
         'lessor_phone', 'lessor_end_date', 'current_lease',
         'liquor_license_another_premise', 'other_establishment_name', 'other_establishment_address',
         'action_pending_against_owner', 'owner_been_issued_wagering_stamp', 'previous_liquor_license_been_revoked',
-        'businessClassifiable_id', 'businessClassifiable_type'
+        'user_id', 'businessClassifiable_id', 'businessClassifiable_type'
     ];
 
     public function user()

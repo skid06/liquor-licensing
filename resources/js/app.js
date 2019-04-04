@@ -10,8 +10,6 @@ require('./bootstrap');
 window.Vue = require('vue');
 Vue.use(require('vue-moment'));
 
-
-
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -44,6 +42,8 @@ import VueRouter from 'vue-router';
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import Vuex from 'vuex';
+import VeeValidate from 'vee-validate';
+
 // import {routes} from './routes';
 // import MainContainer from './layout/MainContainer'
 
@@ -57,6 +57,7 @@ Vue.use(VueRouter);
 Vue.use(Vuex);
 Vue.use(Vuetify);
 Vue.use(require('vue-moment'));
+Vue.use(VeeValidate, { inject: false });
 
 Vue.mixin({
 	data: () => ({
@@ -84,8 +85,8 @@ Vue.mixin({
 			['Delete', 'delete']
 		],
 		auth: null,		
-		loading: false,
-		items: [],
+		// loading: false,
+		// items: [],
 		search: null,
 		select: null,
 		states: [

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Repositories\Interfaces\ApplicationInterface;
+use App\Http\Repositories\LiquorApplicationRepository;
 
 class LiquorApplicationController extends Controller
 {
@@ -12,7 +13,7 @@ class LiquorApplicationController extends Controller
      * Constructor
      * @param ApplicationInterface $application
      */
-    public function __construct(ApplicationInterface $application)
+    public function __construct(LiquorApplicationRepository $application)
     {
         $this->repo = $application;
     }
