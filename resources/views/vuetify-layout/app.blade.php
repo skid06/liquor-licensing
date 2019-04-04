@@ -105,8 +105,6 @@
           <v-toolbar-items class="hidden-sm-and-down">
           <v-autocomplete
             v-model="select"
-            :loading="loading"
-            :items="items"
             :search-input.sync="search"
             cache-items
             class="mt-2 ml-5"

@@ -58,7 +58,8 @@ Route::prefix('/api/user/applications')->group(function() {
     // Used by /my-applications and different status
     Route::get('/{status}/{get}', 'LiquorApplicationController@authUserApplications');   
 
-    Route::post('/', 'UserLiquorLicenseController@store');
+    // Route::post('/', 'UserLiquorLicenseController@store');
+    Route::post('/', 'LiquorApplicationController@store');
     Route::get('/processed', 'UserLiquorLicenseController@index');
     Route::get('/{id}', 'UserLiquorLicenseController@edit');
     Route::post('/{id}/processed', 'UserLiquorLicenseController@processApplication');    

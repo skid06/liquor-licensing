@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
-        $this->app->singleton(ApplicationInterface::class, LiquorRepository::class);
+        // $this->app->singleton(ApplicationInterface::class, LiquorRepository::class);
+        $this->app->singleton(ApplicationInterface::class, LiquorApplicationRepository::class);
     }
 }

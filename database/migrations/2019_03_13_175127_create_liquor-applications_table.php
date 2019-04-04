@@ -13,7 +13,7 @@ class CreateLiquorApplicationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('liquor-applications', function (Blueprint $table) {
+        Schema::create('liquor_applications', function (Blueprint $table) {
             $table->increments('id');
             $table->string('business_name');
             $table->string('business_address');
