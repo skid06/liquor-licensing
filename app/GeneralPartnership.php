@@ -13,7 +13,7 @@ class GeneralPartnership extends Model
 
     public function liquorApplication() 
     {
-        return $this->morphOne(LiquorApplication::class, 'businessClassifiable');
+        return $this->morphOne(LiquorApplication::class, 'classifiable');
     }    
 
     public function owners()

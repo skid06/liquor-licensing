@@ -11,6 +11,41 @@
         <!-- <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css"> -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css">
+        <style>
+        .invoice{
+            border:1px solid rgba(0, 0, 0, 0.125);
+            background: white;
+        }
+        .spacer {
+            margin-bottom: 24px;
+        }
+        /**
+            * The CSS shown here will not be introduced in the Quickstart guide, but shows
+            * how you can use CSS to style your Element's container.
+            */
+        .StripeElement {
+            background-color: white;
+            padding: 10px 12px;
+            border-radius: 4px;
+            border: 1px solid #ccd0d2;
+            box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+            -webkit-transition: box-shadow 150ms ease;
+            transition: box-shadow 150ms ease;
+        }
+        .StripeElement--focus {
+            box-shadow: 0 1px 3px 0 #cfd7df;
+        }
+        .StripeElement--invalid {
+            border-color: #fa755a;
+        }
+        .StripeElement--webkit-autofill {
+            background-color: #fefde5 !important;
+        }
+        #card-errors {
+            color: #fa755a;
+        }        
+      </style>
+      <script src="https://js.stripe.com/v3/"></script>        
     </head>
     <body> 
       <div id="app">
@@ -55,13 +90,13 @@
                 </template>
 
                 <v-list-tile
-                  v-for="(application, i) in applications"
+                  v-for="(application, i) in applicationLinks"
                   :key="i"
-                  @click=""
+                  @click="goTo(application.link)"
                 >
-                  <v-list-tile-title v-text="application[0]"></v-list-tile-title>
+                  <v-list-tile-title v-text="application.text"></v-list-tile-title>
                   <v-list-tile-action>
-                    <v-icon v-text="application[1]"></v-icon>
+                    <v-icon v-text="application.icon"></v-icon>
                   </v-list-tile-action>
                 </v-list-tile>
               </v-list-group>
@@ -151,8 +186,8 @@
         </v-toolbar>
         <v-content>
           <v-container>
-            
-              @yield('content')
+
+            @yield('content')
             
           </v-container>
         </v-content>

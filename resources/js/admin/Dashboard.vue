@@ -68,11 +68,11 @@
       <div>
         <v-toolbar flat color="white">
           <v-toolbar-title> {{ header.title }} </v-toolbar-title>
-          <v-divider
+          <!-- <v-divider
             class="mx-2"
             inset
             vertical
-          ></v-divider>
+          ></v-divider> -->
           <v-spacer></v-spacer>
           <v-dialog v-model="dialog" max-width="500px">
             <template v-slot:activator="{ on }">
@@ -115,15 +115,15 @@
         </v-toolbar>
         <v-data-table
           :headers="headers"
-          :items="desserts"
+          :items="filterStatus(`${header.payload}`)"
           class="elevation-1"
         >
           <template v-slot:items="props">
-            <td>{{ props.item.name }}</td>
-            <td class="text-xs-right">{{ props.item.calories }}</td>
-            <td class="text-xs-right">{{ props.item.fat }}</td>
-            <td class="text-xs-right">{{ props.item.carbs }}</td>
-            <td class="text-xs-right">{{ props.item.protein }}</td>
+            <td>{{ props.item.business_name }}</td>
+            <td class="text-xs-left">{{ props.item.business_address }}</td>
+            <td class="text-xs-left">{{ props.item.business_email }}</td>
+            <td class="text-xs-left">{{ props.item.business_contact_person }}</td>
+            <td class="text-xs-left">{{ props.item.business_classification }}</td>
             <td class="justify-center layout px-0">
               <v-icon
                 small
@@ -157,12 +157,13 @@ export default {
     return {
       application: {
         headers: [
-          { title: 'All' },
-          { title: 'Processed'},
-          { title: 'Completed'},
-          { title: 'Expired'},
+          { title: 'All', payload: 'all' },
+          { title: 'Processed', payload: 'processed'},
+          { title: 'Completed', payload: 'completed'},
+          { title: 'Expired', payload: 'expired'},
         ]
       },
+      applications: [],
       items: [
         { text: 'Total Sales', icon: 'show_chart', color: 'primary' },
         { text: 'Processed Applications', icon: 'assignment', color: 'error' },
@@ -182,15 +183,14 @@ export default {
       dialog: false,
       headers: [
         {
-          text: 'Dessert (100g serving)',
+          text: 'Business Name',
           align: 'left',
-          sortable: false,
           value: 'name'
         },
-        { text: 'Calories', value: 'calories' },
-        { text: 'Fat (g)', value: 'fat' },
-        { text: 'Carbs (g)', value: 'carbs' },
-        { text: 'Protein (g)', value: 'protein' },
+        { text: 'Business Address', value: 'address' },
+        { text: 'Business Email', value: 'email' },
+        { text: 'Contact Person', value: 'contact_person' },
+        { text: 'Business Classification', value: 'classification' },
         { text: 'Actions', value: 'name', sortable: false }
       ],
       desserts: [],
@@ -330,7 +330,25 @@ export default {
         this.desserts.push(this.editedItem)
       }
       this.close()
+    },
+    getApplications(){
+      axios
+        .get(`/api/admin/applications`)
+        .then(response => {
+          console.log(response.data)
+          this.applications = response.data.applications
+          // return this.applications.filter(app => app.status == "completed")
+        })
+    },
+    filterStatus(status){
+      if(status == 'all'){
+        return this.applications.filter(app => app.status != 'incomplete')
+      }
+      return this.applications.filter(app => app.status == status)
     }    
+  },
+  mounted() {
+    this.getApplications()
   }
 }
 </script>

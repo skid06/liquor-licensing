@@ -22,7 +22,7 @@ class CreateLiquorApplicationsTable extends Migration
             $table->string('business_contact_person');
             $table->string('business_contact_title');
             $table->string('business_contact_phone');            
-            $table->boolean('born_outside_us');
+            $table->string('born_outside_us', 5);
             $table->string('born_us_parents', 5);
             $table->string('date_of_birth')->nullable();
             $table->string('naturalized', 5);

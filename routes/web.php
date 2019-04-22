@@ -15,24 +15,48 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+/** Start of Vuetifyjs Test */
+Route::get('/user/login', function () {
+    return view('user.login');
+});
+
 Route::get('/vuetify', function () {
     return view('vuetify');
 });
 
-Route::get('/payment-form/{id}', 'ApplicationPaymentController@getPaymentPage');
+Route::get('/payment', function () {
+    return view('payment');
+});
+
+// Route::get('/liquor-application', function () {
+//     return view('user.application-form');
+// });
+/** End of Vuetifyjs Test */
+
+// Route::get('/payment-form/{id}', 'ApplicationPaymentController@getPaymentPage');
+Route::get('/payment/{id}', 'ApplicationPaymentController@getPaymentPage');
 Route::post('/checkout', 'ApplicationPaymentController@charge');
 Auth::routes(); 
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/liquor-application', function () {
-    return view('vuetify');
+Route::get('/test-login', function () {
+    return view('user.login');
 });
 Route::get('/dashboard', function () {
     return view('dashboard');
 });
 
+Route::get('/user/type', function () {
+    if(\Auth::guard('web')->user())
+        return response()->json(['type' => 'user']);
+    elseif(\Auth::guard('admin')->user())
+        return response()->json(['type' => 'admin']);
+});
+
 Route::get('/my-applications', 'HomeController@my_applications')->name('my.applications');
+Route::get('/liquor-application/{id?}', 'HomeController@index')->name('my.application.form');
+Route::get('/applications/{status}', 'HomeController@get')->name('my.applications.all');
 Route::get('/applications/processed', 'HomeController@processed')->name('my.applications.processed');
 Route::get('/applications/completed', 'HomeController@completed')->name('my.applications.completed');
 Route::get('/applications/incomplete', 'HomeController@incomplete')->name('my.applications.incomplete');
@@ -43,26 +67,29 @@ Route::get('/applications/paid', 'HomeController@paid')->name('my.applications.p
 /**
  * Start - These routes are used as API by user end.
  */
-Route::prefix('/api/user/applications')->group(function() {
+Route::prefix('/user/applications')->group(function() {
 
     /**
      * Start Notes' API
      * Used by /applications/show/{id}/completed in getting and posting application's notes
      */ 
+    Route::post('/store', 'LiquorApplicationController@store');
+    Route::get('/id/{id}', 'LiquorApplicationController@getApplicationById');
     Route::get('/{id}/notes', 'ApplicationNoteController@index');
     Route::post('/{id}/notes', 'ApplicationNoteController@store');    
     /**
      * End Notes' API
      */
 
+    // Route::get('/{type}', 'LiquorApplicationController@index');
     // Used by /my-applications and different status
-    Route::get('/{status}/{get}', 'LiquorApplicationController@authUserApplications');   
+    Route::get('/status/{status}/{search?}', 'LiquorApplicationController@authUserApplications');   
+    
+    // Route::post('/', 'UserLiquorLicenseController@store');authUserApplicationbyId
 
-    // Route::post('/', 'UserLiquorLicenseController@store');
-    Route::post('/', 'LiquorApplicationController@store');
     Route::get('/processed', 'UserLiquorLicenseController@index');
-    Route::get('/{id}', 'UserLiquorLicenseController@edit');
-    Route::post('/{id}/processed', 'UserLiquorLicenseController@processApplication');    
+    
+    Route::post('/{id}/processed', 'LiquorApplicationController@processApplication');    
 });  
 /**
  * End - These routes are used as API by user end.
@@ -97,7 +124,8 @@ Route::prefix('/api/admin/applications')->group(function() {
     // Route::get('/{id}', 'LiquorLicenseController@show')->name('admin-app-id');
 
     // Used by /my-applications and different status
-    Route::get('/{status}/{search?}', 'LiquorApplicationController@getApplications');  
+    // Route::get('/{status}/{search?}', 'LiquorApplicationController@getApplications');  
+    Route::get('/{search?}', 'LiquorApplicationController@getApplications');      
 });  
 /**
  * End - These routes are used as API by admin.

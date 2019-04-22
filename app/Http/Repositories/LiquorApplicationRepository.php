@@ -8,18 +8,14 @@ use App\Corporation;
 use App\Partnership;
 use App\LiquorApplication;
 use App\LimitedLiabilityCompany;
+use App\PartnershipOwners as Owner;
+use App\CorporationShareholder as Shareholder;
+use App\LimitedLiabilityCompanyMember as Member;
 use App\Http\Repositories\Interfaces\ApplicationInterface;
 use App\Http\Repositories\Interfaces\BusinessClassificationInterface;
 
 class LiquorApplicationRepository implements ApplicationInterface
 {
-  private $application;
-  private $business_classification;
-	
-	// public function __construct(LiquorApplication $application)
-	// {
-  //   $this->application = $application;
-	// }
 
 	public function store($attributes)
 	{
@@ -35,6 +31,7 @@ class LiquorApplicationRepository implements ApplicationInterface
 		$application->business_address = $attributes['business_address'];
 		$application->business_phone = $attributes['business_phone'];
 		$application->business_email = $attributes['business_email'];
+		$application->business_classification = $attributes['business_classification'];
 		$application->business_contact_person = $attributes['business_contact_person'];
 		$application->business_contact_title = $attributes['business_contact_title'];
 		$application->business_contact_phone = $attributes['business_contact_phone'];
@@ -42,6 +39,7 @@ class LiquorApplicationRepository implements ApplicationInterface
 		$application->born_us_parents = $attributes['born_us_parents'];
 		$application->date_of_birth = $attributes['date_of_birth'];
 		$application->naturalized = $attributes['naturalized'];
+		$application->birth_country = $attributes['birth_country'];
 		$application->naturalized_city = $attributes['naturalized_city'];
 		$application->naturalized_state = $attributes['naturalized_state'];
 		$application->naturalized_date = $attributes['naturalized_date'];
@@ -53,29 +51,20 @@ class LiquorApplicationRepository implements ApplicationInterface
 		$application->lessor_address = $attributes['lessor_address'];
 		$application->lessor_phone = $attributes['lessor_phone'];
 		$application->lessor_end_date = $attributes['lessor_end_date'];  
-		$application->lessor_end_date = $attributes['lessor_end_date'];
 		$application->liquor_license_another_premise = $attributes['liquor_license_another_premise'];
 		$application->other_establishment_name = $attributes['other_establishment_name'];
 		$application->other_establishment_address = $attributes['other_establishment_address'];
 		$application->action_pending_against_owner = $attributes['action_pending_against_owner'];
 		$application->owner_been_issued_wagering_stamp = $attributes['owner_been_issued_wagering_stamp'];
 		$application->previous_liquor_license_been_revoked = $attributes['previous_liquor_license_been_revoked'];
-		$application->status = 'incomplete';
-
-		// $business_classification = new BusinessClassification;
-		// $business_classification->type = $attributes['businessClassifiable_type'];
-		// $business_classification->save();
-
-		// $application->businessClassifiable_id = $business_classification->id;
-
-    
+		$application->status = $attributes['status'];
     
     if($attributes['business_classification'] == 'Corporation') {
       if(!$attributes['app_id']){
         $corporation = new Corporation;
       }
       else {
-        $corporation = Corporation::findOrFail($application->id);
+        $corporation = Corporation::findOrFail($application->classifiable_id);
 			}
 			$corporation->corporate_name = $attributes['corporate_name'];
       $corporation->corporate_address = $attributes['corporate_address'];
@@ -102,15 +91,32 @@ class LiquorApplicationRepository implements ApplicationInterface
 			
 			$corporation->save();     
 
-			$application->businessClassifiable_id = $corporation->id;
-			$application->businessClassifiable_type = $attributes['business_classification'];
+			$application->classifiable_id = $corporation->id;
+			$application->classifiable_type = 'App\Corporation';
+
+			if(!empty($attributes->input('shareholders'))){
+				foreach($attributes->input('shareholders') as $shareholder){
+					if(isset($shareholder['id'])){
+						$dbShareholder = Shareholder::find($shareholder['id']);
+					}
+					else {
+						$dbShareholder = new Shareholder;
+					}					
+
+					$dbShareholder->name = $shareholder['name'];
+					$dbShareholder->address = $shareholder['address'];
+					$dbShareholder->percentage_owned = $shareholder['percentage_owned'];
+					$dbShareholder->corporation_id = $corporation->id;
+					$dbShareholder->save();
+				}
+			}			
     }
 		elseif($attributes['business_classification'] ==  'Limited Liability Company'){
       if(!$attributes['app_id']){
         $llc = new LimitedLiabilityCompany;
       }
       else {
-        $llc = LimitedLiabilityCompany::findOrFail($application->id);
+        $llc = LimitedLiabilityCompany::findOrFail($application->classifiable_id);
 			}
 			
 			$llc->state_of_organization = $attributes['state_of_organization'];
@@ -124,32 +130,84 @@ class LiquorApplicationRepository implements ApplicationInterface
 
 			$llc->save();
 
-			$application->businessClassifiable_id = $llc->id;
-			$application->businessClassifiable_type = $attributes['business_classification'];
+			$application->classifiable_id = $llc->id;
+			$application->classifiable_type = 'App\LimitedLiabilityCompany';
+
+			if(!empty($attributes->input('members'))){
+				foreach($attributes->input('members') as $member){
+					if(isset($member['id'])){
+						$dbMember = Member::find($member['id']);
+					}
+					else {
+						$dbMember = new Member;
+					}
+
+					$dbMember->name = $member['name'];
+					$dbMember->address = $member['address'];
+					$dbMember->email = $member['email'];
+					$dbMember->phone = $member['phone'];
+					$dbMember->llc_id = $llc->id;
+					$dbMember->save();
+				}
+			}				
     }
 		else {
       if(!$attributes['app_id']){
         $partnership = new Partnership;
       }
       else {
-        $partnership = Partnership::findOrFail($application->id);
+        $partnership = Partnership::findOrFail($application->classifiable_id);
 			}
 
+			$partnership->type = $attributes['business_classification'];
 			$partnership->save();
 
-			$application->businessClassifiable_id = $partnership->id;
-			$application->businessClassifiable_type = 'Partnership';
-			
-		}
+			$application->classifiable_id = $partnership->id;
+			$application->classifiable_type = 'App\Partnership';
 
+			if(!empty($attributes->input('owners'))){
+				foreach($attributes->input('owners') as $owner){
+					if(isset($owner['id'])){
+						$dbOwner = Owner::find($owner['id']);
+					}
+					else {
+						$dbOwner = new Owner;
+					}
+
+					$dbOwner->name = $owner['name'];
+					$dbOwner->email = $owner['email'];
+					$dbOwner->address = $owner['address'];
+					$dbOwner->percentage_owned = $owner['percentage_owned'];
+					$dbOwner->partnership_id = $partnership->id;
+					$dbOwner->save();
+				}		
+			}	
+		}
+		
 		$application->save();
 
-		return $application;
+		return response()->json(['application' => $application]);
   }
 
-	public function show($id)
+	/**
+	 * Used to get user application by id
+	 * @param $status, $all
+	 */	
+	public function getApplicationById($id)
 	{
+		if(\Auth::user()){
+			$application = LiquorApplication::where('id', $id)
+																			->where('user_id', \Auth::user()->id)
+																			->with('classifiable.children')
+																			->first();															
+		}
+		else{
+			$application = LiquorApplication::where('id', $id)
+																			->with('classifiable')
+																			->first();
+		}
 
+    return response()->json(['application' => $application]);
   }
  
 	/**
@@ -157,54 +215,42 @@ class LiquorApplicationRepository implements ApplicationInterface
 	 * Also used in Official dashboard to search/get the completed applications
 	 * @param $status, $search
 	 */
-	public function getApplications($status, $search = null)
+	public function getApplications($search = null)
 	{
 
 		if($search == null){
-			$applications = $this->application
-													->where('status', $status)
-													->with('user')
-													->paginate(5);
+			$applications = LiquorApplication::with('user')
+													->get();
 		}
 		else {
-			$applications = $this->application
-													->where('status', $status)
-													->where('corporate_name', 'LIKE', '%'.$status.'%')
+			$applications = LiquorApplication::where('corporate_name', 'LIKE', '%'.$status.'%')
 													->with('user')
-													->paginate(5);			
+													->get();			
 		}
 
 		return response()->json(['applications' => $applications]);
 	}
 	
 	/**
-	 * Used by authenticated user to get its applications
+	 * Used by authenticated user to get its applications by status and/or search
 	 * @param $status, $all
 	 */
-	public function authUserApplications(string $status, string $get)
+	public function authUserApplications(string $status, string $search = null)
 	{
-		if($get === 'yes'){
-			$applications = $this->application
-								->where("user_id", \Auth::user()->id)
-								->get();
+		if($search == null){
+			$applications = LiquorApplication::where('status', $status)
+																				->where("user_id", \Auth::user()->id)
+																				->get();																	
 		}
-		else {
-			if($status === 'all'){
-				$applications = $this->application
-														->where('user_id', \Auth::user()->id)
-														->where('corporate_name', "LIKE", "%$status%")
-														->paginate(5);					
-			}
-			else {
-				$applications = $this->application
-														->where('user_id', \Auth::user()->id)
-														->where('status', $status)
-														->paginate(5);	
-			}
-		
+		else{
+			$applications = LiquorApplication::where('status', $status)
+																				->where("user_id", \Auth::user()->id)
+																				->where("business_name", "LIKE", "%$search%")
+																				->get();
 		}
+
 		return response()->json(['applications' => $applications]);
-    }	
+	}		
  
 	public function filterApplicationByDate($by, $count, $status)
 	{
@@ -267,5 +313,18 @@ class LiquorApplicationRepository implements ApplicationInterface
 		else{
 				return 'Parameters not allowed.';
 		}              
-    }
+	}
+	
+	public function processApplication($id)
+	{
+			$app = Application::where('id', $id)->with('user')->first();
+
+			$app->status = 'processed';
+			$app->save();
+
+			// Send Email Alert to user when application has been processed.
+			event(new UserApplicationProcessed($app));
+
+			return $app;
+	}	
 }

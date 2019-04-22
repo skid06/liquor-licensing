@@ -22,11 +22,20 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id = null)
     {
-        return view('home');
+        // return view('home');
+        $data['id'] = $id;
+
+        return view('user.application-form', $data);
     }
 
+    public function get($status)
+	{
+		$data['status'] = $status;
+		return view('user.applications', $data);
+    }
+    
     public function my_applications()
     {
         return view('my-applications');

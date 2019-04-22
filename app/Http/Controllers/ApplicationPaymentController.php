@@ -24,7 +24,8 @@ class ApplicationPaymentController extends Controller
     public function getPaymentPage(Request $request)
     {
         $data['id'] = $request->id;
-        return view('application-payments', $data);
+        // return view('application-payments', $data);
+        return view('payment', $data);
     }
 
     public function charge(Request $request)
