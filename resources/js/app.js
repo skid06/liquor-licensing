@@ -52,9 +52,11 @@ Vue.component('NavigationDrawer', require('./layouts/NavigationDrawer.vue'))
 Vue.component('Toolbar', require('./layouts/Toolbar.vue'))
 Vue.component('Footer', require('./layouts/Footer.vue'))
 Vue.component('liquor-application-form', require('./user/LiquorApplicationForm.vue'))
+Vue.component('admin-liquor-application-form', require('./admin/LiquorApplicationForm.vue'))
 Vue.component('user-login', require('./user/Login.vue'))
 Vue.component('admin-login', require('./admin/Login.vue'))
 Vue.component('payment', require('./user/Payment.vue'))
+Vue.component('payments', require('./admin/Payments.vue'))
 Vue.component('applications', require('./user/Applications.vue'))
 Vue.component('dashboard', require('./admin/Dashboard.vue'))
 Vue.component('comment-box', require('./helper/CommentBox.vue'))
@@ -82,9 +84,10 @@ Vue.mixin({
 		},
 		applicationLinks: [
 			{text: 'New', icon: 'add', link: '/liquor-application'},
-			{text: 'Saved', icon: 'edit', link: '/applications/incomplete'},
-			{text: 'Completed', icon: 'beenhere', link: '/applications/completed'},
-			{text: 'Processed', icon: 'done', link: '/applications/paid'}
+			{text: 'Saved', icon: 'edit', link: '/applications/saved'},
+			{text: 'Paid', icon: 'attach_money', link: '/applications/paid'},
+			{text: 'Processed', icon: 'done', link: '/applications/processed'},
+			{text: 'Expired', icon: 'error', link: '/applications/expired'}			
 		],
 		cruds: [
 			['Create', 'add'],
@@ -97,6 +100,7 @@ Vue.mixin({
 		// items: [],
 		search: null,
 		select: null,
+		userType: null,
 		states: [
 			'Alabama',
 			'Alaska',
@@ -179,7 +183,27 @@ Vue.mixin({
 		},
 		goTo(link){
 			window.location = link
+		},
+		getUserType(){
+			axios
+				.get('/user/type')
+				.then(response => this.userType = response.data.type)
+		},
+		logout(type){
+			axios
+				.post('/logout')
+				.then( () => {
+					if(type == 'admin'){
+						window.location = "/admin"
+					}
+					else{
+						window.location = "/login"
+					}
+				})
 		}
+	},
+	mounted() {
+		this.getUserType()
 	}	
 })
 

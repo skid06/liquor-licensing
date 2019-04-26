@@ -4,7 +4,9 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <!-- CSRF Token -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        
         <title>Laravel</title>
 
         <!-- Fonts -->
@@ -60,18 +62,28 @@
           absolute
           overflow
           class="grey lighten-4"
+          v-if="userType != null"
           app>
           <v-list>
-            <v-list-tile>
+            <v-list-tile @click="goTo(userType == 'admin' ? '/admin' : '/applications/paid')">
               <v-list-tile-action>
                 <v-icon>dashboard</v-icon>
               </v-list-tile-action>
-              <v-list-tile-title>Dashboard</v-list-tile-title>
+              <v-list-tile-title v-if="userType == 'admin'">Admin Dashboard</v-list-tile-title>
+              <v-list-tile-title v-if="userType == 'user'">User Dashboard</v-list-tile-title>
             </v-list-tile>
+
+            <v-list-tile v-if="userType == 'admin'" @click="goTo(`/admin/payments`)">
+              <v-list-tile-action>
+                <v-icon>transform</v-icon>
+              </v-list-tile-action>
+              <v-list-tile-title>Transactions</v-list-tile-title>
+            </v-list-tile>            
 
             <v-list-group
               prepend-icon="assignment"
               value="true"
+              v-if="userType == 'user'"
             >
               <template v-slot:activator>
                 <v-list-tile>
@@ -127,7 +139,7 @@
         <!-- @include('vuetify-layout.partials.navigation-drawer') -->
         <v-toolbar :clipped-left="primaryDrawer.clipped" color="#A88442" app absolute >
           <v-toolbar-side-icon
-            v-if="primaryDrawer.type !== 'permanent'"
+            v-if="primaryDrawer.type !== 'permanent' && type !== null "
             @click.stop="primaryDrawer.model = !primaryDrawer.model"
           ></v-toolbar-side-icon>
           <v-toolbar-title>
@@ -137,7 +149,7 @@
               width="185">
             </v-img>
           </v-toolbar-title>
-          <v-toolbar-items class="hidden-sm-and-down">
+          <v-toolbar-items class="hidden-sm-and-down" v-if="userType != null">
           <v-autocomplete
             v-model="select"
             :search-input.sync="search"
@@ -157,6 +169,7 @@
           <v-layout
             justify-space-around
             wrap
+            v-if="userType != null"
           >
             <v-badge overlap>
               <template v-slot:badge>
@@ -171,11 +184,14 @@
               </v-avatar>
             </v-badge>
 
-            <v-avatar 
-              color="indigo" 
-              size="40">
-                <v-icon dark>account_circle</v-icon>
-            </v-avatar>
+            <v-btn class="show-overflow" icon dark @click="logout(userType == 'admin' ? 'admin' : 'user')">
+              <v-avatar 
+                color="indigo" 
+                size="40">
+                  <v-icon dark>account_circle</v-icon>
+              </v-avatar>           
+            </v-btn>
+
             <!-- <v-avatar size="40">
               <img
                 src="https://cdn.vuetifyjs.com/images/john.jpg"

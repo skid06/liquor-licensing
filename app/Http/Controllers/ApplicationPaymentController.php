@@ -7,7 +7,7 @@ use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Cartalyst\Stripe\Exception\CardErrorException;
 
 use App\Events\NewApplication;
-use App\Application;
+use App\LiquorApplication;
 use App\Payment;
 use Carbon\Carbon;
 
@@ -18,7 +18,18 @@ class ApplicationPaymentController extends Controller
     public function __construct(Payment $payment)
     {
         $this->payment = $payment;
-        $this->middleware('auth', ['except' => 'filterPaymentByDate']);
+        // $this->middleware('auth', ['except' => 'filterPaymentByDate']);
+        $this->middleware('auth')->except(["filterPaymentByDate","showPayments","index"]);
+    }
+
+    public function index()
+    {
+        return response()->json([ "payments" => $this->payment->with(["user", "application"])->get()]);
+    }
+
+    public function showPayments()
+    {
+        return view('payments');
     }
 
     public function getPaymentPage(Request $request)
@@ -39,7 +50,7 @@ class ApplicationPaymentController extends Controller
                 'receipt_email' => $request->email
             ]);
             
-            $app = Application::find($request->id);
+            $app = LiquorApplication::find($request->id);
             $app->status = 'paid';
             $app->save();
 

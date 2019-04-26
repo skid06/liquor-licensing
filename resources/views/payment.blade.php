@@ -1,5 +1,5 @@
 @extends('vuetify-layout.app')
 
 @section('content')
- <payment id="120"></payment>
+ <payment id="{{ $id }}"></payment>
 @endsection

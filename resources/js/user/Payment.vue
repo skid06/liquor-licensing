@@ -2,6 +2,10 @@
   <v-card>
     <!-- <v-card-title class="headline font-weight-regular blue-grey white--text">Liquor License Application</v-card-title> -->
     <v-card-text>
+      <v-snackbar v-model="paymentSuccess" top color="success">
+        <span>{{ success_message }}</span>
+        <v-btn flat color="white">Close</v-btn>
+      </v-snackbar>      
       <v-subheader class="pa-0 mr-5 ml-5"><h3>Payment Form</h3></v-subheader>
       <v-layout row wrap class="mr-5 ml-5">
         <v-flex xs12 md12 >
@@ -93,6 +97,7 @@
 
         <v-flex xs6 md6>
           <card-element></card-element>
+          <input type="hidden" name="_token" :value="csrf">
         </v-flex> 
       </v-layout>            
       
@@ -105,6 +110,8 @@
 </template>
 
 <script>
+  import axios from 'axios'
+  import { createToken, Card } from 'vue-stripe-elements-plus'
   export default {
     $_veeValidate: {
       validator: 'new'
@@ -112,6 +119,7 @@
 
     data () {
       return {
+        csrf: document.head.querySelector('meta[name="csrf-token"]').content,
         app_id: '',
         email: '',
         name_on_card: '',
@@ -120,7 +128,9 @@
         state: '',
         zip: '',
         country: '',
-        phone: ''
+        phone: '',
+        success_message: '',
+        paymentSuccess: false
       }
     },
     props: ['id'],
@@ -144,18 +154,23 @@
           // Submit the form
           // this.$el.submit();
           
-          axios.post('/checkout',{id: this.id, email: this.email, stripeToken: result.token.id})
+          axios.post('/checkout',{id: this.app_id, email: this.email, stripeToken: result.token.id})
               .then(response => {
                   console.log(response.data)
                   this.success_message = response.data.message
-                  this.isHide = false
+                  this.paymentSuccess = true
+                  
+                  setTimeout(function(){ 
+                    window.location.href = `/applications/paid`
+                  }, 3000);                  
               })
               .catch()
         })
       }
     },
     mounted(){
-      console.log(this.id)
+      this.app_id = this.id
+      console.log(this.app_id)
     }    
   }
 </script>

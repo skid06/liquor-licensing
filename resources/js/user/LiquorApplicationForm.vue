@@ -1015,7 +1015,7 @@
       <span>You added a new application.</span>
       <v-btn flat color="white">Close</v-btn>
     </v-snackbar>    
-    <comment-box :app_id="id" v-if="id != ''" />   
+    <comment-box :app_id="id" v-if="id != '' && status == 'paid'" />   
   </v-card>
 </template>
 
@@ -1129,6 +1129,7 @@
         menu2: false,
         isApplicationAdded: false,
         app_id: '',
+        status: '',
         userType: null
       }
     },
@@ -1204,7 +1205,7 @@
                   owners: this.owners,
                   shareholders: this.shareholders,
                   members: this.members,
-                  status: (submit == 'city' ? 'completed' : 'incomplete')
+                  status: 'saved'
                 })
                 .then(response => {
                   console.log(response)
@@ -1214,9 +1215,8 @@
                   else{
                     this.isApplicationAdded = true
                     setTimeout(function(){ 
-                      window.location.href = `/applications/incomplete`
-                    }, 3000
-                    );
+                      window.location.href = `/applications/saved`
+                    }, 3000);
                   }
                 })
                 .catch()
@@ -1320,6 +1320,7 @@
             this.action_pending_against_owner = response.data.application.action_pending_against_owner
             this.owner_been_issued_wagering_stamp = response.data.application.owner_been_issued_wagering_stamp
             this.previous_liquor_license_been_revoked = response.data.application.previous_liquor_license_been_revoked
+            this.status = response.data.application.status
           })
       },
       addMember() {

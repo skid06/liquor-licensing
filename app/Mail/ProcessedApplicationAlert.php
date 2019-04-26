@@ -6,7 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use App\Application;
+use App\LiquorApplication;
 
 class ProcessedApplicationAlert extends Mailable
 {
@@ -18,7 +18,7 @@ class ProcessedApplicationAlert extends Mailable
      *
      * @return void
      */
-    public function __construct(Application $application)
+    public function __construct(LiquorApplication $application)
     {
         $this->application = $application;
     }

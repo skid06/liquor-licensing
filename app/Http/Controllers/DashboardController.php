@@ -13,7 +13,15 @@ class DashboardController extends Controller
     }
     public function main()
     {
-        return view('admin.index');
+        // return view('admin.index');
+        return view('dashboard');
+    }
+
+    public function viewForm($id)
+    {
+        $data['id'] = $id;
+
+        return view('admin.application-form', $data);
     }
 
     public function completed()

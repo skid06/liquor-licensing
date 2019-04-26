@@ -101,13 +101,16 @@ Route::prefix('/user/applications')->group(function() {
 Route::prefix('admin')->group(function() {
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
+    Route::get('/liquor-application/{id}', 'DashboardController@viewForm')->name('admin.view.application.form');
     Route::get('/completed', 'DashboardController@completed')->name('admin.completed');
     Route::get('/processed', 'DashboardController@processed')->name('admin.processed');
     Route::get('/paid', 'DashboardController@paid')->name('admin.paid');
+    Route::get('/payments', 'ApplicationPaymentController@showPayments');
     Route::get('/{id}', 'DashboardController@show')->name('admin.show');
     Route::get('/', 'DashboardController@main')->name('admin.dashboard');
     Route::get('/filter/payment/{by}/{count}', 'ApplicationPaymentController@filterPaymentByDate')->name('admin.filter.payments');
     Route::get('/filter/applications/{by}/{count}/{status}', 'LiquorLicenseController@filterApplicationByDate')->name('admin.filter.applications');
+    
 });
 /**
  * End - These routes are used as web pages for admin.
@@ -116,6 +119,7 @@ Route::prefix('admin')->group(function() {
 /**
  * Start - These routes are used as API by admin.
  */
+Route::get('/payments', 'ApplicationPaymentController@index');
 Route::prefix('/api/admin/applications')->group(function() { 
     // Route::get('/applications/completed', 'LiquorLicenseController@completed');
     // Route::get('/applications/completed/{search}', 'LiquorLicenseController@searchCompleted');
@@ -125,6 +129,7 @@ Route::prefix('/api/admin/applications')->group(function() {
 
     // Used by /my-applications and different status
     // Route::get('/{status}/{search?}', 'LiquorApplicationController@getApplications');  
+    
     Route::get('/{search?}', 'LiquorApplicationController@getApplications');      
 });  
 /**

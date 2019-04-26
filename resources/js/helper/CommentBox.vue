@@ -27,7 +27,7 @@
             <ul>
               <li class="mt-list-item done" v-for="log in messages" :key="log.id">
                 <div class="list-icon-container">
-                  <span style="font-size:10px;"> {{ log.admin_id != null ? 'You' : 'Admin' }}  </span>
+                  <span style="font-size:10px;"> {{ log.admin_id == null ? log.application.user.name : 'Admin' }}  </span>
                 </div>
                 <div class="list-datetime"> {{ log.created_at | moment("from", "now") }} </div>
                 <div class="list-item-content">
@@ -62,11 +62,11 @@
           <v-btn
             class="primary"
             flat
-            @click="process"
+            @click="process(`${this.app_id}`)"
             v-if="userType == 'admin'"
             style="font-size:12px"
           >
-            Processed2
+            Processed
           </v-btn>
           <v-btn
             class="error"
@@ -126,9 +126,9 @@ export default {
           console.log({err})
         })        
     },
-    process(){
+    process(id){
       axios
-        .post(`/user/applications/${this.app_id}/processed`)
+        .post(`/user/applications/${id}/processed`)
         .then(response => {
           console.log(response)
           this.isHide = false

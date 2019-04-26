@@ -3,8 +3,8 @@
     <v-subheader class="mt-5 mb-2"><h1>Applications</h1></v-subheader>
       <div>
         <v-toolbar flat color="white">
-          <v-toolbar-title> {{ status }} </v-toolbar-title>
-          <v-divider
+          <v-toolbar-title> {{ status | capitalize }} </v-toolbar-title>
+          <!-- <v-divider
             class="mx-2"
             inset
             vertical
@@ -47,7 +47,7 @@
                 <v-btn color="blue darken-1" flat @click="save">Save</v-btn>
               </v-card-actions>
             </v-card>
-          </v-dialog>
+          </v-dialog> -->
         </v-toolbar>
         <v-data-table
           :headers="headers"
@@ -71,6 +71,7 @@
               <v-icon
                 small
                 @click="deleteItem(props.item)"
+                v-if="props.item.status == 'saved'"
               >
                 delete
               </v-icon>
@@ -92,9 +93,10 @@ export default {
       application: {
         headers: [
           { title: 'All' },
-          { title: 'Processed'},
-          { title: 'Completed'},
-          { title: 'Expired'},
+          { title: 'Processed' },
+          { title: 'Completed' },
+          { title: 'Paid' },
+          { title: 'Expired' },
         ]
       },
       dialog: false,
@@ -142,86 +144,10 @@ export default {
   },
 
   created () {
-    this.initialize()
     this.getApplications(this.status)
   },  
   props: ['status'],
   methods: {
-    initialize () {
-      this.desserts = [
-        {
-          name: 'Frozen Yogurt',
-          calories: 159,
-          fat: 6.0,
-          carbs: 24,
-          protein: 4.0
-        },
-        {
-          name: 'Ice cream sandwich',
-          calories: 237,
-          fat: 9.0,
-          carbs: 37,
-          protein: 4.3
-        },
-        {
-          name: 'Eclair',
-          calories: 262,
-          fat: 16.0,
-          carbs: 23,
-          protein: 6.0
-        },
-        {
-          name: 'Cupcake',
-          calories: 305,
-          fat: 3.7,
-          carbs: 67,
-          protein: 4.3
-        },
-        {
-          name: 'Gingerbread',
-          calories: 356,
-          fat: 16.0,
-          carbs: 49,
-          protein: 3.9
-        },
-        {
-          name: 'Jelly bean',
-          calories: 375,
-          fat: 0.0,
-          carbs: 94,
-          protein: 0.0
-        },
-        {
-          name: 'Lollipop',
-          calories: 392,
-          fat: 0.2,
-          carbs: 98,
-          protein: 0
-        },
-        {
-          name: 'Honeycomb',
-          calories: 408,
-          fat: 3.2,
-          carbs: 87,
-          protein: 6.5
-        },
-        {
-          name: 'Donut',
-          calories: 452,
-          fat: 25.0,
-          carbs: 51,
-          protein: 4.9
-        },
-        {
-          name: 'KitKat',
-          calories: 518,
-          fat: 26.0,
-          carbs: 65,
-          protein: 7
-        }
-      ]
-    },
-
     getApplications(status){
       axios
         .get(`/user/applications/status/${status}`)
@@ -260,6 +186,13 @@ export default {
       }
       this.close()
     }    
-  }
+  },
+  filters: {
+    capitalize: function (value) {
+      if (!value) return ''
+      value = value.toString()
+      return value.charAt(0).toUpperCase() + value.slice(1)
+    }
+  }  
 }
 </script>

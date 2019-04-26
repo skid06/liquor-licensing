@@ -317,7 +317,7 @@ class LiquorApplicationRepository implements ApplicationInterface
 	
 	public function processApplication($id)
 	{
-			$app = Application::where('id', $id)->with('user')->first();
+			$app = LiquorApplication::where('id', $id)->with('user')->first();
 
 			$app->status = 'processed';
 			$app->save();
