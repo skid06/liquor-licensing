@@ -1002,13 +1002,11 @@
       <v-btn
         @click="saveApplication()"
         class="primary"
-        v-if="userType == 'user'"
       >Save</v-btn>
 
       <v-btn
         @click="saveApplication('city')"
         class="primary"
-        v-if="userType == 'user'"
       >Submit to City</v-btn>                                                   
     </v-card-text>
     <v-snackbar v-model="isApplicationAdded" color="success">
