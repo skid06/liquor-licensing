@@ -203,8 +203,34 @@ Vue.mixin({
 		}
 	},
 	mounted() {
-		this.getUserType()
+		// this.getUserType()
 	}	
+})
+
+const store = new Vuex.Store({
+  state: {
+    userType: null
+	},
+	getters: {
+    getType(state) {
+      return state.userType
+    }
+	},
+	actions: {
+		getUserType({commit}) {
+			axios
+				.get('/user/type')
+				.then(response => {
+					commit("getUserType", response.data)
+				})
+		}
+	},
+  mutations: {
+    getUserType (state, data) {
+			state.userType = data.type
+			console.log('hello' + state.userType)
+    }
+  }
 })
 
 // const files = require.context('./', true, /\.vue$/i)
@@ -219,4 +245,13 @@ Vue.mixin({
 
 const app = new Vue({
 	el: '#app',
+	computed: {
+		getType(){
+			return store.getters.getType
+		}
+	},
+	mounted(){
+		store.dispatch("getUserType")
+		console.log(this.getType)
+	}
 });
