@@ -100,7 +100,7 @@ Vue.mixin({
 		// items: [],
 		search: null,
 		select: null,
-		userType: null,
+		// userType: null,
 		states: [
 			'Alabama',
 			'Alaska',
@@ -245,6 +245,7 @@ const store = new Vuex.Store({
 
 const app = new Vue({
 	el: '#app',
+	store,
 	computed: {
 		getType(){
 			return store.getters.getType
