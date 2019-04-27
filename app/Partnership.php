@@ -13,7 +13,7 @@ class Partnership extends Model
         return $this->morphOne(LiquorApplication::class, 'businessClassifiable');
     }
 
-    public function owners()
+    public function children()
     {
         return $this->hasMany(PartnershipOwners::class);
     }

@@ -32,7 +32,12 @@ class LiquorApplication extends Model
         return $this->hasMany(Note::class);
     } 
 
-    public function businessClassifiable()
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
+
+    public function classifiable()
     {
         return $this->morphTo();
     }

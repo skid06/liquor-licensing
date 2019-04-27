@@ -23,7 +23,7 @@ Vue.component('card-element', require('./components/CardElement.vue'))
 Vue.component('payment-form', require('./components/PaymentForm.vue'))
 Vue.component('example-component', require('./components/ExampleComponent.vue'))
 Vue.component('liquor-license-form', require('./components/LiquorLicenseForm.vue'))
-Vue.component('liquor-application', require('./components/LiquorApplication.vue'))
+// Vue.component('liquor-application', require('./components/LiquorApplication.vue'))
 Vue.component('edit-liquor-license-form', require('./components/EditLiquorLicenseForm.vue'))
 Vue.component('my-applications', require('./components/MyApplications.vue'))
 Vue.component('processed-applications', require('./components/ProcessedApplications.vue'))
@@ -43,6 +43,7 @@ import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import Vuex from 'vuex';
 import VeeValidate from 'vee-validate';
+import VueStripeCheckout from 'vue-stripe-checkout';
 
 // import {routes} from './routes';
 // import MainContainer from './layout/MainContainer'
@@ -50,9 +51,17 @@ import VeeValidate from 'vee-validate';
 Vue.component('NavigationDrawer', require('./layouts/NavigationDrawer.vue'))
 Vue.component('Toolbar', require('./layouts/Toolbar.vue'))
 Vue.component('Footer', require('./layouts/Footer.vue'))
-Vue.component('vue-liquor-application', require('./pages/LiquorApplication.vue'))
+Vue.component('liquor-application-form', require('./user/LiquorApplicationForm.vue'))
+Vue.component('admin-liquor-application-form', require('./admin/LiquorApplicationForm.vue'))
+Vue.component('user-login', require('./user/Login.vue'))
+Vue.component('admin-login', require('./admin/Login.vue'))
+Vue.component('payment', require('./user/Payment.vue'))
+Vue.component('payments', require('./admin/Payments.vue'))
+Vue.component('applications', require('./user/Applications.vue'))
 Vue.component('dashboard', require('./admin/Dashboard.vue'))
+Vue.component('comment-box', require('./helper/CommentBox.vue'))
 
+Vue.use(VueStripeCheckout, 'pk_test_ZpeCcMeI4Ai3VuCWytohUs36');
 Vue.use(VueRouter);
 Vue.use(Vuex);
 Vue.use(Vuetify);
@@ -69,14 +78,16 @@ Vue.mixin({
 			floating: false,
 			mini: false
 		},
+		isApplicationAdded: false,
 		footer: {
 			inset: false
 		},
-		applications: [
-			['New', 'add'],
-			['Saved', 'edit'],
-			['Completed', 'beenhere'],
-			['Processed', 'done']
+		applicationLinks: [
+			{text: 'New', icon: 'add', link: '/liquor-application'},
+			{text: 'Saved', icon: 'edit', link: '/applications/saved'},
+			{text: 'Paid', icon: 'attach_money', link: '/applications/paid'},
+			{text: 'Processed', icon: 'done', link: '/applications/processed'},
+			{text: 'Expired', icon: 'error', link: '/applications/expired'}			
 		],
 		cruds: [
 			['Create', 'add'],
@@ -89,6 +100,7 @@ Vue.mixin({
 		// items: [],
 		search: null,
 		select: null,
+		userType: null,
 		states: [
 			'Alabama',
 			'Alaska',
@@ -168,7 +180,30 @@ Vue.mixin({
 				})
 				this.loading = false
 			}, 500)
+		},
+		goTo(link){
+			window.location = link
+		},
+		getUserType(){
+			axios
+				.get('/user/type')
+				.then(response => this.userType = response.data.type)
+		},
+		logout(type){
+			axios
+				.post('/logout')
+				.then( () => {
+					if(type == 'admin'){
+						window.location = "/admin"
+					}
+					else{
+						window.location = "/login"
+					}
+				})
 		}
+	},
+	mounted() {
+		this.getUserType()
 	}	
 })
 

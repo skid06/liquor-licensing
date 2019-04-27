@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\ApplicationCollection;
 use Illuminate\Http\Request;
-use App\Application;
+use App\LiquorApplication;
 use App\User;
 use App\Events\UserApplicationProcessed;
 
@@ -252,7 +252,7 @@ class UserLiquorLicenseController extends Controller
 
     public function processApplication($id)
     {
-        $app = Application::where('id', $id)->with('user')->first();
+        $app = LiquorApplication::where('id', $id)->with('user')->first();
 
         $app->status = 'processed';
         $app->save();

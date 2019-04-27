@@ -22,10 +22,10 @@ class Corporation extends Model
     
     public function liquorApplication() 
     {
-        return $this->morphOne(LiquorApplication::class, 'businessClassifiable');
+        return $this->morphOne('App\LiquorApplication', 'classifiable');
     }
 
-    public function shareHolders()
+    public function children()
     {
         return $this->hasMany(CorporationShareholder::class);
     }

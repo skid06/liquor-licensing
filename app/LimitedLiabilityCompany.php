@@ -15,11 +15,11 @@ class LimitedLiabilityCompany extends Model
 
     public function liquorApplication() 
     {
-        return $this->morphOne(LiquorApplication::class, 'businessClassifiable');
+        return $this->morphOne(LiquorApplication::class, 'classifiable');
     }
 
-    public function members()
+    public function children()
     {
-        return $this->hasMany(LimitedLiabilityCompanyMember::class);
+        return $this->hasMany(LimitedLiabilityCompanyMember::class, 'llc_id');
     }
 }
