@@ -48,7 +48,7 @@
     <v-spacer ></v-spacer>
     <v-subheader class="mt-5 mb-2"><h1>Applications</h1></v-subheader>
     <v-tabs
-      v-model="active"
+      
       color="cyan"
       dark
       slider-color="yellow"
@@ -103,7 +103,7 @@
             </td>
           </template>
           <template v-slot:no-data>
-            <v-btn color="primary" @click="initialize">Reset</v-btn>
+            <v-btn color="primary">Reset</v-btn>
           </template>
         </v-data-table>
       </div>
