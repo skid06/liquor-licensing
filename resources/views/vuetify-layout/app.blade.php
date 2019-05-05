@@ -139,7 +139,7 @@
           <!-- @include('vuetify-layout.partials.navigation-drawer') -->
           <v-toolbar :clipped-left="primaryDrawer.clipped" color="#A88442" app absolute >
             <v-toolbar-side-icon
-              v-if="primaryDrawer.type !== 'permanent' && type !== null "
+              v-if="primaryDrawer.type !== 'permanent' && getType !== null "
               @click.stop="primaryDrawer.model = !primaryDrawer.model"
             ></v-toolbar-side-icon>
             <v-toolbar-title>
@@ -154,6 +154,7 @@
               v-model="select"
               :search-input.sync="search"
               cache-items
+              :items="['test', 'test2', 'fd']"
               class="mt-2 ml-5"
               flat
               hide-no-data
@@ -171,7 +172,7 @@
               wrap
               v-if="getType != null"
             >
-              <v-badge overlap>
+              <!-- <v-badge overlap>
                 <template v-slot:badge>
                   <span>3</span>
                 </template>
@@ -182,15 +183,89 @@
                 >
                   <v-icon dark>notifications</v-icon>
                 </v-avatar>
-              </v-badge>
+              </v-badge> -->
 
-              <v-btn class="show-overflow" icon dark @click="logout(getType == 'admin' ? 'admin' : 'user')">
+              <!-- <v-btn class="show-overflow" icon dark @click="logout(getType == 'admin' ? 'admin' : 'user')">
                 <v-avatar 
                   color="indigo" 
                   size="40">
                     <v-icon dark>account_circle</v-icon>
                 </v-avatar>           
-              </v-btn>
+              </v-btn> -->
+
+              <div class="text-xs-center">
+                <v-menu
+                  v-model="menu"
+                  :close-on-content-click="false"
+                  :nudge-width="200"
+                  offset-x
+                >
+                  <template v-slot:activator="{ on }">
+                    <v-btn
+                      icon
+                      dark
+                      v-on="on"
+                      class="show-overflow" 
+                    >
+                      <v-avatar 
+                        color="indigo" 
+                        size="40">
+                          <v-icon dark>account_circle</v-icon>
+                      </v-avatar>  
+                    </v-btn>
+                  </template>
+
+                  <v-card>
+                    <v-list>
+                      <v-list-tile avatar>
+                        <v-list-tile-avatar>
+                          <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John">
+                        </v-list-tile-avatar>
+
+                        <v-list-tile-content>
+                          <v-list-tile-title>Eli Nicolosi</v-list-tile-title>
+                          <v-list-tile-sub-title>Founder of Vuetify.js</v-list-tile-sub-title>
+                        </v-list-tile-content>
+
+                        <v-list-tile-action>
+                          <v-btn
+                            :class="fav ? 'red--text' : ''"
+                            icon
+                            @click="fav = !fav"
+                          >
+                            <v-icon>favorite</v-icon>
+                          </v-btn>
+                        </v-list-tile-action>
+                      </v-list-tile>
+                    </v-list>
+
+                    <v-divider></v-divider>
+
+                    <v-list>
+                      <v-list-tile>
+                        <v-list-tile-action>
+                          <v-switch v-model="message" color="purple"></v-switch>
+                        </v-list-tile-action>
+                        <v-list-tile-title>Enable messages</v-list-tile-title>
+                      </v-list-tile>
+
+                      <v-list-tile @click="logout(getType == 'admin' ? 'admin' : 'user')">
+                        <v-list-tile-action>
+                          <v-switch v-model="hints" color="purple"></v-switch>
+                        </v-list-tile-action>
+                        <v-list-tile-title>Logout</v-list-tile-title>
+                      </v-list-tile>
+                    </v-list>
+
+                    <v-card-actions>
+                      <v-spacer></v-spacer>
+
+                      <v-btn flat @click="menu = false">Cancel</v-btn>
+                      <v-btn color="primary" flat @click="menu = false">Save</v-btn>
+                    </v-card-actions>
+                  </v-card>
+                </v-menu>
+              </div>              
 
               <!-- <v-avatar size="40">
                 <img

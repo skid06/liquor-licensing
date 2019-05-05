@@ -78,6 +78,10 @@ Vue.mixin({
 			floating: false,
 			mini: false
 		},
+		fav: true,
+		menu: false,
+		message: false,
+		hints: false,		
 		isApplicationAdded: false,
 		footer: {
 			inset: false
@@ -209,7 +213,8 @@ Vue.mixin({
 
 const store = new Vuex.Store({
   state: {
-    userType: null
+		userType: null,
+		applicationItems: null
 	},
 	getters: {
     getType(state) {
@@ -223,12 +228,14 @@ const store = new Vuex.Store({
 				.then(response => {
 					commit("getUserType", response.data)
 				})
-		}
+		},
+
+
 	},
   mutations: {
     getUserType (state, data) {
 			state.userType = data.type
-			console.log('hello' + state.userType)
+			
     }
   }
 })
@@ -253,6 +260,6 @@ const app = new Vue({
 	},
 	mounted(){
 		store.dispatch("getUserType")
-		console.log(this.getType)
+		// console.log(this.getType)
 	}
 });

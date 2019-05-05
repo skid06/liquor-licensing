@@ -38,9 +38,6 @@
               </v-icon> -->
             </td>
           </template>
-          <template v-slot:no-data>
-            <v-btn color="primary" @click="">Reset</v-btn>
-          </template>
         </v-data-table>
       </div>
   </div>
@@ -62,23 +59,7 @@ export default {
         { text: 'Amount', value: 'amount' },
         { text: 'Date', value: 'date' },
         { text: 'Actions', value: 'name', sortable: false }
-      ],
-      desserts: [],
-      editedIndex: -1,
-      editedItem: {
-        name: '',
-        calories: 0,
-        fat: 0,
-        carbs: 0,
-        protein: 0
-      },
-      defaultItem: {
-        name: '',
-        calories: 0,
-        fat: 0,
-        carbs: 0,
-        protein: 0
-      }      
+      ],    
     }
   },
 
