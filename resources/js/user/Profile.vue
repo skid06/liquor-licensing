@@ -26,8 +26,8 @@
                 >
                   <v-avatar>
                     <img
-                      src="https://cdn.vuetifyjs.com/images/john.jpg"
-                      alt="John"
+                      src="http://209.188.93.46/~lovesparkil/wp-content/uploads/2019/05/eli.jpg"
+                      alt="Eli"
                     >
                   </v-avatar>  
                 </v-btn>     
