@@ -340,7 +340,7 @@
         </v-flex>                                    
       </v-layout>  
 
-      <v-layout row wrap class="mr-5 ml-5" v-if="!hideCorporation" v-for="shareholder in shareholders" :key="shareholder.name">
+      <v-layout row wrap class="mr-5 ml-5" v-if="!hideCorporation" v-for="shareholder in shareholders" :key="shareholder.id">
         <v-flex xs12 md6 >
           <v-text-field
             v-model="shareholder.name"
@@ -522,7 +522,7 @@
         </v-flex>                                
       </v-layout>
 
-      <v-layout id="llc-section" row wrap class="mr-5 ml-5" v-if="!hideLLC" v-for="member in members" :key="member.name"> 
+      <v-layout id="llc-section" row wrap class="mr-5 ml-5" v-if="!hideLLC" v-for="member in members" :key="member.id"> 
         <v-flex xs12 md6 >
           <v-text-field
             v-model="member.id"
@@ -581,7 +581,7 @@
         <v-subheader class="pa-0"><h3>{{ business_classification }}</h3></v-subheader>
       </v-container>
 
-      <v-layout id="partnership-section" row wrap class="mr-5 ml-5" v-if="!hidePartnership" v-for="owner in owners" :key="owner.name"> 
+      <v-layout id="partnership-section" row wrap class="mr-5 ml-5" v-if="!hidePartnership" v-for="owner in owners" :key="owner.id"> 
         <v-flex xs12 md6 >
           <v-text-field
             v-model="owner.name"
@@ -927,12 +927,18 @@
             to the liquor license itselft. This is a one time fee. This fee
             does not apply to renewal liquor licenses. The following is a listing
             of the current City of Loves Park liquor license fees revised 
-            January 31, 2019. Please check which class you are applying for. - {{ liquor_license_fee }}</strong>
+            January 31, 2019. Please check which class you are applying for. - {{ class_fee }}</strong>
           </p>
           <v-radio-group 
-            v-model="liquor_license_fee"
+            v-model="class_fee"
           >
-            <v-radio  
+            <div v-for="classType in classes" :key="classType.id">
+              <v-radio
+                :label="`${classType.type}: ${classType.description} - $${classType.cost}`"
+                :value="classType.id"
+              ></v-radio>
+            </div>
+            <!-- <v-radio  
               label="Class A - Tavern or Bar: $2,000.00" 
               value="Class A"
             ></v-radio>
@@ -995,18 +1001,21 @@
             <v-radio  
               label="Class CTR - Catering business to provide and serve alcoholic liquor: $1,000.00" 
               value="Class CTR"
-            ></v-radio>                                            
-          </v-radio-group>                                                                                      
+            ></v-radio>                                             -->
+          </v-radio-group>     
+          {{class_fee}}                                                                                 
         </v-flex>                         
       </v-layout>          
       <v-btn
         @click="saveApplication()"
         class="primary"
+        style="background-color: #ED2224 !important;"
       >Save</v-btn>
 
       <v-btn
         @click="saveApplication('city')"
         class="primary"
+        style="background-color: #ED2224 !important;"
       >Submit to City</v-btn>                                                   
     </v-card-text>
     <v-snackbar v-model="isApplicationAdded" color="success">
@@ -1095,7 +1104,8 @@
         action_pending_against_owner: '',
         owner_been_issued_wagering_stamp: '',
         previous_liquor_license_been_revoked: '',
-        liquor_license_fee: [],
+        class_fee: null,
+        classes: [],
         members: [
           { name: '', email: '', phone: '', address: '' }
         ],
@@ -1203,6 +1213,7 @@
                   owners: this.owners,
                   shareholders: this.shareholders,
                   members: this.members,
+                  class_fee: this.class_fee,
                   status: 'saved'
                 })
                 .then(response => {
@@ -1251,6 +1262,7 @@
             this.business_contact_person = response.data.application.business_contact_person
             this.business_contact_title = response.data.application.business_contact_title
             this.business_contact_phone = response.data.application.business_contact_phone
+            this.class_fee = response.data.application.class_fee_id
 
             if(response.data.application.classifiable_type == 'App\\Corporation'){
               this.corporate_name = response.data.application.classifiable.corporate_name
@@ -1370,6 +1382,11 @@
         }     
       },
 
+      getClasses(){
+        axios.get('/class/fees')
+          .then(response => this.classes = response.data)
+      },
+
       chooseFile() {
         this.$refs.fileInput.click()
       },
@@ -1397,6 +1414,7 @@
         this.getApplicationById(this.id)
         this.getUserType()
       }
+      this.getClasses()
       console.log(this.id)
     }    
   }

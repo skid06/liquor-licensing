@@ -28,6 +28,25 @@ Route::get('/payment', function () {
     return view('payment');
 });
 
+Route::get('/profile', function () {
+    return view('user.profile');
+});
+
+Route::get('/class/fees', function () {
+    return \App\ClassFee::get();
+});
+
+Route::get('/user/info', function () {
+    return \App\User::where('id', \Auth::user()->id)->first();
+});
+
+Route::get('/application/cost/{id}', function ($id) {
+    $app = \App\LiquorApplication::whereId($id)->first();
+    return $cost = \App\ClassFee::whereId($app->class_fee_id)->first();
+
+    return response()->json(['cost' => $cost]);
+});
+
 // Route::get('/liquor-application', function () {
 //     return view('user.application-form');
 // });

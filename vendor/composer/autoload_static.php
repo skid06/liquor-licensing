@@ -453,6 +453,7 @@ class ComposerStaticInitc84452ce0fe60fbbf908f45b1eb845d3
         'App\\Admin' => __DIR__ . '/../..' . '/app/Admin.php',
         'App\\Application' => __DIR__ . '/../..' . '/app/Application.php',
         'App\\BusinessClassificationOwner' => __DIR__ . '/../..' . '/app/BusinessClassificationOwner.php',
+        'App\\ClassFee' => __DIR__ . '/../..' . '/app/ClassFee.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Corporation' => __DIR__ . '/../..' . '/app/Corporation.php',
         'App\\CorporationShareholder' => __DIR__ . '/../..' . '/app/CorporationShareholder.php',

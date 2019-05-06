@@ -9,6 +9,7 @@ return array(
     'App\\Admin' => $baseDir . '/app/Admin.php',
     'App\\Application' => $baseDir . '/app/Application.php',
     'App\\BusinessClassificationOwner' => $baseDir . '/app/BusinessClassificationOwner.php',
+    'App\\ClassFee' => $baseDir . '/app/ClassFee.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Corporation' => $baseDir . '/app/Corporation.php',
     'App\\CorporationShareholder' => $baseDir . '/app/CorporationShareholder.php',

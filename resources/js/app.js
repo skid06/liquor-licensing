@@ -58,6 +58,7 @@ Vue.component('admin-login', require('./admin/Login.vue'))
 Vue.component('payment', require('./user/Payment.vue'))
 Vue.component('payments', require('./admin/Payments.vue'))
 Vue.component('applications', require('./user/Applications.vue'))
+Vue.component('profile', require('./user/Profile.vue'))
 Vue.component('dashboard', require('./admin/Dashboard.vue'))
 Vue.component('comment-box', require('./helper/CommentBox.vue'))
 
@@ -214,12 +215,16 @@ Vue.mixin({
 const store = new Vuex.Store({
   state: {
 		userType: null,
-		applicationItems: null
+		applicationItems: null,
+		user: {}
 	},
 	getters: {
     getType(state) {
       return state.userType
-    }
+		},
+		user(state){
+			return state.user
+		}
 	},
 	actions: {
 		getUserType({commit}) {
@@ -230,13 +235,24 @@ const store = new Vuex.Store({
 				})
 		},
 
+		getUser({commit}){
+		 axios
+				.get('/user/info')
+				.then(response => {
+					commit("getUser", response.data)
+				})
+		}
+
 
 	},
   mutations: {
     getUserType (state, data) {
-			state.userType = data.type
-			
-    }
+			state.userType = data.type	
+		},
+		
+    getUser (state, data) {
+			state.user = data	
+		},		
   }
 })
 
