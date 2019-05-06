@@ -32,6 +32,11 @@ class LiquorApplication extends Model
         return $this->hasMany(Note::class);
     } 
 
+    public function classFee()
+    {
+        return $this->hasOne(ClassFee::class);
+    }     
+
     public function payments()
     {
         return $this->hasMany(Payment::class);

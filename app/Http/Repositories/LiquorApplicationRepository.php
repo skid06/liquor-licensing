@@ -57,6 +57,7 @@ class LiquorApplicationRepository implements ApplicationInterface
 		$application->action_pending_against_owner = $attributes['action_pending_against_owner'];
 		$application->owner_been_issued_wagering_stamp = $attributes['owner_been_issued_wagering_stamp'];
 		$application->previous_liquor_license_been_revoked = $attributes['previous_liquor_license_been_revoked'];
+		$application->class_fee_id = $attributes['class_fee'];
 		$application->status = $attributes['status'];
     
     if($attributes['business_classification'] == 'Corporation') {
@@ -198,7 +199,7 @@ class LiquorApplicationRepository implements ApplicationInterface
 		if(\Auth::user()){
 			$application = LiquorApplication::where('id', $id)
 																			->where('user_id', \Auth::user()->id)
-																			->with('classifiable.children')
+																			->with(['classifiable.children'])
 																			->first();															
 		}
 		else{

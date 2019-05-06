@@ -7,7 +7,7 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
         
-        <title>Laravel</title>
+        <title>City of Love's Park</title>
 
         <!-- Fonts -->
         <!-- <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css"> -->
@@ -137,16 +137,16 @@
             </v-list>        
           </v-navigation-drawer>
           <!-- @include('vuetify-layout.partials.navigation-drawer') -->
-          <v-toolbar :clipped-left="primaryDrawer.clipped" color="#A88442" app absolute >
+          <v-toolbar :clipped-left="primaryDrawer.clipped" color="#404041" app absolute >
             <v-toolbar-side-icon
               v-if="primaryDrawer.type !== 'permanent' && getType !== null "
               @click.stop="primaryDrawer.model = !primaryDrawer.model"
             ></v-toolbar-side-icon>
             <v-toolbar-title>
               <v-img
-                src="http://209.188.93.46/~lovesparkil/wp-content/uploads/2019/02/lp-logo.png"
+                src="http://209.188.93.46/~lovesparkil/wp-content/uploads/2019/05/top.png"
                 height="70"
-                width="185">
+                width="220">
               </v-img>
             </v-toolbar-title>
             <v-toolbar-items class="hidden-sm-and-down" v-if="getType != null">
@@ -161,6 +161,7 @@
               hide-details
               label="Search Applications..."
               solo-inverted
+              dark
             ></v-autocomplete>
             <v-btn icon>
               <v-icon>more_vert</v-icon>
@@ -224,7 +225,7 @@
 
                         <v-list-tile-content>
                           <v-list-tile-title>Eli Nicolosi</v-list-tile-title>
-                          <v-list-tile-sub-title>Founder of Vuetify.js</v-list-tile-sub-title>
+                          <v-list-tile-sub-title>Edit Profile</v-list-tile-sub-title>
                         </v-list-tile-content>
 
                         <v-list-tile-action>
@@ -282,8 +283,8 @@
               
             </v-container>
           </v-content>
-          <v-footer :inset="footer.inset" app>
-            
+          <v-footer :inset="footer.inset" app style="background: #404041 !important">
+            <div style="margin: 0 auto; color: white">Powered by Civic Simple © 2019 | All Rights Reserved</div>
           </v-footer>
         </v-app>
       </div>
