@@ -220,12 +220,12 @@
                     <v-list>
                       <v-list-tile avatar>
                         <v-list-tile-avatar>
-                          <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John">
+                          <img src="http://209.188.93.46/~lovesparkil/wp-content/uploads/2019/05/eli.jpg" alt="John">
                         </v-list-tile-avatar>
 
                         <v-list-tile-content>
                           <v-list-tile-title>Eli Nicolosi</v-list-tile-title>
-                          <v-list-tile-sub-title>Edit Profile</v-list-tile-sub-title>
+                          <v-list-tile-sub-title><a href="/profile">Edit Profile</a></v-list-tile-sub-title>
                         </v-list-tile-content>
 
                         <v-list-tile-action>
