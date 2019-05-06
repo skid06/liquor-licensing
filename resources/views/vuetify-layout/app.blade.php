@@ -220,7 +220,7 @@
                     <v-list>
                       <v-list-tile avatar>
                         <v-list-tile-avatar>
-                          <img src="http://209.188.93.46/~lovesparkil/wp-content/uploads/2019/05/eli.jpg" alt="John">
+                          <img :src="profileImage">
                         </v-list-tile-avatar>
 
                         <v-list-tile-content>

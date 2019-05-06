@@ -26,7 +26,7 @@
                 >
                   <v-avatar>
                     <img
-                      src="http://209.188.93.46/~lovesparkil/wp-content/uploads/2019/05/eli.jpg"
+                      :src="profileImage"
                       alt="Eli"
                     >
                   </v-avatar>  

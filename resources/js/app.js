@@ -79,6 +79,7 @@ Vue.mixin({
 			floating: false,
 			mini: false
 		},
+		profileImage: '',
 		fav: true,
 		menu: false,
 		message: false,
@@ -209,6 +210,7 @@ Vue.mixin({
 	},
 	mounted() {
 		// this.getUserType()
+		this.profileImage = 'http://209.188.93.46/~lovesparkil/wp-content/uploads/2019/05/eli.jpg'
 	}	
 })
 
