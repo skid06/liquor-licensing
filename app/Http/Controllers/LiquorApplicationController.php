@@ -49,6 +49,12 @@ class LiquorApplicationController extends Controller
 
     public function processApplication($id)
     {
-        $this->application->processApplication($id);
+        return $this->application->processApplication($id);
     }    
+
+    public function sendEmailWithPDF(Request $request)
+    {
+        // return $request->all();
+        return $this->application->sendEmailWithPDF($request);
+    }
 }

@@ -11,6 +11,7 @@ use App\LimitedLiabilityCompany;
 use App\PartnershipOwners as Owner;
 use App\CorporationShareholder as Shareholder;
 use App\LimitedLiabilityCompanyMember as Member;
+use App\Events\UserApplicationProcessed;
 use App\Http\Repositories\Interfaces\ApplicationInterface;
 use App\Http\Repositories\Interfaces\BusinessClassificationInterface;
 
@@ -322,10 +323,121 @@ class LiquorApplicationRepository implements ApplicationInterface
 
 			$app->status = 'processed';
 			$app->save();
+			// return $app;
 
 			// Send Email Alert to user when application has been processed.
 			event(new UserApplicationProcessed($app));
 
 			return $app;
 	}	
+
+	public function sendEmailWithPDF($attributes)
+	{
+		$data = json_decode($attributes, true);
+		// return $attributes['pdfData'];
+		$data['pdf'] = [
+			'business_name' =>  $attributes['pdfData']['business_name'],
+			'business_address' =>  $attributes['pdfData']['business_address'],
+			'business_phone' =>  $attributes['pdfData']['business_phone'],
+			'business_email' =>  $attributes['pdfData']['business_email'],
+			'business_contact_person' =>  $attributes['pdfData']['business_contact_person'],
+			'business_contact_phone' =>  $attributes['pdfData']['business_contact_phone'],
+			'business_contact_title' =>  $attributes['pdfData']['business_contact_title'],            
+			'business_classification' =>  $attributes['pdfData']['business_classification'],
+			// 'selectClassification($attributes['pdfData']['business_classification)   
+			'born_outside_us' =>  $attributes['pdfData']['born_outside_us'],
+			'born_us_parents' =>  $attributes['pdfData']['born_us_parents'],
+			'date_of_birth' =>  $attributes['pdfData']['date_of_birth'],
+			'birth_country' =>  $attributes['pdfData']['birth_country'],   
+			'naturalized' =>  $attributes['pdfData']['naturalized'],      
+			'naturalized_city' =>  $attributes['pdfData']['naturalized_city'],
+			'naturalized_state' =>  $attributes['pdfData']['naturalized_state'],
+			'naturalized_date' =>  $attributes['pdfData']['naturalized_date'],              
+			'business_contact_person' =>  $attributes['pdfData']['business_contact_person'],
+			'business_contact_title' =>  $attributes['pdfData']['business_contact_title'],
+			'business_contact_phone' =>  $attributes['pdfData']['business_contact_phone'],
+			'class_fee' =>  $attributes['pdfData']['class_fee'],
+
+			'corporate_name' => isset($attributes['pdfData']['corporate_name']) ? $attributes['pdfData']['corporate_name'] : 'none',
+			'corporate_address' => isset($attributes['pdfData']['corporate_address']) ? $attributes['pdfData']['corporate_address'] : 'none',
+			'store_manager_name' => isset($attributes['pdfData']['store_manager_name']) ? $attributes['pdfData']['store_manager_name']: 'none',
+			'store_manager_email' => isset($attributes['pdfData']['store_manager_email']) ? $attributes['pdfData']['store_manager_email'] : 'none',
+			'store_manager_address' => isset($attributes['pdfData']['store_manager_address']) ? $attributes['pdfData']['store_manager_address'] : 'none',
+			'store_manager_phone' => isset($attributes['pdfData']['store_manager_phone']) ? $attributes['pdfData']['store_manager_phone'] : 'none',              
+			'president_name' => isset($attributes['pdfData']['president_name']) ? $attributes['pdfData']['president_name'] : 'none',
+			'president_email' => isset($attributes['pdfData']['president_email']) ? $attributes['pdfData']['president_email'] : 'none',
+			'president_address' => isset($attributes['pdfData']['president_address']) ? $attributes['pdfData']['president_address'] : 'none',
+			'president_phone' => isset($attributes['pdfData']['president_phone']) ? $attributes['pdfData']['president_phone'] : 'none',
+			'vice_president_name' => isset($attributes['pdfData']['vice_president_name']) ? $attributes['pdfData']['vice_president_name'] : 'none',
+			'vice_president_email' => isset($attributes['pdfData']['vice_president_email']) ? $attributes['pdfData']['vice_president_email'] : 'none',
+			'vice_president_address' => isset($attributes['pdfData']['vice_president_address']) ? $attributes['pdfData']['vice_president_address'] : 'none',
+			'vice_president_phone' => isset($attributes['pdfData']['vice_president_phone']) ? $attributes['pdfData']['vice_president_phone'] : 'none',
+			'secretary_name' => isset($attributes['pdfData']['secretary_name']) ? $attributes['pdfData']['secretary_name'] : 'none',
+			'secretary_email' => isset($attributes['pdfData']['secretary_email']) ? $attributes['pdfData']['secretary_email'] : 'none',
+			'secretary_address' => isset($attributes['pdfData']['secretary_address']) ? $attributes['pdfData']['secretary_address'] : 'none',
+			'secretary_phone' => isset($attributes['pdfData']['secretary_phone']) ? $attributes['pdfData']['secretary_phone'] : 'none',
+			'treasurer_name' => isset($attributes['pdfData']['treasurer_name']) ? $attributes['pdfData']['treasurer_name'] : 'none',
+			'treasurer_email' => isset($attributes['pdfData']['treasurer_address']) ? $attributes['pdfData']['treasurer_address'] : 'none',
+			'treasurer_address' => isset($attributes['pdfData']['treasurer_address']) ? $attributes['pdfData']['treasurer_address'] : 'none',
+			'treasurer_phone' => isset($attributes['pdfData']['treasurer_phone']) ? $attributes['pdfData']['treasurer_phone'] : 'none',
+			'shareholders' => isset($attributes['pdfData']['children']) ? $attributes['pdfData']['children'] : 'none',
+
+			'classifiable_type' => $attributes['pdfData']['classifiable_type'],
+
+			'state_of_organization' => isset($attributes['pdfData']['state_of_organization']) ? $attributes['pdfData']['state_of_organization'] : 'none',
+			'llc_manager_name' => isset($attributes['pdfData']['llc_manager_name']) ? $attributes['pdfData']['llc_manager_name'] : 'none',
+			'llc_manager_email' => isset($attributes['pdfData']['llc_manager_email']) ? $attributes['pdfData']['llc_manager_email'] : 'none',
+			'llc_manager_phone' => isset($attributes['pdfData']['llc_manager_phone']) ? $attributes['pdfData']['llc_manager_phone'] : 'none',
+			'store_manager_name' => isset($attributes['pdfData']['store_manager_name']) ? $attributes['pdfData']['store_manager_name'] : 'none',
+			'store_manager_email' => isset($attributes['pdfData']['store_manager_email']) ? $attributes['pdfData']['store_manager_email'] : 'none',
+			'store_manager_address' => isset($attributes['pdfData']['store_manager_address']) ? $attributes['pdfData']['store_manager_address'] : 'none',
+			'store_manager_phone' => isset($attributes['pdfData']['store_manager_phone']) ? $attributes['pdfData']['store_manager_phone'] : 'none',
+			'owners' => isset($attributes['pdfData']['children']) ? $attributes['pdfData']['children'] : 'none',            
+
+			// 'state_of_organization' => $attributes['pdfData']['state_of_organization'],
+			// 'llc_manager_name' => $attributes['pdfData']['llc_manager_name'],
+			// 'llc_manager_email' => $attributes['pdfData']['llc_manager_email'],
+			// 'llc_manager_phone' => $attributes['pdfData']['llc_manager_phone'],
+			// 'store_manager_name' => $attributes['pdfData']['store_manager_name'],
+			// 'store_manager_email' => $attributes['pdfData']['store_manager_email'],
+			// 'store_manager_address' => $attributes['pdfData']['store_manager_address'],
+			// 'store_manager_phone' => $attributes['pdfData']['store_manager_phone'],              
+			'members' => $attributes['pdfData']['children'],
+
+			'other_corporate_name' => $attributes['pdfData']['other_corporate_name'],
+			'other_corporate_address' => $attributes['pdfData']['other_corporate_address'],
+
+			'date_qualified_transact_business' => $attributes['pdfData']['date_qualified_transact_business'],
+			'had_business_other_corporation' => $attributes['pdfData']['had_business_other_corporation'],
+			'establishment_owner_name' => $attributes['pdfData']['establishment_owner_name'],
+			'establishment_owner_address' => $attributes['pdfData']['establishment_owner_address'],
+			'establishment_owner_phone' => $attributes['pdfData']['establishment_owner_phone'],
+			'lessor_name' => $attributes['pdfData']['lessor_name'],
+			'lessor_address' => $attributes['pdfData']['lessor_address'],
+			'lessor_phone' => $attributes['pdfData']['lessor_phone'],
+			'lessor_end_date' => $attributes['pdfData']['lessor_end_date'],
+			'owner_lease_premises' => $attributes['pdfData']['owner_lease_premises'],
+			'liquor_license_another_premise ' => $attributes['pdfData']['liquor_license_another_premise'],
+			'other_establishment_name' => $attributes['pdfData']['other_establishment_name'],
+			'other_establishment_address' => $attributes['pdfData']['other_establishment_address'],
+			'action_pending_against_owner' => $attributes['pdfData']['action_pending_against_owner'],
+			'owner_been_issued_wagering_stamp' => $attributes['pdfData']['owner_been_issued_wagering_stamp'],
+			'previous_liquor_license_been_revoked' => $attributes['pdfData']['previous_liquor_license_been_revoked'],
+			'status' => $attributes['pdfData']['status']
+		];
+
+		return $data['pdf']['business_name'];
+
+		$pdf = PDF::loadView('pdf', $data);
+
+		Mail::send('pdf', $data, function($message) use ($data,$pdf,$submission){
+				// $pdf = PDF::loadView('pdf', $data);
+				$message->from('mail@astutewebgroup.com', 'Liquor Application');
+				$message->to('valencia.mel.06@gmail.com');
+				$message->cc('melchor@astutewebgroup.com');
+				$message->subject('Liquor');
+				//Attach PDF doc
+				$message->attachData($pdf->output(),'Liquors.pdf');
+		});
+	}
 }

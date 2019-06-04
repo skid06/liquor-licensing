@@ -62,9 +62,16 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/test-login', function () {
     return view('user.login');
 });
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 });
+
+Route::get('/pdf', function () {
+    return view('liquor-application-pdf');
+});
+
+Route::post('/send-email-with-pdf', 'LiquorApplicationController@sendEmailWithPDF');
 
 Route::get('/user/type', function () {
     if(\Auth::guard('web')->user())
@@ -72,6 +79,8 @@ Route::get('/user/type', function () {
     elseif(\Auth::guard('admin')->user())
         return response()->json(['type' => 'admin']);
 });
+
+Route::post('/user/edit', 'UserController@editUserInfo');
 
 Route::get('/my-applications', 'HomeController@my_applications')->name('my.applications');
 Route::get('/liquor-application/{id?}', 'HomeController@index')->name('my.application.form');

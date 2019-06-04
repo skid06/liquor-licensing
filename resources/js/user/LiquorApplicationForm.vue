@@ -1019,7 +1019,8 @@
       >Submit to City</v-btn>                                                   
     </v-card-text>
     <v-snackbar v-model="isApplicationAdded" color="success">
-      <span>You added a new application.</span>
+      <span v-if="!app_id">You added a new application.</span>
+      <span v-else>You edited your application.</span>
       <v-btn flat color="white">Close</v-btn>
     </v-snackbar>    
     <comment-box :app_id="id" v-if="id != '' && status == 'paid'" />   

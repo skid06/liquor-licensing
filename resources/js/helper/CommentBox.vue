@@ -62,7 +62,7 @@
           <v-btn
             class="primary"
             flat
-            @click="process(`${this.app_id}`)"
+            @click="process(app_id)"
             v-if="userType == 'admin'"
             style="font-size:12px"
           >
@@ -96,7 +96,8 @@ export default {
         message: ''
       },
       processBtn: false,
-      userType: null
+      userType: null,
+      id: ''
     }
   },
   props:['app_id'],
@@ -110,6 +111,7 @@ export default {
         })
     },
     postNote(){
+      this.isHide = true
       axios
         .post(`/user/applications/${this.app_id}/notes`, { message: this.form.message })
         .then(response => {
@@ -118,11 +120,14 @@ export default {
           this.form = {}
           this.errors = []
           this.withError = false
+          this.isHide = false
+          this.success_message = response.data.message
         })
         .catch(err => {
           // this.$store.commit("login_failed", 'Wrong email or password.')
           this.errors = err.response.data.errors
           this.withError = true
+          this.isHide = true
           console.log({err})
         })        
     },
@@ -144,6 +149,7 @@ export default {
   mounted(){
     this.getNotes()
     this.getUserType()
+    this.id = this.app_id
   }
 }
 </script>

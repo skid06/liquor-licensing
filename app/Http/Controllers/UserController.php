@@ -32,8 +32,9 @@ class UserController extends Controller
         $this->validate($request, [
             'name' => 'required|min:3|max:50',
             'email' => 'email',
-            'password' => 'min:6|required_with:confirm_password|same:confirm_password',
-            'confirm_password' => 'min:6'
+            'phone' => 'required'
+            // 'password' => 'min:6|required_with:confirm_password|same:confirm_password',
+            // 'confirm_password' => 'min:6'
             ]);
 
         $user = User::where('id', Auth::user()->id)->first();
@@ -41,7 +42,10 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->phone = $request->phone;
-        $user->password = $request->password;
+        // $user->password = $request->password;
+        $user->save();
+
+        return response()->json(['user' => $user, 'message' => 'Successfully edited your profile.']);
 
     }
 }
