@@ -204,7 +204,7 @@ Vue.mixin({
 						window.location = "/admin"
 					}
 					else{
-						window.location = "/login"
+						window.location = "/user/login"
 					}
 				})
 		}

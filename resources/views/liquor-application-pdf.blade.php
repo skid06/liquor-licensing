@@ -336,20 +336,103 @@ textarea{
                                     </div>                                      
                                 @endforeach
                             @endif
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="inputBox">
+                                        <div class="inputText">Have you had a business within the City of Loves Park under any other corporate name? {{ $pdf['had_business_other_corporation'] == 'Yes' ? 'Yes' : 'No'  }}</div>
+                                        <input type="text" name="" class="input">
+                                    </div>
+                                </div>
+                            </div> 
+                            
                         @elseif($pdf['classifiable_type']  == "App\LimitedLiabilityCompany")
 
                         @else
 
-                        @endif
+                        @endif   
 
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="inputBox">
-                                    <div class="inputText">Have you had a business within the City of Loves Park under any other corporate name? {{ $pdf['had_business_other_corporation'] == 'Yes' ? 'Yes' : 'None'  }}</div>
+                                    <div class="inputText">If state of incorporation is not ILLINOIS, when was the corporation become qualified to transact business? {{ $pdf['date_qualified_transact_business'] }}</div>
+                                    <input type="text" name="" class="input">
+                                </div>
+                            </div>
+                        </div> 
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="inputBox">
+                                    <div class="inputText">Was the owner born outside? {{ $pdf['born_outside_us'] == 'Yes' ? 'Yes' : 'No'  }}</div>
                                     <input type="text" name="" class="input">
                                 </div>
                             </div>
                         </div>                         
+
+                        @if($pdf['born_outside_us'] == 'Yes')
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="inputBox">
+                                        <div class="inputText">Born of US Parents? {{ $pdf['born_us_parents'] == 'Yes' ? 'Yes' : 'No'  }}</div>
+                                        <input type="text" name="" class="input">
+                                    </div>
+                                </div>
+                            </div> 
+                            @if($pdf['born_us_parents'] == 'Yes')
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="inputBox">
+                                            <div class="inputText">Birth Country: {{ $pdf['birth_country'] }}</div>
+                                            <input type="text" name="" class="input">
+                                        </div>
+                                    </div>
+                                </div>   
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="inputBox">
+                                            <div class="inputText">Date of Birth: {{ $pdf['date_of_birth'] }}</div>
+                                            <input type="text" name="" class="input">
+                                        </div>
+                                    </div>
+                                </div>  
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="inputBox">
+                                            <div class="inputText">Naturalized? {{ $pdf['naturalized'] == 'Yes' ? 'Yes' :'No' }}</div>
+                                            <input type="text" name="" class="input">
+                                        </div>
+                                    </div>
+                                </div>   
+                                @if($pdf['naturalized'] == 'Yes')
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="inputBox">
+                                                <div class="inputText">City: {{ $pdf['naturalized_city'] }}</div>
+                                                <input type="text" name="" class="input">
+                                            </div>
+                                        </div>
+                                    </div> 
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="inputBox">
+                                                <div class="inputText">State: {{ $pdf['naturalized_state'] }}</div>
+                                                <input type="text" name="" class="input">
+                                            </div>
+                                        </div>
+                                    </div> 
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="inputBox">
+                                                <div class="inputText">Date: {{ $pdf['naturalized_date'] }}</div>
+                                                <input type="text" name="" class="input">
+                                            </div>
+                                        </div>
+                                    </div>                                                                                                         
+                                @endif                                                                                         
+                            @endif
+                        @endif                                                                     
 				</form>
 			</div>
 		</div>
