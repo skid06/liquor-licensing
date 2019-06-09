@@ -44,7 +44,7 @@
           </v-list-tile-avatar>
 
           <v-list-tile-content>
-            <v-list-tile-title>Eli Nicolosi</v-list-tile-title>
+            <v-list-tile-title>{{ user.name }}</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
@@ -79,7 +79,7 @@
           ></v-text-field>
         </v-flex>          
 
-        <v-flex xs12 md10 offset-md1 > 
+        <!-- <v-flex xs12 md10 offset-md1 > 
           <v-text-field
             v-model="user.password"
             label="Password"
@@ -99,13 +99,17 @@
             :append-icon="confirm_password_show ? 'visibility' : 'visibility_off'"
             @click:append="confirm_password_show = !confirm_password_show"
           ></v-text-field>
-        </v-flex>                        
+        </v-flex>                         -->
+        <v-snackbar v-model="isUserEdited" color="success">
+          <span>Successfully edited your info.</span>
+          <v-btn flat color="white">Close</v-btn>
+        </v-snackbar>         
       </v-layout>
     <v-card-actions>
       <v-spacer></v-spacer>
-      <v-btn flat @click="menu = false">Cancel</v-btn>
-      <v-btn color="primary" flat @click="menu = false">Save</v-btn>
-    </v-card-actions>
+      <!-- <v-btn flat @click="menu = false">Cancel</v-btn> -->
+      <v-btn color="primary" style="background-color: #ED2224 !important;" @click="editUser">Save</v-btn>     
+    </v-card-actions>     
   </v-card>
 </template>
 <script>
@@ -122,7 +126,8 @@ export default {
       },
       password_show: false,
       confirm_password: '',
-      confirm_password_show: false
+      confirm_password_show: false,
+      isUserEdited: false
     }
   },
 
@@ -150,7 +155,21 @@ export default {
 				.then(response => {
 					this.user = response.data
 				})
-		},
+    },
+    
+    editUser(){
+      axios
+        .post('/user/edit', {
+          name: this.user.name,
+          email: this.user.email,
+          phone: this.user.phone
+        })
+        .then(response => {
+          console.log(response.data)
+          this.user = response.data.user
+          this.isUserEdited = true
+        })
+    }
 
     // ...mapActions([
     //   'getUser'

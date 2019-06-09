@@ -43,7 +43,7 @@ class ApplicationPaymentController extends Controller
     {
         try {
             $charge = Stripe::charges()->create([
-                'amount' => 35.00,
+                'amount' => $request->cost,
                 'currency' => 'USD',
                 'source' => $request->stripeToken,
                 'description' => 'Liquor Application Fee',
@@ -57,7 +57,7 @@ class ApplicationPaymentController extends Controller
             $payment = new Payment;
             $payment->user_id = \Auth::user()->id;
             $payment->application_id = $request->id;
-            $payment->amount = 35.00;
+            $payment->amount = $request->cost;
             $payment->balance_transaction = $charge['balance_transaction'];
             $payment->description = $charge['description'];
             $payment->brand = $charge['source']['brand'];

@@ -175,7 +175,7 @@
           // Submit the form
           // this.$el.submit();
           
-          axios.post('/checkout',{id: this.app_id, email: this.email, stripeToken: result.token.id})
+          axios.post('/checkout',{id: this.app_id, email: this.email, stripeToken: result.token.id, cost: this.cost})
               .then(response => {
                   console.log(response.data)
                   this.success_message = response.data.message

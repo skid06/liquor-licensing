@@ -10,7 +10,7 @@
         <title>City of Love's Park</title>
 
         <!-- Fonts -->
-        <!-- <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css"> -->
+        
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css">
         <style>

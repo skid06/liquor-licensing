@@ -28,7 +28,9 @@ class SendProcessedAlertToUser
      */
     public function handle(UserApplicationProcessed $event)
     {
-        // Send Email to admins
+        // Send Email to admins $event->application->user->email
+        // return response()->json(['hey' => $event]);
+        // \Log::info($event); 
         Mail::to($event->application->user->email)->send(new ProcessedApplicationAlert($event->application));
     }
 }

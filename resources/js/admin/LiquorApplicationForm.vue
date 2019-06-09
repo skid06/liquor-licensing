@@ -374,7 +374,7 @@
       <v-layout row wrap class="mr-5 ml-5 mt-10" v-if="!hideCorporation">
         <v-container fluid>  
           <p>Have you had a business within the City of Loves Park under any other corporate name?</p>
-          <v-radio-group v-model="had_business_other_corporation" :mandatory="false" row>
+          <v-radio-group v-model="had_business_other_corporation"  row>
             <v-radio label="Yes" value="Yes"></v-radio>
             <v-radio label="No" value="No"></v-radio>
           </v-radio-group>                   
@@ -895,73 +895,15 @@
             January 31, 2019. Please check which class you are applying for. - {{ liquor_license_fee }}</strong>
           </p>
           <v-radio-group 
-            v-model="liquor_license_fee"
+            v-model="class_fee"
           >
-            <v-radio  
-              label="Class A - Tavern or Bar: $2,000.00" 
-              value="Class A"
-            ></v-radio>
-
-            <v-radio  
-              label="Class B - Retail sale of packaged alcoholic liquor not for consumption on premise: $1,500.00" 
-              value="Class B"
-            ></v-radio> 
-
-            <v-radio  
-              label="Class C - Clubs retail sale of alcoholic liquor for consumption on premise: $1,000.00" 
-              value="Class C"
-            ></v-radio> 
-            
-            <v-radio  
-              label="Class D - Restaurants retail sale of beer and wine only for consumption on premise: $1,000.00" 
-              value="Class D"
-            ></v-radio>     
-
-            <v-radio  
-              label="Class E - Gas stations and Convenience stores retail sale of beer and wine only: $1,000.00" 
-              value="Class E"
-            ></v-radio>    
-
-            <v-radio  
-              label="Class F - Gaming Parlor: $2,000.00" 
-              value="Class F"
-            ></v-radio>    
-
-            <v-radio  
-              label="Class G - Temporary: $75.00 per day" 
-              value="Class G"
-            ></v-radio>
-
-            <v-radio  
-              label="Class H - Retail sale and consumption of alcoholic liquor in a banquet hall: $2,000.00" 
-              value="Class H"
-            ></v-radio>  
-
-            <v-radio  
-              label="Class R-1 - Restaurants retail sale of alcoholic liquor for consumption on premises: $2,000.00" 
-              value="Class R-1"
-            ></v-radio> 
-
-            <v-radio  
-              label="Class R-2 - Bowling and recreational facilities alcoholic liquors for consumption on premise: $2,000.00" 
-              value="Class R-2"
-            ></v-radio>      
-
-            <v-radio  
-              label="Class R-3 - Recreational facilities beer and wine for consumption on premise: $1,000.00" 
-              value="Class R-3"
-            ></v-radio>
-
-            <v-radio  
-              label="Class R-4 - Retail sale of beer and wine for consumption on premise of retail establishment: $1,000.00" 
-              value="Class R-4"
-            ></v-radio>    
-
-            <v-radio  
-              label="Class CTR - Catering business to provide and serve alcoholic liquor: $1,000.00" 
-              value="Class CTR"
-            ></v-radio>                                            
-          </v-radio-group>                                                                                      
+            <div v-for="classType in classes" :key="classType.id">
+              <v-radio
+                :label="`${classType.type}: ${classType.description} - $${classType.cost}`"
+                :value="classType.id"
+              ></v-radio>
+            </div>
+          </v-radio-group>   
         </v-flex>                         
       </v-layout>                                                           
     </v-card-text>
@@ -970,6 +912,7 @@
       <v-btn flat color="white">Close</v-btn>
     </v-snackbar>    
     <comment-box :app_id="id" v-if="id != '' && status == 'paid'" />   
+    <v-btn color="primary" @click="sendToPDF">Send to Officials</v-btn>
   </v-card>
 </template>
 
@@ -997,6 +940,7 @@
         business_contact_person: '',
         business_contact_title: '',
         business_contact_phone: '',
+        classifiable_type: '',
         corporate_name: '',
         corporate_address: '',
         store_manager_name: '',
@@ -1084,7 +1028,9 @@
         isApplicationAdded: false,
         app_id: '',
         status: '',
-        userType: null
+        userType: null,
+        class_fee: null,
+        classes: []
       }
     },
     props: ['id'],
@@ -1115,6 +1061,8 @@
             this.business_contact_person = response.data.application.business_contact_person
             this.business_contact_title = response.data.application.business_contact_title
             this.business_contact_phone = response.data.application.business_contact_phone
+            this.class_fee = response.data.application.class_fee_id
+            this.classifiable_type = response.data.application.classifiable_type 
 
             if(response.data.application.classifiable_type == 'App\\Corporation'){
               this.corporate_name = response.data.application.classifiable.corporate_name
@@ -1141,7 +1089,7 @@
               this.treasurer_phone = response.data.application.classifiable.treasurer_phone
               this.shareholders = response.data.application.classifiable.children
             }
-            else if(response.data.application.classifiable_type == 'App\\Partnership'){
+            else if(response.data.application.classifiable_type == 'App\\LimitedLiabilityCompany'){
               this.state_of_organization = response.data.application.classifiable.state_of_organization
               this.llc_manager_name = response.data.application.classifiable.llc_manager_name
               this.llc_manager_email = response.data.application.classifiable.llc_manager_email
@@ -1150,18 +1098,19 @@
               this.store_manager_email = response.data.application.classifiable.store_manager_email
               this.store_manager_address = response.data.application.classifiable.store_manager_address
               this.store_manager_phone = response.data.application.classifiable.store_manager_phone
-              this.owners = response.data.application.classifiable.children            
+              this.members = response.data.application.classifiable.children
+                        
             } 
             else{
-              this.state_of_organization = response.data.application.classifiable.state_of_organization
-              this.llc_manager_name = response.data.application.classifiable.llc_manager_name
-              this.llc_manager_email = response.data.application.classifiable.llc_manager_email
-              this.llc_manager_phone = response.data.application.classifiable.llc_manager_phone
-              this.store_manager_name = response.data.application.classifiable.store_manager_name
-              this.store_manager_email = response.data.application.classifiable.store_manager_email
-              this.store_manager_address = response.data.application.classifiable.store_manager_address
-              this.store_manager_phone = response.data.application.classifiable.store_manager_phone              
-              this.members = response.data.application.classifiable.children
+              // this.state_of_organization = response.data.application.classifiable.state_of_organization
+              // this.llc_manager_name = response.data.application.classifiable.llc_manager_name
+              // this.llc_manager_email = response.data.application.classifiable.llc_manager_email
+              // this.llc_manager_phone = response.data.application.classifiable.llc_manager_phone
+              // this.store_manager_name = response.data.application.classifiable.store_manager_name
+              // this.store_manager_email = response.data.application.classifiable.store_manager_email
+              // this.store_manager_address = response.data.application.classifiable.store_manager_address
+              // this.store_manager_phone = response.data.application.classifiable.store_manager_phone              
+              this.owners = response.data.application.classifiable.children  
             }
             this.other_corporate_name = response.data.application.other_corporate_name
             this.other_corporate_address = response.data.application.other_corporate_address
@@ -1211,18 +1160,44 @@
         }      
       },
             
+      checkBornOutsideUS(type) {
+        if(type == 'Yes') {
+          this.born_outside_us = 'Yes'   
+          
+        } 
+        else {
+          this.born_outside_us = 'No' 
+          this.born_us_parents = false
+        }     
+      },           
+           
       getUserType(){
         axios
           .get('/user/type')
           .then( (response) => this.userType = response.data.type)
-      }
+      },
+
+      getClasses(){
+        axios.get('/class/fees')
+          .then(response => this.classes = response.data)
+      },    
+      sendToPDF(){
+        console.log(this.$data)
+        axios
+          .post('/send-email-with-pdf',{
+            pdfData: this.$data
+          })
+          .then(response => {
+            console.log(response.data)
+          })
+      }  
     },
     mounted(){
       if(this.id != ''){
         this.getApplicationById(this.id)
         this.getUserType()
       }
-      console.log(this.id)
+      this.getClasses()
     }    
   }
 </script>
