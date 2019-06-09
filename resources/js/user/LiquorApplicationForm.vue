@@ -1290,7 +1290,7 @@
               this.treasurer_phone = response.data.application.classifiable.treasurer_phone
               this.shareholders = response.data.application.classifiable.children
             }
-            else if(response.data.application.classifiable_type == 'App\\Partnership'){
+            else if(response.data.application.classifiable_type == 'App\\LimitedLiabilityCompany'){
               this.state_of_organization = response.data.application.classifiable.state_of_organization
               this.llc_manager_name = response.data.application.classifiable.llc_manager_name
               this.llc_manager_email = response.data.application.classifiable.llc_manager_email
@@ -1299,18 +1299,19 @@
               this.store_manager_email = response.data.application.classifiable.store_manager_email
               this.store_manager_address = response.data.application.classifiable.store_manager_address
               this.store_manager_phone = response.data.application.classifiable.store_manager_phone
-              this.owners = response.data.application.classifiable.children            
+              this.members = response.data.application.classifiable.children
+                        
             } 
             else{
-              this.state_of_organization = response.data.application.classifiable.state_of_organization
-              this.llc_manager_name = response.data.application.classifiable.llc_manager_name
-              this.llc_manager_email = response.data.application.classifiable.llc_manager_email
-              this.llc_manager_phone = response.data.application.classifiable.llc_manager_phone
-              this.store_manager_name = response.data.application.classifiable.store_manager_name
-              this.store_manager_email = response.data.application.classifiable.store_manager_email
-              this.store_manager_address = response.data.application.classifiable.store_manager_address
-              this.store_manager_phone = response.data.application.classifiable.store_manager_phone              
-              this.members = response.data.application.classifiable.children
+              // this.state_of_organization = response.data.application.classifiable.state_of_organization
+              // this.llc_manager_name = response.data.application.classifiable.llc_manager_name
+              // this.llc_manager_email = response.data.application.classifiable.llc_manager_email
+              // this.llc_manager_phone = response.data.application.classifiable.llc_manager_phone
+              // this.store_manager_name = response.data.application.classifiable.store_manager_name
+              // this.store_manager_email = response.data.application.classifiable.store_manager_email
+              // this.store_manager_address = response.data.application.classifiable.store_manager_address
+              // this.store_manager_phone = response.data.application.classifiable.store_manager_phone              
+              this.owners = response.data.application.classifiable.children  
             }
             this.other_corporate_name = response.data.application.other_corporate_name
             this.other_corporate_address = response.data.application.other_corporate_address

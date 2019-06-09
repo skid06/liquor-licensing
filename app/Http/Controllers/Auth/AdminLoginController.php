@@ -31,7 +31,7 @@ class AdminLoginController extends Controller
         $credentials = ['email' => $request->email, 'password' => $request->password];
 
         // attempt to log the admin in
-        if(\Auth::guard('admin')->attempt($credentials, $request->remember)){
+        if(\Auth::guard('admin')->attempt($credentials)){
             // if successful, redirect to admin dashboard
             return redirect()->intended(route('admin.dashboard'));
         }

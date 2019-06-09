@@ -2,6 +2,8 @@
 
 namespace App\Http\Repositories;
 
+use PDF;
+use Mail;
 use App\User;
 use Carbon\Carbon;
 use App\Corporation;
@@ -205,7 +207,7 @@ class LiquorApplicationRepository implements ApplicationInterface
 		}
 		else{
 			$application = LiquorApplication::where('id', $id)
-																			->with('classifiable')
+																			->with(['classifiable.children'])
 																			->first();
 		}
 
@@ -332,7 +334,7 @@ class LiquorApplicationRepository implements ApplicationInterface
 	}	
 
 	public function sendEmailWithPDF($attributes)
-	{
+	{ 
 		$data = json_decode($attributes, true);
 		// return $attributes['pdfData'];
 		$data['pdf'] = [
@@ -357,6 +359,7 @@ class LiquorApplicationRepository implements ApplicationInterface
 			'business_contact_title' =>  $attributes['pdfData']['business_contact_title'],
 			'business_contact_phone' =>  $attributes['pdfData']['business_contact_phone'],
 			'class_fee' =>  $attributes['pdfData']['class_fee'],
+			'classifiable_type' => $attributes['pdfData']['classifiable_type'],
 
 			'corporate_name' => isset($attributes['pdfData']['corporate_name']) ? $attributes['pdfData']['corporate_name'] : 'none',
 			'corporate_address' => isset($attributes['pdfData']['corporate_address']) ? $attributes['pdfData']['corporate_address'] : 'none',
@@ -380,9 +383,10 @@ class LiquorApplicationRepository implements ApplicationInterface
 			'treasurer_email' => isset($attributes['pdfData']['treasurer_address']) ? $attributes['pdfData']['treasurer_address'] : 'none',
 			'treasurer_address' => isset($attributes['pdfData']['treasurer_address']) ? $attributes['pdfData']['treasurer_address'] : 'none',
 			'treasurer_phone' => isset($attributes['pdfData']['treasurer_phone']) ? $attributes['pdfData']['treasurer_phone'] : 'none',
-			'shareholders' => isset($attributes['pdfData']['children']) ? $attributes['pdfData']['children'] : 'none',
+			'shareholders' => isset($attributes['pdfData']['shareholders']) ? $attributes['pdfData']['shareholders']: 'none',
+			// 'shareholders' => isset($attributes['pdfData']['children']) ? $attributes['pdfData']['children'] : 'none',
 
-			'classifiable_type' => $attributes['pdfData']['classifiable_type'],
+			// 'classifiable_type' => $attributes['pdfData']['classifiable_type'],
 
 			'state_of_organization' => isset($attributes['pdfData']['state_of_organization']) ? $attributes['pdfData']['state_of_organization'] : 'none',
 			'llc_manager_name' => isset($attributes['pdfData']['llc_manager_name']) ? $attributes['pdfData']['llc_manager_name'] : 'none',
@@ -392,7 +396,7 @@ class LiquorApplicationRepository implements ApplicationInterface
 			'store_manager_email' => isset($attributes['pdfData']['store_manager_email']) ? $attributes['pdfData']['store_manager_email'] : 'none',
 			'store_manager_address' => isset($attributes['pdfData']['store_manager_address']) ? $attributes['pdfData']['store_manager_address'] : 'none',
 			'store_manager_phone' => isset($attributes['pdfData']['store_manager_phone']) ? $attributes['pdfData']['store_manager_phone'] : 'none',
-			'owners' => isset($attributes['pdfData']['children']) ? $attributes['pdfData']['children'] : 'none',            
+			'owners' => isset($attributes['pdfData']['owners']) ? $attributes['pdfData']['owners'] : 'none',            
 
 			// 'state_of_organization' => $attributes['pdfData']['state_of_organization'],
 			// 'llc_manager_name' => $attributes['pdfData']['llc_manager_name'],
@@ -402,35 +406,38 @@ class LiquorApplicationRepository implements ApplicationInterface
 			// 'store_manager_email' => $attributes['pdfData']['store_manager_email'],
 			// 'store_manager_address' => $attributes['pdfData']['store_manager_address'],
 			// 'store_manager_phone' => $attributes['pdfData']['store_manager_phone'],              
-			'members' => $attributes['pdfData']['children'],
+			'members' => isset($attributes['pdfData']['members']) ? $attributes['pdfData']['members'] : 'none',
 
-			'other_corporate_name' => $attributes['pdfData']['other_corporate_name'],
-			'other_corporate_address' => $attributes['pdfData']['other_corporate_address'],
+			'other_corporate_name' => isset($attributes['pdfData']['other_corporate_name']) ? $attributes['pdfData']['other_corporate_name'] : 'none',
+			'other_corporate_address' => isset($attributes['pdfData']['other_corporate_address']) ? $attributes['pdfData']['other_corporate_address'] : 'none',
 
-			'date_qualified_transact_business' => $attributes['pdfData']['date_qualified_transact_business'],
-			'had_business_other_corporation' => $attributes['pdfData']['had_business_other_corporation'],
-			'establishment_owner_name' => $attributes['pdfData']['establishment_owner_name'],
-			'establishment_owner_address' => $attributes['pdfData']['establishment_owner_address'],
-			'establishment_owner_phone' => $attributes['pdfData']['establishment_owner_phone'],
-			'lessor_name' => $attributes['pdfData']['lessor_name'],
-			'lessor_address' => $attributes['pdfData']['lessor_address'],
-			'lessor_phone' => $attributes['pdfData']['lessor_phone'],
-			'lessor_end_date' => $attributes['pdfData']['lessor_end_date'],
-			'owner_lease_premises' => $attributes['pdfData']['owner_lease_premises'],
-			'liquor_license_another_premise ' => $attributes['pdfData']['liquor_license_another_premise'],
-			'other_establishment_name' => $attributes['pdfData']['other_establishment_name'],
-			'other_establishment_address' => $attributes['pdfData']['other_establishment_address'],
-			'action_pending_against_owner' => $attributes['pdfData']['action_pending_against_owner'],
-			'owner_been_issued_wagering_stamp' => $attributes['pdfData']['owner_been_issued_wagering_stamp'],
-			'previous_liquor_license_been_revoked' => $attributes['pdfData']['previous_liquor_license_been_revoked'],
+			'date_qualified_transact_business' => isset($attributes['pdfData']['date_qualified_transact_business']) ? $attributes['pdfData']['date_qualified_transact_business'] : 'none',
+			'had_business_other_corporation' => isset($attributes['pdfData']['had_business_other_corporation']) ? $attributes['pdfData']['had_business_other_corporation'] : 'none',
+			'establishment_owner_name' => isset($attributes['pdfData']['establishment_owner_name']) ? $attributes['pdfData']['establishment_owner_name'] : 'none',
+			'establishment_owner_address' => isset($attributes['pdfData']['establishment_owner_address']) ? $attributes['pdfData']['establishment_owner_address'] : 'none',
+			'establishment_owner_phone' => isset($attributes['pdfData']['establishment_owner_phone']) ? $attributes['pdfData']['establishment_owner_phone'] : 'none',
+			'lessor_name' => isset($attributes['pdfData']['lessor_name']) ? $attributes['pdfData']['lessor_name'] : 'none',
+			'lessor_address' => isset($attributes['pdfData']['lessor_address']) ? $attributes['pdfData']['lessor_address'] : 'none',
+			'lessor_phone' => isset($attributes['pdfData']['lessor_phone']) ? $attributes['pdfData']['lessor_phone'] : 'none',
+			'lessor_end_date' => isset($attributes['pdfData']['lessor_end_date']) ? $attributes['pdfData']['lessor_end_date'] : 'none',
+			'owner_lease_premises' => isset($attributes['pdfData']['owner_lease_premises']) ? $attributes['pdfData']['owner_lease_premises'] : 'none',
+			'liquor_license_another_premise ' => isset($attributes['pdfData']['liquor_license_another_premise']) ? $attributes['pdfData']['liquor_license_another_premise'] : 'none',
+			'other_establishment_name' => isset($attributes['pdfData']['other_establishment_name']) ? $attributes['pdfData']['other_establishment_name'] : 'none',
+			'other_establishment_address' => isset($attributes['pdfData']['other_establishment_address']) ? $attributes['pdfData']['other_establishment_address'] : 'none',
+			'action_pending_against_owner' => isset($attributes['pdfData']['action_pending_against_owner']) ? $attributes['pdfData']['action_pending_against_owner'] : 'none',
+			'owner_been_issued_wagering_stamp' => isset($attributes['pdfData']['owner_been_issued_wagering_stamp']) ? $attributes['pdfData']['owner_been_issued_wagering_stamp'] : 'none',
+			'previous_liquor_license_been_revoked' => isset($attributes['pdfData']['previous_liquor_license_been_revoked']) ? $attributes['pdfData']['previous_liquor_license_been_revoked'] : 'none',
 			'status' => $attributes['pdfData']['status']
 		];
 
-		return $data['pdf']['business_name'];
+		// return $data;
 
-		$pdf = PDF::loadView('pdf', $data);
+		$pdf = PDF::loadView('liquor-application-pdf', ['pdf' => $data['pdf']]);
+		
+		// return $pdf->download('liquor.pdf');
 
-		Mail::send('pdf', $data, function($message) use ($data,$pdf,$submission){
+		try{
+			Mail::send('liquor-application-pdf', $data, function($message) use ($data,$pdf){
 				// $pdf = PDF::loadView('pdf', $data);
 				$message->from('mail@astutewebgroup.com', 'Liquor Application');
 				$message->to('valencia.mel.06@gmail.com');
@@ -438,6 +445,11 @@ class LiquorApplicationRepository implements ApplicationInterface
 				$message->subject('Liquor');
 				//Attach PDF doc
 				$message->attachData($pdf->output(),'Liquors.pdf');
-		});
+			});
+		}catch(JWTException $exception){
+			$this->serverstatuscode = "0";
+			$this->serverstatusdes = $exception->getMessage();
+		}
+
 	}
 }

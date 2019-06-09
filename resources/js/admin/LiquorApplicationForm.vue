@@ -374,7 +374,7 @@
       <v-layout row wrap class="mr-5 ml-5 mt-10" v-if="!hideCorporation">
         <v-container fluid>  
           <p>Have you had a business within the City of Loves Park under any other corporate name?</p>
-          <v-radio-group v-model="had_business_other_corporation" :mandatory="false" row>
+          <v-radio-group v-model="had_business_other_corporation"  row>
             <v-radio label="Yes" value="Yes"></v-radio>
             <v-radio label="No" value="No"></v-radio>
           </v-radio-group>                   
@@ -940,6 +940,7 @@
         business_contact_person: '',
         business_contact_title: '',
         business_contact_phone: '',
+        classifiable_type: '',
         corporate_name: '',
         corporate_address: '',
         store_manager_name: '',
@@ -1061,6 +1062,7 @@
             this.business_contact_title = response.data.application.business_contact_title
             this.business_contact_phone = response.data.application.business_contact_phone
             this.class_fee = response.data.application.class_fee_id
+            this.classifiable_type = response.data.application.classifiable_type 
 
             if(response.data.application.classifiable_type == 'App\\Corporation'){
               this.corporate_name = response.data.application.classifiable.corporate_name
@@ -1087,7 +1089,7 @@
               this.treasurer_phone = response.data.application.classifiable.treasurer_phone
               this.shareholders = response.data.application.classifiable.children
             }
-            else if(response.data.application.classifiable_type == 'App\\Partnership'){
+            else if(response.data.application.classifiable_type == 'App\\LimitedLiabilityCompany'){
               this.state_of_organization = response.data.application.classifiable.state_of_organization
               this.llc_manager_name = response.data.application.classifiable.llc_manager_name
               this.llc_manager_email = response.data.application.classifiable.llc_manager_email
@@ -1096,18 +1098,19 @@
               this.store_manager_email = response.data.application.classifiable.store_manager_email
               this.store_manager_address = response.data.application.classifiable.store_manager_address
               this.store_manager_phone = response.data.application.classifiable.store_manager_phone
-              this.owners = response.data.application.classifiable.children            
+              this.members = response.data.application.classifiable.children
+                        
             } 
             else{
-              this.state_of_organization = response.data.application.classifiable.state_of_organization
-              this.llc_manager_name = response.data.application.classifiable.llc_manager_name
-              this.llc_manager_email = response.data.application.classifiable.llc_manager_email
-              this.llc_manager_phone = response.data.application.classifiable.llc_manager_phone
-              this.store_manager_name = response.data.application.classifiable.store_manager_name
-              this.store_manager_email = response.data.application.classifiable.store_manager_email
-              this.store_manager_address = response.data.application.classifiable.store_manager_address
-              this.store_manager_phone = response.data.application.classifiable.store_manager_phone              
-              this.members = response.data.application.classifiable.children
+              // this.state_of_organization = response.data.application.classifiable.state_of_organization
+              // this.llc_manager_name = response.data.application.classifiable.llc_manager_name
+              // this.llc_manager_email = response.data.application.classifiable.llc_manager_email
+              // this.llc_manager_phone = response.data.application.classifiable.llc_manager_phone
+              // this.store_manager_name = response.data.application.classifiable.store_manager_name
+              // this.store_manager_email = response.data.application.classifiable.store_manager_email
+              // this.store_manager_address = response.data.application.classifiable.store_manager_address
+              // this.store_manager_phone = response.data.application.classifiable.store_manager_phone              
+              this.owners = response.data.application.classifiable.children  
             }
             this.other_corporate_name = response.data.application.other_corporate_name
             this.other_corporate_address = response.data.application.other_corporate_address
@@ -1157,6 +1160,17 @@
         }      
       },
             
+      checkBornOutsideUS(type) {
+        if(type == 'Yes') {
+          this.born_outside_us = 'Yes'   
+          
+        } 
+        else {
+          this.born_outside_us = 'No' 
+          this.born_us_parents = false
+        }     
+      },           
+           
       getUserType(){
         axios
           .get('/user/type')
