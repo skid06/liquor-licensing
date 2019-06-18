@@ -27,7 +27,7 @@
             <ul>
               <li class="mt-list-item done" v-for="log in messages" :key="log.id">
                 <div class="list-icon-container">
-                  <span style="font-size:10px;"> {{ log.admin_id == null ? log.application.user.name : 'Admin' }}  </span>
+                  <span style="font-size:10px;"> {{ log.admin_id == null ? 'You' : 'Admin' }}  </span>
                 </div>
                 <div class="list-datetime"> {{ log.created_at | moment("from", "now") }} </div>
                 <div class="list-item-content">
