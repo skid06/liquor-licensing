@@ -54,11 +54,12 @@
               <li v-for="error in errors.message" :key="error">{{ error }}</li>
             </ul>
           </div>
+
+          <div :class="{ hide: isHide, 'alert': true, 'alert-success': true }" style="float: left">
+              {{ success_message }}
+          </div>           
         </div>
-        <div class="modal-footer">
-        <div :class="{ hide: isHide, 'alert': true, 'alert-success': true }" style="float: left">
-            {{ success_message }}
-        </div>                
+        <div class="modal-footer">               
           <v-btn
             class="primary"
             flat
