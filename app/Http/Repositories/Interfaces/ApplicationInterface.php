@@ -15,4 +15,6 @@ interface ApplicationInterface
 
    public function filterApplicationByDate($by, $count, $status);
 
+   public function sendEmailWithPDF($attributes);
+
 }

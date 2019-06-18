@@ -420,7 +420,7 @@ class LiquorApplicationRepository implements ApplicationInterface
 			'lessor_address' => isset($attributes['pdfData']['lessor_address']) ? $attributes['pdfData']['lessor_address'] : 'none',
 			'lessor_phone' => isset($attributes['pdfData']['lessor_phone']) ? $attributes['pdfData']['lessor_phone'] : 'none',
 			'lessor_end_date' => isset($attributes['pdfData']['lessor_end_date']) ? $attributes['pdfData']['lessor_end_date'] : 'none',
-			'owner_lease_premises' => isset($attributes['pdfData']['owner_lease_premises']) ? $attributes['pdfData']['owner_lease_premises'] : 'none',
+			'owner_lease_premises' => isset($attributes['pdfData']['owner_lease_premises']) ? $attributes['pdfData']['owner_lease_premises'] : 'No',
 			'liquor_license_another_premise ' => isset($attributes['pdfData']['liquor_license_another_premise']) ? $attributes['pdfData']['liquor_license_another_premise'] : 'none',
 			'other_establishment_name' => isset($attributes['pdfData']['other_establishment_name']) ? $attributes['pdfData']['other_establishment_name'] : 'none',
 			'other_establishment_address' => isset($attributes['pdfData']['other_establishment_address']) ? $attributes['pdfData']['other_establishment_address'] : 'none',

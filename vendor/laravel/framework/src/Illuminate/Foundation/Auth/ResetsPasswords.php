@@ -24,7 +24,10 @@ trait ResetsPasswords
      */
     public function showResetForm(Request $request, $token = null)
     {
-        return view('auth.passwords.reset')->with(
+        // return view('auth.passwords.reset')->with(
+        //     ['token' => $token, 'email' => $request->email]
+        // );
+        return view('user.reset-password')->with(
             ['token' => $token, 'email' => $request->email]
         );
     }
@@ -37,6 +40,7 @@ trait ResetsPasswords
      */
     public function reset(Request $request)
     {
+        // return $request->all();
         $request->validate($this->rules(), $this->validationErrorMessages());
 
         // Here we will attempt to reset the user's password. If it is successful we
@@ -51,9 +55,14 @@ trait ResetsPasswords
         // If the password was successfully reset, we will redirect the user back to
         // the application's home authenticated view. If there is an error we can
         // redirect them back to where they came from with their error message.
+
+        // return $response == Password::PASSWORD_RESET
+        //             ? $this->sendResetResponse($request, $response)
+        //             : $this->sendResetFailedResponse($request, $response);
+
         return $response == Password::PASSWORD_RESET
-                    ? $this->sendResetResponse($request, $response)
-                    : $this->sendResetFailedResponse($request, $response);
+                    ? response()->json(['message' => 'Successfully reset the password!'])
+                    : $this->sendResetFailedResponse($request, $response);        
     }
 
     /**
@@ -66,7 +75,9 @@ trait ResetsPasswords
         return [
             'token' => 'required',
             'email' => 'required|email',
-            'password' => 'required|confirmed|min:6',
+            'password' => 'required|min:8|confirmed',
+            // 'password' => 'required|min:8',
+            // 'confirmed' => 'required|same:password|min:8',
         ];
     }
 

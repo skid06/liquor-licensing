@@ -50,8 +50,8 @@
               </v-form>
             </v-card-text>
             <v-card-actions>
-              <div style="margin-left: 20px"><a href="#">Forgot Password?</a></div>
-              <div style="margin-left: 20px"><a href="#">Sign Up</a></div>
+              <div style="margin-left: 20px"><a href="/password/reset">Forgot Password?</a></div>
+              <div style="margin-left: 20px"><a href="/user/register">Sign Up</a></div>
               <v-spacer></v-spacer>             
               <v-btn color="primary" @click.prevent="authenticate">Login</v-btn>
             </v-card-actions>

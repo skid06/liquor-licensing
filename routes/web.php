@@ -19,6 +19,12 @@ Route::get('/user/login', function () {
     return view('user.login');
 });
 
+Route::get('/user/register', function () {
+    return view('user.register');
+});
+
+Route::post('/user/register', 'Auth\\RegisterController@register');
+
 Route::get('/vuetify', function () {
     return view('vuetify');
 });

@@ -14,7 +14,8 @@ trait SendsPasswordResetEmails
      */
     public function showLinkRequestForm()
     {
-        return view('auth.passwords.email');
+        // return view('auth.passwords.email');
+        return view('user.reset');
     }
 
     /**
@@ -31,12 +32,17 @@ trait SendsPasswordResetEmails
         // to send the link, we will examine the response then see the message we
         // need to show to the user. Finally, we'll send out a proper response.
         $response = $this->broker()->sendResetLink(
-            $request->only('email')
+            $this->credentials($request)
         );
 
+        // return response()->json(['message' => 'We have e-mailed your password reset link!']);
+        // return $response == Password::RESET_LINK_SENT
+        //             ? $this->sendResetLinkResponse($request, $response)
+        //             : $this->sendResetLinkFailedResponse($request, $response);
+
         return $response == Password::RESET_LINK_SENT
-                    ? $this->sendResetLinkResponse($request, $response)
-                    : $this->sendResetLinkFailedResponse($request, $response);
+                    ? response()->json(['message' => 'We have e-mailed your password reset link!'])
+                    : response()->json(['message' => 'We can\'t find a user with that e-mail address.'], 417);                    
     }
 
     /**
@@ -48,6 +54,17 @@ trait SendsPasswordResetEmails
     protected function validateEmail(Request $request)
     {
         $request->validate(['email' => 'required|email']);
+    }
+
+    /**
+     * Get the needed authentication credentials from the request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+    protected function credentials(Request $request)
+    {
+        return $request->only('email');
     }
 
     /**

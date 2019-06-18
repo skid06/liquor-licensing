@@ -33,10 +33,12 @@ class AdminLoginController extends Controller
         // attempt to log the admin in
         if(\Auth::guard('admin')->attempt($credentials)){
             // if successful, redirect to admin dashboard
-            return redirect()->intended(route('admin.dashboard'));
+            // return redirect()->intended(route('admin.dashboard'));
+            return response()->json(['message' => true]);
         }
+        return response()->json(['message' => 'Incorrect combination of email and password.'], 401);
 
         // if unsucessful, redirect to admin login with form data
-        return redirect()->back()->withInput($request->only('email', 'remember'));
+        // return redirect()->back()->withInput($request->only('email', 'remember'));
     }
 }

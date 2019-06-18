@@ -88,8 +88,15 @@
         })
         .catch(err => {
           // this.$store.commit("login_failed", 'Wrong email or password.')
-          this.authError = err.response.data.errors.email ? err.response.data.errors.email[0] : err.response.data.errors.password[0]
-          console.log(err.response.data.errors.email ? err.response.data.errors.email[0] : err.response.data.errors.password[0])
+          if(err.response.status === 401){
+            this.authError = err.response.data.message
+            console.log(err.response)
+          }
+          else{
+            this.authError = err.response.data.errors.email ? err.response.data.errors.email[0] : err.response.data.errors.password[0]
+            console.log(err.response.data.errors.email ? err.response.data.errors.email[0] : err.response.data.errors.password[0])
+          }
+
         })
       }
     },
