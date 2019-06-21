@@ -1139,7 +1139,7 @@
         isApplicationAdded: false,
         app_id: '',
         status: '',
-        userType: null
+        userType: null,
       }
     },
     props: ['id'],

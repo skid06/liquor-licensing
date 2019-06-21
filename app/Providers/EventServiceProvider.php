@@ -23,6 +23,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         'App\Events\UserApplicationProcessed' => [
             'App\Listeners\SendProcessedAlertToUser'
+        ],
+        'App\Events\UserAndAdminPostComment' => [
+            'App\Listeners\CommentNotificationsForUserAndAdmin'
         ]
     ];
 

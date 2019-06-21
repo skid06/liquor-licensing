@@ -41,6 +41,7 @@ Route::get('/class/fees', function () {
     return \App\ClassFee::get();
 });
 
+
 Route::get('/user/info', function () {
     return \App\User::where('id', \Auth::user()->id)->first();
 });

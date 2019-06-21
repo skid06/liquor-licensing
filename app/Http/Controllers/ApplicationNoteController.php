@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Note;
 use Auth;
+use App\Events\UserAndAdminPostComment;
 
 class ApplicationNoteController extends Controller
 {
@@ -15,8 +16,8 @@ class ApplicationNoteController extends Controller
      */
     public function index($id)
     {
+        // $notes = Note::where('application_id', $id)->with(['application.user','admin'])->get();
         $notes = Note::where('application_id', $id)->with(['application.user','admin'])->get();
-
         return $notes;
     }
 
@@ -38,6 +39,7 @@ class ApplicationNoteController extends Controller
      */
     public function store(Request $request, $id)
     {
+        // return $request->all();
         try {
             $this->validate($request, [
                 'message'   => 'required'
@@ -47,9 +49,13 @@ class ApplicationNoteController extends Controller
             $note->application_id = $id; 
             $note->message = $request->message;
             $note->admin_id = Auth::guard('admin')->user() ? Auth::guard('admin')->user()->id : null;
+            $note->user_id = Auth::guard('web')->user() ? Auth::guard('web')->user()->id : null;
             $note->save();
+
+            event(new UserAndAdminPostComment($note));
     
             return response()->json(["note" => $note, "message" => "You have posted a comment."]);
+            
         } catch (ValidationException $exception) {
             return response()->json([
                 'status' => 'error',
