@@ -1023,7 +1023,7 @@
       <span v-else>You edited your application.</span>
       <v-btn flat color="white">Close</v-btn>
     </v-snackbar>    
-    <comment-box :app_id="id" v-if="id != '' && status == 'paid'" />   
+    <comment-box :app_id="id" :user_id="user_id" v-if="id != '' && status == 'paid'" />   
   </v-card>
 </template>
 
@@ -1140,6 +1140,7 @@
         app_id: '',
         status: '',
         userType: null,
+        user_id: ''
       }
     },
     props: ['id'],
@@ -1242,6 +1243,7 @@
           .get(`/user/applications/id/${id}`)
           .then(response => {
             console.log(response.data)
+            this.user_id = response.data.application.user_id
             this.app_id = id
             this.business_name = response.data.application.business_name
             this.business_address = response.data.application.business_address
