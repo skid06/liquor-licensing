@@ -101,7 +101,7 @@ export default {
       id: ''
     }
   },
-  props:['app_id'],
+  props:['app_id','user_id'],
   methods: {
     getNotes(){
       axios
@@ -114,7 +114,7 @@ export default {
     postNote(){
       this.isHide = true
       axios
-        .post(`/user/applications/${this.app_id}/notes`, { message: this.form.message, user_id: this.application.user_id })
+        .post(`/user/applications/${this.app_id}/notes`, { message: this.form.message, user_id: this.user_id })
         .then(response => {
           this.messages.push(response.data.note)
           console.log(response.data)
