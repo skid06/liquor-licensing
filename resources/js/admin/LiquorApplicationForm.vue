@@ -911,7 +911,7 @@
       <span>You added a new application.</span>
       <v-btn flat color="white">Close</v-btn>
     </v-snackbar>    
-    <comment-box :app_id="id" v-if="id != '' && status == 'paid'" />   
+    <comment-box :app_id="id" :user_id="user_id" v-if="id != '' && status == 'paid'" />   
     <v-btn color="primary" @click="sendToPDF">Send to Officials</v-btn>
   </v-card>
 </template>
