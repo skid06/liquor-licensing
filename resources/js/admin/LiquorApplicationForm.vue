@@ -1030,7 +1030,8 @@
         status: '',
         userType: null,
         class_fee: null,
-        classes: []
+        classes: [],
+        user_id: ''
       }
     },
     props: ['id'],
@@ -1040,6 +1041,7 @@
           .get(`/user/applications/id/${id}`)
           .then(response => {
             console.log(response.data)
+            this.user_id = response.data.application.user_id
             this.app_id = id
             this.business_name = response.data.application.business_name
             this.business_address = response.data.application.business_address
