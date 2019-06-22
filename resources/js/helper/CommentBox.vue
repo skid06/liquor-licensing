@@ -114,7 +114,7 @@ export default {
     postNote(){
       this.isHide = true
       axios
-        .post(`/user/applications/${this.app_id}/notes`, { message: this.form.message, user_id: this.messages[0].application.user_id })
+        .post(`/user/applications/${this.app_id}/notes`, { message: this.form.message, user_id: this.application.user_id })
         .then(response => {
           this.messages.push(response.data.note)
           console.log(response.data)
