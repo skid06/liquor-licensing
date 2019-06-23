@@ -39,15 +39,16 @@ class UserController extends Controller
         ]);
 
         $user = User::where('id', Auth::user()->id)->first();
-
+ 
         $user->name = $request->name;
         $user->email = $request->email;
         $user->phone = $request->phone;
    
         if(isset($request->image)){
-            $imageName = time().'.'.$request->image->getClientOriginalExtension();
-            $request->image->move(public_path('images'), $imageName);
-            $user->image = $imageName;
+            // $imageName = time().'.'.$request->image->getClientOriginalExtension();
+            // $request->image->move(public_path('images'), $imageName);
+            $path = $request->file('image')->store('avatars','public');
+            $user->image = $path;
         }        
         
         $user->password = bcrypt($request->password);

@@ -220,7 +220,7 @@
                     <v-list>
                       <v-list-tile avatar>
                         <v-list-tile-avatar>
-                          <img :src="`/images/${getUser.image}`">
+                          <img :src="`/storage/${getUser.image}`">
                         </v-list-tile-avatar>
 
                         <v-list-tile-content>
