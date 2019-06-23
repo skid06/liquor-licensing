@@ -105,7 +105,20 @@
             :append-icon="confirm_password_show ? 'visibility' : 'visibility_off'"
             @click:append="confirm_password_show = !confirm_password_show"
           ></v-text-field>
-        </v-flex>                        
+        </v-flex>    
+
+        <v-flex xs12 md10 offset-md1>
+          <v-alert
+            :value="true"
+            color="error"
+            icon="warning"
+            outline
+            v-if="authError"
+            class="mb-3"
+          >
+            {{ authError }}
+          </v-alert>          
+        </v-flex>                          
         <v-snackbar v-model="isUserEdited" color="success">
           <span>Successfully edited your info.</span>
           <v-btn flat color="white">Close</v-btn>
@@ -137,7 +150,8 @@ export default {
       filename: '',
       previewImage: '',
       files: {},
-      image: null
+      image: null,
+      authError: ''
     }
   },
 
@@ -183,14 +197,41 @@ export default {
       formData.append('name', this.user.name)
       formData.append('email', this.user.email)
       formData.append('phone', this.user.phone)
-      formData.append('image', this.image, this.filename)
+      formData.append('password', this.user.password)
+      formData.append('confirm_password', this.confirm_password)
+
+      if(this.image){
+        formData.append('image', this.image, this.filename)
+      }
+      
 
       axios
         .post('/user/edit', formData, config)
         .then(response => {
           console.log(response.data)
           // this.user = response.data.user
+          this.authError = ''
           this.isUserEdited = true
+        })
+        .catch(err => {
+          // this.$store.commit("login_failed", 'Wrong email or password.')
+          // this.authError = err.response.data.errors.email ? err.response.data.errors.email[0] : err.response.data.errors.password[0]
+          if(err.response.data.errors.name){
+            this.authError = err.response.data.errors.name[0]
+          }
+          else if(err.response.data.errors.email){
+            this.authError = err.response.data.errors.email[0]
+          }
+          else if(err.response.data.errors.phone){
+            this.authError = err.response.data.errors.phone[0]
+          }
+          else if(err.response.data.errors.password){
+            this.authError = err.response.data.errors.password[0]
+          }
+          else if(err.response.data.errors.confirm_password){
+            this.authError = err.response.data.errors.confirm_password[0]
+          }
+          console.log(err.response.data.errors)
         })
     }
 

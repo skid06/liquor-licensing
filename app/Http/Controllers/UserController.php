@@ -29,24 +29,28 @@ class UserController extends Controller
 
     public function editUserInfo(Request $request)
     {
+        // return $request->image;
         $this->validate($request, [
             'name' => 'required|min:3|max:50',
             'email' => 'email',
-            'phone' => 'required'
-            // 'password' => 'min:6|required_with:confirm_password|same:confirm_password',
-            // 'confirm_password' => 'min:6'
-            ]);
-
-        $imageName = time().'.'.$request->image->getClientOriginalExtension();
-        $request->image->move(public_path('images'), $imageName);
+            'phone' => 'required',
+            'password' => 'min:6|required_with:confirm_password|same:confirm_password'
+            // 'confirm_password' => 'required|min:6'
+        ]);
 
         $user = User::where('id', Auth::user()->id)->first();
 
         $user->name = $request->name;
         $user->email = $request->email;
         $user->phone = $request->phone;
-        $user->image = $imageName;
-        // $user->password = $request->password;
+   
+        if(isset($request->image)){
+            $imageName = time().'.'.$request->image->getClientOriginalExtension();
+            $request->image->move(public_path('images'), $imageName);
+            $user->image = $imageName;
+        }        
+        
+        $user->password = bcrypt($request->password);
         $user->save();
 
         return response()->json(['user' => $user, 'message' => 'Successfully edited your profile.']);
