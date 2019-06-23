@@ -37,11 +37,15 @@ class UserController extends Controller
             // 'confirm_password' => 'min:6'
             ]);
 
+        $imageName = time().'.'.$request->image->getClientOriginalExtension();
+        $request->image->move(public_path('images'), $imageName);
+
         $user = User::where('id', Auth::user()->id)->first();
 
         $user->name = $request->name;
         $user->email = $request->email;
         $user->phone = $request->phone;
+        $user->image = $imageName;
         // $user->password = $request->password;
         $user->save();
 

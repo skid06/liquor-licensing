@@ -43,7 +43,13 @@ Route::get('/class/fees', function () {
 
 
 Route::get('/user/info', function () {
-    return \App\User::where('id', \Auth::user()->id)->first();
+    if(\Auth::guard('admin')->user()){
+        return \App\Admin::where('id', \Auth::guard('admin')->user()->id)->first();
+    }
+    elseif(Auth::guard('web')->user()){
+        return \App\User::where('id', \Auth::user()->id)->first();
+    }
+    // return \App\User::where('id', \Auth::user()->id)->first();
 });
 
 Route::get('/application/cost/{id}', function ($id) {

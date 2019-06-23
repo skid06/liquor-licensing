@@ -220,11 +220,11 @@
                     <v-list>
                       <v-list-tile avatar>
                         <v-list-tile-avatar>
-                          <img :src="profileImage">
+                          <img :src="`/images/${getUser.image}`">
                         </v-list-tile-avatar>
 
                         <v-list-tile-content>
-                          <v-list-tile-title>Eli Nicolosi</v-list-tile-title>
+                          <v-list-tile-title v-text="getUser.name"></v-list-tile-title>
                           <v-list-tile-sub-title><a href="/profile">Edit Profile</a></v-list-tile-sub-title>
                         </v-list-tile-content>
 

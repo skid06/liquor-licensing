@@ -26,9 +26,15 @@
                 >
                   <v-avatar>
                     <img
-                      :src="profileImage"
+                      :src="`/images/${user.image}`"
                       alt="Eli"
+                      v-if="!previewImage"
                     >
+                    <img
+                      :src="previewImage"
+                      alt="Eli"
+                      v-else
+                    >                    
                   </v-avatar>  
                 </v-btn>     
               </template>
@@ -79,7 +85,7 @@
           ></v-text-field>
         </v-flex>          
 
-        <!-- <v-flex xs12 md10 offset-md1 > 
+        <v-flex xs12 md10 offset-md1 > 
           <v-text-field
             v-model="user.password"
             label="Password"
@@ -99,7 +105,7 @@
             :append-icon="confirm_password_show ? 'visibility' : 'visibility_off'"
             @click:append="confirm_password_show = !confirm_password_show"
           ></v-text-field>
-        </v-flex>                         -->
+        </v-flex>                        
         <v-snackbar v-model="isUserEdited" color="success">
           <span>Successfully edited your info.</span>
           <v-btn flat color="white">Close</v-btn>
@@ -127,7 +133,11 @@ export default {
       password_show: false,
       confirm_password: '',
       confirm_password_show: false,
-      isUserEdited: false
+      isUserEdited: false,
+      filename: '',
+      previewImage: '',
+      files: {},
+      image: null
     }
   },
 
@@ -137,16 +147,21 @@ export default {
     },
 
     onFilePicked(event) {
-      const files = event.target.files
-      let filename = files[0].name
+      console.log(event)
+      this.files = event.target.files
+      this.image = event.target.files[0]
+      this.filename = this.files[0].name
 
-      if(filename.lastIndexOf('.') <= 0) {
+      if(this.filename.lastIndexOf('.') <= 0) {
         return alert('Please upload a valid file')
       }
 
       const fileReader = new FileReader()
-      fileReader.readAsDataURL(files[0])
-
+      fileReader.readAsDataURL(this.files[0])
+      fileReader.onload = e =>{
+          this.previewImage = e.target.result;
+          console.log(this.previewImage);
+      };
     },
 
 		getUser(){
@@ -158,15 +173,23 @@ export default {
     },
     
     editUser(){
+      console.log(this.image)
+      // return
+      const config = {
+        headers: { 'Content-Type': 'multipart/form-data' }
+      }    
+
+      let formData = new FormData()
+      formData.append('name', this.user.name)
+      formData.append('email', this.user.email)
+      formData.append('phone', this.user.phone)
+      formData.append('image', this.image, this.filename)
+
       axios
-        .post('/user/edit', {
-          name: this.user.name,
-          email: this.user.email,
-          phone: this.user.phone
-        })
+        .post('/user/edit', formData, config)
         .then(response => {
           console.log(response.data)
-          this.user = response.data.user
+          // this.user = response.data.user
           this.isUserEdited = true
         })
     }

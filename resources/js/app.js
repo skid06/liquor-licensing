@@ -228,7 +228,7 @@ const store = new Vuex.Store({
     getType(state) {
       return state.userType
 		},
-		user(state){
+		getUser(state){
 			return state.user
 		}
 	},
@@ -278,10 +278,14 @@ const app = new Vue({
 	computed: {
 		getType(){
 			return store.getters.getType
+		},
+		getUser(){
+			return store.getters.getUser
 		}
 	},
 	mounted(){
 		store.dispatch("getUserType")
+		store.dispatch("getUser")
 		// console.log(this.getType)
 	}
 });
