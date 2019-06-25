@@ -413,8 +413,8 @@
           ></v-text-field> -->
           <v-dialog
             ref="dialog"
-            v-model="modal"
-            :return-value.sync="date"
+            v-model="modal_date_qualified_transact_business"
+            :return-value.sync="date_qualified_transact_business"
             persistent
             lazy
             full-width
@@ -431,10 +431,10 @@
                 v-on="on"
               ></v-text-field>
             </template>
-            <v-date-picker v-model="date" scrollable>
+            <v-date-picker v-model="date_qualified_transact_business" scrollable>
               <v-spacer></v-spacer>
-              <v-btn flat color="primary" @click="modal = false">Cancel</v-btn>
-              <v-btn flat color="primary" @click="$refs.dialog.save(date)">OK</v-btn>
+              <v-btn flat color="primary" @click="modal_date_qualified_transact_business = false">Cancel</v-btn>
+              <v-btn flat color="primary" @click="$refs.dialog.save(date_qualified_transact_business)">OK</v-btn>
             </v-date-picker>
           </v-dialog>          
         </v-flex>                       
@@ -664,9 +664,9 @@
 
         <v-flex xs12 md6 >
           <v-dialog
-            ref="dialog"
-            v-model="modal"
-            :return-value.sync="date"
+            ref="dialog2"
+            v-model="modal_date_of_birth"
+            :return-value.sync="date_of_birth"
             persistent
             lazy
             full-width
@@ -679,14 +679,13 @@
                 append-icon="event"
                 class="input-width"
                 outline
-                readonly
                 v-on="on"
               ></v-text-field>
             </template>
-            <v-date-picker v-model="date" scrollable>
+            <v-date-picker v-model="date_of_birth" scrollable>
               <v-spacer></v-spacer>
-              <v-btn flat color="primary" @click="modal = false">Cancel</v-btn>
-              <v-btn flat color="primary" @click="$refs.dialog.save(date)">OK</v-btn>
+              <v-btn flat color="primary" @click="modal_date_of_birth = false">Cancel</v-btn>
+              <v-btn flat color="primary" @click="$refs.dialog2.save(date_of_birth)">OK</v-btn>
             </v-date-picker>
           </v-dialog>           
           <!-- <v-text-field
@@ -729,9 +728,9 @@
 
         <v-flex xs12 md4 >
           <v-dialog
-            ref="dialog"
-            v-model="modal"
-            :return-value.sync="date"
+            ref="dialog3"
+            v-model="modal_naturalized_date"
+            :return-value.sync="naturalized_date"
             persistent
             lazy
             full-width
@@ -748,10 +747,10 @@
                 v-on="on"
               ></v-text-field>
             </template>
-            <v-date-picker v-model="date" scrollable>
+            <v-date-picker v-model="naturalized_date" scrollable>
               <v-spacer></v-spacer>
-              <v-btn flat color="primary" @click="modal = false">Cancel</v-btn>
-              <v-btn flat color="primary" @click="$refs.dialog.save(date)">OK</v-btn>
+              <v-btn flat color="primary" @click="modal_naturalized_date = false">Cancel</v-btn>
+              <v-btn flat color="primary" @click="$refs.dialog3.save(naturalized_date)">OK</v-btn>
             </v-date-picker>
           </v-dialog>  
         </v-flex>          
@@ -829,13 +828,32 @@
         </v-flex>       
 
         <v-flex xs12 md6 >
-          <v-text-field
-            v-model="lessor_end_date"
-            label="Lease End Date"
-            append-icon="event"
-            class="input-width"
-            outline
-          ></v-text-field>
+          <v-dialog
+            ref="dialog4"
+            v-model="modal_lessor_end_date"
+            :return-value.sync="lessor_end_date"
+            persistent
+            lazy
+            full-width
+            width="290px"
+          >
+            <template v-slot:activator="{ on }">
+              <v-text-field
+                v-model="lessor_end_date"
+                label="Lease End Date"
+                append-icon="event"
+                class="input-width"
+                outline
+                readonly
+                v-on="on"
+              ></v-text-field>
+            </template>
+            <v-date-picker v-model="lessor_end_date" scrollable>
+              <v-spacer></v-spacer>
+              <v-btn flat color="primary" @click="modal_lessor_end_date = false">Cancel</v-btn>
+              <v-btn flat color="primary" @click="$refs.dialog4.save(lessor_end_date)">OK</v-btn>
+            </v-date-picker>
+          </v-dialog> 
         </v-flex>  
 
         <v-flex xs12 md12 >
@@ -931,6 +949,9 @@
           </p>
           <v-radio-group 
             v-model="class_fee"
+            v-validate="'required'"
+            data-vv-name="class_fee"
+            :error-messages="errors.collect('class_fee')"            
           >
             <div v-for="classType in classes" :key="classType.id">
               <v-radio
@@ -1043,11 +1064,13 @@
         born_outside_us: '',
         born_us_parents: '',
         date_of_birth: new Date().toISOString().substr(0, 10),
+        date_qualified_transact_business: new Date().toISOString().substr(0, 10),
+        naturalized_date: new Date().toISOString().substr(0, 10),
+        lessor_end_date: new Date().toISOString().substr(0, 10),
         birth_country: '',   
         naturalized: "No",      
         naturalized_city: '',
-        naturalized_state: '',
-        naturalized_date: '',              
+        naturalized_state: '',              
         business_contact_person: '',
         business_contact_title: '',
         business_contact_phone: '',
@@ -1079,7 +1102,6 @@
         llc_manager_name: '',
         llc_manager_email: '',
         llc_manager_phone: '',        
-        date_qualified_transact_business: new Date().toISOString().substr(0, 10),
         had_business_other_corporation: '',            
         classifications: ['Corporation', 'Limited Liability Company', 'General Partnership', 'Limited Partnership', 'Sole Proprietorship'],
         bornOutsideUSoptions: ['Yes', 'No'],
@@ -1096,8 +1118,7 @@
         establishment_owner_phone: '',
         lessor_name: '',
         lessor_address: '',
-        lessor_phone: '',   
-        lessor_end_date: '',     
+        lessor_phone: '',       
         owner_lease_premises: '',
         liquor_license_another_premise : '',
         other_establishment_name: '',
@@ -1134,7 +1155,10 @@
         ],
         date: new Date().toISOString().substr(0, 10),
         menu: false,
-        modal: false,
+        modal_date_of_birth: false,
+        modal_naturalized_date: false,
+        modal_date_qualified_transact_business: false,
+        modal_lessor_end_date: false,
         menu2: false,
         isApplicationAdded: false,
         app_id: '',
