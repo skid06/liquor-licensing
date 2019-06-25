@@ -66,7 +66,7 @@ class Handler extends ExceptionHandler
                 break;
 
                 default:
-                    return redirect(route('login'));
+                    return redirect(route('user.login'));
                     break;
             }
         }

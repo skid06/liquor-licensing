@@ -17,7 +17,7 @@ Route::get('/', function () {
 /** Start of Vuetifyjs Test */
 Route::get('/user/login', function () {
     return view('user.login');
-});
+})->name('user.login');
 
 Route::get('/user/register', function () {
     return view('user.register');
