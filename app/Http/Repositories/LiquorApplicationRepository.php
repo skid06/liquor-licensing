@@ -23,6 +23,7 @@ class LiquorApplicationRepository implements ApplicationInterface
 
 	public function store($attributes)
 	{
+		// return $attributes['members'];
 		if(!$attributes['app_id']){
 			$application = new LiquorApplication;
 		}
@@ -99,8 +100,8 @@ class LiquorApplicationRepository implements ApplicationInterface
 			$application->classifiable_id = $corporation->id;
 			$application->classifiable_type = 'App\Corporation';
 
-			if(!empty($attributes->input('shareholders'))){
-				foreach($attributes->input('shareholders') as $shareholder){
+			if(!empty($attributes['shareholders'])){
+				foreach(json_decode($attributes['shareholders']) as $shareholder){
 					if(isset($shareholder['id'])){
 						$dbShareholder = Shareholder::find($shareholder['id']);
 					}
@@ -138,20 +139,22 @@ class LiquorApplicationRepository implements ApplicationInterface
 			$application->classifiable_id = $llc->id;
 			$application->classifiable_type = 'App\LimitedLiabilityCompany';
 
-			// return $attributes->input('members');
-			if(!empty($attributes->input('members'))){
-				foreach($attributes->input('members') as $member){
-					if(isset($member['id'])){
-						$dbMember = Member::find($member['id']);
+			// return $attributes['members'];
+			// dd(json_decode($attributes['members']));
+
+			if(!empty($attributes['members'])){
+				foreach(json_decode($attributes['members']) as $member){
+					if(isset($member->id)){
+						$dbMember = Member::find($member->id);
 					}
 					else {
 						$dbMember = new Member;
 					}
 
-					$dbMember->name = $member['name'];
-					$dbMember->address = $member['address'];
-					$dbMember->email = $member['email'];
-					$dbMember->phone = $member['phone'];
+					$dbMember->name = $member->name;
+					$dbMember->address = $member->address;
+					$dbMember->email = $member->email;
+					$dbMember->phone = $member->phone;
 					$dbMember->llc_id = $llc->id;
 					$dbMember->save();
 				}
@@ -172,8 +175,8 @@ class LiquorApplicationRepository implements ApplicationInterface
 			$application->classifiable_id = $partnership->id;
 			$application->classifiable_type = 'App\Partnership';
 
-			if(!empty($attributes->input('owners'))){
-				foreach($attributes->input('owners') as $owner){
+			if(!empty($attributes['owners'])){
+				foreach(json_decode($attributes['owners']) as $owner){
 					if(isset($owner['id'])){
 						$dbOwner = Owner::find($owner['id']);
 					}
@@ -191,15 +194,11 @@ class LiquorApplicationRepository implements ApplicationInterface
 			}	
 		}
 
-		if(isset($data['current_lease'])){
-			// $imageName = time().'.'.$request->image->getClientOriginalExtension();
-			// $request->image->move(public_path('images'), $imageName);
-			// $path = $data->file('image')->store('avatars','public');
+		if(isset($attributes['current_lease'])){
 			$path = request()->file('current_lease')->store('current_leases','public');
-			// $user->image = $path;
 		}		
 
-		// $application->current_lease = $path;
+		$application->current_lease = $path;
 		$application->save();
 
 		return response()->json(['application' => $application]);

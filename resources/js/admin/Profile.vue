@@ -26,7 +26,7 @@
                 >
                   <v-avatar>
                     <img
-                      :src="`storage/${user.image}`"
+                      :src="`/storage/${user.image}`"
                       alt="Eli"
                       v-if="!previewImage"
                     >

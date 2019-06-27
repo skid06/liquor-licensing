@@ -47,6 +47,11 @@ class DashboardController extends Controller
         return view('admin.show-application', $data);
     }
 
+    public function viewProfile()
+    {
+        return view('admin.profile');
+    }
+
     public function updateAdminInfo(Request $request)
     {
         // return $request->image;
@@ -58,7 +63,7 @@ class DashboardController extends Controller
             // 'confirm_password' => 'required|min:6'
         ]);
 
-        $user = Admin::where('id', Auth::guard('admin')->user()->id)->first();
+        $admin = Admin::where('id', \Auth::guard('admin')->user()->id)->first();
  
         $admin->name = $request->name;
         $admin->email = $request->email;
@@ -74,7 +79,7 @@ class DashboardController extends Controller
         $admin->password = bcrypt($request->password);
         $admin->save();
 
-        return response()->json(['user' => $user, 'message' => 'Successfully edited your profile.']);
+        return response()->json(['admin' => $admin, 'message' => 'Successfully edited your profile.']);
 
     }    
 }

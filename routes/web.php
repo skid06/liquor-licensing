@@ -49,6 +49,9 @@ Route::get('/user/info', function () {
     elseif(Auth::guard('web')->user()){
         return \App\User::where('id', \Auth::user()->id)->first();
     }
+    elseif(Auth::guard('official')->user()){
+        return \App\Official::where('id', \Auth::guard('official')->user()->id)->first();
+    }    
     // return \App\User::where('id', \Auth::user()->id)->first();
 });
 
@@ -145,7 +148,8 @@ Route::prefix('admin')->group(function() {
     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
     Route::get('/liquor-application/{id}', 'DashboardController@viewForm')->name('admin.view.application.form');
     Route::get('/completed', 'DashboardController@completed')->name('admin.completed');
-    Route::post('/update', 'DashboardController@updateUserInfo')->name('admin.update');
+    Route::get('/profile', 'DashboardController@viewProfile')->name('admin.profile');
+    Route::post('/update', 'DashboardController@updateAdminInfo')->name('admin.update');
     Route::get('/processed', 'DashboardController@processed')->name('admin.processed');
     Route::get('/paid', 'DashboardController@paid')->name('admin.paid');
     Route::get('/payments', 'ApplicationPaymentController@showPayments');

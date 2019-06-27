@@ -1188,151 +1188,151 @@
                 headers: { 'Content-Type': 'multipart/form-data' }
               }           
 
-              // let formData = new FormData()
-              // formData.append('app_id', this.app_id)
-              // formData.append('business_name', this.business_name)
-              // formData.append('business_address', this.business_address)
-              // formData.append('business_phone', this.business_phone)
-              // formData.append('business_email', this.business_email)
-              // formData.append('business_classification', this.business_classification)
-              // formData.append('born_outside_us', this.born_outside_us)
-              // formData.append('born_us_parents', this.born_us_parents)
-              // formData.append('date_of_birth', this.date_of_birth)
-              // formData.append('birth_country', this.birth_country)
-              // formData.append('naturalized', this.naturalized)
-              // formData.append('naturalized_city', this.naturalized_city)
-              // formData.append('naturalized_state', this.naturalized_state)
-              // formData.append('naturalized_date', this.naturalized_date)
-              // formData.append('business_contact_person', this.business_contact_person)
-              // formData.append('business_contact_title', this.business_contact_title)
-              // formData.append('business_contact_phone', this.business_contact_phone)
-              // formData.append('corporate_name', this.corporate_name)
-              // formData.append('corporate_address', this.corporate_address)
-              // formData.append('store_manager_name', this.store_manager_name)
-              // formData.append('store_manager_email', this.store_manager_email)
-              // formData.append('store_manager_address', this.store_manager_address)
-              // formData.append('store_manager_phone', this.store_manager_phone)
-              // formData.append('president_name', this.president_name)
-              // formData.append('president_email', this.president_email)
-              // formData.append('president_address', this.president_address)
-              // formData.append('president_phone', this.president_phone)
-              // formData.append('vice_president_name', this.vice_president_name)
-              // formData.append('vice_president_email', this.vice_president_email)
-              // formData.append('vice_president_address', this.vice_president_address)
-              // formData.append('vice_president_phone', this.vice_president_phone)
-              // formData.append('secretary_name', this.secretary_name)
-              // formData.append('secretary_email', this.secretary_email)
-              // formData.append('secretary_address', this.secretary_address)
-              // formData.append('secretary_phone', this.secretary_phone)
-              // formData.append('treasurer_name', this.treasurer_name)
-              // formData.append('treasurer_email', this.treasurer_email)
-              // formData.append('treasurer_address', this.treasurer_address)
-              // formData.append('treasurer_phone', this.treasurer_phone)
-              // formData.append('other_corporate_name', this.other_corporate_name)
-              // formData.append('other_corporate_address', this.other_corporate_address)
-              // formData.append('state_of_organization', this.state_of_organization)
-              // formData.append('llc_manager_name', this.llc_manager_name)
-              // formData.append('llc_manager_email', this.llc_manager_email)
-              // formData.append('llc_manager_phone', this.llc_manager_phone)
-              // formData.append('date_qualified_transact_business', this.date_qualified_transact_business)
-              // formData.append('had_business_other_corporation', this.had_business_other_corporation)
-              // formData.append('establishment_owner_name', this.establishment_owner_name)
-              // formData.append('establishment_owner_address', this.establishment_owner_address)
-              // formData.append('establishment_owner_phone', this.establishment_owner_phone)
-              // formData.append('lessor_name', this.lessor_name)
-              // formData.append('lessor_address', this.lessor_address)
-              // formData.append('lessor_phone', this.lessor_phone)
-              // formData.append('lessor_end_date', this.lessor_end_date)
-              // formData.append('owner_lease_premises', this.owner_lease_premises)
-              // formData.append('liquor_license_another_premise', this.liquor_license_another_premise)
-              // formData.append('other_establishment_name', this.other_establishment_name)
-              // formData.append('other_establishment_address', this.other_establishment_address)
-              // formData.append('action_pending_against_owner', this.action_pending_against_owner)
-              // formData.append('owner_been_issued_wagering_stamp', this.owner_been_issued_wagering_stamp)   
-              // formData.append('previous_liquor_license_been_revoked', this.previous_liquor_license_been_revoked)
-              // // formData.append('owners', this.owners)
-              // // formData.append('shareholders', this.shareholders)
-              // // formData.append('members', this.members)
-              // formData.append('class_fee', this.class_fee)
-              // formData.append('status', this.status)
-              // // console.log(formData['members']);
-              // if(this.file){
-              //   formData.append('current_lease', this.file, this.current_lease)
-              // }
+              let formData = new FormData()
+              formData.append('app_id', this.app_id)
+              formData.append('business_name', this.business_name)
+              formData.append('business_address', this.business_address)
+              formData.append('business_phone', this.business_phone)
+              formData.append('business_email', this.business_email)
+              formData.append('business_classification', this.business_classification)
+              formData.append('born_outside_us', this.born_outside_us)
+              formData.append('born_us_parents', this.born_us_parents)
+              formData.append('date_of_birth', this.date_of_birth)
+              formData.append('birth_country', this.birth_country)
+              formData.append('naturalized', this.naturalized)
+              formData.append('naturalized_city', this.naturalized_city)
+              formData.append('naturalized_state', this.naturalized_state)
+              formData.append('naturalized_date', this.naturalized_date)
+              formData.append('business_contact_person', this.business_contact_person)
+              formData.append('business_contact_title', this.business_contact_title)
+              formData.append('business_contact_phone', this.business_contact_phone)
+              formData.append('corporate_name', this.corporate_name)
+              formData.append('corporate_address', this.corporate_address)
+              formData.append('store_manager_name', this.store_manager_name)
+              formData.append('store_manager_email', this.store_manager_email)
+              formData.append('store_manager_address', this.store_manager_address)
+              formData.append('store_manager_phone', this.store_manager_phone)
+              formData.append('president_name', this.president_name)
+              formData.append('president_email', this.president_email)
+              formData.append('president_address', this.president_address)
+              formData.append('president_phone', this.president_phone)
+              formData.append('vice_president_name', this.vice_president_name)
+              formData.append('vice_president_email', this.vice_president_email)
+              formData.append('vice_president_address', this.vice_president_address)
+              formData.append('vice_president_phone', this.vice_president_phone)
+              formData.append('secretary_name', this.secretary_name)
+              formData.append('secretary_email', this.secretary_email)
+              formData.append('secretary_address', this.secretary_address)
+              formData.append('secretary_phone', this.secretary_phone)
+              formData.append('treasurer_name', this.treasurer_name)
+              formData.append('treasurer_email', this.treasurer_email)
+              formData.append('treasurer_address', this.treasurer_address)
+              formData.append('treasurer_phone', this.treasurer_phone)
+              formData.append('other_corporate_name', this.other_corporate_name)
+              formData.append('other_corporate_address', this.other_corporate_address)
+              formData.append('state_of_organization', this.state_of_organization)
+              formData.append('llc_manager_name', this.llc_manager_name)
+              formData.append('llc_manager_email', this.llc_manager_email)
+              formData.append('llc_manager_phone', this.llc_manager_phone)
+              formData.append('date_qualified_transact_business', this.date_qualified_transact_business)
+              formData.append('had_business_other_corporation', this.had_business_other_corporation)
+              formData.append('establishment_owner_name', this.establishment_owner_name)
+              formData.append('establishment_owner_address', this.establishment_owner_address)
+              formData.append('establishment_owner_phone', this.establishment_owner_phone)
+              formData.append('lessor_name', this.lessor_name)
+              formData.append('lessor_address', this.lessor_address)
+              formData.append('lessor_phone', this.lessor_phone)
+              formData.append('lessor_end_date', this.lessor_end_date)
+              formData.append('owner_lease_premises', this.owner_lease_premises)
+              formData.append('liquor_license_another_premise', this.liquor_license_another_premise)
+              formData.append('other_establishment_name', this.other_establishment_name)
+              formData.append('other_establishment_address', this.other_establishment_address)
+              formData.append('action_pending_against_owner', this.action_pending_against_owner)
+              formData.append('owner_been_issued_wagering_stamp', this.owner_been_issued_wagering_stamp)   
+              formData.append('previous_liquor_license_been_revoked', this.previous_liquor_license_been_revoked)
+              formData.append('owners', JSON.stringify(this.owners))
+              formData.append('shareholders', JSON.stringify(this.shareholders))
+              formData.append('members', JSON.stringify(this.members))
+              formData.append('class_fee', this.class_fee)
+              formData.append('status', this.status)
+              // console.log(formData['members']);
+              if(this.file){
+                formData.append('current_lease', this.file, this.current_lease)
+              }
               
-              axios
-                .post('/user/applications/store', {
-                  app_id: this.id,
-                  business_name: this.business_name,
-                  business_address: this.business_address,
-                  business_phone: this.business_phone,
-                  business_email: this.business_email,
-                  business_classification: this.business_classification,
-                  born_outside_us: this.born_outside_us,
-                  born_us_parents: this.born_us_parents,
-                  date_of_birth: this.date_of_birth,
-                  birth_country: this.birth_country,   
-                  naturalized: this.naturalized,      
-                  naturalized_city: this.naturalized_city,
-                  naturalized_state: this.naturalized_state,
-                  naturalized_date: this.naturalized_date,              
-                  business_contact_person: this.business_contact_person,
-                  business_contact_title: this.business_contact_title,
-                  business_contact_phone: this.business_contact_phone,
-                  corporate_name: this.corporate_name,
-                  corporate_address: this.corporate_address,
-                  store_manager_name: this.store_manager_name,
-                  store_manager_email: this.store_manager_email,
-                  store_manager_address: this.store_manager_address,
-                  store_manager_phone: this.store_manager_phone,
-                  president_name: this.president_name,
-                  president_email: this.president_email,
-                  president_address: this.president_address,
-                  president_phone: this.president_phone,
-                  vice_president_name: this.vice_president_name,
-                  vice_president_email: this.vice_president_email,
-                  vice_president_address: this.vice_president_address,
-                  vice_president_phone: this.vice_president_phone,
-                  secretary_name: this.secretary_name,
-                  secretary_email: this.secretary_email,
-                  secretary_address: this.secretary_address,
-                  secretary_phone: this.secretary_phone,
-                  treasurer_name: this.treasurer_name,
-                  treasurer_email: this.treasurer_email,
-                  treasurer_address: this.treasurer_address,
-                  treasurer_phone: this.treasurer_phone,
-                  other_corporate_name: this.other_corporate_name,
-                  other_corporate_address: this.other_corporate_address,
-                  state_of_organization: this.state_of_organization,
-                  llc_manager_name: this.llc_manager_name,
-                  llc_manager_email: this.llc_manager_email,
-                  llc_manager_phone: this.llc_manager_phone,
-                  date_qualified_transact_business: this.date_qualified_transact_business,
-                  had_business_other_corporation: this.had_business_other_corporation,
-                  establishment_owner_name: this.establishment_owner_name,
-                  establishment_owner_address: this.establishment_owner_address,
-                  establishment_owner_phone: this.establishment_owner_phone,
-                  lessor_name: this.lessor_name,
-                  lessor_address: this.lessor_address,
-                  lessor_phone: this.lessor_phone,
-                  lessor_end_date: this.lessor_end_date,
-                  owner_lease_premises: this.owner_lease_premises,
-                  liquor_license_another_premise : this.liquor_license_another_premise,
-                  other_establishment_name: this.other_establishment_name,
-                  other_establishment_address: this.other_establishment_address,
-                  action_pending_against_owner: this.action_pending_against_owner,
-                  owner_been_issued_wagering_stamp: this.owner_been_issued_wagering_stamp,
-                  previous_liquor_license_been_revoked: this.previous_liquor_license_been_revoked,
-                  owners: this.owners,
-                  shareholders: this.shareholders,
-                  members: this.members,
-                  class_fee: this.class_fee,
-                  status: 'saved',
-                  current_lease: this.file
-                })
-
               // axios
-              //   .post('/user/applications/store', formData, config)              
+              //   .post('/user/applications/store', {
+              //     app_id: this.id,
+              //     business_name: this.business_name,
+              //     business_address: this.business_address,
+              //     business_phone: this.business_phone,
+              //     business_email: this.business_email,
+              //     business_classification: this.business_classification,
+              //     born_outside_us: this.born_outside_us,
+              //     born_us_parents: this.born_us_parents,
+              //     date_of_birth: this.date_of_birth,
+              //     birth_country: this.birth_country,   
+              //     naturalized: this.naturalized,      
+              //     naturalized_city: this.naturalized_city,
+              //     naturalized_state: this.naturalized_state,
+              //     naturalized_date: this.naturalized_date,              
+              //     business_contact_person: this.business_contact_person,
+              //     business_contact_title: this.business_contact_title,
+              //     business_contact_phone: this.business_contact_phone,
+              //     corporate_name: this.corporate_name,
+              //     corporate_address: this.corporate_address,
+              //     store_manager_name: this.store_manager_name,
+              //     store_manager_email: this.store_manager_email,
+              //     store_manager_address: this.store_manager_address,
+              //     store_manager_phone: this.store_manager_phone,
+              //     president_name: this.president_name,
+              //     president_email: this.president_email,
+              //     president_address: this.president_address,
+              //     president_phone: this.president_phone,
+              //     vice_president_name: this.vice_president_name,
+              //     vice_president_email: this.vice_president_email,
+              //     vice_president_address: this.vice_president_address,
+              //     vice_president_phone: this.vice_president_phone,
+              //     secretary_name: this.secretary_name,
+              //     secretary_email: this.secretary_email,
+              //     secretary_address: this.secretary_address,
+              //     secretary_phone: this.secretary_phone,
+              //     treasurer_name: this.treasurer_name,
+              //     treasurer_email: this.treasurer_email,
+              //     treasurer_address: this.treasurer_address,
+              //     treasurer_phone: this.treasurer_phone,
+              //     other_corporate_name: this.other_corporate_name,
+              //     other_corporate_address: this.other_corporate_address,
+              //     state_of_organization: this.state_of_organization,
+              //     llc_manager_name: this.llc_manager_name,
+              //     llc_manager_email: this.llc_manager_email,
+              //     llc_manager_phone: this.llc_manager_phone,
+              //     date_qualified_transact_business: this.date_qualified_transact_business,
+              //     had_business_other_corporation: this.had_business_other_corporation,
+              //     establishment_owner_name: this.establishment_owner_name,
+              //     establishment_owner_address: this.establishment_owner_address,
+              //     establishment_owner_phone: this.establishment_owner_phone,
+              //     lessor_name: this.lessor_name,
+              //     lessor_address: this.lessor_address,
+              //     lessor_phone: this.lessor_phone,
+              //     lessor_end_date: this.lessor_end_date,
+              //     owner_lease_premises: this.owner_lease_premises,
+              //     liquor_license_another_premise : this.liquor_license_another_premise,
+              //     other_establishment_name: this.other_establishment_name,
+              //     other_establishment_address: this.other_establishment_address,
+              //     action_pending_against_owner: this.action_pending_against_owner,
+              //     owner_been_issued_wagering_stamp: this.owner_been_issued_wagering_stamp,
+              //     previous_liquor_license_been_revoked: this.previous_liquor_license_been_revoked,
+              //     owners: this.owners,
+              //     shareholders: this.shareholders,
+              //     members: this.members,
+              //     class_fee: this.class_fee,
+              //     status: 'saved',
+              //     current_lease: this.file
+              //   })
+
+              axios
+                .post('/user/applications/store', formData, config)              
                 .then(response => {
                   console.log(response)
                   if(submit == 'city'){

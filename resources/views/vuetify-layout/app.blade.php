@@ -226,7 +226,10 @@
 
                         <v-list-tile-content>
                           <v-list-tile-title v-text="getUser.name"></v-list-tile-title>
-                          <v-list-tile-sub-title><a href="/profile">Edit Profile</a></v-list-tile-sub-title>
+                          <v-list-tile-sub-title>
+                            <a href="/profile" v-if="getType == 'user'">Edit Profile</a>
+                            <a href="/admin/profile" v-if="getType == 'admin'">Edit Profile</a>
+                          </v-list-tile-sub-title>
                         </v-list-tile-content>
 
                         <v-list-tile-action>
