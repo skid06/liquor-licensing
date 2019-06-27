@@ -857,7 +857,15 @@
         </v-flex>  
 
         <v-flex xs12 md12 >
-          <v-btn
+          <div height="150" v-if="fileUrl">{{ current_lease }}</div>
+          <v-text-field label="Upload Current Lease, if applicable" @click='chooseFile' v-model='current_lease' prepend-icon='attach_file'></v-text-field>
+          <input
+            type="file"
+            style="display: none"
+            ref="fileInput"
+            @change="onFilePicked"
+          >          
+          <!-- <v-btn
             color="blue-grey"
             class="white--text"
             @click="chooseFile"
@@ -871,7 +879,7 @@
             ref="fileInput"
             id="current_lease"
             @change="onFilePicked"
-          />
+          /> -->
         </v-flex>  
       
         <v-flex class="pt-20" xs12 md12>
@@ -1063,6 +1071,7 @@
         business_classification: '',
         born_outside_us: '',
         born_us_parents: '',
+        current_lease: '',
         date_of_birth: new Date().toISOString().substr(0, 10),
         date_qualified_transact_business: new Date().toISOString().substr(0, 10),
         naturalized_date: new Date().toISOString().substr(0, 10),
@@ -1164,7 +1173,9 @@
         app_id: '',
         status: '',
         userType: null,
-        user_id: ''
+        user_id: '',
+        fileUrl: '',
+        file: ''
       }
     },
     props: ['id'],
@@ -1173,6 +1184,82 @@
         this.$validator.validateAll()
           .then(result => {
             if(result){
+              const config = {
+                headers: { 'Content-Type': 'multipart/form-data' }
+              }           
+
+              // let formData = new FormData()
+              // formData.append('app_id', this.app_id)
+              // formData.append('business_name', this.business_name)
+              // formData.append('business_address', this.business_address)
+              // formData.append('business_phone', this.business_phone)
+              // formData.append('business_email', this.business_email)
+              // formData.append('business_classification', this.business_classification)
+              // formData.append('born_outside_us', this.born_outside_us)
+              // formData.append('born_us_parents', this.born_us_parents)
+              // formData.append('date_of_birth', this.date_of_birth)
+              // formData.append('birth_country', this.birth_country)
+              // formData.append('naturalized', this.naturalized)
+              // formData.append('naturalized_city', this.naturalized_city)
+              // formData.append('naturalized_state', this.naturalized_state)
+              // formData.append('naturalized_date', this.naturalized_date)
+              // formData.append('business_contact_person', this.business_contact_person)
+              // formData.append('business_contact_title', this.business_contact_title)
+              // formData.append('business_contact_phone', this.business_contact_phone)
+              // formData.append('corporate_name', this.corporate_name)
+              // formData.append('corporate_address', this.corporate_address)
+              // formData.append('store_manager_name', this.store_manager_name)
+              // formData.append('store_manager_email', this.store_manager_email)
+              // formData.append('store_manager_address', this.store_manager_address)
+              // formData.append('store_manager_phone', this.store_manager_phone)
+              // formData.append('president_name', this.president_name)
+              // formData.append('president_email', this.president_email)
+              // formData.append('president_address', this.president_address)
+              // formData.append('president_phone', this.president_phone)
+              // formData.append('vice_president_name', this.vice_president_name)
+              // formData.append('vice_president_email', this.vice_president_email)
+              // formData.append('vice_president_address', this.vice_president_address)
+              // formData.append('vice_president_phone', this.vice_president_phone)
+              // formData.append('secretary_name', this.secretary_name)
+              // formData.append('secretary_email', this.secretary_email)
+              // formData.append('secretary_address', this.secretary_address)
+              // formData.append('secretary_phone', this.secretary_phone)
+              // formData.append('treasurer_name', this.treasurer_name)
+              // formData.append('treasurer_email', this.treasurer_email)
+              // formData.append('treasurer_address', this.treasurer_address)
+              // formData.append('treasurer_phone', this.treasurer_phone)
+              // formData.append('other_corporate_name', this.other_corporate_name)
+              // formData.append('other_corporate_address', this.other_corporate_address)
+              // formData.append('state_of_organization', this.state_of_organization)
+              // formData.append('llc_manager_name', this.llc_manager_name)
+              // formData.append('llc_manager_email', this.llc_manager_email)
+              // formData.append('llc_manager_phone', this.llc_manager_phone)
+              // formData.append('date_qualified_transact_business', this.date_qualified_transact_business)
+              // formData.append('had_business_other_corporation', this.had_business_other_corporation)
+              // formData.append('establishment_owner_name', this.establishment_owner_name)
+              // formData.append('establishment_owner_address', this.establishment_owner_address)
+              // formData.append('establishment_owner_phone', this.establishment_owner_phone)
+              // formData.append('lessor_name', this.lessor_name)
+              // formData.append('lessor_address', this.lessor_address)
+              // formData.append('lessor_phone', this.lessor_phone)
+              // formData.append('lessor_end_date', this.lessor_end_date)
+              // formData.append('owner_lease_premises', this.owner_lease_premises)
+              // formData.append('liquor_license_another_premise', this.liquor_license_another_premise)
+              // formData.append('other_establishment_name', this.other_establishment_name)
+              // formData.append('other_establishment_address', this.other_establishment_address)
+              // formData.append('action_pending_against_owner', this.action_pending_against_owner)
+              // formData.append('owner_been_issued_wagering_stamp', this.owner_been_issued_wagering_stamp)   
+              // formData.append('previous_liquor_license_been_revoked', this.previous_liquor_license_been_revoked)
+              // // formData.append('owners', this.owners)
+              // // formData.append('shareholders', this.shareholders)
+              // // formData.append('members', this.members)
+              // formData.append('class_fee', this.class_fee)
+              // formData.append('status', this.status)
+              // // console.log(formData['members']);
+              // if(this.file){
+              //   formData.append('current_lease', this.file, this.current_lease)
+              // }
+              
               axios
                 .post('/user/applications/store', {
                   app_id: this.id,
@@ -1211,7 +1298,7 @@
                   secretary_address: this.secretary_address,
                   secretary_phone: this.secretary_phone,
                   treasurer_name: this.treasurer_name,
-                  treasurer_email: this.treasurer_address,
+                  treasurer_email: this.treasurer_email,
                   treasurer_address: this.treasurer_address,
                   treasurer_phone: this.treasurer_phone,
                   other_corporate_name: this.other_corporate_name,
@@ -1240,17 +1327,21 @@
                   shareholders: this.shareholders,
                   members: this.members,
                   class_fee: this.class_fee,
-                  status: 'saved'
+                  status: 'saved',
+                  current_lease: this.file
                 })
+
+              // axios
+              //   .post('/user/applications/store', formData, config)              
                 .then(response => {
                   console.log(response)
                   if(submit == 'city'){
-                    window.location.href = `/payment/${response.data.application.id}`
+                    // window.location.href = `/payment/${response.data.application.id}`
                   }
                   else{
                     this.isApplicationAdded = true
                     setTimeout(function(){ 
-                      window.location.href = `/applications/saved`
+                      // window.location.href = `/applications/saved`
                     }, 3000);
                   }
                 })
@@ -1422,13 +1513,15 @@
       onFilePicked(event) {
         const files = event.target.files
         let filename = files[0].name
+        this.file = files[0]
+        this.current_lease = filename
 
         if(filename.lastIndexOf('.') <= 0) {
           return alert('Please upload a valid file')
         }
 
         const fileReader = new FileReader()
-        fileReader.readAsDataURL(files[0])
+        fileReader.readAsDataURL(files[0])       
 
       },
       getUserType(){

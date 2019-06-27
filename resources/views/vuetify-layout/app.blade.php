@@ -71,6 +71,7 @@
                 </v-list-tile-action>
                 <v-list-tile-title v-if="getType == 'admin'"> Admin Dashboard</v-list-tile-title>
                 <v-list-tile-title v-if="getType == 'user'">User Dashboard</v-list-tile-title>
+                <v-list-tile-title v-if="getType == 'official'">Official Dashboard</v-list-tile-title>
               </v-list-tile>
 
               <v-list-tile v-if="getType == 'admin'" @click="goTo(`/admin/payments`)">
@@ -250,7 +251,7 @@
                         <v-list-tile-title>Enable messages</v-list-tile-title>
                       </v-list-tile>
 
-                      <v-list-tile @click="logout(getType == 'admin' ? 'admin' : 'user')">
+                      <v-list-tile @click="logout((getType == 'admin') ? 'admin' : 'user')">
                         <v-list-tile-action>
                           <v-switch v-model="hints" color="purple"></v-switch>
                         </v-list-tile-action>

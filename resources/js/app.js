@@ -53,17 +53,20 @@ Vue.component('Toolbar', require('./layouts/Toolbar.vue'))
 Vue.component('Footer', require('./layouts/Footer.vue'))
 Vue.component('liquor-application-form', require('./user/LiquorApplicationForm.vue'))
 Vue.component('admin-liquor-application-form', require('./admin/LiquorApplicationForm.vue'))
+Vue.component('official-liquor-application-form', require('./official/LiquorApplicationForm.vue'))
 Vue.component('liquor-application-pdf', require('./LiquorApplicationPDF.vue'))
 Vue.component('user-login', require('./user/Login.vue'))
 Vue.component('user-register', require('./user/Register.vue'))
 Vue.component('reset-email', require('./user/Reset.vue'))
 Vue.component('reset-password', require('./user/ResetPassword.vue'))
 Vue.component('admin-login', require('./admin/Login.vue'))
+Vue.component('official-login', require('./official/Login.vue'))
 Vue.component('payment', require('./user/Payment.vue'))
 Vue.component('payments', require('./admin/Payments.vue'))
 Vue.component('applications', require('./user/Applications.vue'))
 Vue.component('profile', require('./user/Profile.vue'))
 Vue.component('dashboard', require('./admin/Dashboard.vue'))
+Vue.component('official-dashboard', require('./official/Dashboard.vue'))
 Vue.component('comment-box', require('./helper/CommentBox.vue'))
 
 Vue.use(VueStripeCheckout, 'pk_test_ZpeCcMeI4Ai3VuCWytohUs36');
@@ -205,6 +208,9 @@ Vue.mixin({
 				.then( () => {
 					if(type == 'admin'){
 						window.location = "/admin"
+					}
+					else if(type == 'official'){
+						window.location = "/official"
 					}
 					else{
 						window.location = "/user/login"

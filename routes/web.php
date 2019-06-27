@@ -90,6 +90,8 @@ Route::get('/user/type', function () {
         return response()->json(['type' => 'user']);
     elseif(\Auth::guard('admin')->user())
         return response()->json(['type' => 'admin']);
+    elseif(\Auth::guard('official')->user())
+        return response()->json(['type' => 'official']);    
 });
 
 Route::post('/user/edit', 'UserController@editUserInfo');
@@ -143,6 +145,7 @@ Route::prefix('admin')->group(function() {
     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
     Route::get('/liquor-application/{id}', 'DashboardController@viewForm')->name('admin.view.application.form');
     Route::get('/completed', 'DashboardController@completed')->name('admin.completed');
+    Route::post('/update', 'DashboardController@updateUserInfo')->name('admin.update');
     Route::get('/processed', 'DashboardController@processed')->name('admin.processed');
     Route::get('/paid', 'DashboardController@paid')->name('admin.paid');
     Route::get('/payments', 'ApplicationPaymentController@showPayments');
@@ -178,7 +181,8 @@ Route::prefix('/api/admin/applications')->group(function() {
 
 Route::prefix('official')->group(function() {
     Route::get('/login', 'Auth\OfficialLoginController@showLoginForm')->name('official.login');
+    Route::get('/liquor-application/{id}', 'OfficialDashboardController@viewForm')->name('official.view.application.form');
     Route::post('/login', 'Auth\OfficialLoginController@login')->name('official.login.submit');
-    Route::get('/completed', 'OfficialDashboardController@completed')->name('official.completed');
+    Route::get('/dashboard', 'OfficialDashboardController@completed')->name('official.completed');
     Route::get('/', 'OfficialDashboardController@completed')->name('official.dashboard');
 });

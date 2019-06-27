@@ -1,6 +1,6 @@
-@extends('admin.layouts.app-admin')
+
+@extends('vuetify-layout.app')
 
 @section('content')
-<admin-completed-applications></admin-completed-applications>
-
+ <official-dashboard />
 @endsection

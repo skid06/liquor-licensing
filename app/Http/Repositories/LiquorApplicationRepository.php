@@ -5,6 +5,7 @@ namespace App\Http\Repositories;
 use PDF;
 use Mail;
 use App\User;
+use App\Admin;
 use Carbon\Carbon;
 use App\Corporation;
 use App\Partnership;
@@ -137,6 +138,7 @@ class LiquorApplicationRepository implements ApplicationInterface
 			$application->classifiable_id = $llc->id;
 			$application->classifiable_type = 'App\LimitedLiabilityCompany';
 
+			// return $attributes->input('members');
 			if(!empty($attributes->input('members'))){
 				foreach($attributes->input('members') as $member){
 					if(isset($member['id'])){
@@ -153,6 +155,7 @@ class LiquorApplicationRepository implements ApplicationInterface
 					$dbMember->llc_id = $llc->id;
 					$dbMember->save();
 				}
+				// dd($attributes->input('members'));
 			}				
     }
 		else {
@@ -187,7 +190,16 @@ class LiquorApplicationRepository implements ApplicationInterface
 				}		
 			}	
 		}
-		
+
+		if(isset($data['current_lease'])){
+			// $imageName = time().'.'.$request->image->getClientOriginalExtension();
+			// $request->image->move(public_path('images'), $imageName);
+			// $path = $data->file('image')->store('avatars','public');
+			$path = request()->file('current_lease')->store('current_leases','public');
+			// $user->image = $path;
+		}		
+
+		// $application->current_lease = $path;
 		$application->save();
 
 		return response()->json(['application' => $application]);
@@ -432,6 +444,14 @@ class LiquorApplicationRepository implements ApplicationInterface
 
 		// return $data;
 
+		$admins = Admin::all();
+
+		$admin_emails = array();
+		
+		foreach($admins as $admin){
+				array_push($admin_emails, $admin->email);
+		}
+
 		$pdf = PDF::loadView('liquor-application-pdf', ['pdf' => $data['pdf']]);
 		
 		// return $pdf->download('liquor.pdf');
@@ -440,7 +460,7 @@ class LiquorApplicationRepository implements ApplicationInterface
 			Mail::send('liquor-application-pdf', $data, function($message) use ($data,$pdf){
 				// $pdf = PDF::loadView('pdf', $data);
 				$message->from('mail@astutewebgroup.com', 'Liquor Application');
-				$message->to('valencia.mel.06@gmail.com');
+				$message->to($admin_emails);
 				$message->cc('melchor@astutewebgroup.com');
 				$message->subject('Liquor');
 				//Attach PDF doc

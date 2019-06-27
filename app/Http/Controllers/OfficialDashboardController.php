@@ -27,4 +27,11 @@ class OfficialDashboardController extends Controller
         $data['application'] = $application;
         return view('official.show-application', $data);
     }
+
+    public function viewForm($id)
+    {
+        $data['id'] = $id;
+
+        return view('official.application-form', $data);
+    }
 }

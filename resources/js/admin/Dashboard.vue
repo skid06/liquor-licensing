@@ -21,7 +21,6 @@
             <v-list-tile
               v-for="(item, i) in date_ranges"
               :key="i"
-              @click=""
             >
               <v-list-tile-title>{{ item.text }}</v-list-tile-title>
             </v-list-tile>

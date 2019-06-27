@@ -14,7 +14,8 @@ class OfficialLoginController extends Controller
 
     public function showLoginForm()
     {
-        return view('auth.official-login');
+        return view('official.login');
+        // return view('auth.official-login');
     }
 
     public function login(Request $request)
