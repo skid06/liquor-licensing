@@ -15,11 +15,13 @@ use App\PartnershipOwners as Owner;
 use App\CorporationShareholder as Shareholder;
 use App\LimitedLiabilityCompanyMember as Member;
 use App\Events\UserApplicationProcessed;
+use App\Http\Traits\FieldName;
 use App\Http\Repositories\Interfaces\ApplicationInterface;
 use App\Http\Repositories\Interfaces\BusinessClassificationInterface;
 
 class LiquorApplicationRepository implements ApplicationInterface
 {
+	use FieldName;
 
 	public function store($attributes)
 	{
@@ -32,38 +34,38 @@ class LiquorApplicationRepository implements ApplicationInterface
 		}
 
 		$application->user_id = \Auth::user()->id;
-		$application->business_name = $attributes['business_name'];
-		$application->business_address = $attributes['business_address'];
-		$application->business_phone = $attributes['business_phone'];
-		$application->business_email = $attributes['business_email'];
-		$application->business_classification = $attributes['business_classification'];
-		$application->business_contact_person = $attributes['business_contact_person'];
-		$application->business_contact_title = $attributes['business_contact_title'];
-		$application->business_contact_phone = $attributes['business_contact_phone'];
-		$application->born_outside_us = $attributes['born_outside_us'];
-		$application->born_us_parents = $attributes['born_us_parents'];
-		$application->date_of_birth = $attributes['date_of_birth'];
-		$application->naturalized = $attributes['naturalized'];
-		$application->birth_country = $attributes['birth_country'];
-		$application->naturalized_city = $attributes['naturalized_city'];
-		$application->naturalized_state = $attributes['naturalized_state'];
-		$application->naturalized_date = $attributes['naturalized_date'];
-		$application->owner_lease_premises = $attributes['owner_lease_premises'];
-		$application->establishment_owner_name = $attributes['establishment_owner_name'];
-		$application->establishment_owner_address = $attributes['establishment_owner_address'];
-		$application->establishment_owner_phone = $attributes['establishment_owner_phone'];
-		$application->lessor_name = $attributes['lessor_name'];
-		$application->lessor_address = $attributes['lessor_address'];
-		$application->lessor_phone = $attributes['lessor_phone'];
-		$application->lessor_end_date = $attributes['lessor_end_date'];  
-		$application->liquor_license_another_premise = $attributes['liquor_license_another_premise'];
-		$application->other_establishment_name = $attributes['other_establishment_name'];
-		$application->other_establishment_address = $attributes['other_establishment_address'];
-		$application->action_pending_against_owner = $attributes['action_pending_against_owner'];
-		$application->owner_been_issued_wagering_stamp = $attributes['owner_been_issued_wagering_stamp'];
-		$application->previous_liquor_license_been_revoked = $attributes['previous_liquor_license_been_revoked'];
-		$application->class_fee_id = $attributes['class_fee'];
-		$application->status = $attributes['status'];
+		$application->business_name = $this->setValue($attributes['business_name']);
+		$application->business_address = $this->setValue($attributes['business_address']);
+		$application->business_phone = $this->setValue($attributes['business_phone']);
+		$application->business_email = $this->setValue($attributes['business_email']);
+		$application->business_classification = $this->setValue($attributes['business_classification']);
+		$application->business_contact_person = $this->setValue($attributes['business_contact_person']);
+		$application->business_contact_title = $this->setValue($attributes['business_contact_title']);
+		$application->business_contact_phone = $this->setValue($attributes['business_contact_phone']);
+		$application->born_outside_us = $this->setValue($attributes['born_outside_us']);
+		$application->born_us_parents = $this->setValue($attributes['born_us_parents']);
+		$application->date_of_birth = $this->setValue($attributes['date_of_birth']);
+		$application->naturalized = $this->setValue($attributes['naturalized']);
+		$application->birth_country = $this->setValue($attributes['birth_country']);
+		$application->naturalized_city = $this->setValue($attributes['naturalized_city']);
+		$application->naturalized_state = $this->setValue($attributes['naturalized_state']);
+		$application->naturalized_date = $this->setValue($attributes['naturalized_date']);
+		$application->owner_lease_premises = $this->setValue($attributes['owner_lease_premises']);
+		$application->establishment_owner_name = $this->setValue($attributes['establishment_owner_name']);
+		$application->establishment_owner_address = $this->setValue($attributes['establishment_owner_address']);
+		$application->establishment_owner_phone = $this->setValue($attributes['establishment_owner_phone']);
+		$application->lessor_name = $this->setValue($attributes['lessor_name']);
+		$application->lessor_address = $this->setValue($attributes['lessor_address']);
+		$application->lessor_phone = $this->setValue($attributes['lessor_phone']);
+		$application->lessor_end_date = $this->setValue($attributes['lessor_end_date']);  
+		$application->liquor_license_another_premise = $this->setValue($attributes['liquor_license_another_premise']);
+		$application->other_establishment_name = $this->setValue($attributes['other_establishment_name']);
+		$application->other_establishment_address = $this->setValue($attributes['other_establishment_address']);
+		$application->action_pending_against_owner = $this->setValue($attributes['action_pending_against_owner']);
+		$application->owner_been_issued_wagering_stamp = $this->setValue($attributes['owner_been_issued_wagering_stamp']);
+		$application->previous_liquor_license_been_revoked = $this->setValue($attributes['previous_liquor_license_been_revoked']);
+		$application->class_fee_id = $this->setValue($attributes['class_fee']);
+		$application->status = $this->setValue($attributes['status']);
     
     if($attributes['business_classification'] == 'Corporation') {
       if(!$attributes['app_id']){
@@ -72,46 +74,47 @@ class LiquorApplicationRepository implements ApplicationInterface
       else {
         $corporation = Corporation::findOrFail($application->classifiable_id);
 			}
-			$corporation->corporate_name = $attributes['corporate_name'];
-      $corporation->corporate_address = $attributes['corporate_address'];
-      $corporation->store_manager_name = $attributes['store_manager_name'];
-      $corporation->store_manager_address = $attributes['store_manager_address'];
-      $corporation->store_manager_phone = $attributes['store_manager_phone'];
-			$corporation->store_manager_email = $attributes['store_manager_email'];
-      $corporation->president_name = $attributes['president_name'];
-      $corporation->president_address = $attributes['president_address'];
-      $corporation->president_phone = $attributes['president_phone'];
-      $corporation->president_email = $attributes['president_email'];			
-      $corporation->vice_president_name = $attributes['vice_president_name'];
-      $corporation->vice_president_address = $attributes['vice_president_address'];
-      $corporation->vice_president_phone = $attributes['vice_president_phone'];
-      $corporation->vice_president_email = $attributes['vice_president_email'];
-      $corporation->secretary_name = $attributes['secretary_name'];
-      $corporation->secretary_address = $attributes['secretary_address'];
-      $corporation->secretary_phone = $attributes['secretary_phone'];
-      $corporation->secretary_email = $attributes['secretary_email'];
-      $corporation->treasurer_name = $attributes['treasurer_name'];
-      $corporation->treasurer_address = $attributes['treasurer_address'];
-      $corporation->treasurer_phone = $attributes['treasurer_phone'];
-			$corporation->treasurer_email = $attributes['treasurer_email'];   
+			$corporation->corporate_name = $this->setValue($attributes['corporate_name']);
+      $corporation->corporate_address = $this->setValue($attributes['corporate_address']);
+      $corporation->store_manager_name = $this->setValue($attributes['store_manager_name']);
+      $corporation->store_manager_address = $this->setValue($attributes['store_manager_address']);
+      $corporation->store_manager_phone = $this->setValue($attributes['store_manager_phone']);
+			$corporation->store_manager_email = $this->setValue($attributes['store_manager_email']);
+      $corporation->president_name = $this->setValue($attributes['president_name']);
+      $corporation->president_address = $this->setValue($attributes['president_address']);
+      $corporation->president_phone = $this->setValue($attributes['president_phone']);
+      $corporation->president_email = $this->setValue($attributes['president_email']);			
+      $corporation->vice_president_name = $this->setValue($attributes['vice_president_name']);
+      $corporation->vice_president_address = $this->setValue($attributes['vice_president_address']);
+      $corporation->vice_president_phone = $this->setValue($attributes['vice_president_phone']);
+      $corporation->vice_president_email = $this->setValue($attributes['vice_president_email']);
+      $corporation->secretary_name = $this->setValue($attributes['secretary_name']);
+      $corporation->secretary_address = $this->setValue($attributes['secretary_address']);
+      $corporation->secretary_phone = $this->setValue($attributes['secretary_phone']);
+      $corporation->secretary_email = $this->setValue($attributes['secretary_email']);
+      $corporation->treasurer_name = $this->setValue($attributes['treasurer_name']);
+      $corporation->treasurer_address = $this->setValue($attributes['treasurer_address']);
+      $corporation->treasurer_phone = $this->setValue($attributes['treasurer_phone']);
+			$corporation->treasurer_email = $this->setValue($attributes['treasurer_email']);   
 			
 			$corporation->save();     
 
 			$application->classifiable_id = $corporation->id;
 			$application->classifiable_type = 'App\Corporation';
+			// return $attributes['shareholders'];
 
-			if(!empty($attributes['shareholders'])){
+			if(json_decode($attributes['shareholders'])[0]->name != ''){
 				foreach(json_decode($attributes['shareholders']) as $shareholder){
-					if(isset($shareholder['id'])){
-						$dbShareholder = Shareholder::find($shareholder['id']);
+					if(isset($shareholder->id) && $shareholder->id != ""){
+						$dbShareholder = Shareholder::find($shareholder->id);
 					}
 					else {
 						$dbShareholder = new Shareholder;
 					}					
 
-					$dbShareholder->name = $shareholder['name'];
-					$dbShareholder->address = $shareholder['address'];
-					$dbShareholder->percentage_owned = $shareholder['percentage_owned'];
+					$dbShareholder->name = $this->setValue($shareholder->name);
+					$dbShareholder->address = $this->setValue($shareholder->address);
+					$dbShareholder->percentage_owned = $this->setValue($shareholder->percentage_owned);
 					$dbShareholder->corporation_id = $corporation->id;
 					$dbShareholder->save();
 				}
@@ -125,14 +128,14 @@ class LiquorApplicationRepository implements ApplicationInterface
         $llc = LimitedLiabilityCompany::findOrFail($application->classifiable_id);
 			}
 			
-			$llc->state_of_organization = $attributes['state_of_organization'];
-			$llc->llc_manager_name = $attributes['llc_manager_name'];
-			$llc->llc_manager_email = $attributes['llc_manager_email'];
-			$llc->llc_manager_phone = $attributes['llc_manager_phone'];
-			$llc->store_manager_name = $attributes['store_manager_name'];
-			$llc->store_manager_email = $attributes['store_manager_email'];
-			$llc->store_manager_phone = $attributes['store_manager_phone'];
-			$llc->store_manager_address = $attributes['store_manager_address'];
+			$llc->state_of_organization = $this->setValue($attributes['state_of_organization']);
+			$llc->llc_manager_name = $this->setValue($attributes['llc_manager_name']);
+			$llc->llc_manager_email = $this->setValue($attributes['llc_manager_email']);
+			$llc->llc_manager_phone = $this->setValue($attributes['llc_manager_phone']);
+			$llc->store_manager_name = $this->setValue($attributes['store_manager_name']);
+			$llc->store_manager_email = $this->setValue($attributes['store_manager_email']);
+			$llc->store_manager_phone = $this->setValue($attributes['store_manager_phone']);
+			$llc->store_manager_address = $this->setValue($attributes['store_manager_address']);
 
 			$llc->save();
 
@@ -142,19 +145,19 @@ class LiquorApplicationRepository implements ApplicationInterface
 			// return $attributes['members'];
 			// dd(json_decode($attributes['members']));
 
-			if(!empty($attributes['members'])){
+			if(json_decode($attributes['members'])[0]->name != ''){
 				foreach(json_decode($attributes['members']) as $member){
-					if(isset($member->id)){
+					if($member->id != ""){
 						$dbMember = Member::find($member->id);
 					}
 					else {
 						$dbMember = new Member;
 					}
 
-					$dbMember->name = $member->name;
-					$dbMember->address = $member->address;
-					$dbMember->email = $member->email;
-					$dbMember->phone = $member->phone;
+					$dbMember->name = $this->setValue($member->name);
+					$dbMember->address = $this->setValue($member->address);
+					$dbMember->email = $this->setValue($member->email);
+					$dbMember->phone = $this->setValue($member->phone);
 					$dbMember->llc_id = $llc->id;
 					$dbMember->save();
 				}
@@ -175,19 +178,19 @@ class LiquorApplicationRepository implements ApplicationInterface
 			$application->classifiable_id = $partnership->id;
 			$application->classifiable_type = 'App\Partnership';
 
-			if(!empty($attributes['owners'])){
+			if(json_decode($attributes['owners'])[0]->name != ''){
 				foreach(json_decode($attributes['owners']) as $owner){
-					if(isset($owner['id'])){
-						$dbOwner = Owner::find($owner['id']);
+					if($owner->id != ""){
+						$dbOwner = Owner::find($owner->id);
 					}
 					else {
 						$dbOwner = new Owner;
 					}
 
-					$dbOwner->name = $owner['name'];
-					$dbOwner->email = $owner['email'];
-					$dbOwner->address = $owner['address'];
-					$dbOwner->percentage_owned = $owner['percentage_owned'];
+					$dbOwner->name = $this->setValue($owner->name);
+					$dbOwner->email = $this->setValue($owner->email);
+					$dbOwner->address = $this->setValue($owner->address);
+					$dbOwner->percentage_owned = $this->setValue($owner->percentage_owned);
 					$dbOwner->partnership_id = $partnership->id;
 					$dbOwner->save();
 				}		
@@ -196,9 +199,9 @@ class LiquorApplicationRepository implements ApplicationInterface
 
 		if(isset($attributes['current_lease'])){
 			$path = request()->file('current_lease')->store('current_leases','public');
+			$application->current_lease = $path;
 		}		
 
-		$application->current_lease = $path;
 		$application->save();
 
 		return response()->json(['application' => $application]);

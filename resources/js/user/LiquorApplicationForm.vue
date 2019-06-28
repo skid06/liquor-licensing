@@ -967,70 +967,6 @@
                 :value="classType.id"
               ></v-radio>
             </div>
-            <!-- <v-radio  
-              label="Class A - Tavern or Bar: $2,000.00" 
-              value="Class A"
-            ></v-radio>
-
-            <v-radio  
-              label="Class B - Retail sale of packaged alcoholic liquor not for consumption on premise: $1,500.00" 
-              value="Class B"
-            ></v-radio> 
-
-            <v-radio  
-              label="Class C - Clubs retail sale of alcoholic liquor for consumption on premise: $1,000.00" 
-              value="Class C"
-            ></v-radio> 
-            
-            <v-radio  
-              label="Class D - Restaurants retail sale of beer and wine only for consumption on premise: $1,000.00" 
-              value="Class D"
-            ></v-radio>     
-
-            <v-radio  
-              label="Class E - Gas stations and Convenience stores retail sale of beer and wine only: $1,000.00" 
-              value="Class E"
-            ></v-radio>    
-
-            <v-radio  
-              label="Class F - Gaming Parlor: $2,000.00" 
-              value="Class F"
-            ></v-radio>    
-
-            <v-radio  
-              label="Class G - Temporary: $75.00 per day" 
-              value="Class G"
-            ></v-radio>
-
-            <v-radio  
-              label="Class H - Retail sale and consumption of alcoholic liquor in a banquet hall: $2,000.00" 
-              value="Class H"
-            ></v-radio>  
-
-            <v-radio  
-              label="Class R-1 - Restaurants retail sale of alcoholic liquor for consumption on premises: $2,000.00" 
-              value="Class R-1"
-            ></v-radio> 
-
-            <v-radio  
-              label="Class R-2 - Bowling and recreational facilities alcoholic liquors for consumption on premise: $2,000.00" 
-              value="Class R-2"
-            ></v-radio>      
-
-            <v-radio  
-              label="Class R-3 - Recreational facilities beer and wine for consumption on premise: $1,000.00" 
-              value="Class R-3"
-            ></v-radio>
-
-            <v-radio  
-              label="Class R-4 - Retail sale of beer and wine for consumption on premise of retail establishment: $1,000.00" 
-              value="Class R-4"
-            ></v-radio>    
-
-            <v-radio  
-              label="Class CTR - Catering business to provide and serve alcoholic liquor: $1,000.00" 
-              value="Class CTR"
-            ></v-radio>                                             -->
           </v-radio-group>     
           {{class_fee}}                                                                                 
         </v-flex>                         
@@ -1254,7 +1190,7 @@
               formData.append('shareholders', JSON.stringify(this.shareholders))
               formData.append('members', JSON.stringify(this.members))
               formData.append('class_fee', this.class_fee)
-              formData.append('status', this.status)
+              formData.append('status', 'saved')
               // console.log(formData['members']);
               if(this.file){
                 formData.append('current_lease', this.file, this.current_lease)
