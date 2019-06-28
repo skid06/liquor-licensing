@@ -103,20 +103,27 @@ class LiquorApplicationRepository implements ApplicationInterface
 			$application->classifiable_type = 'App\Corporation';
 			// return $attributes['shareholders'];
 
-			if(json_decode($attributes['shareholders'])[0]->name != ''){
+			// if(json_decode($attributes['shareholders'])[0]->name != ''){
+			if(count(json_decode($attributes['shareholders'])) > 0){
 				foreach(json_decode($attributes['shareholders']) as $shareholder){
-					if(isset($shareholder->id) && $shareholder->id != ""){
+					if(isset($shareholder->id)){
 						$dbShareholder = Shareholder::find($shareholder->id);
+						$dbShareholder->name = $this->setValue($shareholder->name);
+						$dbShareholder->address = $this->setValue($shareholder->address);
+						$dbShareholder->percentage_owned = $this->setValue($shareholder->percentage_owned);
+						$dbShareholder->corporation_id = $corporation->id;
+						$dbShareholder->save();						
 					}
 					else {
-						$dbShareholder = new Shareholder;
+						if($shareholder->name != ""){
+							$dbShareholder = new Shareholder;
+							$dbShareholder->name = $this->setValue($shareholder->name);
+							$dbShareholder->address = $this->setValue($shareholder->address);
+							$dbShareholder->percentage_owned = $this->setValue($shareholder->percentage_owned);
+							$dbShareholder->corporation_id = $corporation->id;
+							$dbShareholder->save();
+						}
 					}					
-
-					$dbShareholder->name = $this->setValue($shareholder->name);
-					$dbShareholder->address = $this->setValue($shareholder->address);
-					$dbShareholder->percentage_owned = $this->setValue($shareholder->percentage_owned);
-					$dbShareholder->corporation_id = $corporation->id;
-					$dbShareholder->save();
 				}
 			}			
     }
@@ -145,21 +152,29 @@ class LiquorApplicationRepository implements ApplicationInterface
 			// return $attributes['members'];
 			// dd(json_decode($attributes['members']));
 
-			if(json_decode($attributes['members'])[0]->name != ''){
+			// if(json_decode($attributes['members'])[0]->name != ''){
+			if(count(json_decode($attributes['members'])) > 0){
 				foreach(json_decode($attributes['members']) as $member){
-					if($member->id != ""){
+					if(isset($member->id)){
 						$dbMember = Member::find($member->id);
+						$dbMember->name = $this->setValue($member->name);
+						$dbMember->address = $this->setValue($member->address);
+						$dbMember->email = $this->setValue($member->email);
+						$dbMember->phone = $this->setValue($member->phone);
+						$dbMember->llc_id = $llc->id;
+						$dbMember->save();						
 					}
 					else {
-						$dbMember = new Member;
+						if($member->name != ""){
+							$dbMember = new Member;
+							$dbMember->name = $this->setValue($member->name);
+							$dbMember->address = $this->setValue($member->address);
+							$dbMember->email = $this->setValue($member->email);
+							$dbMember->phone = $this->setValue($member->phone);
+							$dbMember->llc_id = $llc->id;
+							$dbMember->save();	
+						}					
 					}
-
-					$dbMember->name = $this->setValue($member->name);
-					$dbMember->address = $this->setValue($member->address);
-					$dbMember->email = $this->setValue($member->email);
-					$dbMember->phone = $this->setValue($member->phone);
-					$dbMember->llc_id = $llc->id;
-					$dbMember->save();
 				}
 				// dd($attributes->input('members'));
 			}				
@@ -177,29 +192,40 @@ class LiquorApplicationRepository implements ApplicationInterface
 
 			$application->classifiable_id = $partnership->id;
 			$application->classifiable_type = 'App\Partnership';
-
-			if(json_decode($attributes['owners'])[0]->name != ''){
+			// return $attributes['owners'];
+			
+			if(count(json_decode($attributes['owners'])) > 0){
+			// if(json_decode($attributes['owners'])[0]->name != ''){
 				foreach(json_decode($attributes['owners']) as $owner){
-					if($owner->id != ""){
+					if(isset($owner->id)){
 						$dbOwner = Owner::find($owner->id);
+						$dbOwner->name = $this->setValue($owner->name);
+						$dbOwner->email = $this->setValue($owner->email);
+						$dbOwner->address = $this->setValue($owner->address);
+						$dbOwner->percentage_owned = $this->setValue($owner->percentage_owned);
+						$dbOwner->partnership_id = $partnership->id;
+						$dbOwner->save();						
 					}
 					else {
-						$dbOwner = new Owner;
+						if($owner->name != ""){
+							$dbOwner = new Owner;
+							$dbOwner->name = $this->setValue($owner->name);
+							$dbOwner->email = $this->setValue($owner->email);
+							$dbOwner->address = $this->setValue($owner->address);
+							$dbOwner->percentage_owned = $this->setValue($owner->percentage_owned);
+							$dbOwner->partnership_id = $partnership->id;
+							$dbOwner->save();	
+						}					
 					}
-
-					$dbOwner->name = $this->setValue($owner->name);
-					$dbOwner->email = $this->setValue($owner->email);
-					$dbOwner->address = $this->setValue($owner->address);
-					$dbOwner->percentage_owned = $this->setValue($owner->percentage_owned);
-					$dbOwner->partnership_id = $partnership->id;
-					$dbOwner->save();
 				}		
 			}	
 		}
 
 		if(isset($attributes['current_lease'])){
-			$path = request()->file('current_lease')->store('current_leases','public');
-			$application->current_lease = $path;
+			$filename = request()->file('current_lease')->getClientOriginalName();			
+			$path = request()->file('current_lease')->storeAs('current_leases',time()."-".$filename,'public');
+			$application->current_lease = time()."-".$filename;
+			// $application->current_lease = $path;
 		}		
 
 		$application->save();
@@ -446,12 +472,12 @@ class LiquorApplicationRepository implements ApplicationInterface
 
 		// return $data;
 
-		$admins = Admin::all();
+		$officials = \App\Official::all();
 
-		$admin_emails = array();
+		$official_emails = array();
 		
-		foreach($admins as $admin){
-				array_push($admin_emails, $admin->email);
+		foreach($officials as $official){
+				array_push($official_emails, $official->email);
 		}
 
 		$pdf = PDF::loadView('liquor-application-pdf', ['pdf' => $data['pdf']]);
@@ -459,10 +485,10 @@ class LiquorApplicationRepository implements ApplicationInterface
 		// return $pdf->download('liquor.pdf');
 
 		try{
-			Mail::send('liquor-application-pdf', $data, function($message) use ($data,$pdf){
+			Mail::send('liquor-application-pdf', $data, function($message) use ($data,$pdf, $official_emails){
 				// $pdf = PDF::loadView('pdf', $data);
 				$message->from('mail@astutewebgroup.com', 'Liquor Application');
-				$message->to($admin_emails);
+				$message->to($official_emails);
 				$message->cc('melchor@astutewebgroup.com');
 				$message->subject('Liquor');
 				//Attach PDF doc

@@ -1272,12 +1272,12 @@
                 .then(response => {
                   console.log(response)
                   if(submit == 'city'){
-                    // window.location.href = `/payment/${response.data.application.id}`
+                    window.location.href = `/payment/${response.data.application.id}`
                   }
                   else{
                     this.isApplicationAdded = true
                     setTimeout(function(){ 
-                      // window.location.href = `/applications/saved`
+                      window.location.href = `/applications/saved`
                     }, 3000);
                   }
                 })

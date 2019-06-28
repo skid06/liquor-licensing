@@ -10,7 +10,7 @@
 @elseif($note->admin_id == null)
   A user added a note for you.
 
-  @component('mail::button', ['url' => env('APP_URL').'/admin/liquor-application/'.$note->application_id])
+  @component('mail::button', ['url' => url().'/admin/liquor-application/'.$note->application_id])
     View the application's notes
   @endcomponent  
 @endif
