@@ -21,6 +21,7 @@
             <v-list-tile
               v-for="(item, i) in date_ranges"
               :key="i"
+              @click="getReports()"
             >
               <v-list-tile-title>{{ item.text }}</v-list-tile-title>
             </v-list-tile>
@@ -129,18 +130,18 @@ export default {
       items: [
         { text: 'Total Sales', icon: 'show_chart', color: 'primary' },
         { text: 'Processed Applications', icon: 'assignment', color: 'error' },
-        { text: 'Completed Applications', icon: 'gradient', color: 'success' }
+        { text: 'Paid Applications', icon: 'gradient', color: 'success' }
       ],
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       date_ranges: [
-        { text: 'Yesterday' },
-        { text: 'Past 7 Days' },
-        { text: 'This Month' },
-        { text: 'Past 3 Months' },
-        { text: 'Past 6 Months' },
-        { text: 'This Year' },
-        { text: 'Last Year' },
-        { text: 'All Time' },
+        { text: 'Yesterday', value: '' },
+        { text: 'Past 7 Days', value: '' },
+        { text: 'This Month', value: '' },
+        { text: 'Past 3 Months', value: '' },
+        { text: 'Past 6 Months', value: '' },
+        { text: 'This Year', value: '' },
+        { text: 'Last Year', value: '' },
+        { text: 'All Time', value: '' },
       ],
       dialog: false,
       headers: [
@@ -157,6 +158,9 @@ export default {
       ],
       desserts: [],
       editedIndex: -1,     
+      total_sales: '',
+      processed: '',
+      paid: ''
     }
   },
 
@@ -223,7 +227,11 @@ export default {
         return this.applications.filter(app => app.status != 'incomplete')
       }
       return this.applications.filter(app => app.status == status)
-    }    
+    },
+
+    getReports(){
+
+    }
   },
   mounted() {
     this.getApplications()
