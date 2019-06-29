@@ -1316,6 +1316,7 @@
             this.business_contact_person = response.data.application.business_contact_person
             this.business_contact_title = response.data.application.business_contact_title
             this.business_contact_phone = response.data.application.business_contact_phone
+            this.current_lease = response.data.application.current_lease
             this.class_fee = response.data.application.class_fee_id
 
             if(response.data.application.classifiable_type == 'App\\Corporation'){
