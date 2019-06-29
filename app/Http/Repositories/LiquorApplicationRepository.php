@@ -453,11 +453,11 @@ class LiquorApplicationRepository implements ApplicationInterface
 			// 'store_manager_phone' => $attributes['pdfData']['store_manager_phone'],              
 			'members' => $this->setValue($attributes['pdfData']['members']),
 
-			'other_corporate_name' => $this->setValue($attributes['pdfData']['other_corporate_name']),
-			'other_corporate_address' => $this->setValue($attributes['pdfData']['other_corporate_address']),
+			// 'other_corporate_name' => $this->setValue($attributes['pdfData']['other_corporate_name']),
+			// 'other_corporate_address' => $this->setValue($attributes['pdfData']['other_corporate_address']),
 
 			// 'date_qualified_transact_business' => $this->setValue($attributes['pdfData']['date_qualified_transact_business']),
-			'had_business_other_corporation' => $this->setValue($attributes['pdfData']['had_business_other_corporation']),
+			// 'had_business_other_corporation' => $this->setValue($attributes['pdfData']['had_business_other_corporation']),
 			'establishment_owner_name' => $this->setValue($attributes['pdfData']['establishment_owner_name']),
 			'establishment_owner_address' => $this->setValue($attributes['pdfData']['establishment_owner_address']),
 			'establishment_owner_phone' => $this->setValue($attributes['pdfData']['establishment_owner_phone']),

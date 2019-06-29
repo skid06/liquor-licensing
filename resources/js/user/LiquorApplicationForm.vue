@@ -968,7 +968,7 @@
               ></v-radio>
             </div>
           </v-radio-group>     
-          {{class_fee}}                                                                                 
+          <!-- {{class_fee}}                                                                                  -->
         </v-flex>                         
       </v-layout>          
       <v-btn
