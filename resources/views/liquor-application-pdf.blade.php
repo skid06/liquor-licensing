@@ -463,7 +463,7 @@ textarea{
                         <!-- <div class="row">
                             <div class="col-sm-12">
                                 <div class="inputBox">
-                                    <div class="inputText">If state of incorporation is not ILLINOIS, when was the corporation become qualified to transact business? <strong> {{ $pdf['date_qualified_transact_business'] }} </strong></div>
+                                    <div class="inputText">If state of incorporation is not ILLINOIS, when was the corporation become qualified to transact business? <strong>  </strong></div>
                                     <input type="text" name="" class="input">
                                 </div>
                             </div>
