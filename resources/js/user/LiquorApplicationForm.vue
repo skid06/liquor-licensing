@@ -1367,11 +1367,11 @@
               // this.store_manager_phone = response.data.application.classifiable.store_manager_phone              
               this.owners = response.data.application.classifiable.children  
             }
-            this.other_corporate_name = response.data.application.other_corporate_name
-            this.other_corporate_address = response.data.application.other_corporate_address
+            this.other_corporate_name = response.data.application.classifiable.other_corporate_name
+            this.other_corporate_address = response.data.application.classifiable.other_corporate_address
 
-            this.date_qualified_transact_business = response.data.application.date_qualified_transact_business
-            this.had_business_other_corporation = response.data.application.had_business_other_corporation
+            this.date_qualified_transact_business = response.data.application.classifiable.date_qualified_transact_business
+            this.had_business_other_corporation = response.data.application.classifiable.had_business_other_corporation
             this.establishment_owner_name = response.data.application.establishment_owner_name
             this.establishment_owner_address = response.data.application.establishment_owner_address
             this.establishment_owner_phone = response.data.application.establishment_owner_phone
