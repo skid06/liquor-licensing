@@ -302,7 +302,7 @@
               
             </v-container>
           </v-content>
-          <v-footer :inset="footer.inset" app style="background: #404041 !important">
+          <v-footer :inset="footer.inset" app color="primary">
             <div style="margin: 0 auto; color: white">Powered by Civic Simple © 2019 | All Rights Reserved</div>
           </v-footer>
         </v-app>

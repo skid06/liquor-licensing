@@ -9,7 +9,7 @@
         >
           <template v-slot:activator="{ on }">
             <v-btn
-              color="cyan"
+              color="primary"
               dark
               v-on="on"
             >
@@ -46,12 +46,12 @@
       </v-flex>
     </v-layout>
     <v-spacer ></v-spacer>
-    <v-subheader class="mt-5 mb-2"><h1>Applications</h1></v-subheader>
+    <!-- <v-subheader class="mt-5 mb-2"><h1>Applications</h1></v-subheader> -->
     <v-tabs
+      color=""
       
-      color="cyan"
-      dark
       slider-color="yellow"
+      
     >
       <v-tab
         v-for="header in application.headers"
