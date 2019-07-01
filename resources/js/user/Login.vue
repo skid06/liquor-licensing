@@ -4,7 +4,7 @@
       <v-layout align-center justify-center>
         <v-flex xs6>
           <v-card class="elevation-12">
-            <v-toolbar dark color="primary">
+            <v-toolbar dark color="#21B8EB">
               <v-toolbar-title>Login</v-toolbar-title>
               <v-spacer></v-spacer>
               <v-tooltip bottom>
@@ -53,7 +53,7 @@
               <div style="margin-left: 20px"><a href="/password/reset">Forgot Password?</a></div>
               <div style="margin-left: 20px"><a href="/user/register">Sign Up</a></div>
               <v-spacer></v-spacer>             
-              <v-btn color="primary" @click.prevent="authenticate">Login</v-btn>
+              <v-btn color="#21B8EB" @click.prevent="authenticate">Login</v-btn>
             </v-card-actions>
  
           </v-card>

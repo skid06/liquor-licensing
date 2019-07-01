@@ -1,6 +1,6 @@
 <template>
   <v-card>
-    <v-card-title class="headline font-weight-regular blue-grey white--text">Liquor License Application</v-card-title>
+    <v-card-title class="headline font-weight-regular primary white--text">Liquor License Application</v-card-title>
     <v-card-text>
       <v-subheader class="pa-0 mr-5 ml-5"><h3>Business Information</h3></v-subheader>
       <v-layout row wrap class="mr-5 ml-5">

@@ -73,9 +73,17 @@ Vue.component('comment-box', require('./helper/CommentBox.vue'))
 Vue.use(VueStripeCheckout, 'pk_test_ZpeCcMeI4Ai3VuCWytohUs36');
 Vue.use(VueRouter);
 Vue.use(Vuex);
-Vue.use(Vuetify);
+// Vue.use(Vuetify);
 Vue.use(require('vue-moment'));
 Vue.use(VeeValidate, { inject: false });
+
+Vue.use(Vuetify, {
+  theme: {
+    primary: '#21B8EB',
+    secondary: '#29B6F6',
+		anyColor: '#0000'
+	}	
+})
 
 Vue.mixin({
 	data: () => ({

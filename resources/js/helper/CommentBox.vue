@@ -6,7 +6,7 @@
     >
       <template v-slot:activator="{ on }">
         <v-btn
-          color="red lighten-1"
+          color="#008FCD"
           dark
           v-on="on"
           style="position: fixed; bottom: 50px; right: 200px; "
@@ -42,8 +42,8 @@
             <textarea class="form-control" id="message" v-model="form.message" placeholder="Enter New Message"></textarea>
           </div>
           <v-btn
-            class="success"
-            style="font-size:12px"
+            class="primary"
+            style="font-size:12px;"
             flat
             @click="postNote()"
           >
@@ -65,13 +65,13 @@
             flat
             @click="process(app_id)"
             v-if="userType == 'admin'"
-            style="font-size:12px"
+            style="font-size:12px;"
           >
             Processed
           </v-btn>
           <v-btn
             class="error"
-            style="font-size:12px"
+            style="font-size:12px;background-color: #008FCD !important"
             flat
             @if="processBtn"
             @click="dialog = false"

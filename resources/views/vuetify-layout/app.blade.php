@@ -21,6 +21,13 @@
         .spacer {
             margin-bottom: 24px;
         }
+        .v-image__image--cover{background-size: 100% !important}
+        .primary, .v-toolbar__content{
+          background-color:#21B8EB !important
+        }
+        a{
+          color: #21B8EB !important
+        }
         /**
             * The CSS shown here will not be introduced in the Quickstart guide, but shows
             * how you can use CSS to style your Element's container.
@@ -143,11 +150,12 @@
               v-if="primaryDrawer.type !== 'permanent' && getType !== null "
               @click.stop="primaryDrawer.model = !primaryDrawer.model"
             ></v-toolbar-side-icon>
-            <v-toolbar-title>
+            <v-toolbar-title style="background-size: 100%">
               <v-img
-                src="http://209.188.93.46/~lovesparkil/wp-content/uploads/2019/05/top.png"
+                src="http://civicsimple.com/wp-content/uploads/2019/06/civicsimple-logo-white.png"
                 height="70"
-                width="220">
+                width="220"
+                >
               </v-img>
             </v-toolbar-title>
             <v-toolbar-items class="hidden-sm-and-down" v-if="getType != null">
@@ -199,8 +207,8 @@
                 <v-menu
                   v-model="menu"
                   :close-on-content-click="false"
-                  :nudge-width="200"
-                  offset-x
+                  :z-index="3"
+                  :nudge-top="40"
                 >
                   <template v-slot:activator="{ on }">
                     <v-btn
@@ -208,20 +216,32 @@
                       dark
                       v-on="on"
                       class="show-overflow" 
+                      style="width:30%;"
                     >
                       <v-avatar 
-                        color="indigo" 
-                        size="40">
-                          <v-icon dark>account_circle</v-icon>
+                        color="" 
+                        size="100%">
+                          <!-- <v-icon dark>account_circle</v-icon> -->
+                          <img :src="`/storage/${getUser.image}`">
                       </v-avatar>  
                     </v-btn>
                   </template>
 
                   <v-card>
+                    <v-list style="height:40px !important;">
+                      <v-list-tile avatar>
+                        <v-list-tile-avatar  style="width: 100% !important;">
+                          <img :src="`/storage/${getUser.image}`">
+                        </v-list-tile-avatar>
+                      </v-list-tile>
+                    </v-list>
+
+                    <v-divider></v-divider>
+
                     <v-list>
                       <v-list-tile avatar>
                         <v-list-tile-avatar>
-                          <img :src="`/storage/${getUser.image}`">
+                          
                         </v-list-tile-avatar>
 
                         <v-list-tile-content>
@@ -238,21 +258,16 @@
                             icon
                             @click="fav = !fav"
                           >
-                            <v-icon>favorite</v-icon>
+                            <!-- <v-icon>favorite</v-icon> -->
                           </v-btn>
                         </v-list-tile-action>
-                      </v-list-tile>
-                    </v-list>
-
-                    <v-divider></v-divider>
-
-                    <v-list>
-                      <v-list-tile>
+                      </v-list-tile>                      
+                      <!-- <v-list-tile>
                         <v-list-tile-action>
                           <v-switch v-model="message" color="purple"></v-switch>
                         </v-list-tile-action>
                         <v-list-tile-title>Enable messages</v-list-tile-title>
-                      </v-list-tile>
+                      </v-list-tile> -->
 
                       <v-list-tile @click="logout((getType == 'admin') ? 'admin' : 'user')">
                         <v-list-tile-action>
@@ -262,12 +277,12 @@
                       </v-list-tile>
                     </v-list>
 
-                    <v-card-actions>
+                    <!-- <v-card-actions>
                       <v-spacer></v-spacer>
 
                       <v-btn flat @click="menu = false">Cancel</v-btn>
                       <v-btn color="primary" flat @click="menu = false">Save</v-btn>
-                    </v-card-actions>
+                    </v-card-actions> -->
                   </v-card>
                 </v-menu>
               </div>              
