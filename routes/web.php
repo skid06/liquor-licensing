@@ -11,6 +11,9 @@ use Illuminate\Http\Request;
 |
 */
 Route::get('/', function () {
+    if(\Auth::user()){
+        return redirect()->route('my.application.form');
+    }
     return view('user.login');
 });
 
