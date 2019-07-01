@@ -1,6 +1,6 @@
 <template>
   <v-card>
-    <v-card-title class="headline font-weight-regular blue-grey white--text">Liquor License Application</v-card-title>
+    <v-card-title class="headline font-weight-regular primary white--text">Liquor License Application</v-card-title>
     <v-card-text>
       <v-subheader class="pa-0 mr-5 ml-5"><h3>Business Information</h3></v-subheader>
       <v-layout row wrap class="mr-5 ml-5">
@@ -373,7 +373,7 @@
       <v-btn
         @click="addShareHolder" 
         v-if="!hideCorporation"
-        class="success"
+        class="primary"
       ><v-icon dark>add_circle</v-icon>Shareholder</v-btn>  
 
       <v-layout row wrap class="mr-5 ml-5 mt-10" v-if="!hideCorporation">
@@ -574,7 +574,7 @@
       <v-btn
         @click="addMember" 
         v-if="!hideLLC"
-        class="success"
+        class="primary"
       ><v-icon dark>add_circle</v-icon>Member</v-btn>         
 
       <v-container v-if="!hidePartnership" class="pa-0 mr-5 ml-5">
@@ -625,7 +625,7 @@
       <v-btn
         @click="addOwner" 
         v-if="!hidePartnership"
-        class="success"
+        class="primary"
       ><v-icon dark>add_circle</v-icon> Ownership</v-btn>             
 
       <hr />
@@ -974,13 +974,14 @@
       <v-btn
         @click="saveApplication()"
         class="primary"
-        style="background-color: #ED2224 !important;"
+        
       >Save</v-btn>
 
       <v-btn
         @click="saveApplication('city')"
         class="primary"
-        style="background-color: #ED2224 !important;"
+        color="#008FCD"
+        
       >Submit to City</v-btn>                                                   
     </v-card-text>
     <v-snackbar v-model="isApplicationAdded" color="success">
