@@ -28,6 +28,9 @@
         a{
           color: #21B8EB !important
         }
+        .v-avatar img{
+          border-radius: 25px;
+        }
         /**
             * The CSS shown here will not be introduced in the Quickstart guide, but shows
             * how you can use CSS to style your Element's container.
@@ -114,7 +117,7 @@
                     :key="i"
                     @click="goTo(application.link)"
                   >
-                    <v-list-tile-title v-text="application.text"></v-list-tile-title>
+                    <v-list-tile-title v-text="application.text" style="color:#115c76 !important"></v-list-tile-title>
                     <v-list-tile-action>
                       <v-icon v-text="application.icon"></v-icon>
                     </v-list-tile-action>
@@ -203,7 +206,7 @@
                 </v-avatar>           
               </v-btn> -->
 
-              <div class="text-xs-center">
+              <div class="text-xs">
                 <v-menu
                   v-model="menu"
                   :close-on-content-click="false"
@@ -225,6 +228,9 @@
                           <img :src="`/storage/${getUser.image}`">
                       </v-avatar>  
                     </v-btn>
+                    <v-toolbar-items style="display: inline-block !important;">
+                      <a flat class="v-btn__content ml-4" style="font-size: 20px; font-family:'Montserrat', sans-serif !important; color: white !important;top: 7px;" href="/fixed" v-html="`${getUser.name}`"></a>
+                    </v-toolbar-items>                    
                   </template>
 
                   <v-card>
@@ -244,7 +250,7 @@
                           
                         </v-list-tile-avatar>
 
-                        <v-list-tile-content>
+                        <v-list-tile-content color="primary">
                           <v-list-tile-title v-text="getUser.name"></v-list-tile-title>
                           <v-list-tile-sub-title>
                             <a href="/profile" v-if="getType == 'user'">Edit Profile</a>
@@ -286,13 +292,6 @@
                   </v-card>
                 </v-menu>
               </div>              
-
-              <!-- <v-avatar size="40">
-                <img
-                  src="https://cdn.vuetifyjs.com/images/john.jpg"
-                  alt="John"
-                >
-              </v-avatar>             -->
             </v-layout>            
           </v-toolbar>
           <v-content>
@@ -302,7 +301,7 @@
               
             </v-container>
           </v-content>
-          <v-footer :inset="footer.inset" app color="primary">
+          <v-footer :inset="footer.inset" app style="background-color: #115c76">
             <div style="margin: 0 auto; color: white">Powered by Civic Simple © 2019 | All Rights Reserved</div>
           </v-footer>
         </v-app>
