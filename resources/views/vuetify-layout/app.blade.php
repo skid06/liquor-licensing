@@ -216,11 +216,11 @@
                       dark
                       v-on="on"
                       class="show-overflow" 
-                      style="width:30%;"
+                      
                     >
                       <v-avatar 
                         color="" 
-                        size="100%">
+                        size="50">
                           <!-- <v-icon dark>account_circle</v-icon> -->
                           <img :src="`/storage/${getUser.image}`">
                       </v-avatar>  
@@ -230,7 +230,7 @@
                   <v-card>
                     <v-list style="height:40px !important;">
                       <v-list-tile avatar>
-                        <v-list-tile-avatar  style="width: 100% !important;">
+                        <v-list-tile-avatar>
                           <img :src="`/storage/${getUser.image}`">
                         </v-list-tile-avatar>
                       </v-list-tile>
