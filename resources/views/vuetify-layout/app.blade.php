@@ -223,13 +223,13 @@
                     >
                       <v-avatar 
                         color="" 
-                        size="50">
+                        size="40">
                           <!-- <v-icon dark>account_circle</v-icon> -->
                           <img src="/storage/avatars/cs-icon.png">
                       </v-avatar>  
                     </v-btn>
                     <v-toolbar-items style="display: inline-block !important;">
-                      <span flat class="v-btn__content ml-4" style="font-size: 20px; font-family:'Montserrat', sans-serif !important; color: white !important;top: 7px;">Loves Park, Illinois</span>
+                      <span flat class="v-btn__content ml-4" style="font-size: 20px; font-family:'Montserrat', sans-serif !important; color: white !important;top: 7px; left: -20px;">Loves Park, Illinois</span>
                     </v-toolbar-items>                    
                   </template>
 

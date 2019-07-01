@@ -53,7 +53,7 @@
               <div style="margin-left: 20px"><a href="/password/reset">Forgot Password?</a></div>
               <div style="margin-left: 20px"><a href="/user/register">Sign Up</a></div>
               <v-spacer></v-spacer>             
-              <v-btn color="#21B8EB" @click.prevent="authenticate">Login</v-btn>
+              <v-btn color="primary" @click.prevent="authenticate">Login</v-btn>
             </v-card-actions>
  
           </v-card>
