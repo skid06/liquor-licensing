@@ -84,12 +84,39 @@
                 <v-list-tile-title v-if="getType == 'official'">Official Dashboard</v-list-tile-title>
               </v-list-tile>
 
-              <v-list-tile v-if="getType == 'admin'" @click="goTo(`/admin/payments`)">
+              <v-list-tile 
+                v-if="getType == 'admin'" 
+                @click="goTo(`/admin/payments`)"
+              >
                 <v-list-tile-action>
                   <v-icon>transform</v-icon>
                 </v-list-tile-action>
                 <v-list-tile-title>Transactions</v-list-tile-title>
-              </v-list-tile>            
+              </v-list-tile>       
+              
+
+              <v-list-group
+                no-action
+                prepend-icon="assignment"
+                v-if="getType == 'admin'" 
+              >
+                <template v-slot:activator>
+                  <v-list-tile>
+                    <v-list-tile-title>Code Violations</v-list-tile-title>
+                  </v-list-tile>
+                </template>
+
+                <v-list-tile
+                  v-for="(application, i) in $store.getters.violationLinks"
+                  :key="i"
+                  @click="goTo(application.link)"
+                >
+                  <v-list-tile-title v-text="application.text" style="color:#115c76 !important"></v-list-tile-title>
+                  <v-list-tile-action>
+                    <v-icon v-text="application.icon"></v-icon>
+                  </v-list-tile-action>
+                </v-list-tile>               
+              </v-list-group>              
 
               <v-list-group
                 prepend-icon="assignment"
@@ -113,7 +140,7 @@
                   </template>
 
                   <v-list-tile
-                    v-for="(application, i) in applicationLinks"
+                    v-for="(application, i) in $store.getters.liquorLinks"
                     :key="i"
                     @click="goTo(application.link)"
                   >
@@ -134,13 +161,13 @@
                     </v-list-tile>
                   </template>
                   <v-list-tile
-                    v-for="(crud, i) in cruds"
+                    v-for="(application, i) in $store.getters.restaurantLinks"
                     :key="i"
                     @click=""
                   >
-                    <v-list-tile-title v-text="crud[0]"></v-list-tile-title>
+                    <v-list-tile-title v-text="application.text"></v-list-tile-title>
                     <v-list-tile-action>
-                      <v-icon v-text="crud[1]"></v-icon>
+                      <v-icon v-text="application.icon"></v-icon>
                     </v-list-tile-action>
                   </v-list-tile>
                 </v-list-group>
@@ -166,7 +193,7 @@
               v-model="select"
               :search-input.sync="search"
               cache-items
-              :items="['test', 'test2', 'fd']"
+              :items="states"
               class="mt-2 ml-5"
               flat
               hide-no-data

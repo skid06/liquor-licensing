@@ -44,6 +44,7 @@ import 'vuetify/dist/vuetify.min.css'
 import Vuex from 'vuex';
 import VeeValidate from 'vee-validate';
 import VueStripeCheckout from 'vue-stripe-checkout';
+import store from './store'
 
 // import {routes} from './routes';
 // import MainContainer from './layout/MainContainer'
@@ -104,19 +105,7 @@ Vue.mixin({
 		footer: {
 			inset: false
 		},
-		applicationLinks: [
-			{text: 'New', icon: 'add', link: '/liquor-application'},
-			{text: 'Saved', icon: 'edit', link: '/applications/saved'},
-			{text: 'Paid', icon: 'attach_money', link: '/applications/paid'},
-			{text: 'Processed', icon: 'done', link: '/applications/processed'},
-			{text: 'Expired', icon: 'error', link: '/applications/expired'}			
-		],
-		cruds: [
-			['Create', 'add'],
-			['Read', 'insert_drive_file'],
-			['Update', 'update'],
-			['Delete', 'delete']
-		],
+
 		auth: null,		
 		// loading: false,
 		// items: [],
@@ -233,50 +222,6 @@ Vue.mixin({
 	}	
 })
 
-const store = new Vuex.Store({
-  state: {
-		userType: null,
-		applicationItems: null,
-		user: {}
-	},
-	getters: {
-    getType(state) {
-      return state.userType
-		},
-		getUser(state){
-			return state.user
-		}
-	},
-	actions: {
-		getUserType({commit}) {
-			axios
-				.get('/user/type')
-				.then(response => {
-					commit("getUserType", response.data)
-				})
-		},
-
-		getUser({commit}){
-		 axios
-				.get('/user/info')
-				.then(response => {
-					commit("getUser", response.data)
-				})
-		}
-
-
-	},
-  mutations: {
-    getUserType (state, data) {
-			state.userType = data.type	
-		},
-		
-    getUser (state, data) {
-			state.user = data	
-		},		
-  }
-})
-
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key)))
 
@@ -296,6 +241,9 @@ const app = new Vue({
 		},
 		getUser(){
 			return store.getters.getUser
+		},
+		liquorLinks(){
+			return store.getters.liquorLinks
 		}
 	},
 	mounted(){

@@ -14,8 +14,7 @@ trait SendsPasswordResetEmails
      */
     public function showLinkRequestForm()
     {
-        // return view('auth.passwords.email');
-        return view('user.reset');
+        return view('auth.passwords.email');
     }
 
     /**
@@ -35,14 +34,9 @@ trait SendsPasswordResetEmails
             $this->credentials($request)
         );
 
-        // return response()->json(['message' => 'We have e-mailed your password reset link!']);
-        // return $response == Password::RESET_LINK_SENT
-        //             ? $this->sendResetLinkResponse($request, $response)
-        //             : $this->sendResetLinkFailedResponse($request, $response);
-
         return $response == Password::RESET_LINK_SENT
-                    ? response()->json(['message' => 'We have e-mailed your password reset link!'])
-                    : response()->json(['message' => 'We can\'t find a user with that e-mail address.'], 417);                    
+                    ? $this->sendResetLinkResponse($request, $response)
+                    : $this->sendResetLinkFailedResponse($request, $response);
     }
 
     /**

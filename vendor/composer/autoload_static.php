@@ -81,6 +81,7 @@ class ComposerStaticInit9277e318f9620da686eee77cc368b7e3
             'Psr\\Log\\' => 8,
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Container\\' => 14,
+            'Prophecy\\' => 9,
             'PhpParser\\' => 10,
         ),
         'O' => 
@@ -291,6 +292,10 @@ class ComposerStaticInit9277e318f9620da686eee77cc368b7e3
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
         ),
+        'Prophecy\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy',
+        ),
         'PhpParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
@@ -439,10 +444,6 @@ class ComposerStaticInit9277e318f9620da686eee77cc368b7e3
         ),
         'P' => 
         array (
-            'Prophecy\\' => 
-            array (
-                0 => __DIR__ . '/..' . '/phpspec/prophecy/src',
-            ),
             'PhpOption\\' => 
             array (
                 0 => __DIR__ . '/..' . '/phpoption/phpoption/src',
@@ -466,10 +467,12 @@ class ComposerStaticInit9277e318f9620da686eee77cc368b7e3
         'App\\Application' => __DIR__ . '/../..' . '/app/Application.php',
         'App\\BusinessClassificationOwner' => __DIR__ . '/../..' . '/app/BusinessClassificationOwner.php',
         'App\\ClassFee' => __DIR__ . '/../..' . '/app/ClassFee.php',
+        'App\\Console\\Commands\\LiquorLicenseExpiryNotification' => __DIR__ . '/../..' . '/app/Console/Commands/LiquorLicenseExpiryNotification.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Corporation' => __DIR__ . '/../..' . '/app/Corporation.php',
         'App\\CorporationShareholder' => __DIR__ . '/../..' . '/app/CorporationShareholder.php',
         'App\\Events\\NewApplication' => __DIR__ . '/../..' . '/app/Events/NewApplication.php',
+        'App\\Events\\UserAndAdminPostComment' => __DIR__ . '/../..' . '/app/Events/UserAndAdminPostComment.php',
         'App\\Events\\UserApplicationProcessed' => __DIR__ . '/../..' . '/app/Events/UserApplicationProcessed.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\GeneralPartnership' => __DIR__ . '/../..' . '/app/GeneralPartnership.php',
@@ -506,13 +509,16 @@ class ComposerStaticInit9277e318f9620da686eee77cc368b7e3
         'App\\Http\\Repositories\\LiquorApplicationRepository' => __DIR__ . '/../..' . '/app/Http/Repositories/LiquorApplicationRepository.php',
         'App\\Http\\Repositories\\LiquorRepository' => __DIR__ . '/../..' . '/app/Http/Repositories/LiquorRepository.php',
         'App\\Http\\Resources\\ApplicationCollection' => __DIR__ . '/../..' . '/app/Http/Resources/ApplicationCollection.php',
+        'App\\Http\\Traits\\FieldName' => __DIR__ . '/../..' . '/app/Http/Traits/FieldName.php',
         'App\\LimitedLiabilityCompany' => __DIR__ . '/../..' . '/app/LimitedLiabilityCompany.php',
         'App\\LimitedLiabilityCompanyMember' => __DIR__ . '/../..' . '/app/LimitedLiabilityCompanyMember.php',
         'App\\LimitedPartnership' => __DIR__ . '/../..' . '/app/LimitedPartnership.php',
         'App\\LiquorApplication' => __DIR__ . '/../..' . '/app/LiquorApplication.php',
+        'App\\Listeners\\CommentNotificationsForUserAndAdmin' => __DIR__ . '/../..' . '/app/Listeners/CommentNotificationsForUserAndAdmin.php',
         'App\\Listeners\\SendAlertToAdmin' => __DIR__ . '/../..' . '/app/Listeners/SendAlertToAdmin.php',
         'App\\Listeners\\SendProcessedAlertToUser' => __DIR__ . '/../..' . '/app/Listeners/SendProcessedAlertToUser.php',
         'App\\Mail\\NewApplicationAlert' => __DIR__ . '/../..' . '/app/Mail/NewApplicationAlert.php',
+        'App\\Mail\\PostedCommentByUserAndAdmin' => __DIR__ . '/../..' . '/app/Mail/PostedCommentByUserAndAdmin.php',
         'App\\Mail\\ProcessedApplicationAlert' => __DIR__ . '/../..' . '/app/Mail/ProcessedApplicationAlert.php',
         'App\\Note' => __DIR__ . '/../..' . '/app/Note.php',
         'App\\Official' => __DIR__ . '/../..' . '/app/Official.php',
@@ -540,6 +546,7 @@ class ComposerStaticInit9277e318f9620da686eee77cc368b7e3
         'Carbon\\CarbonInterval' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
         'Carbon\\CarbonPeriod' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonPeriod.php',
         'Carbon\\CarbonTimeZone' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonTimeZone.php',
+        'Carbon\\Cli\\Invoker' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Cli/Invoker.php',
         'Carbon\\Exceptions\\InvalidDateException' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Exceptions/InvalidDateException.php',
         'Carbon\\Factory' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Factory.php',
         'Carbon\\FactoryImmutable' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/FactoryImmutable.php',
@@ -581,6 +588,8 @@ class ComposerStaticInit9277e318f9620da686eee77cc368b7e3
         'Cartalyst\\Stripe\\Api\\CountrySpecs' => __DIR__ . '/..' . '/cartalyst/stripe/src/Api/CountrySpecs.php',
         'Cartalyst\\Stripe\\Api\\Coupons' => __DIR__ . '/..' . '/cartalyst/stripe/src/Api/Coupons.php',
         'Cartalyst\\Stripe\\Api\\CreditNotes' => __DIR__ . '/..' . '/cartalyst/stripe/src/Api/CreditNotes.php',
+        'Cartalyst\\Stripe\\Api\\CustomerBalanceTransactions' => __DIR__ . '/..' . '/cartalyst/stripe/src/Api/CustomerBalanceTransactions.php',
+        'Cartalyst\\Stripe\\Api\\CustomerTaxIds' => __DIR__ . '/..' . '/cartalyst/stripe/src/Api/CustomerTaxIds.php',
         'Cartalyst\\Stripe\\Api\\Customers' => __DIR__ . '/..' . '/cartalyst/stripe/src/Api/Customers.php',
         'Cartalyst\\Stripe\\Api\\Disputes' => __DIR__ . '/..' . '/cartalyst/stripe/src/Api/Disputes.php',
         'Cartalyst\\Stripe\\Api\\EphemeralKey' => __DIR__ . '/..' . '/cartalyst/stripe/src/Api/EphemeralKey.php',
@@ -599,18 +608,21 @@ class ComposerStaticInit9277e318f9620da686eee77cc368b7e3
         'Cartalyst\\Stripe\\Api\\Plans' => __DIR__ . '/..' . '/cartalyst/stripe/src/Api/Plans.php',
         'Cartalyst\\Stripe\\Api\\Products' => __DIR__ . '/..' . '/cartalyst/stripe/src/Api/Products.php',
         'Cartalyst\\Stripe\\Api\\Radar' => __DIR__ . '/..' . '/cartalyst/stripe/src/Api/Radar.php',
+        'Cartalyst\\Stripe\\Api\\Radar\\EarlyFraudWarning' => __DIR__ . '/..' . '/cartalyst/stripe/src/Api/Radar/EarlyFraudWarning.php',
         'Cartalyst\\Stripe\\Api\\Radar\\Reviews' => __DIR__ . '/..' . '/cartalyst/stripe/src/Api/Radar/Reviews.php',
         'Cartalyst\\Stripe\\Api\\Radar\\ValueListItems' => __DIR__ . '/..' . '/cartalyst/stripe/src/Api/Radar/ValueListItems.php',
         'Cartalyst\\Stripe\\Api\\Radar\\ValueLists' => __DIR__ . '/..' . '/cartalyst/stripe/src/Api/Radar/ValueLists.php',
         'Cartalyst\\Stripe\\Api\\Recipients' => __DIR__ . '/..' . '/cartalyst/stripe/src/Api/Recipients.php',
         'Cartalyst\\Stripe\\Api\\Refunds' => __DIR__ . '/..' . '/cartalyst/stripe/src/Api/Refunds.php',
         'Cartalyst\\Stripe\\Api\\ScheduledQueries' => __DIR__ . '/..' . '/cartalyst/stripe/src/Api/ScheduledQueries.php',
+        'Cartalyst\\Stripe\\Api\\SetupIntents' => __DIR__ . '/..' . '/cartalyst/stripe/src/Api/SetupIntents.php',
         'Cartalyst\\Stripe\\Api\\Skus' => __DIR__ . '/..' . '/cartalyst/stripe/src/Api/Skus.php',
         'Cartalyst\\Stripe\\Api\\Sources' => __DIR__ . '/..' . '/cartalyst/stripe/src/Api/Sources.php',
         'Cartalyst\\Stripe\\Api\\SubscriptionItems' => __DIR__ . '/..' . '/cartalyst/stripe/src/Api/SubscriptionItems.php',
         'Cartalyst\\Stripe\\Api\\SubscriptionScheduleRevisions' => __DIR__ . '/..' . '/cartalyst/stripe/src/Api/SubscriptionScheduleRevisions.php',
         'Cartalyst\\Stripe\\Api\\SubscriptionSchedules' => __DIR__ . '/..' . '/cartalyst/stripe/src/Api/SubscriptionSchedules.php',
         'Cartalyst\\Stripe\\Api\\Subscriptions' => __DIR__ . '/..' . '/cartalyst/stripe/src/Api/Subscriptions.php',
+        'Cartalyst\\Stripe\\Api\\TaxRates' => __DIR__ . '/..' . '/cartalyst/stripe/src/Api/TaxRates.php',
         'Cartalyst\\Stripe\\Api\\Terminal' => __DIR__ . '/..' . '/cartalyst/stripe/src/Api/Terminal.php',
         'Cartalyst\\Stripe\\Api\\Terminal\\ConnectionTokens' => __DIR__ . '/..' . '/cartalyst/stripe/src/Api/Terminal/ConnectionTokens.php',
         'Cartalyst\\Stripe\\Api\\Terminal\\Locations' => __DIR__ . '/..' . '/cartalyst/stripe/src/Api/Terminal/Locations.php',
@@ -3193,6 +3205,7 @@ class ComposerStaticInit9277e318f9620da686eee77cc368b7e3
         'PHP_Token_UNSET_CAST' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_USE' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_USE_FUNCTION' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
+        'PHP_Token_Util' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token/Util.php',
         'PHP_Token_VAR' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_VARIABLE' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_WHILE' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
