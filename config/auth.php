@@ -47,7 +47,11 @@ return [
         'official' => [
             'driver' => 'session',
             'provider' => 'officials',
-        ],        
+        ],  
+        'inspector' => [
+            'driver' => 'session',
+            'provider' => 'inspectors',
+        ],                
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -83,7 +87,11 @@ return [
         'officials' => [
             'driver' => 'eloquent',
             'model' => App\Official::class,
-        ],        
+        ],  
+        'inspectors' => [
+            'driver' => 'eloquent',
+            'model' => App\Inspector::class,
+        ],                
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
@@ -112,15 +120,20 @@ return [
             'expire' => 60,
         ],
         'admins' => [
-            'provider' => 'admin',
+            'provider' => 'admins',
             'table' => 'password_resets',
             'expire' => 60,
         ], 
         'officials' => [
-            'provider' => 'official',
+            'provider' => 'officials',
             'table' => 'password_resets',
             'expire' => 60,
-        ],                
+        ],  
+        'inspectors' => [
+            'provider' => 'inspectors',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],                        
     ],
 
 ];

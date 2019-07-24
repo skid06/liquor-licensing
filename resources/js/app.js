@@ -68,6 +68,7 @@ Vue.component('applications', require('./user/Applications.vue'))
 Vue.component('profile', require('./user/Profile.vue'))
 Vue.component('admin-profile', require('./admin/Profile.vue'))
 Vue.component('dashboard', require('./admin/Dashboard.vue'))
+Vue.component('citizen-complaint', require('./citizen/Complaint.vue'))
 Vue.component('official-dashboard', require('./official/Dashboard.vue'))
 Vue.component('comment-box', require('./helper/CommentBox.vue'))
 
@@ -242,9 +243,6 @@ const app = new Vue({
 		getUser(){
 			return store.getters.getUser
 		},
-		liquorLinks(){
-			return store.getters.liquorLinks
-		}
 	},
 	mounted(){
 		store.dispatch("getUserType")

@@ -169,7 +169,7 @@
             // setAuthorization(response.data.access_token)
             // this.$store.commit("login_success", response.data)
             // this.$router.push({path: '/tasks'}) 
-            window.location = '/liquor-application'         
+            // window.location = '/liquor-application'         
           })
           .catch(err => {
             // this.$store.commit("login_failed", 'Wrong email or password.')

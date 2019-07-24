@@ -81,7 +81,7 @@ export default {
   methods: {
     getPayments(){
       axios
-        .get(`/payments`)
+        .get(`/api/payments`)
         .then(response => {
           console.log(response.data)
           this.payments = response.data.payments

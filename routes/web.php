@@ -11,10 +11,11 @@ use Illuminate\Http\Request;
 |
 */
 Route::get('/', function () {
-    if(\Auth::user()){
-        return redirect()->route('my.application.form');
-    }
-    return view('user.login');
+    // if(\Auth::user()){
+    //     return redirect()->route('my.application.form');
+    // }
+    // return view('user.login');
+    return view('citizen.complaint');
 });
 
 /** Start of Vuetifyjs Test */
@@ -27,6 +28,14 @@ Route::get('/user/register', function () {
 });
 
 Route::post('/user/register', 'Auth\\RegisterController@register');
+
+Route::post('/citizen/complaint/store', function() {
+    foreach(request()->file('violation_images') as $violation_image){
+        if($violation_image !== null){
+            $path = $violation_image->store('complaints','public');
+        } 
+    }
+});
 
 Route::get('/vuetify', function () {
     return view('vuetify');
@@ -47,14 +56,17 @@ Route::get('/class/fees', function () {
 
 Route::get('/user/info', function () {
     if(\Auth::guard('admin')->user()){
-        return \App\Admin::where('id', \Auth::guard('admin')->user()->id)->first();
+        return \Auth::guard('admin')->user();
     }
     elseif(Auth::guard('web')->user()){
-        return \App\User::where('id', \Auth::user()->id)->first();
+        return \Auth::user();
     }
     elseif(Auth::guard('official')->user()){
-        return \App\Official::where('id', \Auth::guard('official')->user()->id)->first();
-    }    
+        return \Auth::guard('official')->user();
+    } 
+    elseif(Auth::guard('inspector')->user()){
+        return \Auth::guard('inspector')->user();
+    }        
     // return \App\User::where('id', \Auth::user()->id)->first();
 });
 
@@ -169,7 +181,7 @@ Route::prefix('admin')->group(function() {
 /**
  * Start - These routes are used as API by admin.
  */
-Route::get('/payments', 'ApplicationPaymentController@index');
+
 Route::prefix('/api/admin/applications')->group(function() { 
     // Route::get('/applications/completed', 'LiquorLicenseController@completed');
     // Route::get('/applications/completed/{search}', 'LiquorLicenseController@searchCompleted');
