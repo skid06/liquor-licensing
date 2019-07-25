@@ -21,7 +21,7 @@
               </v-tooltip>
             </v-toolbar>
             <v-card-text>
-              <v-form action="/login" method="POST">
+              <v-form action="/login" method="POST" ref="form">
                 <v-alert
                   :value="true"
                   color="error"
@@ -267,7 +267,7 @@
           .then(response => {
             console.log(response.data)   
             this.isApplicationAdded = true
-            this.form = {}
+            this.$refs.form.reset()
           })
           .catch(err => {
             // this.$store.commit("login_failed", 'Wrong email or password.')

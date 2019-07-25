@@ -28,7 +28,7 @@ class ViolationController extends Controller
         $violation->violator_zip = $request->violator_zip;
         $violation->pin_code = $request->violator_pin;
         $violation->ward_district_no = $request->violator_ward_district_no;
-        $violation->status = $request->status;
+        $violation->status = 'waiting';
         $violation->save();
 
         // var_dump(json_decode($request->violation_descriptions));

@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard">
-    <v-subheader class="mt-5 mb-2"><h1>Violations</h1></v-subheader>
+    <v-subheader class="mt-1 mb-2"><h1>Violations</h1></v-subheader>
     <v-tabs
       color=""
       slider-color="yellow"
