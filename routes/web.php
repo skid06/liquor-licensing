@@ -29,13 +29,7 @@ Route::get('/user/register', function () {
 
 Route::post('/user/register', 'Auth\\RegisterController@register');
 
-Route::post('/citizen/complaint/store', function() {
-    foreach(request()->file('violation_images') as $violation_image){
-        if($violation_image !== null){
-            $path = $violation_image->store('complaints','public');
-        } 
-    }
-});
+Route::post('/citizen/complaint/store', 'ViolationController@store');
 
 Route::get('/vuetify', function () {
     return view('vuetify');
@@ -161,6 +155,9 @@ Route::prefix('/user/applications')->group(function() {
 Route::prefix('admin')->group(function() {
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
+    Route::get('/violations', function () {
+        return view('violations');
+    });      
     Route::get('/liquor-application/{id}', 'DashboardController@viewForm')->name('admin.view.application.form');
     Route::get('/completed', 'DashboardController@completed')->name('admin.completed');
     Route::get('/profile', 'DashboardController@viewProfile')->name('admin.profile');
@@ -172,14 +169,15 @@ Route::prefix('admin')->group(function() {
     Route::get('/', 'DashboardController@main')->name('admin.dashboard');
     Route::get('/filter/payment/{by}/{count}', 'ApplicationPaymentController@filterPaymentByDate')->name('admin.filter.payments');
     Route::get('/filter/applications/{by}/{count}/{status}', 'LiquorLicenseController@filterApplicationByDate')->name('admin.filter.applications');
-    
+  
 });
+
 /**
  * End - These routes are used as web pages for admin.
  */ 
 
 /**
- * Start - These routes are used as API by admin.
+ * Start - These routes are used as API by admin to get all applications.
  */
 
 Route::prefix('/api/admin/applications')->group(function() { 
@@ -195,8 +193,19 @@ Route::prefix('/api/admin/applications')->group(function() {
     Route::get('/{search?}', 'LiquorApplicationController@getApplications');      
 });  
 /**
- * End - These routes are used as API by admin.
- */    
+ * End - These routes are used as API by admin to get all applications.
+ */  
+
+ /**
+ * Start - These routes are used as API by admin to get all violatons.
+ */
+
+Route::prefix('/api/admin/violations')->group(function() { 
+    Route::get('/', 'ViolationController@index');      
+});  
+/**
+ * End - These routes are used as API by admin to get all violations.
+ */  
 
 Route::prefix('official')->group(function() {
     Route::get('/login', 'Auth\OfficialLoginController@showLoginForm')->name('official.login');

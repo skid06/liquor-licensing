@@ -15,7 +15,7 @@ class CreateViolationDescriptionsTable extends Migration
     {
         Schema::create('violation_descriptions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('descriptions');
+            $table->string('text');
             $table->string('pin_code')->nullable();
             $table->integer('violation_id')->unsigned()->index();
             $table->integer('inspector_id')->unsigned()->index();

@@ -71,6 +71,7 @@ Vue.component('dashboard', require('./admin/Dashboard.vue'))
 Vue.component('citizen-complaint', require('./citizen/Complaint.vue'))
 Vue.component('official-dashboard', require('./official/Dashboard.vue'))
 Vue.component('comment-box', require('./helper/CommentBox.vue'))
+Vue.component('violations', require('./admin/Violations.vue'))
 
 Vue.use(VueStripeCheckout, 'pk_test_ZpeCcMeI4Ai3VuCWytohUs36');
 Vue.use(VueRouter);

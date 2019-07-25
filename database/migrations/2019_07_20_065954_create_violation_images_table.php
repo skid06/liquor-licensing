@@ -15,7 +15,7 @@ class CreateViolationImagesTable extends Migration
     {
         Schema::create('violation_images', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('images');
+            $table->string('filename');
             $table->integer('violation_id')->unsigned()->index();    
             $table->integer('inspector_id')->unsigned()->index();        
             $table->timestamps();

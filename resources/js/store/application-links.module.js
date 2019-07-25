@@ -10,7 +10,7 @@ export default {
     ],
     code_violations_links: [
       {text: 'New', icon: 'add', link: '#'},
-      {text: 'Lists', icon: 'insert_drive_file', link: '#'}
+      {text: 'Lists', icon: 'insert_drive_file', link: '/admin/violations'}
     ],
     restaurant_links: [
       {text: 'Create', icon: 'add'},

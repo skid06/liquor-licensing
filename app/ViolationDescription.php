@@ -12,7 +12,7 @@ class ViolationDescription extends Model
      * @var array
      */
     protected $fillable = [
-        'descriptions', 'pin_code', 'inspector_id', 'violation_id'
+        'text', 'pin_code', 'inspector_id', 'violation_id'
     ];
 
     public function violation()

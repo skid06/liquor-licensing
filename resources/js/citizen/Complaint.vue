@@ -40,7 +40,7 @@
                       name="violator_name" 
                       label="Violator Name" 
                       type="text" 
-                      v-model="form.name">
+                      v-model="form.violator_name">
                     </v-text-field>
 
                     <v-text-field 
@@ -48,7 +48,7 @@
                       name="violator_email" 
                       label="Violator Email" 
                       type="text" 
-                      v-model="form.email">
+                      v-model="form.violator_email">
                     </v-text-field>
 
                     <v-text-field 
@@ -56,7 +56,7 @@
                       name="violator_address" 
                       label="Violator Address" 
                       type="text" 
-                      v-model="form.phone">
+                      v-model="form.violator_address">
                     </v-text-field>
 
                     <v-text-field 
@@ -64,7 +64,7 @@
                       name="violator_city" 
                       label="Violator City" 
                       type="text" 
-                      v-model="form.phone">                    
+                      v-model="form.violator_city">                    
                     </v-text-field> 
 
                     <v-text-field 
@@ -72,7 +72,7 @@
                       name="violator_state" 
                       label="Violator State" 
                       type="text" 
-                      v-model="form.phone">  
+                      v-model="form.violator_state">  
                     </v-text-field>          
 
                     <v-text-field 
@@ -80,7 +80,7 @@
                       name="violator_zip" 
                       label="Violator ZIP" 
                       type="text" 
-                      v-model="form.phone">
+                      v-model="form.violator_zip">
                     </v-text-field>   
 
                     <v-text-field 
@@ -88,7 +88,7 @@
                       name="violator_pin" 
                       label="Violator Pin Code" 
                       type="text" 
-                      v-model="form.phone">  
+                      v-model="form.violator_pin">  
                     </v-text-field>          
 
                     <v-text-field 
@@ -96,10 +96,19 @@
                       name="violator_ward_district_no" 
                       label="Violator Ward/Distric Number" 
                       type="text" 
-                      v-model="form.phone">
-                    </v-text-field>             
+                      v-model="form.violator_ward_district_no">
+                    </v-text-field>    
 
-                    <div v-for="violation_image in form.violation_images" :key="violation_image.id">
+                    <div v-for="violation_description in form.violation_descriptions" :key="violation_description.id">
+                      <v-textarea outlined label="Description" v-model='violation_description.text'></v-textarea>  
+                    </div>          
+
+                    <v-btn
+                      @click="addViolationDescription" 
+                      class="primary"
+                    ><v-icon dark>add_circle</v-icon> &nbsp; Description</v-btn>                              
+
+                    <div v-for="violation_image in form.violation_images" :key="violation_image.id" class="mt-5">
                       <!-- <img :src="imageUrl" height="150" v-if="imageUrl"/> -->
                       <img :src="violation_image.url" height="150" v-if="violation_image.url"/>
                       <!-- <v-text-field label="Upload Photo" @click='pickFile' v-model='imageName' prepend-icon='image'></v-text-field> -->
@@ -111,7 +120,12 @@
                         accept="image/*"
                         @change="onFilePicked(violation_image.id)"
                       >  
-                    </div>                                                   
+                    </div> 
+
+                    <v-btn
+                      @click="addViolationImage" 
+                      class="primary"
+                    ><v-icon dark>add_circle</v-icon> &nbsp; Image</v-btn>                                                                                                         
                   </v-flex>                
 
                   <v-flex xs6 md6>
@@ -120,7 +134,7 @@
                       name="complainant_name" 
                       label="Complainant Name" 
                       type="text" 
-                      v-model="form.name">
+                      v-model="form.complainant_name">
                     </v-text-field>
 
                     <v-text-field 
@@ -128,7 +142,7 @@
                       name="complainant_email" 
                       label="Complainant Email" 
                       type="text" 
-                      v-model="form.email">
+                      v-model="form.complainant_email">
                     </v-text-field>
 
                     <v-text-field 
@@ -136,16 +150,20 @@
                       name="complainant_phone" 
                       label="Complainant Phone" 
                       type="text" 
-                      v-model="form.phone">
+                      v-model="form.complainant_phone">
                     </v-text-field>     
                   </v-flex>                   
                 </v-layout>                                         
               </v-form>
             </v-card-text>
-            <v-card-actions class="ml-5">                          
+            <v-card-actions class="ml-4">                          
               <v-btn color="primary" @click.prevent="submit">Submit</v-btn>
             </v-card-actions>
- 
+
+            <v-snackbar v-model="isApplicationAdded" color="success">
+              <span>You have submitted a complaint. Officials will take a look on this complaint and will update you.</span>
+              <v-btn flat color="white">Close</v-btn>
+            </v-snackbar>  
           </v-card>
         </v-flex>
       </v-layout>
@@ -170,11 +188,13 @@
           violator_pin: '',     
           violator_ward_district_no: '',
           violation_images: [
-            {id: 0, url: '', file: '', name: ''},
-            {id: 1, url: '', file: '', name: ''}
+            {id: 0, url: '', file: '', name: ''}
           ],
-          violation_descriptions: []
+          violation_descriptions: [
+            {id: 0, text: ''}
+          ]
         },
+        isApplicationAdded: false,
         authError: '',
         imageName: '',
         imageUrl: '',
@@ -206,9 +226,15 @@
           this.form.violation_images[index].file = ''
           this.form.violation_images[index].url = ''
         }
-
-        // alert(this.form.violation_images[0].file)
       },
+
+      addViolationDescription() {
+        this.form.violation_descriptions.push({ id: this.form.violation_descriptions.length, text: '' })
+      },
+
+      addViolationImage() {
+        this.form.violation_images.push({ id: this.form.violation_images.length, url: '', file: '', name: '' })
+      },      
 
       submit() {
         const config = {
@@ -216,11 +242,19 @@
         }           
 
         let formData = new FormData()
-        // formData.append('violation_images', this.form.violation_images)
 
-        // if(this.image){
-        //   formData.append('image', this.image, this.imageName)
-        // }
+        formData.append('complainant_name', this.form.complainant_name)
+        formData.append('complainant_email', this.form.complainant_email)
+        formData.append('complainant_phone', this.form.complainant_phone)
+        formData.append('violator_name', this.form.violator_name)
+        formData.append('violator_address', this.form.violator_address)
+        formData.append('violator_city', this.form.violator_city)
+        formData.append('violator_state', this.form.violator_state)
+        formData.append('violator_zip', this.form.violator_zip)
+        formData.append('violator_pin', this.form.violator_pin)
+        formData.append('violator_ward_district_no', this.form.violator_ward_district_no)
+        formData.append('violation_descriptions', JSON.stringify(this.form.violation_descriptions))
+
 
         if(this.form.violation_images){
           this.form.violation_images.forEach(image => {
@@ -231,11 +265,9 @@
         // this.$store.dispatch('login')
         axios.post('/citizen/complaint/store', formData, config)
           .then(response => {
-            console.log(response.data)
-            // setAuthorization(response.data.access_token)
-            // this.$store.commit("login_success", response.data)
-            // this.$router.push({path: '/tasks'}) 
-            // window.location = '/liquor-application'         
+            console.log(response.data)   
+            this.isApplicationAdded = true
+            this.form = {}
           })
           .catch(err => {
             // this.$store.commit("login_failed", 'Wrong email or password.')

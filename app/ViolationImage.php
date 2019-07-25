@@ -12,7 +12,7 @@ class ViolationImage extends Model
      * @var array
      */
     protected $fillable = [
-        'images', 'inspector_id', 'violation_id'
+        'filename', 'inspector_id', 'violation_id'
     ];
 
     public function violation()
