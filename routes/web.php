@@ -27,9 +27,9 @@ Route::get('/user/register', function () {
     return view('user.register');
 });
 
-Route::get('/password/reset', function () {
-    return view('user.reset');
-});
+// Route::get('/password/reset', function () {
+//     return view('user.reset');
+// });
 
 Route::post('/user/register', 'Auth\\RegisterController@register');
 
