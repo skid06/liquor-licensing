@@ -153,6 +153,7 @@ export default {
           align: 'left',
           value: 'name'
         },
+        { text: 'Business Email', value: 'email' },
         { text: 'Business Address', value: 'address' },
         { text: 'Contact Person', value: 'contact_person' },
         { text: 'Business Classification', value: 'classification' },
