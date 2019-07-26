@@ -27,7 +27,7 @@
             data-vv-name="business_address"
             :error-messages="errors.collect('business_address')"  
             append-icon="location_city"          
-            label="Business Address"
+            label="Business Address / City / State / Zip"
             class="input-width"
             outline
           ></v-text-field>
@@ -130,7 +130,7 @@
         <v-flex xs12 md12 >
           <v-text-field
             v-model="corporate_address"
-            label="Corporate Address"
+            label="Corporate Address / City / State / Zip"
             append-icon="location_city"
             class="input-width"
             outline
