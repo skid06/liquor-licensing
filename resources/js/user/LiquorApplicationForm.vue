@@ -170,7 +170,7 @@
         <v-flex xs12 md6 >
           <v-text-field
             v-model="store_manager_address"
-            label="Address"
+            label="Address / City / State / Zip"
             append-icon="location_city" 
             class="input-width"
             outline
@@ -212,7 +212,7 @@
         <v-flex xs12 md6 >
           <v-text-field
             v-model="president_address"
-            label="Address"
+            label="Address / City / State / Zip"
             append-icon="location_city" 
             class="input-width"
             outline
