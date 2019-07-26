@@ -28,7 +28,7 @@ trait AuthenticatesUsers
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function login(Request $request)
+    public function login2(Request $request)
     {
         $this->validateLogin($request);
 
@@ -54,6 +54,19 @@ trait AuthenticatesUsers
         }    
 
         // return $this->sendFailedLoginResponse($request);
+    }
+
+    public function login(Request $request){
+        if ($this->attemptLogin($request)) {
+            return $this->sendLoginResponse($request);
+        }
+        else {
+            // If the login attempt was unsuccessful we will increment the number of attempts
+            // to login and redirect the user back to the login form. Of course, when this
+            // user surpasses their maximum number of attempts they will get locked out.
+            $this->incrementLoginAttempts($request);
+            return response()->json(['message' => 'Incorrect combination of username/password!'], 417);
+        }  
     }
 
     /**
