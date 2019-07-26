@@ -135,7 +135,7 @@ trait AuthenticatesUsers
         // throw ValidationException::withMessages([
         //     $this->username() => [trans('auth.failed')],
         // ]);
-        return response()->json(['email' => trans($response)], 417);
+        return response()->json(['message' => 'Incorrect combination of username/password!'], 417);
     }
 
     /**
