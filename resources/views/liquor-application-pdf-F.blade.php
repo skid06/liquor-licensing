@@ -86,9 +86,9 @@ textarea{
 <body>
     <div class="container-fluid">
 		<div class="container" style="max-width:50% !important;">
-      <div style="width: 50%; margin: 0 auto;"> <h3 style="font-size: 14px;">ORDINANCE NO.</h5> </div>
+      <div style="width: 50%; margin: 0 auto;"> <h5 style="font-size: 16px;">ORDINANCE NO.</h5> </div>
       <p style="text-align: center !important;" style="text-align: center !important;">
-              AN ORDINANCE APPROVING ISSUANCE OF A CLASS "R-1" LIQUOR LICENSE FOR
+              AN ORDINANCE APPROVING ISSUANCE OF A CLASS "F" LIQUOR LICENSE FOR
               {{ @$pdf['business_name'] }} PURSUANT TO CHAPTER 6,
         SECTION 6-37 OF THE CODE OF ORDINANCES OF THE CITY OF LOVES PARK,
         ILLINOIS
@@ -99,36 +99,21 @@ Loves Park ("City") regulate the number and classes of liquor licenses, respecti
 within the City ("Code"); and
       </p>
       <p style="text-align: center !important;">
-      WHEREAS, a Class “R-1” liquor license authorizes the retail sale on the premises
-specified, of alcoholic liquor for consumption on the premises by restaurants, subject to the
-requirement that at least 55 percent (55%) of the premises’ gross receipts be from the sale of
-food; and
-      </p>
-
-      <p style="text-align: center !important;">
-      WHEREAS, a Class “R-1” liquor license further authorizes the retail sale of packaged
-alcoholic liquor, provided that said retail sales of such liquor shall not exceed ten percent (10%)
-of the total sales of all alcoholic beverages; and
+      WHEREAS, a Class "F" liquor license authorizes the retail sale and consumption of
+alcoholic liquor within a licensed premises, provided that the licensed premises also has, locates,
+maintains and lawfully operates Video Gaming Terminals (as defined under the Illinois Video
+Gaming Act, 230 ILCS 40/1 et seq.) within the Class "F" licensed establishment; and
       </p>
       <p style="text-align: center !important;">
-      WHEREAS, the City now desires to approve the issuance of a Class “R-1” liquor license
-to {{ @$pdf['business_name'] }} an Illinois limited liability company, doing business as
-“{{ @$pdf['business_name'] }}” (“Licensee”), pursuant to Chapter 6, Section 6-37 of the Code; and
+      WHEREAS, the City now desires to approve the issuance of a Class "F" liquor license to
+Nino's Investments Inc., an Illinois corporation, doing business as "Lucky Slots 2" (hereinafter
+"Licensee"), pursuant to Chapter 6, Section 6-37 and 6-43 of the Code; and
       </p>
       <p style="text-align: center !important;">
-      WHEREAS, said liquor license shall be issued for use only within that part of the
-building and attached and enclosed outdoor patio area located at {{ @$pdf['business_address'] }} (“Premises”); and
-      </p>
-      <p style="text-align: center !important;">
-      WHEREAS, the Premises will have a drive through window that will be used solely for
-carry-out order pick-up of non-alcoholic items; and
-      </p>
-      <p style="text-align: center !important;">
-      WHEREAS, said liquor license shall be issued for use only within the Premises and
-subject to the conditions set forth herein and including the requirement that access to the outdoor
-patio seating area shall only be allowed from the current location within the building and no
-alcohol shall be sold, picked-up, served or provided in any way shape or form to customers
-through the drive through window.
+      WHEREAS, said liquor license shall be for use only within the portion of the premises
+located at 6451 North Second Street, Loves Park, Illinois, 61111 which is exclusively used for
+video gaming and occupied by Licensee (“Premises”) and subject to the conditions set forth
+herein.
       </p>
       <p style="text-align: center !important;">
       NOW THEREFORE, BE IT ORDAINED BY THE CITY COUNCIL OF THE CITY OF
@@ -138,19 +123,32 @@ LOVES PARK, BOONE AND WINNEBAGO COUNTIES, ILLINOIS AS FOLLOWS:
 
       <ol>
         <li>The above recitals are incorporated by reference herein and made a part hereof.</li>
-        <li>The issuance of a Class “R-1” liquor license to the Licensee for use at the Premises is
-hereby approved pursuant to Chapter 6, Section 6-37 of the Code.</li>
-        <li>
-        Final issuance of the liquor license by the local liquor commissioner will be subject to
-review and approval of the liquor license application by the local liquor commissioner
-along with compliance by Licensee with all Ordinances of the City of Loves Park and
-all applicable State and/or Federal laws.
-        </li>
+        <li>The issuance of a Class “F” liquor license to Licensee for use at the Premises is
+hereby approved pursuant to Chapter 6, Section 6-37 and Section 6-43 of the Code.</li>
       </ol>
       <ol>
-        <li>All other provisions of the Code and any City Ordinances or Resolutions shall remain
+        <li>In addition to the conditions set forth in Paragraph 4 of this Ordinance, final issuance
+of the liquor license by the Local Liquor Commissioner will be subject to review and
+approval of the liquor license application by the Local Liquor Commissioner along
+with compliance by Licensee with all Ordinances of the City of Loves Park and all
+applicable State and/or Federal laws.</li>
+        <li>
+        In addition to the conditions set forth above, final issuance of the said license will be
+further subject to the Licensee meeting the following conditions, at the City’s sole
+discretion:
+          <ol type="a">
+            <li>Final approval by the City of architectural plans for issuance of any required
+building permits; and</li>
+            <li>
+            Issuance of an occupancy permit to Licensee by the City.
+            </li>
+          </ol>
+        </li>
+        <li>
+        All other provisions of the Code and any City Ordinances or Resolutions shall remain
 in effect as previously enacted except that those Ordinances, Resolutions or parts
-thereof in conflict with the provisions of this Ordinance are hereby repealed.</li>
+thereof in conflict with the provisions of this Ordinance are hereby repealed.
+        </li>
         <li>
         This Ordinance shall be in full force and effect from and after its passage, approval,
 and publication in pamphlet form as provided by law.
@@ -160,16 +158,11 @@ and publication in pamphlet form as provided by law.
       PASSED by the City Council of the City of Loves Park this ____day of May, 2018.
       </p>
       <p style="text-align: center !important;">
-        APPROVED: <br /> <br> <br><br>
-        _______________________
-        <br>
+        APPROVED: <br></br>
         Mayor: 
       </p>
-      <br><br>
       <p style="text-align: center !important;">
-        ATTEST: <br><br><br><br>
-        ________________________
-        <br>
+        ATTEST: <br>
         City Clerk: 
 
       </p>
