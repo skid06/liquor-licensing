@@ -157,7 +157,7 @@ export default {
         { text: 'Contact Person', value: 'contact_person' },
         { text: 'Business Classification', value: 'classification' },
         { text: 'Last Modified', value: 'modified' },
-        { text: 'Last Note Modified', value: 'note_modified' },
+        
         { text: 'Actions', value: 'name', sortable: false }
       ],
       desserts: [],
