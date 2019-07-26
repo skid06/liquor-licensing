@@ -30,12 +30,11 @@
       </div> 
     </v-layout> -->
    
-    <v-layout row wrap class="mb-500">
+    <!-- <v-layout row wrap class="mb-500">
       <v-flex x12 sm4 md4 v-for="item in items" :key="item">
         <v-card flat class="text-xs-center ma-3" :color="item.color" height=100>
           <v-card-title>
             <div>
-              <!-- <div class="headline"><v-icon dark size="40" class="pt-2"> {{ item.icon }} </v-icon></div> -->
                <div class="headline"><v-btn size="45" flat class="white--text"> {{ item.text }}: 100 </v-btn></div>
             </div>
           </v-card-title>
@@ -44,7 +43,7 @@
           </v-card-actions>    
         </v-card>
       </v-flex>
-    </v-layout>
+    </v-layout> -->
     <v-spacer ></v-spacer>
     <!-- <v-subheader class="mt-5 mb-2"><h1>Applications</h1></v-subheader> -->
     <v-tabs
