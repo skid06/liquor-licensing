@@ -288,11 +288,13 @@ class LiquorApplicationRepository implements ApplicationInterface
 	{
 		if($search == null){
 			$applications = LiquorApplication::where("user_id", \Auth::user()->id)
+																				->where('status', $status)
 																				->get();																	
 		}
 		else{
 			$applications = LiquorApplication::where("user_id", \Auth::user()->id)
 																				->where("business_name", "LIKE", "%$search%")
+																				->where('status', $status)
 																				->get();
 		}
 
