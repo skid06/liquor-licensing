@@ -117,6 +117,7 @@ Route::get('/applications/incomplete', 'HomeController@incomplete')->name('my.ap
 Route::get('/applications/show/{id}/{status}', 'HomeController@showApplication')->name('my.applications.show.id');
 Route::get('/applications/paid', 'HomeController@paid')->name('my.applications.paid');
 
+Route::get('/payments', 'ApplicationPaymentController@index');
 
 /**
  * Start - These routes are used as API by user end.

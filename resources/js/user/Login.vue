@@ -83,9 +83,6 @@
       axios.post('/login', this.form)
         .then(response => {
           console.log(response.data)
-          // setAuthorization(response.data.access_token)
-          // this.$store.commit("login_success", response.data)
-          // this.$router.push({path: '/tasks'}) 
           window.location = '/liquor-application'         
         })
         .catch(err => {

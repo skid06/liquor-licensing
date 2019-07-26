@@ -33,7 +33,7 @@
                   {{ authError }}
                 </v-alert>    
 
-                <img :src="imageUrl" height="150" v-if="imageUrl"/>
+                <!-- <img :src="imageUrl" height="150" v-if="imageUrl"/>
                 <v-text-field label="Select Avatar" @click='pickFile' v-model='imageName' prepend-icon='image'></v-text-field>
                 <input
                   type="file"
@@ -41,7 +41,7 @@
                   ref="image"
                   accept="image/*"
                   @change="onFilePicked"
-                >
+                > -->
 
                 <v-text-field 
                   prepend-icon="person" 
@@ -166,10 +166,7 @@
         axios.post('/user/register', formData, config)
           .then(response => {
             console.log(response.data)
-            // setAuthorization(response.data.access_token)
-            // this.$store.commit("login_success", response.data)
-            // this.$router.push({path: '/tasks'}) 
-            // window.location = '/liquor-application'         
+            window.location = '/liquor-application'         
           })
           .catch(err => {
             // this.$store.commit("login_failed", 'Wrong email or password.')
