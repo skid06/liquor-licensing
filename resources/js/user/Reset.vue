@@ -53,6 +53,7 @@
               </v-form>
             </v-card-text>
             <v-card-actions>
+              <div style="margin-left: 20px"><a href="/user/login">Login</a></div>
               <v-spacer></v-spacer>             
               <v-btn color="primary" @click.prevent="reset">Send Password Reset Link</v-btn>
             </v-card-actions>
