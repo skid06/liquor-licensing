@@ -269,11 +269,13 @@ class LiquorApplicationRepository implements ApplicationInterface
 
 		if($search == null){
 			$applications = LiquorApplication::with('user')
+													->orderBy('updated_at', 'desc')
 													->get();
 		}
 		else {
 			$applications = LiquorApplication::where('corporate_name', 'LIKE', '%'.$status.'%')
 													->with('user')
+													->orderBy('updated_at', 'desc')
 													->get();			
 		}
 

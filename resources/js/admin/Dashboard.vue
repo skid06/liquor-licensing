@@ -77,6 +77,9 @@
         </v-toolbar>
         <v-data-table
           :headers="headers"
+          :sort-by="['props.item.business_name']"
+          :sort-desc="[false, true]"
+          multi-sort          
           :items="filterStatus(`${header.payload}`)"
           class="elevation-1"
         >
@@ -86,6 +89,7 @@
             <td class="text-xs-left">{{ props.item.business_email }}</td>
             <td class="text-xs-left">{{ props.item.business_contact_person }}</td>
             <td class="text-xs-left">{{ props.item.business_classification }}</td>
+            <td class="text-xs-left">{{ props.item.updated_at | moment("MMM DD, YYYY")  }}</td>
             <td class="justify-center layout px-0">
               <v-icon
                 small
@@ -154,6 +158,7 @@ export default {
         { text: 'Business Email', value: 'email' },
         { text: 'Contact Person', value: 'contact_person' },
         { text: 'Business Classification', value: 'classification' },
+        { text: 'Last Modified', value: 'modified' },
         { text: 'Actions', value: 'name', sortable: false }
       ],
       desserts: [],

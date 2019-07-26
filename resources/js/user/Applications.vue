@@ -7,6 +7,7 @@
         </v-toolbar>
         <v-data-table
           :headers="headers"
+          must-sort
           :items="applications"
           class="elevation-1"
         >
