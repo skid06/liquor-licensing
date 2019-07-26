@@ -85,7 +85,7 @@ textarea{
 </head>
 <body>
     <div class="container-fluid">
-		<div class="container" style="max-width:80% !important; margin-left: 150px;">
+		<div class="container" style="max-width:80% !important; margin-left: 50px;">
       <div style="width: 60%; margin: 0 auto;"> <h3 style="font-size: 14px;">ORDINANCE NO.</h5> </div>
       <p style="text-align: center !important;" style="text-align: center !important;">
               AN ORDINANCE APPROVING ISSUANCE OF A CLASS "R-1" LIQUOR LICENSE FOR
