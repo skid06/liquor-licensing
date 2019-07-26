@@ -247,12 +247,12 @@ class LiquorApplicationRepository implements ApplicationInterface
 		if(\Auth::user()){
 			$application = LiquorApplication::where('id', $id)
 																			->where('user_id', \Auth::user()->id)
-																			->with(['classifiable.children'])
+																			->with(['classifiable.children','notes'])
 																			->first();															
 		}
 		else{
 			$application = LiquorApplication::where('id', $id)
-																			->with(['classifiable.children'])
+																			->with(['classifiable.children','notes'])
 																			->first();
 		}
 
