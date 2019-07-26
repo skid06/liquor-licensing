@@ -151,13 +151,14 @@ export default {
         {
           text: 'Business Name',
           align: 'left',
-          value: 'name'
+          value: 'name',
+          sortable: false
         },
-        { text: 'Business Email', value: 'email' },
-        { text: 'Business Address', value: 'address' },
-        { text: 'Contact Person', value: 'contact_person' },
-        { text: 'Business Classification', value: 'classification' },
-        { text: 'Last Modified', value: 'modified' },
+        { text: 'Business Email', value: 'email', sortable: false },
+        { text: 'Business Address', value: 'address', sortable: false },
+        { text: 'Contact Person', value: 'contact_person', sortable: false },
+        { text: 'Business Classification', value: 'classification', sortable: false },
+        { text: 'Last Modified', value: 'modified', sortable: false },
         
         { text: 'Actions', value: 'name', sortable: false }
       ],
