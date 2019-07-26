@@ -1,5 +1,5 @@
 @component('mail::message')
-# Congratulation! Your application has been processed.
+# Congratulations! Your application has been processed.
 
 
 @component('mail::button', ['url' => config('app.url').'/applications/processed'])
