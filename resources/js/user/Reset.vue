@@ -96,7 +96,7 @@
           // this.$store.commit("login_failed", 'Wrong email or password.')
           this.success = ''
           if(err.response.status === 417){
-            this.authError = err.response.data.message
+            this.authError = err.response.data.email
             console.log(err.response)
           }          
           else if(err.response.status === 401){
