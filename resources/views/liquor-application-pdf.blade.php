@@ -340,7 +340,7 @@ textarea{
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="inputBox">
-                                        <div class="inputText">Have you had a business within the City of Loves Park under any other corporate name? <strong> {{ $pdf['had_business_other_corporation'] }} </strong></div>
+                                        <div class="inputText">Have you had a business within the City of Loves Park under any other corporate name? <strong> {{ @$pdf['had_business_other_corporation'] }} </strong></div>
                                         <input type="text" name="" class="input">
                                     </div>
                                 </div>
@@ -350,7 +350,7 @@ textarea{
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="inputBox">
-                                        <div class="inputText">State of Organization: <strong> {{ $pdf['state_of_organization'] }} </strong></div>
+                                        <div class="inputText">State of Organization: <strong> {{ @$pdf['state_of_organization'] }} </strong></div>
                                         <input type="text" name="" class="input">
                                     </div>
                                 </div>
@@ -359,7 +359,7 @@ textarea{
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="inputBox">
-                                        <div class="inputText">LLC Manager <strong> {{ $pdf['llc_manager_name'] }} </strong></div>
+                                        <div class="inputText">LLC Manager <strong> {{ @$pdf['llc_manager_name'] }} </strong></div>
                                         <input type="text" name="" class="input">
                                     </div>
                                 </div>
@@ -386,7 +386,7 @@ textarea{
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="inputBox">
-                                        <div class="inputText">Store Manager's Phone <strong> {{ $pdf['store_manager_phone'] }} </strong></div>
+                                        <div class="inputText">Store Manager's Phone <strong> {{ @$pdf['store_manager_phone'] }} </strong></div>
                                         <input type="text" name="" class="input">
                                     </div>
                                 </div>
@@ -395,7 +395,7 @@ textarea{
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="inputBox">
-                                        <div class="inputText">Store Manager's Address <strong> {{ $pdf['store_manager_address'] }} </strong></div>
+                                        <div class="inputText">Store Manager's Address <strong> {{ @$pdf['store_manager_address'] }} </strong></div>
                                         <input type="text" name="" class="input">
                                     </div>
                                 </div>
@@ -472,7 +472,7 @@ textarea{
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="inputBox">
-                                    <div class="inputText">Was the owner born outside? <strong> {{ $pdf['born_outside_us'] == 'Yes' ? 'Yes' : 'No'  }} </strong></div>
+                                    <div class="inputText">Was the owner born outside? <strong> {{ @$pdf['born_outside_us'] == 'Yes' ? 'Yes' : 'No'  }} </strong></div>
                                     <input type="text" name="" class="input">
                                 </div>
                             </div>
@@ -482,7 +482,7 @@ textarea{
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="inputBox">
-                                        <div class="inputText">Born of US Parents? <strong> {{ $pdf['born_us_parents'] == 'Yes' ? 'Yes' : 'No'  }} </strong></div>
+                                        <div class="inputText">Born of US Parents? <strong> {{ @$pdf['born_us_parents'] == 'Yes' ? 'Yes' : 'No'  }} </strong></div>
                                         <input type="text" name="" class="input">
                                     </div>
                                 </div>
@@ -491,7 +491,7 @@ textarea{
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="inputBox">
-                                            <div class="inputText">Birth Country: <strong> {{ $pdf['birth_country'] }} </strong></div>
+                                            <div class="inputText">Birth Country: <strong> {{ @$pdf['birth_country'] }} </strong></div>
                                             <input type="text" name="" class="input">
                                         </div>
                                     </div>
@@ -499,7 +499,7 @@ textarea{
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="inputBox">
-                                            <div class="inputText">Date of Birth: <strong> {{ $pdf['date_of_birth'] }} </strong></div>
+                                            <div class="inputText">Date of Birth: <strong> {{ @$pdf['date_of_birth'] }} </strong></div>
                                             <input type="text" name="" class="input">
                                         </div>
                                     </div>
@@ -508,7 +508,7 @@ textarea{
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="inputBox">
-                                            <div class="inputText">Naturalized? <strong> {{ $pdf['naturalized'] == 'Yes' ? 'Yes' :'No' }} </strong></div>
+                                            <div class="inputText">Naturalized? <strong> {{ @$pdf['naturalized'] == 'Yes' ? 'Yes' :'No' }} </strong></div>
                                             <input type="text" name="" class="input">
                                         </div>
                                     </div>
@@ -517,7 +517,7 @@ textarea{
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <div class="inputBox">
-                                                <div class="inputText">City: <strong> {{ $pdf['naturalized_city'] }} </strong></div>
+                                                <div class="inputText">City: <strong> {{ @$pdf['naturalized_city'] }} </strong></div>
                                                 <input type="text" name="" class="input">
                                             </div>
                                         </div>
@@ -525,7 +525,7 @@ textarea{
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <div class="inputBox">
-                                                <div class="inputText">State: <strong> {{ $pdf['naturalized_state'] }} </strong></div>
+                                                <div class="inputText">State: <strong> {{ @$pdf['naturalized_state'] }} </strong></div>
                                                 <input type="text" name="" class="input">
                                             </div>
                                         </div>
@@ -533,7 +533,7 @@ textarea{
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <div class="inputBox">
-                                                <div class="inputText">Date: <strong> {{ $pdf['naturalized_date'] }} </strong></div>
+                                                <div class="inputText">Date: <strong> {{ @$pdf['naturalized_date'] }} </strong></div>
                                                 <input type="text" name="" class="input">
                                             </div>
                                         </div>
@@ -545,7 +545,7 @@ textarea{
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="inputBox">
-                                    <div class="inputText">Owner's Name: <strong> {{ $pdf['establishment_owner_name'] }} </strong></div>
+                                    <div class="inputText">Owner's Name: <strong> {{ @$pdf['establishment_owner_name'] }} </strong></div>
                                     <input type="text" name="" class="input">
                                 </div>
                             </div>
@@ -554,7 +554,7 @@ textarea{
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="inputBox">
-                                    <div class="inputText">Owner's Address: <strong> {{ $pdf['establishment_owner_address'] }} </strong></div>
+                                    <div class="inputText">Owner's Address: <strong> {{ @$pdf['establishment_owner_address'] }} </strong></div>
                                     <input type="text" name="" class="input">
                                 </div>
                             </div>
@@ -563,7 +563,7 @@ textarea{
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="inputBox">
-                                    <div class="inputText">Owner's Phone: <strong> {{ $pdf['establishment_owner_phone'] }} </strong></div>
+                                    <div class="inputText">Owner's Phone: <strong> {{ @$pdf['establishment_owner_phone'] }} </strong></div>
                                     <input type="text" name="" class="input">
                                 </div>
                             </div>
@@ -572,7 +572,7 @@ textarea{
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="inputBox">
-                                    <div class="inputText">Does the owner of the liquor establishment lease the premises where business will be conducted? <strong> {{ $pdf['owner_lease_premises'] }} </strong></div>
+                                    <div class="inputText">Does the owner of the liquor establishment lease the premises where business will be conducted? <strong> {{ @$pdf['owner_lease_premises'] }} </strong></div>
                                     <input type="text" name="" class="input">
                                 </div>
                             </div>
@@ -582,7 +582,7 @@ textarea{
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="inputBox">
-                                        <div class="inputText">Lessor's Name: <strong> {{ $pdf['lessor_name'] }} </strong></div>
+                                        <div class="inputText">Lessor's Name: <strong> {{ @$pdf['lessor_name'] }} </strong></div>
                                         <input type="text" name="" class="input">
                                     </div>
                                 </div>
@@ -591,7 +591,7 @@ textarea{
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="inputBox">
-                                        <div class="inputText">Lessor's Address: <strong> {{ $pdf['lessor_address'] }} </strong></div>
+                                        <div class="inputText">Lessor's Address: <strong> {{ @$pdf['lessor_address'] }} </strong></div>
                                         <input type="text" name="" class="input">
                                     </div>
                                 </div>
@@ -600,7 +600,7 @@ textarea{
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="inputBox">
-                                        <div class="inputText">Lessor's Phone: <strong> {{ $pdf['lessor_phone'] }} </strong></div>
+                                        <div class="inputText">Lessor's Phone: <strong> {{ @$pdf['lessor_phone'] }} </strong></div>
                                         <input type="text" name="" class="input">
                                     </div>
                                 </div>
@@ -609,7 +609,7 @@ textarea{
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="inputBox">
-                                        <div class="inputText">Lease End Date: <strong> {{ $pdf['lessor_end_date'] }} </strong></div>
+                                        <div class="inputText">Lease End Date: <strong> {{ @$pdf['lessor_end_date'] }} </strong></div>
                                         <input type="text" name="" class="input">
                                     </div>
                                 </div>
@@ -628,7 +628,7 @@ textarea{
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="inputBox">
-                                            <div class="inputText">Name of other establishment: <strong> {{ $pdf['other_establishment_name'] }} </strong></div>
+                                            <div class="inputText">Name of other establishment: <strong> {{ @$pdf['other_establishment_name'] }} </strong></div>
                                             <input type="text" name="" class="input">
                                         </div>
                                     </div>
@@ -636,7 +636,7 @@ textarea{
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="inputBox">
-                                            <div class="inputText">Address of other establishment: <strong> {{ $pdf['other_establishment_address'] }} </strong></div>
+                                            <div class="inputText">Address of other establishment: <strong> {{ @$pdf['other_establishment_address'] }} </strong></div>
                                             <input type="text" name="" class="input">
                                         </div>
                                     </div>
@@ -647,7 +647,7 @@ textarea{
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="inputBox">
-                                    <div class="inputText">Is any action currently pending against business or owner for violation of the Retailer's Occupation Tax Act of the State of Illinois? <strong> {{ $pdf['action_pending_against_owner'] }} </strong></div>
+                                    <div class="inputText">Is any action currently pending against business or owner for violation of the Retailer's Occupation Tax Act of the State of Illinois? <strong> {{ @$pdf['action_pending_against_owner'] }} </strong></div>
                                     <input type="text" name="" class="input">
                                 </div>
                             </div>
@@ -656,7 +656,7 @@ textarea{
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="inputBox">
-                                    <div class="inputText">Has the owner or establishment been issued a federal wagering stamp? <strong> {{ $pdf['owner_been_issued_wagering_stamp'] }} </strong></div>
+                                    <div class="inputText">Has the owner or establishment been issued a federal wagering stamp? <strong> {{ @$pdf['owner_been_issued_wagering_stamp'] }} </strong></div>
                                     <input type="text" name="" class="input">
                                 </div>
                             </div>
@@ -665,7 +665,7 @@ textarea{
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="inputBox">
-                                    <div class="inputText">Since the last license issuance, has a previous liquor license held by the applying entity or any owner of more than 5% ownership interest been revoked by any state or subdivision thereof, or by the Federal Government? <strong> {{ $pdf['previous_liquor_license_been_revoked'] }} </strong></div>
+                                    <div class="inputText">Since the last license issuance, has a previous liquor license held by the applying entity or any owner of more than 5% ownership interest been revoked by any state or subdivision thereof, or by the Federal Government? <strong> {{ @$pdf['previous_liquor_license_been_revoked'] }} </strong></div>
                                     <input type="text" name="" class="input">
                                 </div>
                             </div>
@@ -674,7 +674,7 @@ textarea{
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="inputBox">
-                                    <div class="inputText">When applying for a new liquor license, please note that there is a $250.00 non-refundable application fee. That fee is in addition to the liquor license itselft. This is a one time fee. This fee does not apply to renewal liquor licenses. The following is a listing of the current City of Loves Park liquor license fees revised January 31, 2019. Please check which class you are applying for. <strong> {{ $pdf['previous_liquor_license_been_revoked'] }} </strong></div>
+                                    <div class="inputText">When applying for a new liquor license, please note that there is a $250.00 non-refundable application fee. That fee is in addition to the liquor license itselft. This is a one time fee. This fee does not apply to renewal liquor licenses. The following is a listing of the current City of Loves Park liquor license fees revised January 31, 2019. Please check which class you are applying for. <strong> {{ @$pdf['previous_liquor_license_been_revoked'] }} </strong></div>
                                     <input type="text" name="" class="input">
                                 </div>
                             </div>
