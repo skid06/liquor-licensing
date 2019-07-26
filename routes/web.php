@@ -27,7 +27,7 @@ Route::get('/user/register', function () {
     return view('user.register');
 });
 
-Route::get('/user/password/reset', function () {
+Route::get('/password/reset', function () {
     return view('user.reset');
 });
 
