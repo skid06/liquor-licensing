@@ -88,7 +88,7 @@
             <td class="text-xs-left">{{ props.item.business_contact_person }}</td>
             <td class="text-xs-left">{{ props.item.business_classification }}</td>
             <td class="text-xs-left">{{ props.item.updated_at | moment("MMM DD, YYYY")  }}</td>
-            <td class="text-xs-left">{{ props.item.notes[props.item.notes.lenght - 1].updated_at }}</td>
+            <td class="text-xs-left">{{ props.item.notes[props.item.notes.lenght - 1] }}</td>
             <td class="justify-center layout px-0">
               <v-icon
                 small
