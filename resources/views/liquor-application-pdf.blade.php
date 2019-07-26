@@ -65,6 +65,7 @@ textarea{
 }    
 .container {
     max-width: 100% !important;
+    font-family: "Times New Roman", Times, serif !important;
 }
 </style>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -84,7 +85,7 @@ textarea{
 </head>
 <body>
     <div class="container-fluid">
-		<div class="container" style="max-width:50% !important; font-family:monospace;">
+		<div class="container" style="max-width:50% !important;">
       <div style="width: 50%; margin: 0 auto;"> <h3>ORDINANCE NO.</h3> </div>
       <p style="text-align: center !important;" style="text-align: center !important;">
               AN ORDINANCE APPROVING ISSUANCE OF A CLASS "F" LIQUOR LICENSE FOR
