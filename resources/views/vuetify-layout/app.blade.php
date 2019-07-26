@@ -188,7 +188,7 @@
                 >
               </v-img>
             </v-toolbar-title>
-            <v-toolbar-items class="hidden-sm-and-down" v-if="getType != null">
+            <!-- <v-toolbar-items class="hidden-sm-and-down" v-if="getType != null">
             <v-autocomplete
               v-model="select"
               :search-input.sync="search"
@@ -205,7 +205,7 @@
             <v-btn icon>
               <v-icon>more_vert</v-icon>
             </v-btn>
-            </v-toolbar-items>          
+            </v-toolbar-items>           -->
             <v-spacer></v-spacer>
             <v-layout
               justify-space-around
