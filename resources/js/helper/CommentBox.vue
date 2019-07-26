@@ -29,7 +29,7 @@
                 <div class="list-icon-container">
                   <span style="font-size:10px;"> {{ log.admin_id == null ? 'You' : 'Admin' }}  </span>
                 </div>
-                <div class="list-datetime"> {{ log.created_at | moment(", h:mm:ss a | MMMM Do YYYY") }} </div>
+                <div class="list-datetime"> {{ log.created_at | moment("h:mm:ss a | MMMM Do YYYY") }} </div>
                 <div class="list-item-content">
                   <p class="body-message">
                     <a href="javascript:;">{{ log.message }}</a>
