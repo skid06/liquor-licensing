@@ -43,7 +43,8 @@ class CommentNotificationsForUserAndAdmin
         }
         elseif($event->note->user_id != null){
             // get all admin_idd in the notes by application id
-            $admin_ids = Note::select('admin_id')->distinct()->where('application_id', $event->note->application_id)->where('admin_id','!=', NULL)->get();
+            // $admin_ids = Note::select('admin_id')->distinct()->where('application_id', $event->note->application_id)->where('admin_id','!=', NULL)->get();
+            $admin_ids = Admin::get();
 
             // make a query to admin table by all admin_id from above codes
             $admins = Admin::whereIn('id', $admin_ids)->get();
