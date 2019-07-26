@@ -27,6 +27,10 @@ Route::get('/user/register', function () {
     return view('user.register');
 });
 
+Route::get('/user/password/reset', function () {
+    return view('user.reset');
+});
+
 Route::post('/user/register', 'Auth\\RegisterController@register');
 
 Route::post('/citizen/complaint/store', 'ViolationController@store');
