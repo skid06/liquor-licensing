@@ -92,6 +92,7 @@
                  
         })
         .catch(err => {
+          console.log(err)
           // this.$store.commit("login_failed", 'Wrong email or password.')
           this.success = ''
           if(err.response.status === 417){
