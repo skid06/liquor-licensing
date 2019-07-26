@@ -989,7 +989,7 @@
       <span v-else>You edited your application.</span>
       <v-btn flat color="white">Close</v-btn>
     </v-snackbar>    
-    <comment-box :app_id="id" :user_id="user_id" v-if="id != '' && status == 'paid'" />   
+    <comment-box :app_id="id" :user_id="user_id" v-if="id != '' && status != 'saved'" />   
   </v-card>
 </template>
 
