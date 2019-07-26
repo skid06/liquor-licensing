@@ -46,7 +46,7 @@ trait SendsPasswordResetEmails
             ]);
         }
         else {
-            return response()->json(['email' => trans($response)], 422);
+            return response()->json(['email' => trans($response)]);
         }        
     }
 

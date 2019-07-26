@@ -104,8 +104,8 @@
             console.log(err.response)
           }
           else{
-            this.authError = err.response.data.email
-            // this.authError = err.response.data.errors.email ? err.response.data.errors.email[0] : err.response.data.errors.password[0]
+            // this.authError = err.response.data.email
+            this.authError = err.response.data.errors.email ? err.response.data.errors.email[0] : err.response.data.errors.password[0]
             // console.log(err.response.data.errors.email ? err.response.data.errors.email[0] : err.response.data.errors.password[0])
           }
 
