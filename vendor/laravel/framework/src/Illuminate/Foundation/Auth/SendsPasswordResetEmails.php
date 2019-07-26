@@ -42,7 +42,7 @@ trait SendsPasswordResetEmails
         if ($response == Password::RESET_LINK_SENT) {
             return response()->json([
                 'alert' => true,
-                'alert_message' => 'Password reset link emailed!',
+                'message' => 'Password reset link emailed!',
             ]);
         }
         else {
