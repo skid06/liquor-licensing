@@ -85,11 +85,11 @@ textarea{
 </head>
 <body>
     <div class="container-fluid">
-		<div class="container" style="max-width:80% !important;">
+		<div class="container" style="max-width:80% !important; margin-left: 150px;">
       <div style="width: 60%; margin: 0 auto;"> <h3 style="font-size: 14px;">ORDINANCE NO.</h5> </div>
       <p style="text-align: center !important;" style="text-align: center !important;">
               AN ORDINANCE APPROVING ISSUANCE OF A CLASS "R-1" LIQUOR LICENSE FOR
-              {{ @$pdf['business_name'] }} PURSUANT TO CHAPTER 6,
+              "{{ @$pdf['business_name'] }}"" PURSUANT TO CHAPTER 6,
         SECTION 6-37 OF THE CODE OF ORDINANCES OF THE CITY OF LOVES PARK,
         ILLINOIS
       </p>
@@ -112,7 +112,7 @@ of the total sales of all alcoholic beverages; and
       </p>
       <p style="text-align: center !important;">
       WHEREAS, the City now desires to approve the issuance of a Class “R-1” liquor license
-to {{ @$pdf['business_name'] }} an Illinois limited liability company, doing business as
+to "{{ @$pdf['business_name'] }}" an Illinois limited liability company, doing business as
 “{{ @$pdf['business_name'] }}” (“Licensee”), pursuant to Chapter 6, Section 6-37 of the Code; and
       </p>
       <p style="text-align: center !important;">
