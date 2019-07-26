@@ -28,7 +28,7 @@ trait ResetsPasswords
         //     ['token' => $token, 'email' => $request->email]
         // );
 
-        return view('user.reset-passwords')->with(
+        return view('user.reset-password')->with(
             ['token' => $token, 'email' => $request->email]
         );
     }
