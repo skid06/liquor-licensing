@@ -913,6 +913,11 @@
     </v-snackbar>    
     <comment-box :app_id="id" :user_id="user_id" v-if="id != '' && status == 'paid'" />   
     <v-btn color="primary" @click="sendToPDF">Send to Officials</v-btn>
+    
+    <v-snackbar v-model="isApplicationSent" color="success">
+      <span>You sent a new application to officials.</span>
+      <v-btn flat color="white">Close</v-btn>
+    </v-snackbar>     
   </v-card>
 </template>
 
@@ -996,6 +1001,7 @@
         owner_been_issued_wagering_stamp: '',
         previous_liquor_license_been_revoked: '',
         liquor_license_fee: [],
+        isApplicationSent: false,
         members: [
           { name: '', email: '', phone: '', address: '' }
         ],
@@ -1191,6 +1197,7 @@
           })
           .then(response => {
             console.log(response.data)
+            this.isApplicationSent = true
           })
       }  
     },
