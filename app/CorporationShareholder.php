@@ -9,7 +9,8 @@ class CorporationShareholder extends Model
     protected $table = 'corporation_shareholders';
 
     protected $fillable = [
-        'corporation_id', 'name', 'percentage_owned', 'address'
+        'corporation_id', 'name', 'percentage_owned', 'address',
+        'city', 'state', 'zip'
     ];
 
     public function corporation()

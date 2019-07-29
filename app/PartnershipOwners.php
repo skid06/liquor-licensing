@@ -9,7 +9,8 @@ class PartnershipOwners extends Model
     protected $table = 'partnership_owners';
 
     protected $filled = [
-        'name', 'email', 'address', 'percentage_owned'
+        'name', 'email', 'address', 'city',
+        'state', 'zip', 'percentage_owned'
     ];
 
     public function partnership(){

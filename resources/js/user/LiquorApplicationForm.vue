@@ -20,18 +20,55 @@
           ></v-text-field>
         </v-flex>
 
-        <v-flex xs12 md12 >
+        <v-flex xs12 md6 >
           <v-text-field
             v-model="business_address"
             v-validate="'required|min:3'"
             data-vv-name="business_address"
             :error-messages="errors.collect('business_address')"  
             append-icon="location_city"          
-            label="Business Address / City / State / Zip"
+            label="Business Address"
             class="input-width"
             outline
           ></v-text-field>
         </v-flex>
+        <v-flex xs12 md6 >
+          <v-text-field
+            v-model="business_city"
+            v-validate="'required|min:3'"
+            data-vv-name="business_city"
+            :error-messages="errors.collect('business_city')"  
+            append-icon="location_city"          
+            label="Business City"
+            class="input-width"
+            outline
+          ></v-text-field>
+        </v-flex> 
+
+        <v-flex xs12 md6 >
+          <v-text-field
+            v-model="business_state"
+            v-validate="'required|min:3'"
+            data-vv-name="business_state"
+            :error-messages="errors.collect('business_state')"  
+            append-icon="location_city"          
+            label="Business State"
+            class="input-width"
+            outline
+          ></v-text-field>
+        </v-flex>
+        <v-flex xs12 md6 >
+          <v-text-field
+            v-model="business_zip"
+            v-validate="'required|min:3'"
+            data-vv-name="business_zip"
+            :error-messages="errors.collect('business_zip')"  
+            append-icon="location_city"          
+            label="Business Zip"
+            class="input-width"
+            outline
+          ></v-text-field>
+        </v-flex>                
 
         <v-flex xs12 md6 >
           <v-text-field
@@ -121,21 +158,49 @@
         <v-flex xs12 md12 >
           <v-text-field
             v-model="corporate_name"
-            label="Corporate Name"
+            label="Corporate's Name"
             class="input-width"
             outline
           ></v-text-field>
         </v-flex>
 
-        <v-flex xs12 md12 >
+        <v-flex xs12 md6 >
           <v-text-field
             v-model="corporate_address"
-            label="Corporate Address / City / State / Zip"
+            label="Corporate's Address"
             append-icon="location_city"
             class="input-width"
             outline
           ></v-text-field>
         </v-flex> 
+        <v-flex xs12 md6 >
+          <v-text-field
+            v-model="corporate_city"
+            label="Corporate's City"
+            append-icon="location_city"
+            class="input-width"
+            outline
+          ></v-text-field>
+        </v-flex> 
+
+        <v-flex xs12 md6 >
+          <v-text-field
+            v-model="corporate_state"
+            label="Corporate's State"
+            append-icon="location_city"
+            class="input-width"
+            outline
+          ></v-text-field>
+        </v-flex> 
+        <v-flex xs12 md6 >
+          <v-text-field
+            v-model="corporate_zip"
+            label="Corporate's Zip"
+            append-icon="location_city"
+            class="input-width"
+            outline
+          ></v-text-field>
+        </v-flex>                 
 
         <v-flex xs12 md6 >
           <v-text-field
@@ -150,7 +215,7 @@
         <v-flex xs12 md6 >
           <v-text-field
             v-model="store_manager_email"
-            label="Email"
+            label="Store Manager's Email"
             class="input-width"
             append-icon="email"
             outline
@@ -159,23 +224,51 @@
 
         <v-flex xs12 md6 >
           <v-text-field
-            v-model="store_manager_phone"
-            label="Phone"
-            append-icon="phone"
-            class="input-width"
-            outline
-            ></v-text-field>
-        </v-flex>
-
-        <v-flex xs12 md6 >
-          <v-text-field
             v-model="store_manager_address"
-            label="Address / City / State / Zip"
+            label="Store Manager's Address"
             append-icon="location_city" 
             class="input-width"
             outline
           ></v-text-field>
-        </v-flex>       
+        </v-flex>
+        <v-flex xs12 md6 >
+          <v-text-field
+            v-model="store_manager_city"
+            label="Store Manager's City"
+            append-icon="location_city" 
+            class="input-width"
+            outline
+          ></v-text-field>
+        </v-flex>
+
+        <v-flex xs12 md6 >
+          <v-text-field
+            v-model="store_manager_state"
+            label="Store Manager's State"
+            append-icon="location_city" 
+            class="input-width"
+            outline
+          ></v-text-field>
+        </v-flex>
+        <v-flex xs12 md6 >
+          <v-text-field
+            v-model="store_manager_zip"
+            label="Store Manager's Zip"
+            append-icon="location_city" 
+            class="input-width"
+            outline
+          ></v-text-field>
+        </v-flex>                              
+
+        <v-flex xs12 md6 >
+          <v-text-field
+            v-model="store_manager_phone"
+            label="Store Manager's Phone"
+            append-icon="phone"
+            class="input-width"
+            outline
+            ></v-text-field>
+        </v-flex>    
 
         <v-subheader class="pa-0"><h5>Corporate officers must include President, Vice President, Secretary, and Treasurer, plus any party owning more than 5% stock or ownership of the business entity.</h5></v-subheader>  
        
@@ -192,7 +285,7 @@
         <v-flex xs12 md6 >
           <v-text-field
             v-model="president_email"
-            label="Email"
+            label="President's Email"
             class="input-width"
             append-icon="email"
             outline
@@ -201,23 +294,52 @@
 
         <v-flex xs12 md6 >
           <v-text-field
-            v-model="president_phone"
-            label="Phone"
-            append-icon="phone"
-            class="input-width"
-            outline
-            ></v-text-field>
-        </v-flex>
-
-        <v-flex xs12 md6 >
-          <v-text-field
             v-model="president_address"
-            label="Address / City / State / Zip"
+            label="President's Address"
             append-icon="location_city" 
             class="input-width"
             outline
           ></v-text-field>
-        </v-flex>  
+        </v-flex> 
+        <v-flex xs12 md6 >
+          <v-text-field
+            v-model="president_city"
+            label="President's City"
+            append-icon="location_city" 
+            class="input-width"
+            outline
+          ></v-text-field>
+        </v-flex> 
+
+        <v-flex xs12 md6 >
+          <v-text-field
+            v-model="president_state"
+            label="President's State"
+            append-icon="location_city" 
+            class="input-width"
+            outline
+          ></v-text-field>
+        </v-flex> 
+        <v-flex xs12 md6 >
+          <v-text-field
+            v-model="president_zip"
+            label="President's Zip"
+            append-icon="location_city" 
+            class="input-width"
+            outline
+          ></v-text-field>
+        </v-flex>         
+
+        <v-flex xs12 md12 >
+          <v-text-field
+            v-model="president_phone"
+            label="President's Phone"
+            append-icon="phone"
+            class="input-width"
+            outline
+            style="width:48%"
+            ></v-text-field>
+        </v-flex> 
 
         <v-flex xs12 md6 >
           <v-text-field
@@ -232,7 +354,7 @@
         <v-flex xs12 md6 >
           <v-text-field
             v-model="vice_president_email"
-            label="Vice President Email"
+            label="Vice President's Email"
             class="input-width"
             append-icon="email"
             outline
@@ -241,23 +363,52 @@
 
         <v-flex xs12 md6 >
           <v-text-field
-            v-model="vice_president_phone"
-            label="Vice President Phone"
-            append-icon="phone"
-            class="input-width"
-            outline
-            ></v-text-field>
-        </v-flex>
-
-        <v-flex xs12 md6 >
-          <v-text-field
             v-model="vice_president_address"
-            label="Vice President Address"
+            label="Vice President's Address"
             append-icon="location_city" 
             class="input-width"
             outline
           ></v-text-field>  
-        </v-flex>  
+        </v-flex> 
+        <v-flex xs12 md6 >
+          <v-text-field
+            v-model="vice_president_city"
+            label="Vice President's City"
+            append-icon="location_city" 
+            class="input-width"
+            outline
+          ></v-text-field>  
+        </v-flex>
+
+        <v-flex xs12 md6 >
+          <v-text-field
+            v-model="vice_president_state"
+            label="Vice President's State"
+            append-icon="location_city" 
+            class="input-width"
+            outline
+          ></v-text-field>  
+        </v-flex> 
+        <v-flex xs12 md6 >
+          <v-text-field
+            v-model="vice_president_zip"
+            label="Vice President's Zip"
+            append-icon="location_city" 
+            class="input-width"
+            outline
+          ></v-text-field>  
+        </v-flex>                         
+
+        <v-flex xs12 md12 >
+          <v-text-field
+            v-model="vice_president_phone"
+            label="Vice President's Phone"
+            append-icon="phone"
+            class="input-width"
+            outline
+            style="width:48%"
+            ></v-text-field>
+        </v-flex> 
 
         <v-flex xs12 md6 >
           <v-text-field
@@ -272,7 +423,7 @@
         <v-flex xs12 md6 >
           <v-text-field
             v-model="secretary_email"
-            label="Secretary Email"
+            label="Secretary's Email"
             append-icon="email"
             class="input-width"
             outline
@@ -281,23 +432,52 @@
 
         <v-flex xs12 md6 >
           <v-text-field
-            v-model="secretary_phone"
-            label="Secretary Phone"
-            append-icon="phone"
-            class="input-width"
-            outline
-            ></v-text-field>
-        </v-flex>
-
-        <v-flex xs12 md6 >
-          <v-text-field
             v-model="secretary_address"
-            label="Secretary Address"
+            label="Secretary's Address"
             append-icon="location_city" 
             class="input-width"
             outline
           ></v-text-field>                  
-        </v-flex>  
+        </v-flex> 
+        <v-flex xs12 md6 >
+          <v-text-field
+            v-model="secretary_city"
+            label="Secretary's City"
+            append-icon="location_city" 
+            class="input-width"
+            outline
+          ></v-text-field>                  
+        </v-flex> 
+
+        <v-flex xs12 md6 >
+          <v-text-field
+            v-model="secretary_state"
+            label="Secretary's State"
+            append-icon="location_city" 
+            class="input-width"
+            outline
+          ></v-text-field>                  
+        </v-flex> 
+        <v-flex xs12 md6 >
+          <v-text-field
+            v-model="secretary_zip"
+            label="Secretary's Zip"
+            append-icon="location_city" 
+            class="input-width"
+            outline
+          ></v-text-field>                  
+        </v-flex>                         
+
+        <v-flex xs12 md12 >
+          <v-text-field
+            v-model="secretary_phone"
+            label="Secretary's Phone"
+            append-icon="phone"
+            class="input-width"
+            outline
+            style="width:48%"
+            ></v-text-field>
+        </v-flex> 
 
         <v-flex xs12 md6 >
           <v-text-field
@@ -312,7 +492,7 @@
         <v-flex xs12 md6 >
           <v-text-field
             v-model="treasurer_email"
-            label="Treasurer Email"
+            label="Treasurer's Email"
             append-icon="email"
             class="input-width"
             outline
@@ -321,23 +501,52 @@
 
         <v-flex xs12 md6 >
           <v-text-field
-            v-model="treasurer_phone"
-            label="Treasurer Phone"
-            append-icon="phone"
-            class="input-width"
-            outline
-            ></v-text-field>
-        </v-flex>
-
-        <v-flex xs12 md6 >
-          <v-text-field
             v-model="treasurer_address"
-            label="Treasurer Address"
+            label="Treasurer's Address"
             append-icon="location_city" 
             class="input-width"
             outline
           ></v-text-field>            
-        </v-flex>                                    
+        </v-flex>  
+        <v-flex xs12 md6 >
+          <v-text-field
+            v-model="treasurer_city"
+            label="Treasurer's City"
+            append-icon="location_city" 
+            class="input-width"
+            outline
+          ></v-text-field>            
+        </v-flex> 
+
+        <v-flex xs12 md6 >
+          <v-text-field
+            v-model="treasurer_state"
+            label="Treasurer's State"
+            append-icon="location_city" 
+            class="input-width"
+            outline
+          ></v-text-field>            
+        </v-flex>  
+        <v-flex xs12 md6 >
+          <v-text-field
+            v-model="treasurer_zip"
+            label="Treasurer's Zip"
+            append-icon="location_city" 
+            class="input-width"
+            outline
+          ></v-text-field>            
+        </v-flex>                          
+
+        <v-flex xs12 md12 >
+          <v-text-field
+            v-model="treasurer_phone"
+            label="Treasurer's Phone"
+            append-icon="phone"
+            class="input-width"
+            outline
+            style="width:48%"
+            ></v-text-field>
+        </v-flex>                                  
       </v-layout>  
 
       <v-layout row wrap class="mr-5 ml-5" v-if="!hideCorporation" v-for="shareholder in shareholders" :key="shareholder.id">
@@ -354,21 +563,49 @@
         <v-flex xs12 md6 >
           <v-text-field
             v-model="shareholder.percentage_owned"
-            label="Shareholder Percentage Owned"
+            label="Shareholder's Percentage Owned"
             class="input-width"
             outline
           ></v-text-field>
         </v-flex>
 
-        <v-flex xs12 md12 >
+        <v-flex xs12 md6 >
           <v-text-field
             v-model="shareholder.address"
-            label="Shareholder Address"
+            label="Shareholder's Address"
             append-icon="location_city" 
             class="input-width"
             outline
           ></v-text-field>            
-        </v-flex>       
+        </v-flex> 
+        <v-flex xs12 md6 >
+          <v-text-field
+            v-model="shareholder.city"
+            label="Shareholder's City"
+            append-icon="location_city" 
+            class="input-width"
+            outline
+          ></v-text-field>            
+        </v-flex> 
+
+        <v-flex xs12 md6 >
+          <v-text-field
+            v-model="shareholder.state"
+            label="Shareholder's State"
+            append-icon="location_city" 
+            class="input-width"
+            outline
+          ></v-text-field>            
+        </v-flex> 
+        <v-flex xs12 md6 >
+          <v-text-field
+            v-model="shareholder.zip"
+            label="Shareholder's Zip"
+            append-icon="location_city" 
+            class="input-width"
+            outline
+          ></v-text-field>            
+        </v-flex>                               
       </v-layout>   
       <v-btn
         @click="addShareHolder" 
@@ -388,21 +625,49 @@
         <v-flex xs12 md12 v-if="had_business_other_corporation == 'Yes'">
           <v-text-field
             v-model="other_corporate_name"
-            label="Other Corporate Name"
+            label="Other Corporate's Name"
             class="input-width"
             outline
           ></v-text-field>
         </v-flex>
 
-        <v-flex xs12 md12 v-if="had_business_other_corporation == 'Yes'">
+        <v-flex xs12 md6 v-if="had_business_other_corporation == 'Yes'">
           <v-text-field
             v-model="other_corporate_address"
-            label="Other Corporate Address"
+            label="Other Corporate's Address"
             append-icon="location_city" 
             class="input-width"
             outline
           ></v-text-field>
-        </v-flex>  
+        </v-flex> 
+        <v-flex xs12 md6 v-if="had_business_other_corporation == 'Yes'">
+          <v-text-field
+            v-model="other_corporate_city"
+            label="Other Corporate's City"
+            append-icon="location_city" 
+            class="input-width"
+            outline
+          ></v-text-field>
+        </v-flex> 
+
+        <v-flex xs12 md6 v-if="had_business_other_corporation == 'Yes'">
+          <v-text-field
+            v-model="other_corporate_state"
+            label="Other Corporate's State"
+            append-icon="location_city" 
+            class="input-width"
+            outline
+          ></v-text-field>
+        </v-flex>    
+        <v-flex xs12 md6 v-if="had_business_other_corporation == 'Yes'">
+          <v-text-field
+            v-model="other_corporate_zip"
+            label="Other Corporate's Zip"
+            append-icon="location_city" 
+            class="input-width"
+            outline
+          ></v-text-field>
+        </v-flex>               
 
         <v-flex xs12 md12 >
           <!-- <v-text-field
@@ -464,7 +729,7 @@
         <v-flex xs12 md6 >
           <v-text-field
             v-model="llc_manager_email"
-            label="LLC Manager' Email"
+            label="LLC Manager's Email"
             append-icon="email"
             class="input-width"
             outline
@@ -503,23 +768,52 @@
 
         <v-flex xs12 md6 >
           <v-text-field
-            v-model="store_manager_phone"
-            label="Store Manager's Phone"
-            append-icon="phone"
-            class="input-width"
-            outline
-          ></v-text-field>
-        </v-flex> 
-
-        <v-flex xs12 md6 >
-          <v-text-field
             v-model="store_manager_address"
             label="Store Manager's Address"
             append-icon="location_city" 
             class="input-width"
             outline
           ></v-text-field>          
-        </v-flex>                                
+        </v-flex>
+        <v-flex xs12 md6 >
+          <v-text-field
+            v-model="store_manager_city"
+            label="Store Manager's City"
+            append-icon="location_city" 
+            class="input-width"
+            outline
+          ></v-text-field>          
+        </v-flex> 
+
+        <v-flex xs12 md6 >
+          <v-text-field
+            v-model="store_manager_state"
+            label="Store Manager's State"
+            append-icon="location_city" 
+            class="input-width"
+            outline
+          ></v-text-field>          
+        </v-flex>
+        <v-flex xs12 md6 >
+          <v-text-field
+            v-model="store_manager_zip"
+            label="Store Manager's Zip"
+            append-icon="location_city" 
+            class="input-width"
+            outline
+          ></v-text-field>          
+        </v-flex>                        
+
+        <v-flex xs12 md12 >
+          <v-text-field
+            v-model="store_manager_phone"
+            label="Store Manager's Phone"
+            append-icon="phone"
+            class="input-width"
+            outline
+            style="width:48%"
+          ></v-text-field>
+        </v-flex>                                 
       </v-layout>
 
       <v-layout id="llc-section" row wrap class="mr-5 ml-5" v-if="!hideLLC" v-for="member in members" :key="member.id"> 
@@ -552,22 +846,51 @@
 
         <v-flex xs12 md6 >
           <v-text-field
-            v-model="member.phone"
-            label="Member's Phone"
-            append-icon="phone"
-            class="input-width"
-            outline
-          ></v-text-field>
-        </v-flex> 
-
-        <v-flex xs12 md6 >
-          <v-text-field
             v-model="member.address"
             label="Member's Address"
             append-icon="location_city" 
             class="input-width"
             outline
           ></v-text-field>          
+        </v-flex> 
+        <v-flex xs12 md6 >
+          <v-text-field
+            v-model="member.city"
+            label="Member's City"
+            append-icon="location_city" 
+            class="input-width"
+            outline
+          ></v-text-field>          
+        </v-flex>  
+
+        <v-flex xs12 md6 >
+          <v-text-field
+            v-model="member.state"
+            label="Member's State"
+            append-icon="location_city" 
+            class="input-width"
+            outline
+          ></v-text-field>          
+        </v-flex> 
+        <v-flex xs12 md6 >
+          <v-text-field
+            v-model="member.zip"
+            label="Member's Zip"
+            append-icon="location_city" 
+            class="input-width"
+            outline
+          ></v-text-field>          
+        </v-flex>                         
+
+        <v-flex xs12 md12 >
+          <v-text-field
+            v-model="member.phone"
+            label="Member's Phone"
+            append-icon="phone"
+            class="input-width"
+            outline
+            style="width:48%"
+          ></v-text-field>
         </v-flex>                                
       </v-layout>   
 
@@ -603,22 +926,51 @@
 
         <v-flex xs12 md6 >
           <v-text-field
-            v-model="owner.email"
-            label="Owner's Email"
-            class="input-width"
-            append-icon="email"
-            outline
-          ></v-text-field>
-        </v-flex>
-
-        <v-flex xs12 md6 >
-          <v-text-field
             v-model="owner.address"
             label="Owner's Address"
             append-icon="location_city" 
             class="input-width"
             outline
           ></v-text-field>          
+        </v-flex>
+        <v-flex xs12 md6 >
+          <v-text-field
+            v-model="owner.city"
+            label="Owner's City"
+            append-icon="location_city" 
+            class="input-width"
+            outline
+          ></v-text-field>          
+        </v-flex>  
+
+        <v-flex xs12 md6 >
+          <v-text-field
+            v-model="owner.state"
+            label="Owner's State"
+            append-icon="location_city" 
+            class="input-width"
+            outline
+          ></v-text-field>          
+        </v-flex>
+        <v-flex xs12 md6 >
+          <v-text-field
+            v-model="owner.zip"
+            label="Owner's Zip"
+            append-icon="location_city" 
+            class="input-width"
+            outline
+          ></v-text-field>          
+        </v-flex>                        
+
+        <v-flex xs12 md12 >
+          <v-text-field
+            v-model="owner.email"
+            label="Owner's Email"
+            class="input-width"
+            append-icon="email"
+            outline
+            style="width:48%"
+          ></v-text-field>
         </v-flex>
       </v-layout>   
 
@@ -765,7 +1117,7 @@
           </v-radio-group>          
         </v-flex> 
 
-        <v-flex xs12 md4 >
+        <v-flex xs12 md6 >
           <v-text-field
             v-model="establishment_owner_name"
             label="Owner's Name"
@@ -773,19 +1125,8 @@
             class="input-width"
             outline
           ></v-text-field>
-        </v-flex>
-
-        <v-flex xs12 md4 >
-          <v-text-field
-            v-model="establishment_owner_address"
-            label="Owner's Address"
-            append-icon="location_city" 
-            class="input-width"
-            outline
-          ></v-text-field>
-        </v-flex>         
-
-        <v-flex xs12 md4 >
+        </v-flex>       
+        <v-flex xs12 md6 >
           <v-text-field
             v-model="establishment_owner_phone"
             label="Owner's Phone"
@@ -793,7 +1134,45 @@
             class="input-width"
             outline
           ></v-text-field>
-        </v-flex>        
+        </v-flex>   
+
+        <v-flex xs12 md6 >
+          <v-text-field
+            v-model="establishment_owner_address"
+            label="Owner's Address"
+            append-icon="location_city" 
+            class="input-width"
+            outline
+          ></v-text-field>
+        </v-flex> 
+        <v-flex xs12 md6 >
+          <v-text-field
+            v-model="establishment_owner_city"
+            label="Owner's City"
+            append-icon="location_city" 
+            class="input-width"
+            outline
+          ></v-text-field>
+        </v-flex>
+
+        <v-flex xs12 md6 >
+          <v-text-field
+            v-model="establishment_owner_state"
+            label="Owner's City"
+            append-icon="location_city" 
+            class="input-width"
+            outline
+          ></v-text-field>
+        </v-flex> 
+        <v-flex xs12 md6 >
+          <v-text-field
+            v-model="establishment_owner_zip"
+            label="Owner's Zip"
+            append-icon="location_city" 
+            class="input-width"
+            outline
+          ></v-text-field>
+        </v-flex>                               
       </v-layout> 
 
       <v-layout row wrap class="mr-5 ml-5 mt-10" v-if="establishmentSection && owner_lease_premises == 'Yes'">
@@ -805,18 +1184,7 @@
             class="input-width"
             outline
           ></v-text-field>
-        </v-flex>
-
-        <v-flex xs12 md6 >
-          <v-text-field
-            v-model="lessor_address"
-            label="Lessor's Address"
-            append-icon="location_city" 
-            class="input-width"
-            outline
-          ></v-text-field>
         </v-flex>         
-
         <v-flex xs12 md6 >
           <v-text-field
             v-model="lessor_phone"
@@ -828,6 +1196,44 @@
         </v-flex>       
 
         <v-flex xs12 md6 >
+          <v-text-field
+            v-model="lessor_address"
+            label="Lessor's Address"
+            append-icon="location_city" 
+            class="input-width"
+            outline
+          ></v-text-field>
+        </v-flex>
+        <v-flex xs12 md6 >
+          <v-text-field
+            v-model="lessor_city"
+            label="Lessor's City"
+            append-icon="location_city" 
+            class="input-width"
+            outline
+          ></v-text-field>
+        </v-flex>
+
+        <v-flex xs12 md6 >
+          <v-text-field
+            v-model="lessor_state"
+            label="Lessor's State"
+            append-icon="location_city" 
+            class="input-width"
+            outline
+          ></v-text-field>
+        </v-flex>
+        <v-flex xs12 md6 >
+          <v-text-field
+            v-model="lessor_zip"
+            label="Lessor's Zip"
+            append-icon="location_city" 
+            class="input-width"
+            outline
+          ></v-text-field>
+        </v-flex>        
+
+        <v-flex xs12 md12 >
           <v-dialog
             ref="dialog4"
             v-model="modal_lessor_end_date"
@@ -836,6 +1242,7 @@
             lazy
             full-width
             width="290px"
+            style="width:48%"
           >
             <template v-slot:activator="{ on }">
               <v-text-field
@@ -846,6 +1253,7 @@
                 outline
                 readonly
                 v-on="on"
+                style="width:48%"
               ></v-text-field>
             </template>
             <v-date-picker v-model="lessor_end_date" scrollable>
@@ -892,12 +1300,13 @@
       </v-layout> 
 
       <v-layout row wrap class="mr-5 ml-5 mt-10" v-if="liquor_license_another_premise == 'Yes'">
-        <v-flex xs12 md6 >
+        <v-flex xs12 md12 >
           <v-text-field
             v-model="other_establishment_name"
             label="Name of other establishment"
             class="input-width"
             outline
+            style="width:48%"
           ></v-text-field>
         </v-flex>
 
@@ -910,6 +1319,34 @@
             outline
           ></v-text-field>
         </v-flex> 
+        <v-flex xs12 md6 >
+          <v-text-field
+            v-model="other_establishment_city"
+            label="City of other establishment"
+            append-icon="location_city" 
+            class="input-width"
+            outline
+          ></v-text-field>
+        </v-flex>  
+
+        <v-flex xs12 md6 >
+          <v-text-field
+            v-model="other_establishment_state"
+            label="State of other establishment"
+            append-icon="location_city" 
+            class="input-width"
+            outline
+          ></v-text-field>
+        </v-flex>  
+        <v-flex xs12 md6 >
+          <v-text-field
+            v-model="other_establishment_zip"
+            label="Zip of other establishment"
+            append-icon="location_city" 
+            class="input-width"
+            outline
+          ></v-text-field>
+        </v-flex>                       
       </v-layout>  
 
       <v-layout row wrap class="mr-5 ml-5 mt-10" v-if="establishmentSection">
@@ -1003,6 +1440,9 @@
       return {
         business_name: '',
         business_address: '',
+        business_city: '',
+        business_state: '',
+        business_zip: '',
         business_phone: '',
         business_email: '',
         business_classification: '',
@@ -1022,28 +1462,49 @@
         business_contact_phone: '',
         corporate_name: '',
         corporate_address: '',
+        corporate_city: '',
+        corporate_state: '',
+        corporate_zip: '',
         store_manager_name: '',
         store_manager_email: '',
         store_manager_address: '',
+        store_manager_city: '',
+        store_manager_state: '',
+        store_manager_zip: '',
         store_manager_phone: '',
         president_name: '',
         president_email: '',
         president_address: '',
+        president_city: '',
+        president_state: '',
+        president_zip: '',
         president_phone: '', 
         vice_president_name: '',
         vice_president_email: '',
         vice_president_address: '',
+        vice_president_city: '',
+        vice_president_state: '',
+        vice_president_zip: '',
         vice_president_phone: '',    
         secretary_name: '',
         secretary_email: '',
         secretary_address: '',
+        secretary_city: '',
+        secretary_state: '',
+        secretary_zip: '',
         secretary_phone: '',  
         treasurer_name: '',
         treasurer_email: '',
         treasurer_address: '',
+        treasurer_city: '',
+        treasurer_state: '',
+        treasurer_zip: '',
         treasurer_phone: '', 
         other_corporate_name: '',
-        other_corporate_address: '',   
+        other_corporate_address: '',
+        other_corporate_city: '',
+        other_corporate_state: '',
+        other_corporate_zip: '',   
         state_of_organization: '',
         llc_manager_name: '',
         llc_manager_email: '',
@@ -1061,27 +1522,36 @@
         establishmentSection: false,
         establishment_owner_name: '',
         establishment_owner_address: '',
+        establishment_owner_city: '',
+        establishment_owner_state: '',
+        establishment_owner_zip: '',
         establishment_owner_phone: '',
         lessor_name: '',
         lessor_address: '',
+        lessor_city: '',
+        lessor_state: '',
+        lessor_zip: '',
         lessor_phone: '',       
         owner_lease_premises: '',
         liquor_license_another_premise : '',
         other_establishment_name: '',
         other_establishment_address: '',
+        other_establishment_city: '',
+        other_establishment_state: '',
+        other_establishment_zip: '',
         action_pending_against_owner: '',
         owner_been_issued_wagering_stamp: '',
         previous_liquor_license_been_revoked: '',
         class_fee: null,
         classes: [],
         members: [
-          { name: '', email: '', phone: '', address: '' }
+          { name: '', email: '', phone: '', address: '', city: '', state: '', zip: '' }
         ],
         shareholders: [
-          { name: '', percentage_owned: '', address: '' }
+          { name: '', percentage_owned: '', address: '', city: '', state: '', zip: '' }
         ],
         owners: [
-          { name: '', percentage_owned: '', email: '', address: '' }
+          { name: '', percentage_owned: '', email: '', address: '', city: '', state: '', zip: ''  }
         ],        
         states: [
           'Alabama', 'Alaska', 'American Samoa', 'Arizona',
@@ -1129,6 +1599,9 @@
               formData.append('app_id', this.app_id)
               formData.append('business_name', this.business_name)
               formData.append('business_address', this.business_address)
+              formData.append('business_city', this.business_city)
+              formData.append('business_state', this.business_state)
+              formData.append('business_zip', this.business_zip)
               formData.append('business_phone', this.business_phone)
               formData.append('business_email', this.business_email)
               formData.append('business_classification', this.business_classification)
@@ -1145,28 +1618,49 @@
               formData.append('business_contact_phone', this.business_contact_phone)
               formData.append('corporate_name', this.corporate_name)
               formData.append('corporate_address', this.corporate_address)
+              formData.append('corporate_city', this.corporate_city)
+              formData.append('corporate_state', this.corporate_state)
+              formData.append('corporate_zip', this.corporate_zip)
               formData.append('store_manager_name', this.store_manager_name)
               formData.append('store_manager_email', this.store_manager_email)
               formData.append('store_manager_address', this.store_manager_address)
+              formData.append('store_manager_city', this.store_manager_city)
+              formData.append('store_manager_state', this.store_manager_state)
+              formData.append('store_manager_zip', this.store_manager_zip)
               formData.append('store_manager_phone', this.store_manager_phone)
               formData.append('president_name', this.president_name)
               formData.append('president_email', this.president_email)
               formData.append('president_address', this.president_address)
+              formData.append('president_city', this.president_city)
+              formData.append('president_state', this.president_state)
+              formData.append('president_zip', this.president_zip)
               formData.append('president_phone', this.president_phone)
               formData.append('vice_president_name', this.vice_president_name)
               formData.append('vice_president_email', this.vice_president_email)
               formData.append('vice_president_address', this.vice_president_address)
+              formData.append('vice_president_city', this.vice_president_city)
+              formData.append('vice_president_state', this.vice_president_state)
+              formData.append('vice_president_zip', this.vice_president_zip)
               formData.append('vice_president_phone', this.vice_president_phone)
               formData.append('secretary_name', this.secretary_name)
               formData.append('secretary_email', this.secretary_email)
               formData.append('secretary_address', this.secretary_address)
+              formData.append('secretary_city', this.secretary_city)
+              formData.append('secretary_state', this.secretary_state)
+              formData.append('secretary_zip', this.secretary_zip)
               formData.append('secretary_phone', this.secretary_phone)
               formData.append('treasurer_name', this.treasurer_name)
               formData.append('treasurer_email', this.treasurer_email)
               formData.append('treasurer_address', this.treasurer_address)
+              formData.append('treasurer_city', this.treasurer_city)
+              formData.append('treasurer_state', this.treasurer_state)
+              formData.append('treasurer_zip', this.treasurer_zip)
               formData.append('treasurer_phone', this.treasurer_phone)
               formData.append('other_corporate_name', this.other_corporate_name)
               formData.append('other_corporate_address', this.other_corporate_address)
+              formData.append('other_corporate_city', this.other_corporate_city)
+              formData.append('other_corporate_state', this.other_corporate_state)
+              formData.append('other_corporate_zip', this.other_corporate_zip)
               formData.append('state_of_organization', this.state_of_organization)
               formData.append('llc_manager_name', this.llc_manager_name)
               formData.append('llc_manager_email', this.llc_manager_email)
@@ -1175,15 +1669,24 @@
               formData.append('had_business_other_corporation', this.had_business_other_corporation)
               formData.append('establishment_owner_name', this.establishment_owner_name)
               formData.append('establishment_owner_address', this.establishment_owner_address)
+              formData.append('establishment_owner_city', this.establishment_owner_city)
+              formData.append('establishment_owner_state', this.establishment_owner_state)
+              formData.append('establishment_owner_zip', this.establishment_owner_zip)
               formData.append('establishment_owner_phone', this.establishment_owner_phone)
               formData.append('lessor_name', this.lessor_name)
               formData.append('lessor_address', this.lessor_address)
+              formData.append('lessor_city', this.lessor_city)
+              formData.append('lessor_state', this.lessor_state)
+              formData.append('lessor_zip', this.lessor_zip)
               formData.append('lessor_phone', this.lessor_phone)
               formData.append('lessor_end_date', this.lessor_end_date)
               formData.append('owner_lease_premises', this.owner_lease_premises)
               formData.append('liquor_license_another_premise', this.liquor_license_another_premise)
               formData.append('other_establishment_name', this.other_establishment_name)
               formData.append('other_establishment_address', this.other_establishment_address)
+              formData.append('other_establishment_city', this.other_establishment_city)
+              formData.append('other_establishment_state', this.other_establishment_state)
+              formData.append('other_establishment_zip', this.other_establishment_zip)
               formData.append('action_pending_against_owner', this.action_pending_against_owner)
               formData.append('owner_been_issued_wagering_stamp', this.owner_been_issued_wagering_stamp)   
               formData.append('previous_liquor_license_been_revoked', this.previous_liquor_license_been_revoked)
@@ -1196,77 +1699,6 @@
               if(this.file){
                 formData.append('current_lease', this.file, this.current_lease)
               }
-              
-              // axios
-              //   .post('/user/applications/store', {
-              //     app_id: this.id,
-              //     business_name: this.business_name,
-              //     business_address: this.business_address,
-              //     business_phone: this.business_phone,
-              //     business_email: this.business_email,
-              //     business_classification: this.business_classification,
-              //     born_outside_us: this.born_outside_us,
-              //     born_us_parents: this.born_us_parents,
-              //     date_of_birth: this.date_of_birth,
-              //     birth_country: this.birth_country,   
-              //     naturalized: this.naturalized,      
-              //     naturalized_city: this.naturalized_city,
-              //     naturalized_state: this.naturalized_state,
-              //     naturalized_date: this.naturalized_date,              
-              //     business_contact_person: this.business_contact_person,
-              //     business_contact_title: this.business_contact_title,
-              //     business_contact_phone: this.business_contact_phone,
-              //     corporate_name: this.corporate_name,
-              //     corporate_address: this.corporate_address,
-              //     store_manager_name: this.store_manager_name,
-              //     store_manager_email: this.store_manager_email,
-              //     store_manager_address: this.store_manager_address,
-              //     store_manager_phone: this.store_manager_phone,
-              //     president_name: this.president_name,
-              //     president_email: this.president_email,
-              //     president_address: this.president_address,
-              //     president_phone: this.president_phone,
-              //     vice_president_name: this.vice_president_name,
-              //     vice_president_email: this.vice_president_email,
-              //     vice_president_address: this.vice_president_address,
-              //     vice_president_phone: this.vice_president_phone,
-              //     secretary_name: this.secretary_name,
-              //     secretary_email: this.secretary_email,
-              //     secretary_address: this.secretary_address,
-              //     secretary_phone: this.secretary_phone,
-              //     treasurer_name: this.treasurer_name,
-              //     treasurer_email: this.treasurer_email,
-              //     treasurer_address: this.treasurer_address,
-              //     treasurer_phone: this.treasurer_phone,
-              //     other_corporate_name: this.other_corporate_name,
-              //     other_corporate_address: this.other_corporate_address,
-              //     state_of_organization: this.state_of_organization,
-              //     llc_manager_name: this.llc_manager_name,
-              //     llc_manager_email: this.llc_manager_email,
-              //     llc_manager_phone: this.llc_manager_phone,
-              //     date_qualified_transact_business: this.date_qualified_transact_business,
-              //     had_business_other_corporation: this.had_business_other_corporation,
-              //     establishment_owner_name: this.establishment_owner_name,
-              //     establishment_owner_address: this.establishment_owner_address,
-              //     establishment_owner_phone: this.establishment_owner_phone,
-              //     lessor_name: this.lessor_name,
-              //     lessor_address: this.lessor_address,
-              //     lessor_phone: this.lessor_phone,
-              //     lessor_end_date: this.lessor_end_date,
-              //     owner_lease_premises: this.owner_lease_premises,
-              //     liquor_license_another_premise : this.liquor_license_another_premise,
-              //     other_establishment_name: this.other_establishment_name,
-              //     other_establishment_address: this.other_establishment_address,
-              //     action_pending_against_owner: this.action_pending_against_owner,
-              //     owner_been_issued_wagering_stamp: this.owner_been_issued_wagering_stamp,
-              //     previous_liquor_license_been_revoked: this.previous_liquor_license_been_revoked,
-              //     owners: this.owners,
-              //     shareholders: this.shareholders,
-              //     members: this.members,
-              //     class_fee: this.class_fee,
-              //     status: 'saved',
-              //     current_lease: this.file
-              //   })
 
               axios
                 .post('/user/applications/store', formData, config)              
@@ -1299,6 +1731,9 @@
             this.app_id = id
             this.business_name = response.data.application.business_name
             this.business_address = response.data.application.business_address
+            this.business_city = response.data.application.business_city
+            this.business_state = response.data.application.business_state
+            this.business_zip = response.data.application.business_zip
             this.business_phone = response.data.application.business_phone
             this.business_email = response.data.application.business_email
             this.business_contact_person = response.data.application.business_contact_person
@@ -1323,25 +1758,43 @@
             if(response.data.application.classifiable_type == 'App\\Corporation'){
               this.corporate_name = response.data.application.classifiable.corporate_name
               this.corporate_address = response.data.application.classifiable.corporate_address
+              this.corporate_city = response.data.application.classifiable.corporate_city
+              this.corporate_state = response.data.application.classifiable.corporate_state
+              this.corporate_zip = response.data.application.classifiable.corporate_zip
               this.store_manager_name = response.data.application.classifiable.store_manager_name
               this.store_manager_email = response.data.application.classifiable.store_manager_email
               this.store_manager_address = response.data.application.classifiable.store_manager_address
+              this.store_manager_city = response.data.application.classifiable.store_manager_city
+              this.store_manager_state = response.data.application.classifiable.store_manager_state
+              this.store_manager_zip = response.data.application.classifiable.store_manager_zip
               this.store_manager_phone = response.data.application.classifiable.store_manager_phone              
               this.president_name = response.data.application.classifiable.president_name
               this.president_email = response.data.application.classifiable.president_email
               this.president_address = response.data.application.classifiable.president_address
+              this.president_city = response.data.application.classifiable.president_city
+              this.president_state = response.data.application.classifiable.president_state
+              this.president_zip = response.data.application.classifiable.president_zip
               this.president_phone = response.data.application.classifiable.president_phone
               this.vice_president_name = response.data.application.classifiable.vice_president_name
               this.vice_president_email = response.data.application.classifiable.vice_president_email
               this.vice_president_address = response.data.application.classifiable.vice_president_address
+              this.vice_president_city = response.data.application.classifiable.vice_president_city
+              this.vice_president_state = response.data.application.classifiable.vice_president_state
+              this.vice_president_zip = response.data.application.classifiable.vice_president_zip
               this.vice_president_phone = response.data.application.classifiable.vice_president_phone
               this.secretary_name = response.data.application.classifiable.secretary_name
               this.secretary_email = response.data.application.classifiable.secretary_email
               this.secretary_address = response.data.application.classifiable.secretary_address
+              this.secretary_city = response.data.application.classifiable.secretary_city
+              this.secretary_state = response.data.application.classifiable.secretary_state
+              this.secretary_zip = response.data.application.classifiable.secretary_zip
               this.secretary_phone = response.data.application.classifiable.secretary_phone
               this.treasurer_name = response.data.application.classifiable.treasurer_name
-              this.treasurer_email = response.data.application.classifiable.treasurer_address
+              this.treasurer_email = response.data.application.classifiable.treasurer_email
               this.treasurer_address = response.data.application.classifiable.treasurer_address
+              this.treasurer_city = response.data.application.classifiable.treasurer_city
+              this.treasurer_state = response.data.application.classifiable.treasurer_state
+              this.treasurer_zip = response.data.application.classifiable.treasurer_zip
               this.treasurer_phone = response.data.application.classifiable.treasurer_phone
               this.shareholders = response.data.application.classifiable.children
             }
@@ -1353,37 +1806,44 @@
               this.store_manager_name = response.data.application.classifiable.store_manager_name
               this.store_manager_email = response.data.application.classifiable.store_manager_email
               this.store_manager_address = response.data.application.classifiable.store_manager_address
+              this.store_manager_city = response.data.application.classifiable.store_manager_city
+              this.store_manager_state = response.data.application.classifiable.store_manager_state
+              this.store_manager_zip = response.data.application.classifiable.store_manager_zip
               this.store_manager_phone = response.data.application.classifiable.store_manager_phone
               this.members = response.data.application.classifiable.children
                         
             } 
-            else{
-              // this.state_of_organization = response.data.application.classifiable.state_of_organization
-              // this.llc_manager_name = response.data.application.classifiable.llc_manager_name
-              // this.llc_manager_email = response.data.application.classifiable.llc_manager_email
-              // this.llc_manager_phone = response.data.application.classifiable.llc_manager_phone
-              // this.store_manager_name = response.data.application.classifiable.store_manager_name
-              // this.store_manager_email = response.data.application.classifiable.store_manager_email
-              // this.store_manager_address = response.data.application.classifiable.store_manager_address
-              // this.store_manager_phone = response.data.application.classifiable.store_manager_phone              
+            else{            
               this.owners = response.data.application.classifiable.children  
             }
             this.other_corporate_name = response.data.application.classifiable.other_corporate_name
             this.other_corporate_address = response.data.application.classifiable.other_corporate_address
+            this.other_corporate_city = response.data.application.classifiable.other_corporate_city
+            this.other_corporate_state = response.data.application.classifiable.other_corporate_state
+            this.other_corporate_zip = response.data.application.classifiable.other_corporate_zip
 
             this.date_qualified_transact_business = response.data.application.classifiable.date_qualified_transact_business
             this.had_business_other_corporation = response.data.application.classifiable.had_business_other_corporation
             this.establishment_owner_name = response.data.application.establishment_owner_name
             this.establishment_owner_address = response.data.application.establishment_owner_address
+            this.establishment_owner_city = response.data.application.establishment_owner_city
+            this.establishment_owner_state = response.data.application.establishment_owner_state
+            this.establishment_owner_zip = response.data.application.establishment_owner_zip
             this.establishment_owner_phone = response.data.application.establishment_owner_phone
             this.lessor_name = response.data.application.lessor_name
             this.lessor_address = response.data.application.lessor_address
+            this.lessor_city = response.data.application.lessor_city
+            this.lessor_state = response.data.application.lessor_state
+            this.lessor_zip = response.data.application.lessor_zip
             this.lessor_phone = response.data.application.lessor_phone
             this.lessor_end_date = response.data.application.lessor_end_date
             this.owner_lease_premises = response.data.application.owner_lease_premises
             this.liquor_license_another_premise  = response.data.application.liquor_license_another_premise
             this.other_establishment_name = response.data.application.other_establishment_name
             this.other_establishment_address = response.data.application.other_establishment_address
+            this.other_establishment_city = response.data.application.other_establishment_city
+            this.other_establishment_state = response.data.application.other_establishment_state
+            this.other_establishment_zip = response.data.application.other_establishment_zip
             this.action_pending_against_owner = response.data.application.action_pending_against_owner
             this.owner_been_issued_wagering_stamp = response.data.application.owner_been_issued_wagering_stamp
             this.previous_liquor_license_been_revoked = response.data.application.previous_liquor_license_been_revoked
@@ -1392,15 +1852,15 @@
       },
       addMember() {
         // this.members.push({ id: this.members.length + 1, name: '', email: '', phone: '', address: '' })
-        this.members.push({ name: '', email: '', phone: '', address: '' })
+        this.members.push({ name: '', email: '', phone: '', address: '', city: '', state: '', zip: ''  })
       },
 
       addShareHolder() {
-        this.shareholders.push({ name: '', percentage_owned: '', address: '' })
+        this.shareholders.push({ name: '', percentage_owned: '', address: '', city: '', state: '', zip: ''  })
       },
 
       addOwner() {
-        this.owners.push({ name: '', percentage_owned: '', email: '', address: '' })
+        this.owners.push({ name: '', percentage_owned: '', email: '', address: '', city: '', state: '', zip: ''  })
       },
 
       selectClassification(type) {

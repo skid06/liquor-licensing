@@ -8,7 +8,8 @@ class LimitedLiabilityCompanyMember extends Model
 {
     //
     protected $fillable = [
-        'llc_id', 'name', 'email', 'phone', 'address'
+        'llc_id', 'name', 'email', 'phone', 'address',
+        'city', 'state', 'zip'
     ];
 
     public function llc()

@@ -10,7 +10,8 @@ class LimitedLiabilityCompany extends Model
     protected $fillable = [
         'liquor_application_id', 'llc_manager_name', 'llc_manager_email',
         'llc_manager_phone', 'store_manager_name', 'store_manager_email',
-        'store_manager_phone', 'store_manager_address', 'state_of_organization'
+        'store_manager_phone', 'store_manager_address', 'store_manager_city',
+        'store_manager_state', 'store_manager_zip', 'state_of_organization'
     ];
 
     public function liquorApplication() 
