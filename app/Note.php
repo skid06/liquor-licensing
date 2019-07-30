@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Note extends Model
 {
     protected $fillable = [
-        'message', 'admin_id', 'application_id'
+        'message', 'admin_id', 'liquor_application_id'
     ];
 
     public function admin(){

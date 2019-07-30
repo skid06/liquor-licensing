@@ -17,7 +17,7 @@ class ApplicationNoteController extends Controller
     public function index($id)
     {
         // $notes = Note::where('application_id', $id)->with(['application.user','admin'])->get();
-        $notes = Note::where('application_id', $id)->with(['application.user','admin'])->get();
+        $notes = Note::where('liquor_application_id', $id)->with(['liquorApplication.user','admin'])->get();
         return $notes;
     }
 
@@ -46,7 +46,7 @@ class ApplicationNoteController extends Controller
             ]);
 
             $note = new Note;
-            $note->application_id = $id; 
+            $note->liquor_application_id = $id; 
             $note->message = $request->message;
             $note->admin_id = Auth::guard('admin')->user() ? Auth::guard('admin')->user()->id : null;
             $note->user_id = Auth::guard('web')->user() ? Auth::guard('web')->user()->id : null;
