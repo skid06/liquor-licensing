@@ -85,10 +85,10 @@
           <template v-slot:items="props">
             <td>{{ props.item.business_name }}</td>
             <td class="text-xs-left">{{ props.item.business_address }}</td>
-            <td class="text-xs-left">{{ props.item.business_email }}</td>
             <td class="text-xs-left">{{ props.item.business_contact_person }}</td>
             <td class="text-xs-left">{{ props.item.business_classification }}</td>
             <td class="text-xs-left">{{ props.item.updated_at | moment("MMM DD, YYYY")  }}</td>
+            <td class="text-xs-left">{{ props.item.notes[props.item.notes.length - 1].message }}</td>
             <td class="justify-center layout px-0">
               <v-icon
                 small
@@ -154,12 +154,11 @@ export default {
           value: 'name',
           sortable: false
         },
-        { text: 'Business Email', value: 'email', sortable: false },
         { text: 'Business Address', value: 'address', sortable: false },
         { text: 'Contact Person', value: 'contact_person', sortable: false },
         { text: 'Business Classification', value: 'classification', sortable: false },
         { text: 'Last Modified', value: 'modified', sortable: false },
-        
+        { text: 'Last Note Added', value: 'note_added', sortable: false },
         { text: 'Actions', value: 'name', sortable: false }
       ],
       desserts: [],
