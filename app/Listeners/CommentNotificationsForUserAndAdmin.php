@@ -34,7 +34,7 @@ class CommentNotificationsForUserAndAdmin
     {
         if($event->note->admin_id != null){
             // make a query to liquor_application table by the return note's application_id
-            $application = LiquorApplication::where('id', $event->note->application_id)->first();
+            $application = LiquorApplication::where('id', $event->note->liquor_application_id)->first();
 
             // make a query to user table by the applications' id from above codes
             $user = User::where('id', $application->user_id)->first();
