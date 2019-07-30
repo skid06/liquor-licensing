@@ -1158,7 +1158,7 @@
         <v-flex xs12 md6 >
           <v-text-field
             v-model="establishment_owner_state"
-            label="Owner's City"
+            label="Owner's State"
             append-icon="location_city" 
             class="input-width"
             outline

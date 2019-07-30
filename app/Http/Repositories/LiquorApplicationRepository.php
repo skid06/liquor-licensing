@@ -36,6 +36,9 @@ class LiquorApplicationRepository implements ApplicationInterface
 		$application->user_id = \Auth::user()->id;
 		$application->business_name = $this->setValue($attributes['business_name']);
 		$application->business_address = $this->setValue($attributes['business_address']);
+		$application->business_city = $this->setValue($attributes['business_city']);
+		$application->business_state = $this->setValue($attributes['business_state']);
+		$application->business_zip = $this->setValue($attributes['business_zip']);
 		$application->business_phone = $this->setValue($attributes['business_phone']);
 		$application->business_email = $this->setValue($attributes['business_email']);
 		$application->business_classification = $this->setValue($attributes['business_classification']);
@@ -53,14 +56,23 @@ class LiquorApplicationRepository implements ApplicationInterface
 		$application->owner_lease_premises = $this->setValue($attributes['owner_lease_premises']);
 		$application->establishment_owner_name = $this->setValue($attributes['establishment_owner_name']);
 		$application->establishment_owner_address = $this->setValue($attributes['establishment_owner_address']);
+		$application->establishment_owner_city = $this->setValue($attributes['establishment_owner_city']);
+		$application->establishment_owner_state = $this->setValue($attributes['establishment_owner_state']);
+		$application->establishment_owner_zip = $this->setValue($attributes['establishment_owner_zip']);
 		$application->establishment_owner_phone = $this->setValue($attributes['establishment_owner_phone']);
 		$application->lessor_name = $this->setValue($attributes['lessor_name']);
 		$application->lessor_address = $this->setValue($attributes['lessor_address']);
+		$application->lessor_city = $this->setValue($attributes['lessor_city']);
+		$application->lessor_state = $this->setValue($attributes['lessor_state']);
+		$application->lessor_zip = $this->setValue($attributes['lessor_zip']);
 		$application->lessor_phone = $this->setValue($attributes['lessor_phone']);
 		$application->lessor_end_date = $this->setValue($attributes['lessor_end_date']);  
 		$application->liquor_license_another_premise = $this->setValue($attributes['liquor_license_another_premise']);
 		$application->other_establishment_name = $this->setValue($attributes['other_establishment_name']);
 		$application->other_establishment_address = $this->setValue($attributes['other_establishment_address']);
+		$application->other_establishment_city = $this->setValue($attributes['other_establishment_city']);
+		$application->other_establishment_state = $this->setValue($attributes['other_establishment_state']);
+		$application->other_establishment_zip = $this->setValue($attributes['other_establishment_zip']);
 		$application->action_pending_against_owner = $this->setValue($attributes['action_pending_against_owner']);
 		$application->owner_been_issued_wagering_stamp = $this->setValue($attributes['owner_been_issued_wagering_stamp']);
 		$application->previous_liquor_license_been_revoked = $this->setValue($attributes['previous_liquor_license_been_revoked']);
@@ -75,32 +87,53 @@ class LiquorApplicationRepository implements ApplicationInterface
         $corporation = Corporation::findOrFail($application->classifiable_id);
 			}
 			$corporation->corporate_name = $this->setValue($attributes['corporate_name']);
-      $corporation->corporate_address = $this->setValue($attributes['corporate_address']);
+			$corporation->corporate_address = $this->setValue($attributes['corporate_address']);
+			$corporation->corporate_city = $this->setValue($attributes['corporate_city']);
+			$corporation->corporate_state = $this->setValue($attributes['corporate_state']);
+			$corporation->corporate_zip = $this->setValue($attributes['corporate_zip']);
       $corporation->store_manager_name = $this->setValue($attributes['store_manager_name']);
-      $corporation->store_manager_address = $this->setValue($attributes['store_manager_address']);
+			$corporation->store_manager_address = $this->setValue($attributes['store_manager_address']);
+			$corporation->store_manager_city = $this->setValue($attributes['store_manager_city']);
+			$corporation->store_manager_state = $this->setValue($attributes['store_manager_state']);
+			$corporation->store_manager_zip = $this->setValue($attributes['store_manager_zip']);
       $corporation->store_manager_phone = $this->setValue($attributes['store_manager_phone']);
 			$corporation->store_manager_email = $this->setValue($attributes['store_manager_email']);
       $corporation->president_name = $this->setValue($attributes['president_name']);
-      $corporation->president_address = $this->setValue($attributes['president_address']);
+			$corporation->president_address = $this->setValue($attributes['president_address']);
+			$corporation->president_city = $this->setValue($attributes['president_city']);
+			$corporation->president_state = $this->setValue($attributes['president_state']);
+			$corporation->president_zip = $this->setValue($attributes['president_zip']);
       $corporation->president_phone = $this->setValue($attributes['president_phone']);
       $corporation->president_email = $this->setValue($attributes['president_email']);			
       $corporation->vice_president_name = $this->setValue($attributes['vice_president_name']);
-      $corporation->vice_president_address = $this->setValue($attributes['vice_president_address']);
+			$corporation->vice_president_address = $this->setValue($attributes['vice_president_address']);
+			$corporation->vice_president_city = $this->setValue($attributes['vice_president_city']);
+			$corporation->vice_president_state = $this->setValue($attributes['vice_president_state']);
+			$corporation->vice_president_zip = $this->setValue($attributes['vice_president_zip']);
       $corporation->vice_president_phone = $this->setValue($attributes['vice_president_phone']);
       $corporation->vice_president_email = $this->setValue($attributes['vice_president_email']);
       $corporation->secretary_name = $this->setValue($attributes['secretary_name']);
-      $corporation->secretary_address = $this->setValue($attributes['secretary_address']);
+			$corporation->secretary_address = $this->setValue($attributes['secretary_address']);
+			$corporation->secretary_city = $this->setValue($attributes['secretary_city']);
+			$corporation->secretary_state = $this->setValue($attributes['secretary_state']);
+			$corporation->secretary_zip = $this->setValue($attributes['secretary_zip']);
       $corporation->secretary_phone = $this->setValue($attributes['secretary_phone']);
       $corporation->secretary_email = $this->setValue($attributes['secretary_email']);
       $corporation->treasurer_name = $this->setValue($attributes['treasurer_name']);
-      $corporation->treasurer_address = $this->setValue($attributes['treasurer_address']);
+			$corporation->treasurer_address = $this->setValue($attributes['treasurer_address']);
+			$corporation->treasurer_city = $this->setValue($attributes['treasurer_city']);
+			$corporation->treasurer_state = $this->setValue($attributes['treasurer_state']);
+			$corporation->treasurer_zip = $this->setValue($attributes['treasurer_zip']);
       $corporation->treasurer_phone = $this->setValue($attributes['treasurer_phone']);
 			$corporation->treasurer_email = $this->setValue($attributes['treasurer_email']);
 
 			$corporation->had_business_other_corporation = $this->setValue($attributes['had_business_other_corporation']);
 			$corporation->date_qualified_transact_business = $this->setValue($attributes['date_qualified_transact_business']);
 			$corporation->other_corporate_name = $this->setValue($attributes['other_corporate_name']);
-			$corporation->other_corporate_address = $this->setValue($attributes['other_corporate_address']);   
+			$corporation->other_corporate_address = $this->setValue($attributes['other_corporate_address']);
+			$corporation->other_corporate_city = $this->setValue($attributes['other_corporate_city']);
+			$corporation->other_corporate_state = $this->setValue($attributes['other_corporate_state']);
+			$corporation->other_corporate_zip = $this->setValue($attributes['other_corporate_zip']);   
 			
 			$corporation->save();     
 
@@ -115,6 +148,9 @@ class LiquorApplicationRepository implements ApplicationInterface
 						$dbShareholder = Shareholder::find($shareholder->id);
 						$dbShareholder->name = $this->setValue($shareholder->name);
 						$dbShareholder->address = $this->setValue($shareholder->address);
+						$dbShareholder->city = $this->setValue($shareholder->city);
+						$dbShareholder->state = $this->setValue($shareholder->state);
+						$dbShareholder->zip = $this->setValue($shareholder->zip);
 						$dbShareholder->percentage_owned = $this->setValue($shareholder->percentage_owned);
 						$dbShareholder->corporation_id = $corporation->id;
 						$dbShareholder->save();						
@@ -124,6 +160,9 @@ class LiquorApplicationRepository implements ApplicationInterface
 							$dbShareholder = new Shareholder;
 							$dbShareholder->name = $this->setValue($shareholder->name);
 							$dbShareholder->address = $this->setValue($shareholder->address);
+							$dbShareholder->city = $this->setValue($shareholder->city);
+							$dbShareholder->state = $this->setValue($shareholder->state);
+							$dbShareholder->zip = $this->setValue($shareholder->zip);
 							$dbShareholder->percentage_owned = $this->setValue($shareholder->percentage_owned);
 							$dbShareholder->corporation_id = $corporation->id;
 							$dbShareholder->save();
@@ -148,6 +187,9 @@ class LiquorApplicationRepository implements ApplicationInterface
 			$llc->store_manager_email = $this->setValue($attributes['store_manager_email']);
 			$llc->store_manager_phone = $this->setValue($attributes['store_manager_phone']);
 			$llc->store_manager_address = $this->setValue($attributes['store_manager_address']);
+			$llc->store_manager_city = $this->setValue($attributes['store_manager_city']);
+			$llc->store_manager_state = $this->setValue($attributes['store_manager_state']);
+			$llc->store_manager_zip = $this->setValue($attributes['store_manager_zip']);
 
 			$llc->save();
 
@@ -164,6 +206,9 @@ class LiquorApplicationRepository implements ApplicationInterface
 						$dbMember = Member::find($member->id);
 						$dbMember->name = $this->setValue($member->name);
 						$dbMember->address = $this->setValue($member->address);
+						$dbMember->city = $this->setValue($member->city);
+						$dbMember->state = $this->setValue($member->state);
+						$dbMember->zip = $this->setValue($member->zip);
 						$dbMember->email = $this->setValue($member->email);
 						$dbMember->phone = $this->setValue($member->phone);
 						$dbMember->llc_id = $llc->id;
@@ -174,6 +219,9 @@ class LiquorApplicationRepository implements ApplicationInterface
 							$dbMember = new Member;
 							$dbMember->name = $this->setValue($member->name);
 							$dbMember->address = $this->setValue($member->address);
+							$dbMember->city = $this->setValue($member->city);
+							$dbMember->state = $this->setValue($member->state);
+							$dbMember->zip = $this->setValue($member->zip);
 							$dbMember->email = $this->setValue($member->email);
 							$dbMember->phone = $this->setValue($member->phone);
 							$dbMember->llc_id = $llc->id;
@@ -207,6 +255,9 @@ class LiquorApplicationRepository implements ApplicationInterface
 						$dbOwner->name = $this->setValue($owner->name);
 						$dbOwner->email = $this->setValue($owner->email);
 						$dbOwner->address = $this->setValue($owner->address);
+						$dbOwner->city = $this->setValue($owner->city);
+						$dbOwner->state = $this->setValue($owner->state);
+						$dbOwner->zip = $this->setValue($owner->zip);
 						$dbOwner->percentage_owned = $this->setValue($owner->percentage_owned);
 						$dbOwner->partnership_id = $partnership->id;
 						$dbOwner->save();						
@@ -217,6 +268,9 @@ class LiquorApplicationRepository implements ApplicationInterface
 							$dbOwner->name = $this->setValue($owner->name);
 							$dbOwner->email = $this->setValue($owner->email);
 							$dbOwner->address = $this->setValue($owner->address);
+							$dbOwner->city = $this->setValue($owner->city);
+							$dbOwner->state = $this->setValue($owner->state);
+							$dbOwner->zip = $this->setValue($owner->zip);
 							$dbOwner->percentage_owned = $this->setValue($owner->percentage_owned);
 							$dbOwner->partnership_id = $partnership->id;
 							$dbOwner->save();	
