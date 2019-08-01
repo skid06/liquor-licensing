@@ -1411,14 +1411,14 @@
       <v-btn
         @click="saveApplication()"
         class="primary"
-        
+        v-if="status != 'processed'"
       >Save</v-btn>
 
       <v-btn
         @click="saveApplication('city')"
         class="primary"
         color="#008FCD"
-        
+        v-if="status == 'saved'"
       >Submit to City</v-btn>                                                   
     </v-card-text>
     <v-snackbar v-model="isApplicationAdded" color="success">
